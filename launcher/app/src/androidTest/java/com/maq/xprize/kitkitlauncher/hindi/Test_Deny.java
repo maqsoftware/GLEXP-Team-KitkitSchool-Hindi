@@ -2,6 +2,8 @@ package com.maq.xprize.kitkitlauncher.hindi;
 
 
 import android.content.Context;
+import android.graphics.Point;
+import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.support.test.InstrumentationRegistry;
 //import android.support.test.espresso.intent.Intents;
@@ -37,6 +39,7 @@ import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -70,53 +73,62 @@ public class Test_Deny {
 //    Intents.init();
 //}
 
-
     private static final int DENY_BUTTON_INDEX = 0;
-    private static final int MAIN_APP_BUTTON_INDEX = 1;
+
+    private static final int MAIN_APP_BUTTON_INSTANCE= 1;// mainapp INSTANCE= 1
+    private static final int LIBRARY_BUTTON_INSTANCE = 2;
+    private static final int TOOL_BUTTON_INSTANCE= 3;
+    private static final int BACK_ARROW_INSTANCE= 0;
 
     @Test
     public void allowPermissionsIfNeeded() {
+        UiDevice device = UiDevice.getInstance(getInstrumentation());
+        Point[] coordinates = new Point[4];
+        coordinates[0] = new Point(248, 1520);
+        coordinates[1] = new Point(248, 929);
+        coordinates[2] = new Point(796, 1520);
+        coordinates[3] = new Point(796, 929);
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                UiDevice device = UiDevice.getInstance(getInstrumentation());
-                UiObject allowPermissions = device.findObject(new UiSelector()
-                        .clickable(true)
-                        .checkable(false)
-                        .index(DENY_BUTTON_INDEX));
-                if (allowPermissions.exists()) {
-                    allowPermissions.click();
-                }
+            if (!device.isScreenOn()) {
+                device.wakeUp();
+                device.swipe(coordinates, 10);
             }
-        } catch (UiObjectNotFoundException e) {
-            System.out.println("There is no permissions dialog to interact with");
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
-
-        // mainapp index = 1
-        try {
-
-            UiDevice device = UiDevice.getInstance(getInstrumentation());
-            UiObject allowPermissions = device.findObject(new UiSelector()
-                    .clickable(true)
-                    .checkable(false)
-                    .index(MAIN_APP_BUTTON_INDEX));
-            if (allowPermissions.exists()) {
-                allowPermissions.click();
-            }
-
-
-        } catch (UiObjectNotFoundException e) {
-
-        }
-
-       onView(isRoot()).perform(ViewActions.pressBack());
-        //onView(isRoot()).perform(ViewActions.pressMenuKey());
+        clickTest(DENY_BUTTON_INDEX);
+        clickTest(TOOL_BUTTON_INSTANCE);
+        clickTest(DENY_BUTTON_INDEX);
+        clickTest(BACK_ARROW_INSTANCE);
+        clickTest(MAIN_APP_BUTTON_INSTANCE);
+       // onView(isRoot()).perform(ViewActions.pressBack());
+//        clickTest(LIBRARY_BUTTON_INSTANCE);
 
 
 
     }
 
 
+    private void clickTest(int INSTANCE_NUMBER){
 
+        try {
+
+            UiDevice device = UiDevice.getInstance(getInstrumentation());
+            UiObject allowPermissions = device.findObject(new UiSelector()
+                    .clickable(true)
+                    .checkable(false)
+                    .instance(INSTANCE_NUMBER));
+            if (allowPermissions.exists()) {
+                allowPermissions.click();
+            }else {
+                Log.d("Instance","Does Not Exist");
+            }
+
+        } catch (UiObjectNotFoundException e) {
+
+        }
+
+    }
 
 
 

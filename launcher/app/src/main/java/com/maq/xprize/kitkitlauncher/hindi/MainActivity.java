@@ -347,29 +347,29 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         ImageButton libraryButton = findViewById(R.id.button_library);
         ImageButton toolsButton = findViewById(R.id.button_tool);
 
-//        View libraryOverlay = findViewById(R.id.overlay_library);
-//        View toolsOverlay = findViewById(R.id.overlay_tools);
-//
-//        if (currentUser.isOpenLibrary()) {
-//            libraryButton.setEnabled(true);
-//            libraryOverlay.setVisibility(View.GONE);
-//
-//        } else {
-//            libraryButton.setEnabled(false);
-//            libraryOverlay.setVisibility(View.VISIBLE);
-//
-//        }
+        View libraryOverlay = findViewById(R.id.overlay_library);
+        View toolsOverlay = findViewById(R.id.overlay_tools);
+
+        if (currentUser.isOpenLibrary()) {
+            libraryButton.setEnabled(true);
+            libraryOverlay.setVisibility(View.GONE);
+
+        } else {
+            libraryButton.setEnabled(false);
+            libraryOverlay.setVisibility(View.VISIBLE);
+
+        }
 
 
-//        if (currentUser.isOpenTools()) {
-//            toolsButton.setEnabled(true);
-//            toolsOverlay.setVisibility(View.GONE);
-//
-//        } else {
-//            toolsButton.setEnabled(false);
-//            toolsOverlay.setVisibility(View.VISIBLE);
-//
-//        }
+        if (currentUser.isOpenTools()) {
+            toolsButton.setEnabled(true);
+            toolsOverlay.setVisibility(View.GONE);
+
+        } else {
+            toolsButton.setEnabled(false);
+            toolsOverlay.setVisibility(View.VISIBLE);
+
+        }
 
         TextView textViewCoinNum = findViewById(R.id.textView_numCoin);
         textViewCoinNum.setText(String.format("%d", currentUser.getNumStars()));

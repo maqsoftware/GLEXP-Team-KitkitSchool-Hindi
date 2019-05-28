@@ -91,6 +91,7 @@
                 android:layout_marginBottom="6px"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
+                android:focusable="auto"
                 android:padding="0px"
                 android:scaleType="fitXY"
                 android:src="@drawable/launcher_mode_game" />
@@ -131,7 +132,6 @@
                 android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clickable="true"
                 android:visibility="visible" />
 
         </FrameLayout>
@@ -223,6 +223,7 @@
                     android:layout_marginBottom="6px"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
+                    android:clickable="false"
                     android:padding="0px"
                     android:scaleType="fitXY"
                     android:src="@drawable/launcher_mode_tool" />

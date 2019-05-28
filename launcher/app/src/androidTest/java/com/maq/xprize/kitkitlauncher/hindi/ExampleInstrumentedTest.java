@@ -3,9 +3,12 @@ package com.maq.xprize.kitkitlauncher.hindi;
 
 import android.content.Context;
 
+import android.graphics.Point;
+import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.support.test.InstrumentationRegistry;
 //import android.support.test.espresso.intent.Intents;
+import android.support.test.espresso.action.ViewActions;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
@@ -29,6 +32,7 @@ import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 
@@ -41,6 +45,7 @@ import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -51,6 +56,7 @@ import static android.support.test.InstrumentationRegistry.getInstrumentation;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 //    @Test
@@ -71,65 +77,60 @@ public class ExampleInstrumentedTest {
 //}
 
 
-private static final int GRANT_BUTTON_INDEX = 1;    //// 1 for accp and 0 for deny
-private static final int MAIN_APP_BUTTON_INDEX = 1;  // mainapp index = 1
-private static final int CROSS_TILE_BUTTON_INDEX = 1; // mainapp -> close tile index = 1 , install tile index = 2
-    private static final int INSTALL_BUTTON_BUTTON_INDEX = 2;
+    private static final int GRANT_BUTTON_INSTANCE= 1;    //// 1 for accp and 0 for deny
+    private static final int MAIN_APP_BUTTON_INSTANCE= 1;// mainapp INSTANCE= 1
+    private static final int LIBRARY_BUTTON_INSTANCE = 2;
+    private static final int TOOL_BUTTON_INSTANCE= 3;
+    private static final int CROSS_TILE_BUTTON_INSTANCE = 0; // mainapp -> close tile INSTANCE= 1 , install tile INSTANCE= 2
+    private static final int INSTALL_BUTTON_INSTANCE = 1;
+    private static final int BACK_ARROW_INSTANCE= 0;
     @Test
     public void allowPermissionsIfNeeded() {
-//        try {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                UiDevice device = UiDevice.getInstance(getInstrumentation());
-//                UiObject allowPermissions = device.findObject(new UiSelector()
-//                        .clickable(true)
-//                        .checkable(false)
-//                        .index(GRANT_BUTTON_INDEX));
-//                if (allowPermissions.exists()) {
-//                    allowPermissions.click();
-//                }
-//            }
-//        } catch (UiObjectNotFoundException e) {
-//            System.out.println("There is no permissions dialog to interact with");
-//        }
-        onView(withId(R.id.relativeLayout)).check(matches(isDisplayed()));
-       /* onView(withId(R.id.library2)).check(matches(isDisplayed()));
-        onView(withId(R.id.overlay_tools)).check(matches(isDisplayed()));*/
+        clickTest(GRANT_BUTTON_INSTANCE);
+        waitfortime(3000);
+        clickTest(LIBRARY_BUTTON_INSTANCE);
+        waitfortime(3000);
+        clickTest(CROSS_TILE_BUTTON_INSTANCE);
+        waitfortime(3000);
+        clickTest(MAIN_APP_BUTTON_INSTANCE);
+        waitfortime(3000);
+        clickTest(CROSS_TILE_BUTTON_INSTANCE);
+        waitfortime(3000);
+        clickTest(TOOL_BUTTON_INSTANCE);
+        waitfortime(3000);
+        clickTest(BACK_ARROW_INSTANCE);
+        waitfortime(3000);
+    }
 
 
-        //onView(withId(R.id.relativeLayout)).perform(click());
+    /// library video = 67 sec   main app = 107 sec
+    private void clickTest(int INSTANCE_NUMBER){
 
-////        // mainapp index = 1
-//        try {
-//
-//                UiDevice device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-//                UiObject allowPermissions = device.findObject(new UiSelector()
-//                        .clickable(true)
-//                        .checkable(false)
-//                        .index(MAIN_APP_BUTTON_INDEX));
-//                if (allowPermissions.exists()) {
-//                    allowPermissions.click();
-//                }
-//
-//
-//        } catch (UiObjectNotFoundException e) {
-//
-//        }
-//        // mainapp -> close tile index = 1 , install tile index = 2
-//        try {
-//
-//            UiDevice device = UiDevice.getInstance(getInstrumentation());
-//            UiObject allowPermissions = device.findObject(new UiSelector()
-//                    .clickable(true)
-//                    .checkable(false)
-//                    .index(INSTALL_BUTTON_BUTTON_INDEX));
-//            if (allowPermissions.exists()) {
-//                allowPermissions.click();
-//            }
-//
-//        } catch (UiObjectNotFoundException e) {
-//
-//        }
+        try {
 
+            UiDevice device = UiDevice.getInstance(getInstrumentation());
+            UiObject allowPermissions = device.findObject(new UiSelector()
+                    .clickable(true)
+                    .checkable(false)
+                    .instance(INSTANCE_NUMBER));
+            if (allowPermissions.exists()) {
+                allowPermissions.click();
+            }else {
+                Log.d("Instance","Does Not Exist");
+            }
+
+        } catch (UiObjectNotFoundException e) {
+
+        }
+
+    }
+
+    private void waitfortime(int TIME){
+        try {
+            Thread.sleep(TIME);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
