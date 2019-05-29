@@ -47,6 +47,7 @@ import android.support.test.uiautomator.UiSelector;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -56,55 +57,89 @@ import static android.support.test.InstrumentationRegistry.getInstrumentation;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-
-    @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
-//    @Test
-//    public void useAppContext() throws Exception {
-//        // Context of the app under test.
-//        Context appContext = InstrumentationRegistry.getTargetContext();
-//
-//        assertEquals("com.maq.xprize.kitkitlauncher.hindi", appContext.getPackageName());
-//
-//
-
-//    @Rule
-//    public ActivityTestRule<MainActivity> ActivityRule = new ActivityTestRule(MainActivity.class);
-//    @Before
-//public void intentsInit() {
-//// initialize Espresso Intents capturing
-//    Intents.init();
-//}
-
-
-    private static final int GRANT_BUTTON_INSTANCE= 1;    //// 1 for accp and 0 for deny
-    private static final int MAIN_APP_BUTTON_INSTANCE= 1;// mainapp INSTANCE= 1
+    private static final int MAIN_APP_BUTTON_INSTANCE= 1;
     private static final int LIBRARY_BUTTON_INSTANCE = 2;
     private static final int TOOL_BUTTON_INSTANCE= 3;
-    private static final int CROSS_TILE_BUTTON_INSTANCE = 0; // mainapp -> close tile INSTANCE= 1 , install tile INSTANCE= 2
+    private static final int CROSS_TILE_BUTTON_INSTANCE = 0;
     private static final int INSTALL_BUTTON_INSTANCE = 1;
     private static final int BACK_ARROW_INSTANCE= 0;
+    private static final int TOOL_1_INSTANCE= 1;
+    private static final int TOOL_2_INSTANCE= 2;
+    private static final int TOOL_3_INSTANCE= 3;
+    private static final int TOOL_4_INSTANCE= 4;
+    private static final int TOOL_5_INSTANCE= 5;
+    private static final int TOOL_6_INSTANCE= 6;
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
+    ///////////////////////////////////////////////// Test case /////////////////////////
     @Test
-    public void allowPermissionsIfNeeded() {
-        clickTest(GRANT_BUTTON_INSTANCE);
-        waitfortime(3000);
+    public void ALLOW_TESTS() {
+        takess(1);
+        permission("ALLOW");
+        takess(2);
+        ismainsmenuvisible();
+        waitfortime(2000);
         clickTest(LIBRARY_BUTTON_INSTANCE);
-        waitfortime(3000);
+        takess(3);
+        isvideomenuvisible();
+        waitfortime(2000);
         clickTest(CROSS_TILE_BUTTON_INSTANCE);
-        waitfortime(3000);
+        waitfortime(2000);
+        clickTest(LIBRARY_BUTTON_INSTANCE);
+        isvideomenuvisible();
+        waitfortime(2000);
+        clickTest(INSTALL_BUTTON_INSTANCE);
+        waitfortime(2000);
+        clickback();
+        ismainsmenuvisible();
+        waitfortime(2000);
         clickTest(MAIN_APP_BUTTON_INSTANCE);
-        waitfortime(3000);
-        clickTest(CROSS_TILE_BUTTON_INSTANCE);
-        waitfortime(3000);
+        isvideomenuvisible();
+        waitfortime(2000);
+       clickTest(CROSS_TILE_BUTTON_INSTANCE);
+        waitfortime(2000);
+        clickTest(MAIN_APP_BUTTON_INSTANCE);
+        isvideomenuvisible();
+        waitfortime(2000);
+        clickTest(INSTALL_BUTTON_INSTANCE);
+        waitfortime(2000);
+        clickback();
+        waitfortime(2000);
         clickTest(TOOL_BUTTON_INSTANCE);
-        waitfortime(3000);
+        takess(4);
+        istoolsmenuvisible();
+        waitfortime(1000);
+        clickTest(TOOL_1_INSTANCE);
+        waitfortime(1000);
+        clickback();
+        waitfortime(1000);
+        clickTest(TOOL_2_INSTANCE);
+        waitfortime(1000);
+        clickback();
+        waitfortime(1000);
+        clickTest(TOOL_3_INSTANCE);
+        waitfortime(1000);
+        clickback();
+        waitfortime(1000);
+        clickTest(TOOL_4_INSTANCE);
+        waitfortime(1000);
+        clickback();
+        waitfortime(1000);
+        clickTest(TOOL_5_INSTANCE);
+        waitfortime(1000);
+        clickback();
+        waitfortime(1000);
+        clickTest(TOOL_6_INSTANCE);
+        waitfortime(1000);
+        clickback();
+        waitfortime(2000);
         clickTest(BACK_ARROW_INSTANCE);
-        waitfortime(3000);
+        takess(5);
     }
 
 
-    /// library video = 67 sec   main app = 107 sec
-    private void clickTest(int INSTANCE_NUMBER){
+
+    private void clickTest(int INSTANCE_NUMBER){ /// click on defined element
 
         try {
 
@@ -120,12 +155,12 @@ public class ExampleInstrumentedTest {
             }
 
         } catch (UiObjectNotFoundException e) {
-
+            e.printStackTrace();
         }
 
     }
 
-    private void waitfortime(int TIME){
+    private void waitfortime(int TIME){ // wait for mili second
         try {
             Thread.sleep(TIME);
         } catch (InterruptedException e) {
@@ -133,9 +168,61 @@ public class ExampleInstrumentedTest {
         }
 
     }
+    private void clickback(){ /// click mobiles back button
+        UiDevice device = UiDevice.getInstance(getInstrumentation());
+        device.pressBack();
+    }
 
+    private void ismainsmenuvisible(){
+        onView(withId(R.id.button_todoschool)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_library)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_tool)).check(matches(isDisplayed()));
+        onView(withId(R.id.textView_currentUserId)).check(matches(isDisplayed()));
+        onView(withId(R.id.launcher_title_button)).check(matches(isDisplayed()));
+        onView(withId(R.id.textView_numCoin)).check(matches(isDisplayed()));
+        onView(withId(R.id.imageView_coin)).check(matches(isDisplayed()));
+    }
 
+    private void istoolsmenuvisible(){
+        onView(withId(R.id.image_coin)).check(matches(isDisplayed()));
+        onView(withId(R.id.textView_numCoin)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_drum)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_marimba)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_blackboard)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_coloring)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_drawing)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_album)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_fish_bowl)).check(matches(isDisplayed()));
+        onView(withId(R.id.app_writing_board)).check(matches(isDisplayed()));
+    }
 
+    private void isvideomenuvisible(){
+        onView(withId(R.id.installAppButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.videoCloseButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.videoSurface)).check(matches(isDisplayed()));
+    }
+    private void permission(String action) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            UiObject allowPermissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text(action));
+            if (allowPermissions.exists()) {
+                try {
+                    allowPermissions.click();
+                } catch (UiObjectNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void takess(int i){    // takes screen shot of instance
+        File path = new File("/storage/emulated/0/test-screenshots/ExampleInstrumentedTest" + Integer.toString(i));
+        int SDK_VERSION = android.os.Build.VERSION.SDK_INT;
+        if (SDK_VERSION >= 17) {
+            waitfortime(1000);
+            UiDevice.getInstance(getInstrumentation()).takeScreenshot(path);
+            waitfortime(1000);
+        }
+    }
 //    @After
 //    public void intentsTeardown() {
 //// release Espresso Intents capturing
