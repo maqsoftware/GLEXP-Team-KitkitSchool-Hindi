@@ -24,17 +24,17 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class Video_Test {
+public class Test_Video {
     private static final int MAIN_APP_BUTTON_INSTANCE= 1;
     private static final int LIBRARY_BUTTON_INSTANCE = 2;
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
     ///////////////////////////////////////////////// Test case /////////////////////////
     @Test
-    private void VIDEO_TESTS() {
+    public void VIDEO_TESTS() {
 
-        permission("ALLOW");
-        takess(1);
+       // permission("Allow");
+       // takess(1);
         ismainsmenuvisible();
         waitfortime(2000);
 
@@ -52,6 +52,7 @@ public class Video_Test {
         isvideomenuvisible();
         waitfortime(107000);                        /// library video = 67 sec   main app = 107 sec
         clickback();
+        waitfortime(2000);
         ismainsmenuvisible();
 
     }
@@ -133,7 +134,7 @@ public class Video_Test {
     }
 
     private void takess(int i){    // takes screen shot of instance
-        File path = new File("/storage/emulated/0/test-screenshots/filename" + Integer.toString(i));
+        File path = new File("/storage/emulated/0/test-screenshots/VIDEO_TESTS" + Integer.toString(i));
         int SDK_VERSION = android.os.Build.VERSION.SDK_INT;
         if (SDK_VERSION >= 17) {
             waitfortime(1000);

@@ -1,13 +1,7 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
 
-import android.content.Context;
-import android.graphics.Point;
-import android.os.RemoteException;
-import android.provider.ContactsContract;
-import android.support.test.InstrumentationRegistry;
-//import android.support.test.espresso.intent.Intents;
-import android.support.test.espresso.action.ViewActions;
+
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
@@ -28,17 +22,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static org.junit.Assert.assertEquals;
-
-
-import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.test.uiautomator.UiDevice;
-import android.support.test.uiautomator.UiObject;
-import android.support.test.uiautomator.UiObjectNotFoundException;
-import android.support.test.uiautomator.UiSelector;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.File;
@@ -55,12 +39,7 @@ public class Test_Deny {
     private static final int LIBRARY_BUTTON_INSTANCE = 2;
     private static final int TOOL_BUTTON_INSTANCE= 3;
     private static final int BACK_ARROW_INSTANCE= 0;
-    private static final int TOOL_1_INSTANCE= 1;
-    private static final int TOOL_2_INSTANCE= 2;
-    private static final int TOOL_3_INSTANCE= 3;
-    private static final int TOOL_4_INSTANCE= 4;
-    private static final int TOOL_5_INSTANCE= 5;
-    private static final int TOOL_6_INSTANCE= 6;
+
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
     ///////////////////////////////////////////////// Test case /////////////////////////
@@ -68,9 +47,7 @@ public class Test_Deny {
     public void DENY_TESTS() {
 
         permission("Deny");
-
         clickTest(TOOL_BUTTON_INSTANCE);
-
         permission("Deny");
         waitfortime(2000);
         takess(6);
@@ -83,13 +60,15 @@ public class Test_Deny {
         clickback();
         waitfortime(1000);
         permission("Deny");
-        waitfortime(1000);
-        clickTest(LIBRARY_BUTTON_INSTANCE);
-        waitfortime(1000);
-        clickback();
-        waitfortime(1000);
-        permission("Deny");
-
+//        permission("Open");
+//        waitfortime(1000);
+//        clickTest(LIBRARY_BUTTON_INSTANCE);
+//        waitfortime(1000);
+//        clickback();
+//        waitfortime(1000);
+//        permission("Allow");
+//        Test_Allow  AllowObj = new Test_Allow();
+//        AllowObj.ALLOW_TESTS();
 
     }
 
@@ -170,7 +149,7 @@ public class Test_Deny {
     }
 
     private void takess(int i){    // takes screen shot of instance
-        File path = new File("/storage/emulated/0/test-screenshots/filename" + Integer.toString(i));
+        File path = new File("/storage/emulated/0/test-screenshots/DENY_TESTS" + Integer.toString(i));
         int SDK_VERSION = android.os.Build.VERSION.SDK_INT;
         if (SDK_VERSION >= 17) {
             waitfortime(1000);

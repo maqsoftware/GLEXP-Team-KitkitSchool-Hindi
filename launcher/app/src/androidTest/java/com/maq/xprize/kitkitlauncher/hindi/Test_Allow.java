@@ -1,14 +1,7 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
 
-import android.content.Context;
 
-import android.graphics.Point;
-import android.os.RemoteException;
-import android.provider.ContactsContract;
-import android.support.test.InstrumentationRegistry;
-//import android.support.test.espresso.intent.Intents;
-import android.support.test.espresso.action.ViewActions;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
@@ -17,42 +10,19 @@ import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
-
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static org.junit.Assert.assertEquals;
-
-
-import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.test.uiautomator.UiDevice;
-import android.support.test.uiautomator.UiObject;
-import android.support.test.uiautomator.UiObjectNotFoundException;
-import android.support.test.uiautomator.UiSelector;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
-
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
-
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -71,16 +41,19 @@ public class Test_Allow {
     private static final int TOOL_6_INSTANCE= 6;
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
+    @Rule
+//    public GrantPermissionRule mGrantPermissionRule =
+//            GrantPermissionRule.grant(
+//                    "android.permission.READ_EXTERNAL_STORAGE");
     ///////////////////////////////////////////////// Test case /////////////////////////
     @Test
     public void ALLOW_TESTS() {
+
         takess(1);
-        permission("Allow");
-        takess(2);
         ismainsmenuvisible();
         waitfortime(2000);
         clickTest(LIBRARY_BUTTON_INSTANCE);
-        takess(3);
+        takess(2);
         isvideomenuvisible();
         waitfortime(2000);
         clickTest(CROSS_TILE_BUTTON_INSTANCE);
@@ -91,6 +64,7 @@ public class Test_Allow {
         clickTest(INSTALL_BUTTON_INSTANCE);
         waitfortime(2000);
         clickback();
+        waitfortime(2000);
         ismainsmenuvisible();
         waitfortime(2000);
         clickTest(MAIN_APP_BUTTON_INSTANCE);
@@ -106,7 +80,7 @@ public class Test_Allow {
         clickback();
         waitfortime(2000);
         clickTest(TOOL_BUTTON_INSTANCE);
-        takess(4);
+        takess(3);
         istoolsmenuvisible();
         waitfortime(1000);
         clickTest(TOOL_1_INSTANCE);
@@ -134,7 +108,11 @@ public class Test_Allow {
         clickback();
         waitfortime(2000);
         clickTest(BACK_ARROW_INSTANCE);
-        takess(5);
+        takess(4);
+        Test_Video VideoObj = new Test_Video();
+
+        VideoObj.VIDEO_TESTS();
+
     }
 
 
@@ -215,7 +193,7 @@ public class Test_Allow {
     }
 
     private void takess(int i){    // takes screen shot of instance
-        File path = new File("/storage/emulated/0/test-screenshots/ExampleInstrumentedTest" + Integer.toString(i));
+        File path = new File("/sdcard/test-screenshots/ALLOW_TESTS" + Integer.toString(i));
         int SDK_VERSION = android.os.Build.VERSION.SDK_INT;
         if (SDK_VERSION >= 17) {
             waitfortime(1000);
