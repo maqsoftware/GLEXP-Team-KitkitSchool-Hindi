@@ -56,7 +56,7 @@ import static android.support.test.InstrumentationRegistry.getInstrumentation;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class Test_Allow {
     private static final int MAIN_APP_BUTTON_INSTANCE= 1;
     private static final int LIBRARY_BUTTON_INSTANCE = 2;
     private static final int TOOL_BUTTON_INSTANCE= 3;
@@ -75,7 +75,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void ALLOW_TESTS() {
         takess(1);
-        permission("ALLOW");
+        permission("Allow");
         takess(2);
         ismainsmenuvisible();
         waitfortime(2000);
