@@ -46,30 +46,30 @@ public class Test_Deny {
     @Test
     public void DENY_TESTS() {
 
-        permission("Deny");
+        permission(0);
         clickTest(TOOL_BUTTON_INSTANCE);
-        permission("Deny");
+        permission(0);
         waitfortime(2000);
-        takess(6);
+//        takess(6);
         istoolsmenuvisible();
         waitfortime(1000);
         clickTest(BACK_ARROW_INSTANCE);
-        takess(7);
+//        takess(7);
         clickTest(MAIN_APP_BUTTON_INSTANCE);
         waitfortime(1000);
         clickback();
         waitfortime(1000);
-        permission("Deny");
+        permission(0);
 //        permission("Open");
-//        waitfortime(1000);
-//        clickTest(LIBRARY_BUTTON_INSTANCE);
-//        waitfortime(1000);
-//        clickback();
-//        waitfortime(1000);
-//        permission("Allow");
-//        Test_Allow  AllowObj = new Test_Allow();
-//        AllowObj.ALLOW_TESTS();
+        waitfortime(1000);
+        clickTest(LIBRARY_BUTTON_INSTANCE);
+        waitfortime(1000);
+        clickback();
+        waitfortime(1000);
+//        permission(0);
 
+    Test_Allow AllowObj = new Test_Allow();
+    AllowObj.ALLOW_TESTS();
     }
 
 
@@ -135,20 +135,50 @@ public class Test_Deny {
         onView(withId(R.id.videoSurface)).check(matches(isDisplayed()));
     }
 
-    private void permission(String action) {
+    private void permission(int action) {
         if (Build.VERSION.SDK_INT >= 23) {
-            UiObject allowPermissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text(action));
-            if (allowPermissions.exists()) {
-                try {
-                    allowPermissions.click();
-                } catch (UiObjectNotFoundException e) {
-                    e.printStackTrace();
+            if (action == 0) {
+                UiObject denyPermissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("Deny"));
+                if (denyPermissions.exists()) {
+                    try {
+                        denyPermissions.click();
+                    } catch (UiObjectNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    UiObject Permissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("DENY"));
+                    if (Permissions.exists()) {
+                        try {
+                            Permissions.click();
+                        } catch (UiObjectNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
+            }else if (action == 1){
+                UiObject allowPermissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("Allow"));
+                if (allowPermissions.exists()) {
+                    try {
+                        allowPermissions.click();
+                    } catch (UiObjectNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    UiObject Permissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("ALLOW"));
+                    if (Permissions.exists()) {
+                        try {
+                            Permissions.click();
+                        } catch (UiObjectNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
             }
         }
     }
 
-    private void takess(int i){    // takes screen shot of instance
+   private void takess(int i){    // takes screen shot of instance
         File path = new File("/storage/emulated/0/test-screenshots/DENY_TESTS" + Integer.toString(i));
         int SDK_VERSION = android.os.Build.VERSION.SDK_INT;
         if (SDK_VERSION >= 17) {

@@ -41,7 +41,7 @@ public class Test_Allow {
     private static final int TOOL_6_INSTANCE= 6;
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
-    @Rule
+//    @Rule
 //    public GrantPermissionRule mGrantPermissionRule =
 //            GrantPermissionRule.grant(
 //                    "android.permission.READ_EXTERNAL_STORAGE");
@@ -49,11 +49,12 @@ public class Test_Allow {
     @Test
     public void ALLOW_TESTS() {
 
-        takess(1);
+//        takess(1);
+        permission(1);
         ismainsmenuvisible();
         waitfortime(2000);
         clickTest(LIBRARY_BUTTON_INSTANCE);
-        takess(2);
+//        takess(2);
         isvideomenuvisible();
         waitfortime(2000);
         clickTest(CROSS_TILE_BUTTON_INSTANCE);
@@ -68,19 +69,23 @@ public class Test_Allow {
         ismainsmenuvisible();
         waitfortime(2000);
         clickTest(MAIN_APP_BUTTON_INSTANCE);
-        isvideomenuvisible();
-        waitfortime(2000);
-       clickTest(CROSS_TILE_BUTTON_INSTANCE);
-        waitfortime(2000);
-        clickTest(MAIN_APP_BUTTON_INSTANCE);
-        isvideomenuvisible();
-        waitfortime(2000);
-        clickTest(INSTALL_BUTTON_INSTANCE);
+        waitfortime(10000);
+        permission(1);
+        permission(1);
         waitfortime(2000);
         clickback();
+//        permission(1);
+//       clickTest(CROSS_TILE_BUTTON_INSTANCE);
+//        waitfortime(2000);
+//        clickTest(MAIN_APP_BUTTON_INSTANCE);
+//        isvideomenuvisible();
+//        waitfortime(2000);
+//        clickTest(INSTALL_BUTTON_INSTANCE);
+//        waitfortime(2000);
+//        clickback();
         waitfortime(2000);
         clickTest(TOOL_BUTTON_INSTANCE);
-        takess(3);
+//        takess(3);
         istoolsmenuvisible();
         waitfortime(1000);
         clickTest(TOOL_1_INSTANCE);
@@ -108,10 +113,10 @@ public class Test_Allow {
         clickback();
         waitfortime(2000);
         clickTest(BACK_ARROW_INSTANCE);
-        takess(4);
-        Test_Video VideoObj = new Test_Video();
-
-        VideoObj.VIDEO_TESTS();
+//        takess(4);
+//        Test_Video VideoObj = new Test_Video();
+//
+//        VideoObj.VIDEO_TESTS();
 
     }
 
@@ -179,15 +184,45 @@ public class Test_Allow {
         onView(withId(R.id.videoCloseButton)).check(matches(isDisplayed()));
         onView(withId(R.id.videoSurface)).check(matches(isDisplayed()));
     }
-    private void permission(String action) {
+    private void permission(int action) {
         if (Build.VERSION.SDK_INT >= 23) {
-            UiObject allowPermissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text(action));
-            if (allowPermissions.exists()) {
-                try {
-                    allowPermissions.click();
-                } catch (UiObjectNotFoundException e) {
-                    e.printStackTrace();
+            if (action == 0) {
+                UiObject denyPermissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("Deny"));
+                if (denyPermissions.exists()) {
+                    try {
+                        denyPermissions.click();
+                    } catch (UiObjectNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    UiObject Permissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("DENY"));
+                    if (Permissions.exists()) {
+                        try {
+                            Permissions.click();
+                        } catch (UiObjectNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
+            }else if (action == 1){
+                UiObject allowPermissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("Allow"));
+                if (allowPermissions.exists()) {
+                    try {
+                        allowPermissions.click();
+                    } catch (UiObjectNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    UiObject Permissions = UiDevice.getInstance(getInstrumentation()).findObject(new UiSelector().text("ALLOW"));
+                    if (Permissions.exists()) {
+                        try {
+                            Permissions.click();
+                        } catch (UiObjectNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
             }
         }
     }
