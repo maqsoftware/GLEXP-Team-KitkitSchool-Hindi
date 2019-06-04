@@ -145,6 +145,7 @@ public:
             Target->Following[ID] = this;
         }
         Followers = C.Followers;
+        return *this;
     }
 
     Chain& operator=(Chain&& C) {
@@ -164,6 +165,7 @@ public:
             Target->Following[ID] = this;
         }
         Followers.swap(C.Followers);
+        return *this;
     }
 
     void follow(Chain& Target, bool Update=true) {

@@ -18,9 +18,9 @@ KeyFrame::KeyFrame()
 {
 }
 
-KeyFrame::KeyFrame(float BeginTime, float EndTime)
-: BeginTime(BeginTime)
-, EndTime(EndTime)
+KeyFrame::KeyFrame(float argBeginTime, float argEndTime)
+: BeginTime(argBeginTime)
+, EndTime(argEndTime)
 {
 }
 
