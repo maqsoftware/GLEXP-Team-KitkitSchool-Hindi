@@ -32,7 +32,7 @@ void EquationMakerObject::setHintObject(){
     m_isHintObject = true;
 }
 
-void EquationMakerObject::createObject(int type, int rowType, int levelType, std::string name, Size size, bool isSlotIn, bool isSlotHide){
+void EquationMakerObject::createObject(int type, int rowType, int levelType, const std::string& name, Size size, bool isSlotIn, bool isSlotHide){
     m_Type = type;
     m_isSlotIn = isSlotIn;
     m_isSlotHide = isSlotHide;
@@ -113,7 +113,7 @@ void EquationMakerObject::createObject(int type, int rowType, int levelType, std
     }
 }
 
-void EquationMakerObject::setObjectAndNumberCard(int num, int levelType,std::string name){
+void EquationMakerObject::setObjectAndNumberCard(int num, int levelType, const std::string& name){
     std::vector<Point> vecPosList;
     std::string fileName = getFileName(levelType, name, num);
     
@@ -181,7 +181,7 @@ void EquationMakerObject::setObjectAndNumberCard(int num, int levelType,std::str
 }
 
 
-void EquationMakerObject::setObjectCard(int num, int levelType, std::string name){
+void EquationMakerObject::setObjectCard(int num, int levelType, const std::string& name){
     
     CCLOG("setObjectCard");
     
@@ -240,7 +240,7 @@ void EquationMakerObject::setObjectCard(int num, int levelType, std::string name
     }
 }
 
-std::string EquationMakerObject::getFileName(int levelType, std::string name, int num){
+std::string EquationMakerObject::getFileName(int levelType, const std::string& name, int num){
     std::string ret = "";
     if(levelType == 3){
         ret = "EquationMaker/counting_"+name+".png";

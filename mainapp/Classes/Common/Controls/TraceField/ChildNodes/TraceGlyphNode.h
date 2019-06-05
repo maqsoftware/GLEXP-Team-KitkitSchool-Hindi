@@ -47,7 +47,7 @@ private:
     void handleTraceStringValueUpdate(TraceString&);
 
 private:
-    void drawTraceStringInRange(const TraceIndex& Start, const TraceIndex Stop,
+    void drawTraceStringInRange(const TraceIndex& Start, const TraceIndex& Stop,
                                 float Thickness, Color4B Color);
     TraceIndex clipIndex(const TraceIndex& Index);
 };

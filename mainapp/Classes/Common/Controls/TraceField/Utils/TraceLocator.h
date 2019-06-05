@@ -21,10 +21,10 @@ BEGIN_NS_TRACEFIELD
 class TraceLocator {
 public:
     // NB(xenosoz, 2016): Return TraceIndex::End() if no feasible point found.
-    TraceIndex bestIndexByFinger(TraceIndex PassedIndex, const TraceString& String, Point FingerPoint);
+    TraceIndex bestIndexByFinger(const TraceIndex& PassedIndex, const TraceString& String, Point FingerPoint);
 
-    bool isBadFinger(TraceIndex PassedIndex, const TraceString& String, Point FingerPoint);
-    bool isItGoodDayToAdvanceStroke(TraceIndex PassedIndex, const TraceString& String);
+    bool isBadFinger(const TraceIndex& PassedIndex, const TraceString& String, Point FingerPoint);
+    bool isItGoodDayToAdvanceStroke(const TraceIndex& PassedIndex, const TraceString& String);
 };
 
 END_NS_TRACEFIELD

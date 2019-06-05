@@ -56,12 +56,12 @@ void GradeSelector::setGameName(std::string gameName) {
     gameName_ = gameName;
 }
 
-void GradeSelector::setChoices(const std::vector<int> choices) {
+void GradeSelector::setChoices(const std::vector<int>& choices) {
     _choicesStr.clear();
     _choicesInt = choices;
     refreshChildNodes();
 }
-void GradeSelector::setChoices(const std::vector<std::string> choices) {
+void GradeSelector::setChoices(const std::vector<std::string>& choices) {
     _choicesInt.clear();
     _choicesStr = choices;
     refreshChildNodes();

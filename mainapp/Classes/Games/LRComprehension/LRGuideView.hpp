@@ -44,8 +44,8 @@ public:
     Button* leftButton;
     Button* rightButton;
     
-    void setSoundPath(string soundPath) { _soundPath = soundPath; }
-    void setTextContent(string textContent) { _textContent = textContent; }
+    void setSoundPath(const string& soundPath) { _soundPath = soundPath; }
+    void setTextContent(const string& textContent) { _textContent = textContent; }
     void setSoundType(bool isSoundType) { _bSoundType = isSoundType; }
     
     void showPanel(bool isShow);

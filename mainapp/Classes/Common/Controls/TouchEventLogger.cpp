@@ -69,13 +69,13 @@ void TouchEventLogger::onExitTransitionDidStart()
     _listener = nullptr;
 }
 
-TouchEventLogger::TouchEventLogger(std::string parentName) :
+TouchEventLogger::TouchEventLogger(const std::string& parentName) :
 _parentName(parentName),
 _listener(nullptr)
 {
 }
 
-TouchEventLogger* TouchEventLogger::create(std::string parentName) {
+TouchEventLogger* TouchEventLogger::create(const std::string& parentName) {
     auto* it = new(std::nothrow) TouchEventLogger(parentName);
     if (it && it->init()) {
         return it;

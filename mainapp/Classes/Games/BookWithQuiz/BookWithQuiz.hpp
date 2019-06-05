@@ -33,7 +33,7 @@ public:
     };
     
     CREATE_FUNC(BookWithQuiz);
-    static Scene* createScene(string bookFolder, int comprehensionTestLevel);
+    static Scene* createScene(const string& bookFolder, int comprehensionTestLevel);
     
     virtual bool init() override;
     virtual void onEnter() override;
