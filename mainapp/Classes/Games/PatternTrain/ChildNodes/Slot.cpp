@@ -33,7 +33,7 @@ bool Slot::init() {
     return true;
 }
 
-void Slot::setBlank(string letter) {
+void Slot::setBlank(const string& letter) {
     _replaceable = true;
     _correctAnswer = letter;
     auto blankBackground = Sprite::create("PatternTrain/train_pattern_empty_spot.png");
