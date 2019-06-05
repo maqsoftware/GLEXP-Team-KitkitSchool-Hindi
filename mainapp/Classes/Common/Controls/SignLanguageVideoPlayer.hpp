@@ -42,7 +42,7 @@ public:
     static SignLanguageVideoPlayer *currentPlayer;
     static void playVideoIfSignLanguageMode(Node* parent, string videoPath, function<void()> callback = nullptr);
     
-    void playVideo(string filename);
+    void playVideo(const string& filename);
     std::function<void()> onCompleted;
     
 protected:

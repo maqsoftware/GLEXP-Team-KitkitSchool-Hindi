@@ -28,8 +28,8 @@ private:
 
 public:
     TaggedFunction(): Tag() {}
-    TaggedFunction(FnType&& F): TaggedFunction(), Function(F) {}
-    TaggedFunction(const FnType& F): TaggedFunction(), Function(F) {}
+    TaggedFunction(FnType&& F): TaggedFunction() { Function = F; }
+    TaggedFunction(const FnType& F): TaggedFunction() { Function = F; }
     
     TaggedFunction& operator=(const FnType& F) {
         Tag.reset();
