@@ -36,7 +36,7 @@ namespace ComprehensionTest
             return true;
         }
 
-        void ImageObject::setImage(std::string folder, std::string imageFile)
+        void ImageObject::setImage(const std::string& folder, std::string imageFile)
         {
             
             _image = Sprite::create(folder + "/quiz/" + imageFile);

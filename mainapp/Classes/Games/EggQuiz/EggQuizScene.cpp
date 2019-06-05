@@ -37,8 +37,8 @@ Scene* EggQuizScene::createScene(string course, string level)
     return scene;
 }
 
-void EggQuizScene::setCourse(string course) { _course = course; }
-void EggQuizScene::setLevel(string level) { _level = level; }
+void EggQuizScene::setCourse(const string& course) { _course = course; }
+void EggQuizScene::setLevel(const string& level) { _level = level; }
 
 bool EggQuizScene::init() {
     if (!Layer::init()) return false;

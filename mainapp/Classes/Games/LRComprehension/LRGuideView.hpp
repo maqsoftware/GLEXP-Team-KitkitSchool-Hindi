@@ -21,7 +21,7 @@ using namespace std;
 class LRGuideView : public Node
 {
 public:
-    bool init(bool isSoundType, string soundPath, string textContent);
+    bool init(bool isSoundType, const string& soundPath, const string& textContent);
     
     LRGuideView();
     static LRGuideView* createWithSound(string soundPath);

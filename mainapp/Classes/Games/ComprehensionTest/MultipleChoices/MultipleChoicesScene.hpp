@@ -49,7 +49,7 @@ namespace ComprehensionTest
             bool isSolved();
             void onSolve();
             bool isCorrect(std::string answer);
-            void solve(std::string answer);
+            void solve(const std::string& answer);
             int getSolvedCount();
             void determineItemType();
             

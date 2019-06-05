@@ -159,7 +159,7 @@ bool LRAllInOneTypeQuestionScene::isCorrect(std::string answer)
     return false;
 }
 
-void LRAllInOneTypeQuestionScene::solve(std::string answer)
+void LRAllInOneTypeQuestionScene::solve(const std::string& answer)
 {
     for (int i = 0; i < answerPairVector.size(); i++)
     {

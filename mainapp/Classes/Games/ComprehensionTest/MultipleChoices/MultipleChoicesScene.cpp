@@ -255,7 +255,7 @@ namespace ComprehensionTest
             return false;
         }
         
-        void MultipleChoicesScene::solve(std::string answer)
+        void MultipleChoicesScene::solve(const std::string& answer)
         {
             for (int i = 0; i < answerPairVector.size(); i++)
             {

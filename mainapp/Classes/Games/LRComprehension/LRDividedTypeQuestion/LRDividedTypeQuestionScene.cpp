@@ -174,7 +174,7 @@ bool LRDividedTypeQuestionScene::isCorrect(std::string answer)
     return false;
 }
 
-void LRDividedTypeQuestionScene::solve(std::string answer)
+void LRDividedTypeQuestionScene::solve(const std::string& answer)
 {
     for (int i = 0; i < answerPairVector.size(); i++)
     {

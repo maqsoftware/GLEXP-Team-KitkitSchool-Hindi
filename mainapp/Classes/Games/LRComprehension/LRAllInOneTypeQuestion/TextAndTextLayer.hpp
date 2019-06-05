@@ -17,9 +17,9 @@ public:
     CREATE_FUNC(TextAndTextLayer);
     virtual bool init() override;
 
-    void setGuideView(QuestionType questionType, string textOrSoundPath);
-    void setQuestionAnswers(std::string questionText, std::string questionSoundPath, std::vector<std::string> answerTexts);
-    Node* createMultiLine(string text, float fontSize, Size dim, string fontName, Color4B fontColor, float lineSpacingRatio = 1.f);
+    void setGuideView(QuestionType questionType, const string& textOrSoundPath);
+    void setQuestionAnswers(const std::string& questionText, std::string questionSoundPath, std::vector<std::string> answerTexts);
+    Node* createMultiLine(string text, float fontSize, Size dim, const string& fontName, Color4B fontColor, float lineSpacingRatio = 1.f);
     Node* createWord(string word, float fontSize, string fontName, Color4B fontColor);
     LRAllInOneTypeQuestionScene* parentScene;
     

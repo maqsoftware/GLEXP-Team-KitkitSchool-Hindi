@@ -33,7 +33,7 @@ public:
     CREATE_FUNC(WordBlock);
     
     virtual bool init() override;
-    void initBlank(string word);
+    void initBlank(const string& word);
     void initWord(string word);
     
     

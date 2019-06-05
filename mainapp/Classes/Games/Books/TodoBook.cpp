@@ -26,7 +26,7 @@
 //    return TDBookType::Unknown;
 //}
 
-string TodoBook::getWordAudioPath(string wordAudio)
+string TodoBook::getWordAudioPath(const string& wordAudio)
 {
     auto wordAudioPath = filePrefix+"word/"+wordAudio;
     
@@ -215,7 +215,7 @@ void TodoBook::readCredit(string &filedata)
 }
 
 
-bool TodoBook::readFile(string prefix, string filename)
+bool TodoBook::readFile(const string& prefix, const string& filename)
 {
     string bookdataPath = prefix + filename;
     string bookdata = cocos2d::FileUtils::getInstance()->getStringFromFile(bookdataPath);
@@ -238,7 +238,7 @@ bool TodoBook::readFile(string prefix, string filename)
 }
 
 
-bool TodoBook::writeFile(string prefix, string filename)
+bool TodoBook::writeFile(const string& prefix, const string& filename)
 {
    
     std::string writeString = "";

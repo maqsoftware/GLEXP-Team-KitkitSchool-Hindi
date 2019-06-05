@@ -71,7 +71,7 @@ Label* MainDepot::createNextLabel() const {
     return It;
 }
 
-Button* MainDepot::createNextButton(std::string T) const {
+Button* MainDepot::createNextButton(const std::string& T) const {
     Node* RootNode = ([&] {
         Sprite* Bottom = createNextButtonBottomSprite();
         Sprite* Top = createNextButtonTopSprite();
@@ -164,7 +164,7 @@ SoundEffect MainDepot::soundForWorkComplete() const {
     return SoundEffect(P + "/Cards_4.m4a");
 }
 
-string MainDepot::videoFilePathByFileName(string FileName) {
+string MainDepot::videoFilePathByFileName(const string& FileName) {
     string It;
     string CountryCode = LanguageManager::getInstance()->getCurrentLanguageCode();
 

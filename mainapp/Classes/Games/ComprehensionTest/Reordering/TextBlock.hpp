@@ -29,7 +29,7 @@ public:
     
     static Size wordBlockSize;
     
-    void initAsSlot(std::string text);
+    void initAsSlot(const std::string& text);
     void initAsBlock(std::string text);
     
     std::string getValue();
