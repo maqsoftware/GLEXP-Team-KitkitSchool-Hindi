@@ -46,7 +46,7 @@ void CurriculumManager::init()
     loadData();
 }
 
-string CurriculumManager::makeLevelID(string lang, char category, int level)
+string CurriculumManager::makeLevelID(const string& lang, char category, int level)
 {
     return lang+"_"+string(1, category)+"_"+TodoUtil::itos(level);
 }

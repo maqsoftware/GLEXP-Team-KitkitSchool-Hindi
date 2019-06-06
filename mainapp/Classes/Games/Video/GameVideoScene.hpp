@@ -45,10 +45,10 @@ public:
     
 public:
     // NB(xenosoz, 2016): Create a minimal scene containing a GradeSelector.
-    static cocos2d::Scene* createScene(std::string filename);
+    static cocos2d::Scene* createScene(const std::string& filename);
     
-    static bool videoExists(std::string filename);
-    static std::string getVideoFile(std::string filename);
+    static bool videoExists(const std::string& filename);
+    static std::string getVideoFile(const std::string& filename);
     
     
 };

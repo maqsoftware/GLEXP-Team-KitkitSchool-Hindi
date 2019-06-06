@@ -34,7 +34,7 @@ bool LogManager::init(void)
     return true;
 }
 
-bool LogManager::logEvent(std::string eventValue)
+bool LogManager::logEvent(const std::string& eventValue)
 {
     // get Documents directory path
     JniMethodInfo t;
@@ -52,7 +52,7 @@ bool LogManager::logEvent(std::string eventValue)
     return false;
 }
 
-bool LogManager::logEventJson(std::string eventName, Json::Value jsonValue)
+bool LogManager::logEventJson(const std::string& eventName, Json::Value jsonValue)
 {
     jsonValue["action"] = eventName;
     
@@ -62,7 +62,7 @@ bool LogManager::logEventJson(std::string eventName, Json::Value jsonValue)
     return logEvent(eventValue);
 }
 
-bool LogManager::logEvent(std::string category, std::string action, std::string label, double value)
+bool LogManager::logEvent(const std::string& category, const std::string& action, const std::string& label, double value)
 {
     Json::Value v;
     v["category"] = category;

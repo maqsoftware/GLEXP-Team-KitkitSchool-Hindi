@@ -23,7 +23,7 @@ public:
     int getPrevious();
     int getNext();
     Piece* _placedPiece;
-    void setLetter(string letter);
+    void setLetter(const string& letter);
     string getLetter();
     void setDisable();
     void setFadeOutFilter();

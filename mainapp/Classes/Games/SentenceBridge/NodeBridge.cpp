@@ -33,7 +33,7 @@ void NodeBridge::removeObjects()
 	removeAllChildren();
 }
 
-void NodeBridge::createBridge(SentenceBridgeProblemStruct problem, float winSizeWidth, bool bRightPillar)
+void NodeBridge::createBridge(const SentenceBridgeProblemStruct& problem, float winSizeWidth, bool bRightPillar)
 {
 	_problem = problem;
 
@@ -200,7 +200,7 @@ int NodeBridge::findTouchedProblemSentenceIdx(string letter, Touch* touch)
 	return -1;
 }
 
-void NodeBridge::blockTouchMoved(string letter, Touch* touch)
+void NodeBridge::blockTouchMoved(const string& letter, Touch* touch)
 {
 	auto foundSentenceIdx = findTouchedProblemSentenceIdx(letter, touch);
 	

@@ -114,7 +114,7 @@ private:
     bool _nextTransition;
     
     cocos2d::ValueMap pickCards(ShapeMatching::Piece pieceInfo, int i);
-    std::string generateCardImageFilename(std::string shape, std::string type, std::string color, std::string size);
+    std::string generateCardImageFilename(std::string shape, const std::string& type, const std::string& color, const std::string& size);
     
     // TodoSpeechButtonCC* _speechButton;
     

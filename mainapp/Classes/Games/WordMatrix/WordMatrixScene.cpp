@@ -736,7 +736,7 @@ void WordMatrixBlock::onExit()
     Sprite::onExit();
 }
 
-void WordMatrixBlock::init(string fileName, vector<TEXT_INFO> textInfos)
+void WordMatrixBlock::init(string fileName, const vector<TEXT_INFO>& textInfos)
 {
     int cutPoint = (int)fileName.find('.');
     string selectedFile = fileName.substr(0, cutPoint);
@@ -997,7 +997,7 @@ void WordMatrixAnswerBlock::onExit()
     WordMatrixBlock::onExit();
 }
 
-void WordMatrixAnswerBlock::init(eMoveBlockType blockType, vector<TEXT_INFO> textInfos)
+void WordMatrixAnswerBlock::init(eMoveBlockType blockType, const vector<TEXT_INFO>& textInfos)
 {
     _isCanMove = true;
     string blockFileName = "wordmatrix/block_top_";
@@ -1321,7 +1321,7 @@ WordMatrixSlotBlock *WordMatrixSlotBlock::create(bool showImg, bool isBottom, TE
     return NULL;
 }
 
-void WordMatrixSlotBlock::init(bool showImg, bool isBottom, TEXT_INFO textInfo)
+void WordMatrixSlotBlock::init(bool showImg, bool isBottom, const TEXT_INFO& textInfo)
 {
     _textInfo = textInfo;
     

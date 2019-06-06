@@ -319,7 +319,7 @@ void GameSoundManager::preloadChildVoice(){
     
 }
 
-void GameSoundManager::setFilePath(std::string path){
+void GameSoundManager::setFilePath(const std::string& path){
     m_FilePath = path;
 }
 

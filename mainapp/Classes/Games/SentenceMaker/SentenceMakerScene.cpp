@@ -467,7 +467,7 @@ void SentenceMakerScene::drawBottomItems()
     }
 }
 
-void SentenceMakerScene::playWordSound(string word)
+void SentenceMakerScene::playWordSound(const string& word)
 {
     double delayTime = 0;
     auto wordSoundNameVector = getRefinedWordSoundName(word);

@@ -30,7 +30,7 @@ public:
     GradeSelector();
     bool init() override;
 
-    void setGameName(std::string gameName);
+    void setGameName(const std::string& gameName);
     void setChoices(const std::vector<int>& choices);
     void setChoices(const std::vector<std::string>& choices);
     std::vector<int> _choicesInt;

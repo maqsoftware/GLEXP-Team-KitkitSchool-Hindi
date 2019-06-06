@@ -37,15 +37,12 @@ namespace WordWindowSceneSpace
 
 using namespace WordWindowSceneSpace;
 
-WordWindowLevelStruct::WordWindowLevelStruct()
+WordWindowLevelStruct::WordWindowLevelStruct() : m_languageTag(""), m_soundFilename(""), m_text("")
 {
-	m_languageTag = "";
 	m_level = 0;
 	m_worksheet = 0;
 	m_problemNo = 0;
 	m_sequenceType = 0;
-	m_soundFilename = "";
-	m_text = "";
 	for (int i = 0; i < 4; i++)
 	{
 		m_exampleNumber[i] = "";
@@ -58,10 +55,9 @@ WordWindowLevelStruct::WordWindowLevelStruct()
 	m_rightAnswer = 0;
 }
 
-WordWindowRightFormulaText::WordWindowRightFormulaText()
+WordWindowRightFormulaText::WordWindowRightFormulaText() : m_text("")
 {
 	m_isBold = false;
-	m_text = "";
 }
 
 int WordWindowLevelStruct::getTotalObjectCount()

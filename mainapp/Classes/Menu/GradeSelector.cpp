@@ -52,7 +52,7 @@ bool GradeSelector::init() {
     return true;
 }
 
-void GradeSelector::setGameName(std::string gameName) {
+void GradeSelector::setGameName(const std::string& gameName) {
     gameName_ = gameName;
 }
 
