@@ -726,7 +726,7 @@ string SentenceMakerScene::getLowerString(string value)
 vector<string> SentenceMakerScene::getRefinedWordSoundName(string value)
 {
     vector<string> soundVector;
-    soundVector.empty();
+    soundVector.clear();
     TodoUtil::replaceAll(value, ".", "");
     
     for (auto eachValue : TodoUtil::split(value, ' '))

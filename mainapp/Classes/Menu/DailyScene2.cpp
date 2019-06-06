@@ -357,7 +357,6 @@ void DailyScene2::refreshData()
             if (game.gameName == "EggQuizLiteracy") continue;
             if (game.gameName == "EggQuizMath") continue;
             if (game.gameName == "Comprehension") continue;
-            if (game.gameName == "EggQuizMath") continue;
             
             bool isNew = false;
             if (cleared) {
