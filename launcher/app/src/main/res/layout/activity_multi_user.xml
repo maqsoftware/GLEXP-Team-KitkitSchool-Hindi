@@ -7,43 +7,39 @@
     android:background="@drawable/kitkit_background"
     tools:context=".MultiUserActivity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="205.24dp"
-        android:layout_height="205.24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Select"
-        app:layout_constraintEnd_toEndOf="@+id/Select"
-        app:layout_constraintStart_toStartOf="@+id/Select"
-        app:layout_constraintTop_toTopOf="@+id/Select"
-        app:srcCompat="@drawable/switch_thumb" />
-
     <Button
         android:id="@+id/Add"
         android:layout_width="80.16dp"
         android:layout_height="80.16dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="208dp"
         android:background="@drawable/adduser"
         android:onClick="AddAllUser"
-        app:layout_constraintStart_toEndOf="@+id/Select"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/addCircle"
+        app:layout_constraintEnd_toEndOf="@+id/addCircle"
+        app:layout_constraintStart_toStartOf="@+id/addCircle"
+        app:layout_constraintTop_toTopOf="@+id/addCircle" />
+
+    <ImageView
+        android:id="@+id/addCircle"
+        android:layout_width="205.24dp"
+        android:layout_height="205.24dp"
+        android:layout_marginTop="248dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="674.24dp"
+        app:srcCompat="@drawable/switch_thumb"
+        tools:layout_editor_absoluteX="489dp"
+        tools:layout_editor_absoluteY="62dp" />
 
     <Button
         android:id="@+id/Select"
         android:layout_width="132.4dp"
         android:layout_height="145dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="@drawable/selectuser"
         android:onClick="SelectAllUser"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/selectCircle"
+        app:layout_constraintEnd_toEndOf="@+id/selectCircle"
+        app:layout_constraintStart_toStartOf="@+id/selectCircle"
+        app:layout_constraintTop_toTopOf="@+id/selectCircle" />
 
     <TextView
         android:id="@+id/textView"
@@ -76,23 +72,24 @@
         app:layout_constraintTop_toBottomOf="@+id/Select" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/selectCircle"
         android:layout_width="205.24dp"
         android:layout_height="205.24dp"
+        android:layout_marginStart="396dp"
+        android:layout_marginLeft="396dp"
+        android:layout_marginTop="248dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/Add"
-        app:layout_constraintEnd_toEndOf="@+id/Add"
-        app:layout_constraintStart_toStartOf="@+id/Add"
-        app:layout_constraintTop_toTopOf="@+id/Add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/switch_thumb" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/Path"
         android:layout_width="276.86dp"
         android:layout_height="205.42dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginLeft="515dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginLeft="500dp"
+        android:layout_marginTop="250dp"
+        android:foregroundGravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/path" />
