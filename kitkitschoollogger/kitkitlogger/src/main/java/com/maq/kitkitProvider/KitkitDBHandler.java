@@ -35,8 +35,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
 
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_USERNAME = "username";
-    public static final String COLUMN_GENDER = "_gender";
     public static final String COLUMN_AGE = "_age";
+    public static final String COLUMN_IMAGE = "_image";           ///////////////////////////////
     public static final String COLUMN_STARS = "stars";
     public static final String COLUMN_FINISH_TUTORIAL = "finish_tutorial";
     public static final String COLUMN_UNLOCK_DRUM = "unlock_drum";
@@ -67,8 +67,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
             + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_USERNAME + " TEXT,"
-            + COLUMN_GENDER + " TEXT,"
             + COLUMN_AGE + " TEXT,"
+            + COLUMN_IMAGE + "BLOB,"              /////////////////////////////////////
             + COLUMN_STARS + " INTEGER,"
             + COLUMN_FINISH_TUTORIAL + " BOOLEAN,"
             + COLUMN_UNLOCK_DRUM + " BOOLEAN,"
@@ -90,7 +90,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
             + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_USERNAME + " TEXT,"
-            + COLUMN_GENDER + " TEXT,"
+            + COLUMN_IMAGE + "BLOB,"
             + COLUMN_AGE + " TEXT"
             + ")";
 
@@ -168,8 +168,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
     public void addUser(User user) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, user.getUserName());
-        values.put(COLUMN_GENDER, user.getgender());
         values.put(COLUMN_AGE, user.getAge());
+        values.put(COLUMN_IMAGE, user.getImage());                    ////////////////////////////////////////
         values.put(COLUMN_STARS, user.getNumStars());
         values.put(COLUMN_FINISH_TUTORIAL, user.isFinishTutorial());
         values.put(COLUMN_UNLOCK_DRUM, user.isUnlockDrum());
@@ -191,8 +191,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
     public User findUser(String username) {
         String[] projection = {COLUMN_ID,
                 COLUMN_USERNAME,
-                COLUMN_GENDER,
                 COLUMN_AGE,
+                COLUMN_IMAGE,                                                   ///////////////////////
                 COLUMN_STARS,
                 COLUMN_FINISH_TUTORIAL,
                 COLUMN_UNLOCK_DRUM,
@@ -221,8 +221,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             user.setID(Integer.parseInt(cursor.getString(0)));
             user.setUserName(cursor.getString(1));
-            user.setgender(cursor.getString(2));
-            user.setAge((cursor.getString(3)));
+            user.setAge((cursor.getString(2)));
+            user.setImage(cursor.getBlob(3));                                      ////////////////////////////
             user.setNumStars(Integer.parseInt(cursor.getString(4)));
             user.setFinishTutorial("1".equals(cursor.getString(5)));
             user.setUnlockDrum("1".equals(cursor.getString(6)));
@@ -248,8 +248,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
     public ArrayList<User> getUserList() {
         String[] projection = {COLUMN_ID,
                 COLUMN_USERNAME,
-                COLUMN_GENDER,
                 COLUMN_AGE,
+                COLUMN_IMAGE,                            /////////////////////////////////////////////
                 COLUMN_STARS,
                 COLUMN_FINISH_TUTORIAL,
                 COLUMN_UNLOCK_DRUM,
@@ -276,8 +276,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
                 User user = new User();
                 user.setID(Integer.parseInt(cursor.getString(0)));
                 user.setUserName(cursor.getString(1));
-                user.setgender(cursor.getString(2));
-                user.setAge((cursor.getString(3)));
+                user.setAge((cursor.getString(2)));
+                user.setImage(cursor.getBlob(3));                   ////////////////////////////////////////
                 user.setNumStars(Integer.parseInt(cursor.getString(4)));
                 user.setFinishTutorial("1".equals(cursor.getString(5)));
                 user.setUnlockDrum("1".equals(cursor.getString(6)));
@@ -417,8 +417,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
         try{
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, user.getUserName());
-        values.put(COLUMN_GENDER, user.getgender());
         values.put(COLUMN_AGE, user.getAge());
+        values.put(COLUMN_IMAGE, user.getImage());                                  ///////////////////////////////////////////
         values.put(COLUMN_STARS, user.getNumStars());
         values.put(COLUMN_FINISH_TUTORIAL, user.isFinishTutorial());
         values.put(COLUMN_UNLOCK_DRUM, user.isUnlockDrum());

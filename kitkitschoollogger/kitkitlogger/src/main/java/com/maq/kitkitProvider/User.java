@@ -11,8 +11,8 @@ public class User<string> {
 
     private int _id;
     private String _username;
-    private String _gender;
     private String _age;
+    byte[] _image;
     private int _numStars;
     private boolean _finishTutorial;
     private boolean _unlockDrum;
@@ -33,7 +33,7 @@ public class User<string> {
     public User() {
         this._id = 0;
         this._username = "user";
-        this._gender = "male";
+        this._image = new byte[]{(byte) 204};
         this._age = "0";
         this._numStars = 0;
         this._finishTutorial = false;
@@ -53,11 +53,11 @@ public class User<string> {
         this._gamesClearedInTotal_M = 0;
     }
 
-    public User(String displayname, String gender, String age) {
+    public User(String displayname, String age) {
         this._id = 0;
         this._username = displayname;
-        this._gender = gender;
         this._age = age;
+        this._image = new byte[]{(byte) 204};
         this._numStars = 0;
         this._finishTutorial = false;
         this._unlockDrum = true;
@@ -79,8 +79,8 @@ public class User<string> {
     public User(int id, String username, int stars) {
         this._id = id;
         this._username = username;
-        this._gender = "male";
         this._age = "0";
+        this._image = new byte[]{(byte) 204};
         this._numStars = stars;
         this._finishTutorial = false;
         this._unlockDrum = true;
@@ -101,8 +101,8 @@ public class User<string> {
 
     public User(String productname, int stars) {
         this._username = productname;
-        this._gender = "male";
         this._age = "0";
+        this._image = new byte[]{(byte) 204};
         this._numStars = stars;
         this._finishTutorial = false;
         this._unlockDrum = true;
@@ -137,14 +137,6 @@ public class User<string> {
         return this._username;
     }
 
-    public void setgender(String gender) {
-        this._gender = gender;
-    }
-
-    public String getgender() {
-        return this._gender;
-    }
-
     public void setAge(String age) {
         this._age = age;
     }
@@ -152,6 +144,15 @@ public class User<string> {
     public String getAge() {
         return this._age;
     }
+
+    public void setImage(byte[] image){
+        this._image = image;
+    }
+
+    public byte[] getImage() {
+        return this._image;
+    }
+
 
     public void setNumStars(int stars) {
         this._numStars = stars;

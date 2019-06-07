@@ -5,10 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class MultiUserActivity extends AppCompatActivity {
@@ -27,14 +31,13 @@ public class MultiUserActivity extends AppCompatActivity {
 
     private static final String TAG = "UserNameActivity" ;
     Dialog addUserDialog;
-    TextView gender;
+    Dialog clickPictureDialog;
     TextView usrname;
     EditText usrnameInput;
     EditText userAge;
-    String userGender;
     Button submit;
+    Button btnTakePic;
 
-    private RadioGroup genderRadioGroup;
     private Context schoolContext;
     private SharedPreferences schoolPref;
     private UserNameListDialog userNameListDialog;
@@ -55,43 +58,55 @@ public class MultiUserActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_multi_user);
         addUserDialog = new Dialog(this);
+        clickPictureDialog = new Dialog(this);
         usrname = (TextView)findViewById(R.id.tv_name);
+        //btnTakePic = (Button) findViewById(R.id.);
+
     }
 
     public void AddAllUser(View v) {
 
+        clickPictureDialog.setContentView(R.layout.click_picture);
         addUserDialog.setContentView(R.layout.add_all_user);
-        usrnameInput = (EditText) addUserDialog.findViewById(R.id.editText);
-        gender = (TextView) addUserDialog.findViewById(R.id.textView4);
-        userAge = (EditText) addUserDialog.findViewById(R.id.editText2);
-        submit =  (Button) addUserDialog.findViewById(R.id.button2);
-        genderRadioGroup = (RadioGroup) addUserDialog.findViewById(R.id.radio);
+        Window clickwin = clickPictureDialog.getWindow();
+        WindowManager.LayoutParams clk = clickwin.getAttributes();
+        clk.gravity = Gravity.CENTER_VERTICAL;
+        clk.x = -400;
+        clk.y = 100;
+        // This is the camera click code
 
-        genderRadioGroup.setOnClickListener(new View.OnClickListener() {
+        /*btnTakePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get selected radio button from Radio Group
-                int selectedId = genderRadioGroup.getCheckedRadioButtonId();
-                switch(selectedId){
-                    case R.id.radioFemale:
-                        userGender = "Female";
-                        break;
-                    case R.id.radioMale:
-                        userGender = "Male";
-                        break;
-                }
+                pictureTakerAction();
             }
         });
+        */
+
+
+
+
+
+
+        Window window = addUserDialog.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
+        wlp.gravity = Gravity.CENTER_VERTICAL;
+        wlp.x = 200;
+        wlp.y = 100;
+        userAge = (EditText) addUserDialog.findViewById(R.id.editText2);
+        submit =  (Button) addUserDialog.findViewById(R.id.button2);
+
 
         // to show the Add user dialog
         addUserDialog.show();
+        clickPictureDialog.show();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                    User user = new User(usrnameInput.getText().toString(), userGender,userAge.getText().toString());
+                    User user = new User(usrnameInput.getText().toString(), userAge.getText().toString());
                     dbHandler.addUser(user);
                     dbHandler.setCurrentUser(user);
 
@@ -106,6 +121,34 @@ public class MultiUserActivity extends AppCompatActivity {
         });
     }
 
+    /*
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == 1){
+                Bundle extras = data.getExtras();
+
+                if(extras != null){
+                    Bitmap yourImage = extras.getParcelable("data");
+
+                    //convert Bitmap to byte
+
+                    ByteArrayOutputStream  stream = new ByteArrayOutputStream();
+                    yourImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte imageINByte[] = stream.toByteArray();
+                }
+            }
+        }
+    }
+
+    private void pictureTakerAction() {
+        Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(takepic, 1);
+        takepic.setType("image/*");
+    }
+*/
     // code for selecting all users.
 
     public void SelectAllUser(View view) {
