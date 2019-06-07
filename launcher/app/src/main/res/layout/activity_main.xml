@@ -91,6 +91,7 @@
                 android:layout_marginBottom="6px"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
+                android:focusable="auto"
                 android:padding="0px"
                 android:scaleType="fitXY"
                 android:src="@drawable/launcher_mode_game" />
@@ -195,7 +196,8 @@
                     android:background="@android:color/transparent"
                     android:padding="0px"
                     android:scaleType="fitXY"
-                    android:src="@drawable/launcher_mode_library_shadow_overlay" />
+                    android:src="@drawable/launcher_mode_library_shadow_overlay"
+                    android:visibility="visible" />
             </FrameLayout>
 
             <FrameLayout
@@ -221,6 +223,7 @@
                     android:layout_marginBottom="6px"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
+                    android:clickable="false"
                     android:padding="0px"
                     android:scaleType="fitXY"
                     android:src="@drawable/launcher_mode_tool" />
@@ -250,7 +253,8 @@
                     android:background="@android:color/transparent"
                     android:padding="0px"
                     android:scaleType="fitXY"
-                    android:src="@drawable/launcher_mode_tool_shadow_overlay" />
+                    android:src="@drawable/launcher_mode_tool_shadow_overlay"
+                    android:visibility="visible" />
             </FrameLayout>
 
         </LinearLayout>

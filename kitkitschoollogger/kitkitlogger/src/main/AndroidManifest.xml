@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 
     package="com.maq.kitkitlogger">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -9,5 +10,6 @@
         android:supportsRtl="true">
 
     </application>
+
 
 </manifest>

@@ -187,7 +187,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                             i.setComponent(new ComponentName("com.maq.xprize.kitkitschool.hindi", "org.cocos2dx.cpp.AppActivity"));
                             startActivity(i);
                         }
-                    } catch (Exception e) {
+                    }  catch (Exception e) {
                         Intent i = new Intent(MainActivity.this, VideoPlayerActivity.class);
                         i.putExtra("video", "main_app_demo_video");
                         startActivity(i);
@@ -321,7 +321,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
+        /*if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (!Settings.canDrawOverlays(this)) {
                     Toast.makeText(this, "User can access system settings without this permission!", Toast.LENGTH_SHORT).show();
@@ -329,7 +329,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                     Util.disableStatusBar(this);
                 }
             }
-        }
+        }*/
     }
 
     @Override
