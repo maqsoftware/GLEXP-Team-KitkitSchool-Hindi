@@ -53,11 +53,11 @@ public class User<string> {
         this._gamesClearedInTotal_M = 0;
     }
 
-    public User(String displayname, String age) {
+    public User(String displayname, String age, byte[] image) {
         this._id = 0;
         this._username = displayname;
         this._age = age;
-        this._image = new byte[]{(byte) 204};
+        this._image = image;
         this._numStars = 0;
         this._finishTutorial = false;
         this._unlockDrum = true;

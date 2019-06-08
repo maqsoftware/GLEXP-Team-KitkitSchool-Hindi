@@ -11,13 +11,12 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.maq.kitkitProvider.KitkitDBHandler;
@@ -31,12 +30,14 @@ public class MultiUserActivity extends AppCompatActivity {
 
     private static final String TAG = "UserNameActivity" ;
     Dialog addUserDialog;
-    Dialog clickPictureDialog;
     TextView usrname;
     EditText usrnameInput;
     EditText userAge;
     Button submit;
-    Button btnTakePic;
+    ImageButton btnTakePic;
+    Button close;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private byte imageInByte[];
 
     private Context schoolContext;
     private SharedPreferences schoolPref;
@@ -58,55 +59,80 @@ public class MultiUserActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_multi_user);
         addUserDialog = new Dialog(this);
-        clickPictureDialog = new Dialog(this);
         usrname = (TextView)findViewById(R.id.tv_name);
-        //btnTakePic = (Button) findViewById(R.id.);
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == REQUEST_IMAGE_CAPTURE){
+                Bundle extras = data.getExtras();
+
+                if(extras != null){
+                    Bitmap yourImage = extras.getParcelable("data");
+
+                    //convert Bitmap to byte
+
+                    ByteArrayOutputStream  stream = new ByteArrayOutputStream();
+                    yourImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    imageInByte = stream.toByteArray();
+                    Log.e("out before conversion", imageInByte.toString());
+                }
+            }
+        }
     }
 
     public void AddAllUser(View v) {
 
-        clickPictureDialog.setContentView(R.layout.click_picture);
         addUserDialog.setContentView(R.layout.add_all_user);
-        Window clickwin = clickPictureDialog.getWindow();
-        WindowManager.LayoutParams clk = clickwin.getAttributes();
-        clk.gravity = Gravity.CENTER_VERTICAL;
-        clk.x = -400;
-        clk.y = 100;
-        // This is the camera click code
-
-        /*btnTakePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pictureTakerAction();
-            }
-        });
-        */
-
-
-
-
-
-
-        Window window = addUserDialog.getWindow();
-        WindowManager.LayoutParams wlp = window.getAttributes();
-        wlp.gravity = Gravity.CENTER_VERTICAL;
-        wlp.x = 200;
-        wlp.y = 100;
-        userAge = (EditText) addUserDialog.findViewById(R.id.editText2);
-        submit =  (Button) addUserDialog.findViewById(R.id.button2);
+        close = (Button) addUserDialog.findViewById(R.id.close);
+        btnTakePic = (ImageButton) addUserDialog.findViewById(R.id.imageView);
+        userAge = (EditText) addUserDialog.findViewById(R.id.ageInput);
+        submit =  (Button) addUserDialog.findViewById(R.id.register);
 
 
         // to show the Add user dialog
         addUserDialog.show();
-        clickPictureDialog.show();
+        Window window = addUserDialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
+
+        // Go Back listener
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addUserDialog.dismiss();
+            }
+        });
+
+        // Code to click picture
+
+        btnTakePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takepic, REQUEST_IMAGE_CAPTURE);
+                takepic.setType("image/*");
+                takepic.putExtra("crop", "true");
+                takepic.putExtra("aspectX", 0);
+                takepic.putExtra("aspectY", 0);
+                takepic.putExtra("outputX", 250);
+                takepic.putExtra("outputY", 200);
+            }
+        });
+
+
+        //Register user.
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                    User user = new User(usrnameInput.getText().toString(), userAge.getText().toString());
+                    User user = new User("user-1", userAge.getText().toString(),imageInByte);
                     dbHandler.addUser(user);
                     dbHandler.setCurrentUser(user);
 
@@ -119,36 +145,12 @@ public class MultiUserActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
-    /*
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            if(requestCode == 1){
-                Bundle extras = data.getExtras();
 
-                if(extras != null){
-                    Bitmap yourImage = extras.getParcelable("data");
 
-                    //convert Bitmap to byte
-
-                    ByteArrayOutputStream  stream = new ByteArrayOutputStream();
-                    yourImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte imageINByte[] = stream.toByteArray();
-                }
-            }
-        }
-    }
-
-    private void pictureTakerAction() {
-        Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(takepic, 1);
-        takepic.setType("image/*");
-    }
-*/
     // code for selecting all users.
 
     public void SelectAllUser(View view) {

@@ -68,7 +68,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_USERNAME + " TEXT,"
             + COLUMN_AGE + " TEXT,"
-            + COLUMN_IMAGE + "BLOB,"              /////////////////////////////////////
+            + COLUMN_IMAGE + " BLOB,"              /////////////////////////////////////
             + COLUMN_STARS + " INTEGER,"
             + COLUMN_FINISH_TUTORIAL + " BOOLEAN,"
             + COLUMN_UNLOCK_DRUM + " BOOLEAN,"
@@ -90,7 +90,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
             + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_USERNAME + " TEXT,"
-            + COLUMN_IMAGE + "BLOB,"
+           // + COLUMN_IMAGE + "BLOB,"                                    //////////////////////
             + COLUMN_AGE + " TEXT"
             + ")";
 
