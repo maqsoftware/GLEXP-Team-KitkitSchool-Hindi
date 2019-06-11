@@ -42,7 +42,7 @@
         android:layout_width="132.4dp"
         android:layout_height="145dp"
         android:background="@drawable/selectuser"
-        android:onClick="SelectAllUser"
+        android:onClick="SelectUser"
         app:layout_constraintBottom_toBottomOf="@+id/selectCircle"
         app:layout_constraintEnd_toEndOf="@+id/selectCircle"
         app:layout_constraintStart_toStartOf="@+id/selectCircle"

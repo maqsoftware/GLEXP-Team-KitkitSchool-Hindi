@@ -65,5 +65,6 @@
     <string name="X">X</string>
     <string name="Username">Username</string>
     <string name="Gender">Gender</string>
+    <string name="picture">Picture</string>
     <string name="Age">Age</string>
 </resources>
