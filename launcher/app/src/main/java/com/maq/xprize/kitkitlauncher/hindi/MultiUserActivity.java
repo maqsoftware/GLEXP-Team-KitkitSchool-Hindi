@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -17,10 +16,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +30,6 @@ import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
 
 import java.io.ByteArrayOutputStream;
-import java.net.URI;
 import java.util.ArrayList;
 
 public class MultiUserActivity extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class MultiUserActivity extends AppCompatActivity {
     private static final String TAG = "UserNameActivity" ;
     Dialog addUserDialog;
     TextView usrname;
+    TextView deleteUser;
     EditText usrnameInput;
     EditText userAge;
     Button submit;
@@ -52,7 +54,19 @@ public class MultiUserActivity extends AppCompatActivity {
     Dialog selectUserDialog;
     private ViewPager imagePager;
     Button exit;
+    //
+    ImageButton updatepic;
+    EditText updateage;
+    Button update;
+    Button goback;
+    //
     ImageView goToDashboard;
+    Spinner editUser;
+    ArrayAdapter<String> editAdapter;
+    Dialog updateUserDialog;                                      ////////////////////////
+    int k =0;
+
+    String[] names = {"Edit Profile", "Delete Profile"};
 
 
     @Override
@@ -71,11 +85,20 @@ public class MultiUserActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_multi_user);
         addUserDialog = new Dialog(this);
-        usrname = (TextView)findViewById(R.id.tv_name);
-
+       // updateUserDialog =new Dialog(this);                                 ///////////////////////////////
+        //updateUserDialog.setContentView(R.layout.activity_update_user);
         selectUserDialog = new Dialog(this);
         selectUserDialog.setContentView(R.layout.activity_select_user);
         imagePager = (ViewPager) selectUserDialog.findViewById(R.id.viewpager);
+
+        //editUser = (Spinner) selectUserDialog.findViewById(R.id.spinner);
+       // editUser.setOnItemSelectedListener(this);
+       // editAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, names);
+       // editAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+       // editUser.setAdapter(editAdapter);
+
+
+
 
     }
 
@@ -184,7 +207,8 @@ public class MultiUserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                    User user = new User("user-1", userAge.getText().toString(),imageInByte);
+                    k = dbHandler.numUser();
+                    User user = new User("user-"+Integer.toString(k), userAge.getText().toString(),imageInByte);
                     dbHandler.addUser(user);
                     dbHandler.setCurrentUser(user);
 
@@ -203,8 +227,140 @@ public class MultiUserActivity extends AppCompatActivity {
 
 
 
-    // code for selecting all users.
+    public void SelectUser(View view) {
+        try {
+            KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
+            ArrayList<User> users = dbHandler.getUserList();
+            exit = (Button) selectUserDialog.findViewById(R.id.close);
+            goToDashboard = (ImageView) selectUserDialog.findViewById(R.id.gotodashboard);
 
+            schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
+            schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+            for (User u:users) {
+                u.setGamesClearedInTotal_L(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_L"), 0));
+                u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
+            }
+
+
+            imagePager.setAdapter(new SlidingPagerAdapter(MultiUserActivity.this, users));
+            selectUserDialog.show();
+
+
+
+
+            goToDashboard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+                        usrname = selectUserDialog.findViewById(R.id.userN);
+                        User user = dbHandler.findUser(usrname.getText().toString());
+                        if(user != null){
+                            dbHandler.setCurrentUser(user);
+                        }
+                        Intent intent = new Intent(MultiUserActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    catch (Exception e) {
+                        System.out.println("Error in setting User " + e.getMessage());
+                    }
+                }
+            });
+
+
+
+            exit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectUserDialog.dismiss();
+                }
+            });
+        }
+        catch (Exception ne) {
+            Log.e(TAG, ne.toString());
+            imagePager.setAdapter(new SlidingPagerAdapter(MultiUserActivity.this, null));
+            selectUserDialog.show();
+        }
+    }
+/*
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        final KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+        deleteUser = selectUserDialog.findViewById(R.id.userN);
+        String item =  parent.getItemAtPosition(position).toString();
+        if(item == "Edit Profile") {
+            updatepic = (ImageButton) updateUserDialog.findViewById(R.id.updateImage);
+            updateage = (EditText) updateUserDialog.findViewById(R.id.updateAge);
+            update = (Button) updateUserDialog.findViewById(R.id.updateUser);
+            goback = (Button) updateUserDialog.findViewById(R.id.goBack);
+
+            updateUserDialog.show();
+            // Go Back listener
+            goback.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    updateUserDialog.dismiss();
+                }
+            });
+
+            // Code to click picture
+
+            updatepic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(takepic, REQUEST_IMAGE_CAPTURE);
+
+
+                    takepic.setType("image/*");
+                    takepic.putExtra("crop", "true");
+                    takepic.putExtra("aspectX", 0);
+                    takepic.putExtra("aspectY", 0);
+                    takepic.putExtra("outputX", 250);
+                    takepic.putExtra("outputY", 200);
+
+                }
+            });
+
+            update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    User user = dbHandler.findUser(deleteUser.getText().toString());
+                    if (user != null) {
+                        user.setImage(imageInByte);
+                        user.setAge(updateage.getText().toString());
+                        dbHandler.updateUser(user);
+                        dbHandler.setCurrentUser(user);
+                    }
+
+                    Intent intent = new Intent(MultiUserActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+        }
+
+            else if(item == "Delete Profile"){
+
+                dbHandler.deleteUser(deleteUser.getText().toString());
+
+        }
+
+
+}
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+    */
+
+
+    // code for selecting all users.
+/*
     public void SelectAllUser(View view) {
         try {
             KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
@@ -224,62 +380,9 @@ public class MultiUserActivity extends AppCompatActivity {
             userNameListDialog.show();
         }
     }
+    */
 
-
-    public void SelectUser(View view) {
-        try {
-            KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
-            ArrayList<User> users = dbHandler.getUserList();
-            exit = (Button) selectUserDialog.findViewById(R.id.close);
-            goToDashboard = (ImageView) selectUserDialog.findViewById(R.id.gotodashboard);
-/*
-            schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
-            schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
-            for (User u:users) {
-                u.setGamesClearedInTotal_L(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_L"), 0));
-                u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
-            }
-            */
-
-            /*
-            goToDashboard.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                    }
-                }
-            });
-            */
-
-
-            exit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    selectUserDialog.dismiss();
-                }
-            });
-            selectUserDialog.show();
-            imagePager.setAdapter(new SlidingPagerAdapter(MultiUserActivity.this, users));
-        }
-        catch (Exception ne) {
-            Log.e(TAG, ne.toString());
-            imagePager.setAdapter(new SlidingPagerAdapter(MultiUserActivity.this, null));
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /*
     public void SetUser(View view) {
         KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
         usrname = view.findViewById(R.id.tv_name);
@@ -291,4 +394,5 @@ public class MultiUserActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    */
 }

@@ -1,5 +1,6 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
@@ -25,6 +26,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -32,6 +34,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,7 +76,13 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     private static Thread ftpConnector = null;
     private static Thread logUploader = null;
     private static Thread imageUploader = null;
-
+    Dialog selectUserDialog;
+    private ViewPager imagePager;
+    Button exit;
+    ImageView goToDashboard;
+    private Context schoolContext;
+    TextView usrname;
+    private SharedPreferences schoolPref;
     private Context cntx = null;
     private Button mTitle;
     private TextView mTvUserName;
@@ -153,6 +162,9 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         Util.hideSystemUI(this);
         cntx = getBaseContext();
         Util.setScale(this, findViewById(R.id.main_content));
+        selectUserDialog = new Dialog(this);
+        selectUserDialog.setContentView(R.layout.activity_select_user);
+        imagePager = (ViewPager) selectUserDialog.findViewById(R.id.viewpager);
 
         /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
 
@@ -247,7 +259,66 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         mTitle.setOnTouchListener(mLongTouchListener);
 
         mTvUserName = findViewById(R.id.textView_currentUserId);
-        mTvUserName.setOnTouchListener(mLongTouchListener);
+       // mTvUserName.setOnTouchListener(mLongTouchListener);
+        mTvUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
+                    ArrayList<User> users = dbHandler.getUserList();
+                    exit = (Button) selectUserDialog.findViewById(R.id.close);
+                    goToDashboard = (ImageView) selectUserDialog.findViewById(R.id.gotodashboard);
+
+                    schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
+                    schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+                    for (User u:users) {
+                        u.setGamesClearedInTotal_L(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_L"), 0));
+                        u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
+                    }
+
+
+                    imagePager.setAdapter(new SlidingPagerAdapter(MainActivity.this, users));
+                    selectUserDialog.show();
+
+
+
+
+                    goToDashboard.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            try {
+                                KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+                                usrname = selectUserDialog.findViewById(R.id.userN);
+                                User user = dbHandler.findUser(usrname.getText().toString());
+                                if(user != null){
+                                    dbHandler.setCurrentUser(user);
+                                }
+                                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            catch (Exception e) {
+                                System.out.println("Error in setting User " + e.getMessage());
+                            }
+                        }
+                    });
+
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            selectUserDialog.dismiss();
+                        }
+                    });
+                }
+                catch (Exception ne) {
+                    Log.e(TAG, ne.toString());
+                    imagePager.setAdapter(new SlidingPagerAdapter(MainActivity.this, null));
+                    selectUserDialog.show();
+                }
+            }
+        });
 
         registerLockscreenReceiver();
 

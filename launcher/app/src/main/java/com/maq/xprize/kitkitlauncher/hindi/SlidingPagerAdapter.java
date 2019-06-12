@@ -51,10 +51,13 @@ public class SlidingPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.sliding_images,container,false);
         ImageView imageView = (ImageView) view.findViewById(R.id.finaluserimage);
+        TextView username = (TextView) view.findViewById(R.id.userN);
         TextView english = (TextView) view.findViewById(R.id.tv_eng);
         TextView math = (TextView) view.findViewById(R.id.tv_maths);
 
+
         imageView.setImageBitmap(converToBitmap(item.getImage()));
+        username.setText(item.getDisplayName());
         english.setText(String.valueOf(item.getGamesClearedInTotal_L()));
         math.setText(String.valueOf(item.getGamesClearedInTotal_M()));
         container.addView(view);
