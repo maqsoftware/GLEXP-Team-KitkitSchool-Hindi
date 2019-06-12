@@ -54,6 +54,7 @@ public class MultiUserActivity extends AppCompatActivity {
     Dialog selectUserDialog;
     private ViewPager imagePager;
     Button exit;
+    ImageView picture;
     //
     ImageButton updatepic;
     EditText updateage;
@@ -116,6 +117,7 @@ public class MultiUserActivity extends AppCompatActivity {
 
                 if (extras != null) {
                     Bitmap yourImage = extras.getParcelable("data");
+                    picture.setImageBitmap(yourImage);
 
                     //convert Bitmap to byte
 
@@ -164,6 +166,7 @@ public class MultiUserActivity extends AppCompatActivity {
         btnTakePic = (ImageButton) addUserDialog.findViewById(R.id.imageView);
         userAge = (EditText) addUserDialog.findViewById(R.id.ageInput);
         submit =  (Button) addUserDialog.findViewById(R.id.register);
+        picture = (ImageView) addUserDialog.findViewById(R.id.picture);
 
 
         // to show the Add user dialog
