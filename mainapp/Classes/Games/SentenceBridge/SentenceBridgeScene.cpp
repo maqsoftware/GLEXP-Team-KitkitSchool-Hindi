@@ -19,6 +19,8 @@
 
 
 #include "CCAppController.hpp"
+//#include "UIWidget.h"
+//#include "VoiceMold.java"
 
 using namespace cocos2d::ui;
 using namespace std;
@@ -119,6 +121,7 @@ bool SentenceBridgeScene::init()
             if (e == Widget::TouchEventType::ENDED) {
 				if (_touchEnabled)
 				{
+				    //VoiceMoldManager::shared()->speak(soundFileName);
 					_bridgeMainNode->debugSolveAll();
 					onBridgeComplete();
 				}
@@ -201,10 +204,11 @@ void SentenceBridgeScene::makeSpeakerButton(Size winSize)
 		{
 			auto pos = _speakerButton->getParent()->convertToNodeSpace(T->getLocation());
 			if (_speakerButton->getBoundingBox().containsPoint(pos)) {
-				return touchSpeakerButton(0);
+				return touchSpeakerButton(0.5f);
 			}
 		}
 		return false;
+		// return true;
 	};
 	_speakerButton->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
@@ -215,7 +219,8 @@ bool SentenceBridgeScene::touchSpeakerButton(float delayTime)
 	_speakerButton->setTexture(resourcePath + "button-speaker-playing.png");
 
 	string strSoundFileName = _problems[_currentProblemIndex].SentenceSound;
-	float fSoundFileDuration = getDuration(strSoundFileName);
+	float fSoundFileDuration =VoiceMoldManager::shared()->guessSpeakDuration(strSoundFileName);
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	TodoUtil::replace(strSoundFileName, ".m4a", ".mp3");
 #endif
@@ -227,6 +232,7 @@ bool SentenceBridgeScene::touchSpeakerButton(float delayTime)
 			CallFunc::create([this, strSoundFileName]() {
 				//GameSoundManager::getInstance()->playEffectSound("sentencebridge/sound/" + strSoundFileName);
                // GameSoundManager::getInstance()->playEffectSoundVoiceOnly("sentencebridge/sound/" + strSoundFileName);
+
 				VoiceMoldManager::shared()->speak(strSoundFileName);
 			}),
 			nullptr
@@ -253,7 +259,8 @@ bool SentenceBridgeScene::touchSpeakerButton(float delayTime)
 	return true;
 }
 
-void SentenceBridgeScene::processBlockTouch()
+void SentenceBridgeScene::
+processBlockTouch()
 {
 	_blockMainNode->onBlockTouchBegan = [this]() {
         if (_touchEnabled && !_blockMoving) {

@@ -61,7 +61,7 @@ public class VoiceMold {
         }
 
         if (!wrapper.isGood()) {
-            String header = "Yo! ";
+            String header = " ";
             text = header + text;
         }
 
@@ -85,7 +85,7 @@ public class VoiceMold {
         }
 
         if (!wrapper.isGood()) {
-            String header = "Yo! ";
+            String header = " ";
             text = header + text;
         }
 

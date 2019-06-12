@@ -37,6 +37,7 @@
 #include <time.h>
 #include <algorithm>
 #include <iterator>
+#include <Managers/VoiceMoldManager.h>
 
 namespace DailyScene2Space {
     
@@ -1081,9 +1082,28 @@ void DailyScene2::lightFall(LightBall *l, bool first)
 }
 
 
+
 void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int maxAvailable)
 {
-    GameSoundManager::getInstance()->playEffectSoundForAutoStart("WordVoice/GameName/"+gameName+".m4a");
+   //GameSoundManager::getInstance()->playEffectSoundForAutoStart("WordVoice/GameName/"+gameName+".m4a");
+//     if(gameName=="Animal Puzzle")
+     if(gameName=="animalpuzzle")
+     VoiceMoldManager::shared()->speak(" पशु पहेली ","hi-IN");
+
+     if(gameName=="Animal Puzzle")
+         VoiceMoldManager::shared()->speak("पशु पहेली","hi-IN");
+
+     if(gameName=="birdphonics")
+         VoiceMoldManager::shared()->speak(" पक्षी की ध्वनि ","hi-IN");
+
+     VoiceMoldManager::shared()->speak("क्या");
+
+
+
+//
+//     else
+//         VoiceMoldManager::shared()->speak("क्या","hi-IN");
+
 
     Size popupSize = Size(1540, 1404);
     auto winSize = Director::getInstance()->getWinSize();

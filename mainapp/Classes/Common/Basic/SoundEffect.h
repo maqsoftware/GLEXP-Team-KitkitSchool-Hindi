@@ -35,8 +35,8 @@ public:
     void preload();
     void play();
     void playLoop();
-   // void playTtsSound(const std::string& word);
-    //void pause();  // XXX: Not implemented.
+
+
     void stop();
     //void unload();  // XXX: Not implemented.
 
