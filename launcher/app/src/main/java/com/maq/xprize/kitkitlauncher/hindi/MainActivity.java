@@ -263,60 +263,9 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         mTvUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
-                    ArrayList<User> users = dbHandler.getUserList();
-                    exit = (Button) selectUserDialog.findViewById(R.id.close);
-                    goToDashboard = (ImageView) selectUserDialog.findViewById(R.id.gotodashboard);
-
-                    schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
-                    schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
-                    for (User u:users) {
-                        u.setGamesClearedInTotal_L(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_L"), 0));
-                        u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
-                    }
-
-
-                    imagePager.setAdapter(new SlidingPagerAdapter(MainActivity.this, users));
-                    selectUserDialog.show();
-
-
-
-
-                    goToDashboard.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            try {
-                                KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                                usrname = selectUserDialog.findViewById(R.id.userN);
-                                User user = dbHandler.findUser(usrname.getText().toString());
-                                if(user != null){
-                                    dbHandler.setCurrentUser(user);
-                                }
-                                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            catch (Exception e) {
-                                System.out.println("Error in setting User " + e.getMessage());
-                            }
-                        }
-                    });
-
-
-
-                    exit.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            selectUserDialog.dismiss();
-                        }
-                    });
-                }
-                catch (Exception ne) {
-                    Log.e(TAG, ne.toString());
-                    imagePager.setAdapter(new SlidingPagerAdapter(MainActivity.this, null));
-                    selectUserDialog.show();
-                }
+               Intent intent = new Intent(MainActivity.this, MultiUserActivity.class);
+               startActivity(intent);
+               finish();
             }
         });
 
