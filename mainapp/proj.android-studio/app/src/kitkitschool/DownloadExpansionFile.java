@@ -281,10 +281,7 @@ public class DownloadExpansionFile extends Activity implements IDownloaderClient
      */
     boolean expansionFilesDelivered() {
         String fileName = Helpers.getExpansionAPKFileName(this, xAPK.mIsMain, xAPK.mFileVersion);
-        if (Helpers.doesFileExist(this, fileName, xAPK.mFileSize, false)) {
-            return true;
-        }
-        return false;
+        return Helpers.doesFileExist(this, fileName, xAPK.mFileSize, false);
     }
 
     @Override
@@ -565,9 +562,9 @@ public class DownloadExpansionFile extends Activity implements IDownloaderClient
         progress.mOverallTotal = progress.mOverallTotal;
         mPB.setMax((int) (progress.mOverallTotal >> 8));
         mPB.setProgress((int) (progress.mOverallProgress >> 8));
-        mProgressPercent.setText(Long.toString(progress.mOverallProgress
+        mProgressPercent.setText(progress.mOverallProgress
                 * 100 /
-                progress.mOverallTotal) + "%");
+                progress.mOverallTotal + "%");
         mProgressFraction.setText(Helpers.getDownloadProgressString
                 (progress.mOverallProgress,
                         progress.mOverallTotal));
