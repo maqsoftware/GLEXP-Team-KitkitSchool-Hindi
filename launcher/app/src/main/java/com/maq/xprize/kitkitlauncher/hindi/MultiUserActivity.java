@@ -244,20 +244,16 @@ public class MultiUserActivity extends AppCompatActivity {
                 u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
             }
 
-
             imagePager.setAdapter(new SlidingPagerAdapter(MultiUserActivity.this, users));
             selectUserDialog.show();
-
-
-
 
             goToDashboard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
                         KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                        usrname = selectUserDialog.findViewById(R.id.userN);
-                        User user = dbHandler.findUser(usrname.getText().toString());
+                        int userId = imagePager.getCurrentItem();
+                        User user = dbHandler.findUser("user-" + userId);
                         if(user != null){
                             dbHandler.setCurrentUser(user);
                         }
