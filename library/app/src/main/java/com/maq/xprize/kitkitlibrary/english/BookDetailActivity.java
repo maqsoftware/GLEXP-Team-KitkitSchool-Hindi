@@ -1,9 +1,7 @@
 package com.maq.xprize.kitkitlibrary.english;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import com.maq.kitkitlogger.KitKitLoggerActivity;
@@ -12,7 +10,6 @@ import com.maq.kitkitlogger.KitKitLoggerActivity;
  */
 
 public class BookDetailActivity extends KitKitLoggerActivity {
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

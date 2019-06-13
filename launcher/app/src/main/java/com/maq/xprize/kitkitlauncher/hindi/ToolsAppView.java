@@ -2,9 +2,7 @@ package com.maq.xprize.kitkitlauncher.hindi;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -48,7 +46,6 @@ public class ToolsAppView extends LinearLayout {
         init(context);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public ToolsAppView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);

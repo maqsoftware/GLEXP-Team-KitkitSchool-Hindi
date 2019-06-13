@@ -583,7 +583,7 @@ public class MainActivity extends KitKitLoggerActivity {
 
     }
 
-    public static class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> implements com.maq.xprize.kitkitlibrary.english.VideoAdapter {
+    public static class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
         private Activity mActivity;
         private ArrayList<VideoData> mItems;
 
