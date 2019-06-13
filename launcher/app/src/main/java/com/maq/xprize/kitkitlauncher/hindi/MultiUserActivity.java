@@ -274,7 +274,7 @@ public class MultiUserActivity extends AppCompatActivity {
 
     }
 
-    
+
     public void SelectUser(View view) {
         try {
             KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();

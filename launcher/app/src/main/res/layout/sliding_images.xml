@@ -6,20 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/finaluserimage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="160dp"
         android:contentDescription="@string/picture"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -84,17 +83,17 @@
 
     <ImageButton
         android:id="@+id/editUser"
-        android:layout_width="66dp"
-        android:layout_height="59dp"
+        android:layout_width="44dp"
+        android:layout_height="42dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
         android:onClick="editUser"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/finaluserimage"
         app:layout_constraintEnd_toEndOf="@+id/finaluserimage"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.764"
         app:layout_constraintStart_toStartOf="@+id/finaluserimage"
         app:layout_constraintTop_toTopOf="@+id/finaluserimage"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.918"
         app:srcCompat="@drawable/edit" />
 
 </android.support.constraint.ConstraintLayout>

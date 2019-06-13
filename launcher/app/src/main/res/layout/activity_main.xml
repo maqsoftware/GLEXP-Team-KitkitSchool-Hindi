@@ -15,7 +15,7 @@
         android:background="@drawable/launcher_topbar"
         android:elevation="8px">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userImage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
