@@ -1085,18 +1085,63 @@ void DailyScene2::lightFall(LightBall *l, bool first)
 
 void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int maxAvailable)
 {
-   //GameSoundManager::getInstance()->playEffectSoundForAutoStart("WordVoice/GameName/"+gameName+".m4a");
+   //                                                                                                                                                                                                                                                                                                                                         GameSoundManager::getInstance()->playEffectSoundForAutoStart("WordVoice/GameName/"+gameName+".m4a");
 //     if(gameName=="Animal Puzzle")
-     if(gameName=="animalpuzzle")
-     VoiceMoldManager::shared()->speak(" पशु पहेली ","hi-IN");
+      string _game = gameName ;
 
-     if(gameName=="Animal Puzzle")
-         VoiceMoldManager::shared()->speak("पशु पहेली","hi-IN");
+     if(_game=="AnimalPuzzle")
+         VoiceMoldManager::shared()->speak("पशु ","hi-IN");
+     if(_game=="WhatisThis")
+         VoiceMoldManager::shared()->speak("यह क्या है","hi-IN");
+      if(_game=="AlphabetPuzzle")
+     VoiceMoldManager::shared()->speak("वर्णमाला पहेली","hi-IN");
+    if(_game=="bookwithquiz")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="SentenceMaker")
+        VoiceMoldManager::shared()->speak("वाक्य बनाने वाला","hi-IN");
+    if(_game=="SentenceBridge")
+        VoiceMoldManager::shared()->speak("वाक्य पुल","hi-IN");
+    if(_game=="EquationMaker")
+        VoiceMoldManager::shared()->speak("समीकरण बनाने वाला","hi-IN");
+    if(_game=="ReadingBird")
+        VoiceMoldManager::shared()->speak("पढ़ने वाला पक्षी","hi-IN");
+    if(_game=="SoundTrain")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="LetterTracing")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="LetterMatching")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="HundredPuzzle")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="ThirtyPuzzle")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="ShapeMatching")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="WordWindow")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="WordTracing")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="WordKicker")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="WordNote")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="WordMatrix")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="WordMachine")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="TutorialTrace")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="Tapping")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="StarFall")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="Spelling")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="QuickTrain")
+        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="PlaceValue")
+        VoiceMoldManager::shared()->speak()
 
-     if(gameName=="birdphonics")
-         VoiceMoldManager::shared()->speak(" पक्षी की ध्वनि ","hi-IN");
-
-     VoiceMoldManager::shared()->speak("क्या");
 
 
 

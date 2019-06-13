@@ -136,8 +136,8 @@ void LRSoundButton::playSound()
 {
   //  if (FileUtils::getInstance()->isFileExist(kBasePath + _soundName) == false)
        // return;
-       if (_durationMap.count(_soundName) == 0)
-      return;
+//       if (_durationMap.count(_soundName) == 0)
+//      return;
     
     _isPlaying = true;
     _defaultImage->setVisible(false);
