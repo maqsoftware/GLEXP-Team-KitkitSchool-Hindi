@@ -38,7 +38,6 @@ public class MultiUserActivity extends AppCompatActivity {
     private static final String TAG = "UserNameActivity" ;
     Dialog addUserDialog;
     TextView usrname;
-    TextView deleteUser;
     EditText usrnameInput;
     EditText userAge;
     Button submit;
@@ -53,14 +52,18 @@ public class MultiUserActivity extends AppCompatActivity {
     private UserNameListDialog userNameListDialog;
     Dialog selectUserDialog;
     private ViewPager imagePager;
+    Dialog editPurpose;
     Button exit;
+    TextView edituser;
     ImageView picture;
-    //
+
     ImageButton updatepic;
     EditText updateage;
     Button update;
+    Button delete;
     Button goback;
-    //
+    ImageButton edit;
+
     ImageView goToDashboard;
     Spinner editUser;
     ArrayAdapter<String> editAdapter;
@@ -85,22 +88,82 @@ public class MultiUserActivity extends AppCompatActivity {
             decorView.setSystemUiVisibility(uiOptions);
         }
         setContentView(R.layout.activity_multi_user);
+        editPurpose = new Dialog(this);
+        editPurpose.setContentView(R.layout.sliding_images);
         addUserDialog = new Dialog(this);
-       // updateUserDialog =new Dialog(this);                                 ///////////////////////////////
-        //updateUserDialog.setContentView(R.layout.activity_update_user);
+        updateUserDialog =new Dialog(this);                              ///////////////////////////////
+        updateUserDialog.setContentView(R.layout.activity_update_user);
         selectUserDialog = new Dialog(this);
         selectUserDialog.setContentView(R.layout.activity_select_user);
         imagePager = (ViewPager) selectUserDialog.findViewById(R.id.viewpager);
 
-        //editUser = (Spinner) selectUserDialog.findViewById(R.id.spinner);
-       // editUser.setOnItemSelectedListener(this);
-       // editAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, names);
-       // editAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       // editUser.setAdapter(editAdapter);
+
+    }
+
+    public void editUser(View vv){
+        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+        edituser = selectUserDialog.findViewById(R.id.userN);
+        updatepic = (ImageButton) updateUserDialog.findViewById(R.id.updateImage);
+        updateage = (EditText) updateUserDialog.findViewById(R.id.updateAge);
+        update = (Button) updateUserDialog.findViewById(R.id.updateUser);
+        goback = (Button) updateUserDialog.findViewById(R.id.goBack);
+        delete = (Button) updateUserDialog.findViewById(R.id.deleteUser);
+
+        updateUserDialog.show();
+        // Go Back listener
+        goback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateUserDialog.dismiss();
+            }
+        });
+
+        // Code to click picture
+
+        updatepic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takepic, REQUEST_IMAGE_CAPTURE);
 
 
+                takepic.setType("image/*");
+                takepic.putExtra("crop", "true");
+                takepic.putExtra("aspectX", 0);
+                takepic.putExtra("aspectY", 0);
+                takepic.putExtra("outputX", 250);
+                takepic.putExtra("outputY", 200);
 
+            }
+        });
 
+            update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+                    User user = dbHandler.findUser(edituser.getText().toString());
+                    if (user != null) {
+                        user.setImage(imageInByte);
+                        user.setAge(updateage.getText().toString());
+                        dbHandler.updateUser(user);
+                        dbHandler.setCurrentUser(user);
+                    }
+
+                    Intent intent = new Intent(MultiUserActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+                    dbHandler.deleteUser(edituser.getText().toString());
+                }
+            });
     }
 
 
@@ -286,10 +349,11 @@ public class MultiUserActivity extends AppCompatActivity {
             selectUserDialog.show();
         }
     }
+
 /*
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        final KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
         deleteUser = selectUserDialog.findViewById(R.id.userN);
         String item =  parent.getItemAtPosition(position).toString();
         if(item == "Edit Profile") {
