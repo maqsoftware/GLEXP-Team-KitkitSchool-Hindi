@@ -9,18 +9,36 @@
 
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/updateUser"
         android:layout_width="108dp"
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/redShade"
-        android:text="Register"
+        android:text="Update"
         android:textColor="@android:color/background_light"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/ageInput"
+        app:layout_constraintVertical_bias="0.688" />
+
+
+    <Button
+        android:id="@+id/deleteUser"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/redShade"
+        android:text="Delete Profile"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/ageInput"
         app:layout_constraintVertical_bias="0.688" />
@@ -43,8 +61,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/updatepic"
+            android:layout_width="150dp"
+            android:layout_height="155dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+            app:layout_constraintEnd_toEndOf="@+id/frameLayout"
+            app:layout_constraintStart_toStartOf="@+id/frameLayout"
+            app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+
         <ImageButton
-            android:id="@+id/imageView"
+            android:id="@+id/updateImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -69,7 +98,7 @@
         app:srcCompat="@android:color/background_light" />
 
     <EditText
-        android:id="@+id/ageInput"
+        android:id="@+id/updateAge"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginStart="60dp"
@@ -101,7 +130,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
     <Button
-        android:id="@+id/close"
+        android:id="@+id/goBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -118,16 +147,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/updatepic"
-        android:layout_width="150dp"
-        android:layout_height="155dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
-        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
-        app:layout_constraintStart_toStartOf="@+id/frameLayout"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

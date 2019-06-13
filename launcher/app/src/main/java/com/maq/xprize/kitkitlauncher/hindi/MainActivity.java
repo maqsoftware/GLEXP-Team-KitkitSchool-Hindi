@@ -11,6 +11,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -45,6 +47,7 @@ import com.maq.kitkitlogger.KitKitLoggerActivity;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
@@ -77,15 +80,10 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     private static Thread logUploader = null;
     private static Thread imageUploader = null;
     Dialog selectUserDialog;
-    private ViewPager imagePager;
-    Button exit;
-    ImageView goToDashboard;
-    private Context schoolContext;
-    TextView usrname;
-    private SharedPreferences schoolPref;
     private Context cntx = null;
     private Button mTitle;
     private TextView mTvUserName;
+    private ImageView picture;
 
     /*private _batteryinfo = new PowerConnectionReceiver() {
         @Override
@@ -164,7 +162,6 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         Util.setScale(this, findViewById(R.id.main_content));
         selectUserDialog = new Dialog(this);
         selectUserDialog.setContentView(R.layout.activity_select_user);
-        imagePager = (ViewPager) selectUserDialog.findViewById(R.id.viewpager);
 
         /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
 
@@ -252,15 +249,19 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             }
         });
 
+
         mTitle = findViewById(R.id.launcher_title_button);
         Typeface face = Typeface.createFromAsset(getAssets(),
                 "TodoMainCurly.ttf");
         mTitle.setTypeface(face);
         mTitle.setOnTouchListener(mLongTouchListener);
+        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+        User user = dbHandler.getCurrentUser();
 
+        picture = findViewById(R.id.userImage);
+        picture.setImageBitmap(converToBitmap(user.getImage()));
         mTvUserName = findViewById(R.id.textView_currentUserId);
-       // mTvUserName.setOnTouchListener(mLongTouchListener);
-        mTvUserName.setOnClickListener(new View.OnClickListener() {
+        picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                Intent intent = new Intent(MainActivity.this, MultiUserActivity.class);
@@ -359,6 +360,12 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         if (hasFocus) {
             Util.hideSystemUI(this);
         }
+    }
+
+    public Bitmap converToBitmap(byte[] image){
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(image);
+        Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+        return theImage;
     }
 
     private void refreshUI() {

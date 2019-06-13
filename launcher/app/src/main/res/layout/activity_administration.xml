@@ -52,7 +52,8 @@
             android:layout_marginRight="30px"
             android:text="@string/user_default_id"
             android:textColor="#ffffff"
-            android:textSize="60px" />
+            android:textSize="60px"
+            tools:visibility="invisible" />
 
     </RelativeLayout>
 

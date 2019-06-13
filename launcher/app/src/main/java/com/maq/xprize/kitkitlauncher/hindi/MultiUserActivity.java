@@ -16,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,13 +36,12 @@ public class MultiUserActivity extends AppCompatActivity {
 
     private static final String TAG = "UserNameActivity" ;
     Dialog addUserDialog;
-    TextView usrname;
-    EditText usrnameInput;
     EditText userAge;
     Button submit;
     ImageButton btnTakePic;
     Button close;
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_UPDATE = 2;
     private byte imageInByte[];
     private Uri picUri;
     static final int PIC_CROP = 2;
@@ -54,23 +52,19 @@ public class MultiUserActivity extends AppCompatActivity {
     private ViewPager imagePager;
     Dialog editPurpose;
     Button exit;
-    TextView edituser;
     ImageView picture;
+    ImageView pic;
 
     ImageButton updatepic;
     EditText updateage;
     Button update;
     Button delete;
     Button goback;
-    ImageButton edit;
 
     ImageView goToDashboard;
-    Spinner editUser;
-    ArrayAdapter<String> editAdapter;
-    Dialog updateUserDialog;                                      ////////////////////////
+    Dialog updateUserDialog;
     int k =0;
 
-    String[] names = {"Edit Profile", "Delete Profile"};
 
 
     @Override
@@ -91,7 +85,7 @@ public class MultiUserActivity extends AppCompatActivity {
         editPurpose = new Dialog(this);
         editPurpose.setContentView(R.layout.sliding_images);
         addUserDialog = new Dialog(this);
-        updateUserDialog =new Dialog(this);                              ///////////////////////////////
+        updateUserDialog =new Dialog(this);
         updateUserDialog.setContentView(R.layout.activity_update_user);
         selectUserDialog = new Dialog(this);
         selectUserDialog.setContentView(R.layout.activity_select_user);
@@ -101,15 +95,16 @@ public class MultiUserActivity extends AppCompatActivity {
     }
 
     public void editUser(View vv){
-        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-        edituser = selectUserDialog.findViewById(R.id.userN);
         updatepic = (ImageButton) updateUserDialog.findViewById(R.id.updateImage);
         updateage = (EditText) updateUserDialog.findViewById(R.id.updateAge);
         update = (Button) updateUserDialog.findViewById(R.id.updateUser);
         goback = (Button) updateUserDialog.findViewById(R.id.goBack);
         delete = (Button) updateUserDialog.findViewById(R.id.deleteUser);
+        pic = (ImageView) updateUserDialog.findViewById(R.id.updatepic);
 
         updateUserDialog.show();
+        Window window = addUserDialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         // Go Back listener
         goback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +120,7 @@ public class MultiUserActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takepic, REQUEST_IMAGE_CAPTURE);
+                startActivityForResult(takepic, REQUEST_UPDATE);
 
 
                 takepic.setType("image/*");
@@ -141,8 +136,9 @@ public class MultiUserActivity extends AppCompatActivity {
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int edituserId = imagePager.getCurrentItem();
                     KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                    User user = dbHandler.findUser(edituser.getText().toString());
+                    User user = dbHandler.findUser("user-" + edituserId);
                     if (user != null) {
                         user.setImage(imageInByte);
                         user.setAge(updateage.getText().toString());
@@ -161,7 +157,11 @@ public class MultiUserActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                    dbHandler.deleteUser(edituser.getText().toString());
+                    int edituserId = imagePager.getCurrentItem();
+                    dbHandler.deleteUser("user-" + edituserId);
+                    Intent intent = new Intent(MultiUserActivity.this, MultiUserActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             });
     }
@@ -170,12 +170,9 @@ public class MultiUserActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(resultCode == RESULT_OK){
             if(requestCode == REQUEST_IMAGE_CAPTURE) {
-               // picUri = data.getData();
-               // performCrop();
-            //}
-      //  else if(requestCode == PIC_CROP) {                                                      //////////////////////////////
                 Bundle extras = data.getExtras();
 
                 if (extras != null) {
@@ -189,38 +186,25 @@ public class MultiUserActivity extends AppCompatActivity {
                     imageInByte = stream.toByteArray();
                     Log.e("out before conversion", imageInByte.toString());
                 }
-            }                                                                                  /////////////////////////////
+            }
+            else if(requestCode == REQUEST_UPDATE){
+                Bundle extras = data.getExtras();
+
+                if (extras != null) {
+                    Bitmap yourImage = extras.getParcelable("data");
+                    pic.setImageBitmap(yourImage);
+
+                    //convert Bitmap to byte
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    yourImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    imageInByte = stream.toByteArray();
+                    Log.e("out before conversion", imageInByte.toString());
+                }
+            }
         }
     }
 
-    // function to perform crop
-    ///////////////////////////////////
-    private void performCrop() {
-        try {
-            Intent cropIntent = new Intent("com.android.camera.action.CROP");
-            //indicate image type and Uri
-            cropIntent.setDataAndType(picUri, "image/*");
-            //set crop properties
-            cropIntent.putExtra("crop", "true");
-            //indicate aspect of desired crop
-            cropIntent.putExtra("aspectX", 0);
-            cropIntent.putExtra("aspectY", 0);
-            //indicate output X and Y
-            cropIntent.putExtra("outputX", 200);
-            cropIntent.putExtra("outputY", 200);
-            //retrieve data on return
-            cropIntent.putExtra("return-data", true);
-            //start the activity - we handle returning in onActivityResult
-            startActivityForResult(cropIntent, PIC_CROP);
-        }
-        catch(ActivityNotFoundException anfe){
-            //display an error message
-            String errorMessage = "Whoops - your device doesn't support the crop action!";
-            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-            toast.show();
-        }
-    }
-                                   ///////////////////////////////
+
 
     public void AddAllUser(View v) {
 
@@ -229,7 +213,7 @@ public class MultiUserActivity extends AppCompatActivity {
         btnTakePic = (ImageButton) addUserDialog.findViewById(R.id.imageView);
         userAge = (EditText) addUserDialog.findViewById(R.id.ageInput);
         submit =  (Button) addUserDialog.findViewById(R.id.register);
-        picture = (ImageView) addUserDialog.findViewById(R.id.picture);
+        picture = (ImageView) addUserDialog.findViewById(R.id.updatepic);
 
 
         // to show the Add user dialog
@@ -290,9 +274,7 @@ public class MultiUserActivity extends AppCompatActivity {
 
     }
 
-
-
-
+    
     public void SelectUser(View view) {
         try {
             KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
@@ -346,116 +328,4 @@ public class MultiUserActivity extends AppCompatActivity {
         }
     }
 
-/*
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-        deleteUser = selectUserDialog.findViewById(R.id.userN);
-        String item =  parent.getItemAtPosition(position).toString();
-        if(item == "Edit Profile") {
-            updatepic = (ImageButton) updateUserDialog.findViewById(R.id.updateImage);
-            updateage = (EditText) updateUserDialog.findViewById(R.id.updateAge);
-            update = (Button) updateUserDialog.findViewById(R.id.updateUser);
-            goback = (Button) updateUserDialog.findViewById(R.id.goBack);
-
-            updateUserDialog.show();
-            // Go Back listener
-            goback.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    updateUserDialog.dismiss();
-                }
-            });
-
-            // Code to click picture
-
-            updatepic.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(takepic, REQUEST_IMAGE_CAPTURE);
-
-
-                    takepic.setType("image/*");
-                    takepic.putExtra("crop", "true");
-                    takepic.putExtra("aspectX", 0);
-                    takepic.putExtra("aspectY", 0);
-                    takepic.putExtra("outputX", 250);
-                    takepic.putExtra("outputY", 200);
-
-                }
-            });
-
-            update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    User user = dbHandler.findUser(deleteUser.getText().toString());
-                    if (user != null) {
-                        user.setImage(imageInByte);
-                        user.setAge(updateage.getText().toString());
-                        dbHandler.updateUser(user);
-                        dbHandler.setCurrentUser(user);
-                    }
-
-                    Intent intent = new Intent(MultiUserActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-
-                }
-            });
-        }
-
-            else if(item == "Delete Profile"){
-
-                dbHandler.deleteUser(deleteUser.getText().toString());
-
-        }
-
-
-}
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-    */
-
-
-    // code for selecting all users.
-/*
-    public void SelectAllUser(View view) {
-        try {
-            KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
-            ArrayList<User> users = dbHandler.getUserList();
-            schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
-            schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
-            for (User u:users) {
-                u.setGamesClearedInTotal_L(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_L"), 0));
-                u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
-            }
-            userNameListDialog  = new UserNameListDialog(MultiUserActivity.this, users);
-            userNameListDialog.show();
-        }
-        catch (PackageManager.NameNotFoundException ne) {
-            userNameListDialog  = new UserNameListDialog(MultiUserActivity.this, null);
-            Log.e(TAG, ne.toString());
-            userNameListDialog.show();
-        }
-    }
-    */
-
-    /*
-    public void SetUser(View view) {
-        KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
-        usrname = view.findViewById(R.id.tv_name);
-        User user = dbHandler.findUser(usrname.getText().toString());
-        if (user != null) {
-            dbHandler.setCurrentUser(user);
-        }
-        Intent intent = new Intent(MultiUserActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-    */
 }
