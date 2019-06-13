@@ -42,7 +42,7 @@ def check_games(menu, section, sub_section, game):
 	parent = string(menu) + '-' + string(section) + string(sub_section)
 	clicktile(parent, temp_path)
 	sleep(20)
-	driver.save_screenshot(os.path.join(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path)
+	driver.save_screenshot(os.path.join(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path))
 	sleep(2)
 
 def check_sub_section(menu, section, sub_section):
@@ -50,7 +50,7 @@ def check_sub_section(menu, section, sub_section):
 	parent = string(menu) + '-' + string(section)
 	clicktile(parent, temp_path)
 	sleep(4)
-	driver.save_screenshot(os.path.join(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path)
+	driver.save_screenshot(os.path.join(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path))
 	sleep(2)
 
 def check_main_menu(menu):
@@ -58,7 +58,7 @@ def check_main_menu(menu):
 	parent = "homescreen.png"
 	click_tile("homescreen.png", temp_path)
 	sleep(4)	
-	driver.save_screenshot(os.path.join(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path)
+	driver.save_screenshot(os.path.join(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path))
 	sleep(2)
 
 def check_section(menu, section):
@@ -66,7 +66,7 @@ def check_section(menu, section):
 	parent = string(menu)
 	clicktile(parent, temp_path)
 	sleep(4)
-	driver.save_screenshot(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path)
+	driver.save_screenshot(os.path.join(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun", temp_path))
 	sleep(4)
 
 if __name__ == '__main__':
@@ -78,6 +78,29 @@ if __name__ == '__main__':
 	desired_caps['appActivity'] = 'com.maq.xprize.kitkitlauncher.hindi.MainActivity'
 
 	driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+	num_of_ss = [[5, 9, 27, 28, 32, 28, 30, 30, 30, 30, 25], [5, 16, 17, 28, 21, 28, 28, 28, 28, 28, 28]]
+
+	num_of_games = [[[3, 3, 3, 3, 3], 
+					 [5, 5, 5, 5, 5, 5, 5, 5, 1], 
+					 [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1], 
+					 [4, 4, 4, 4, 5, 4, 4, 4, 5, 4, 4, 4, 5, 4, 5, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1], 
+					 [5, 4, 5, 4, 5, 4, 5, 1, 4, 5, 4, 5, 5, 5, 5, 1, 4, 4, 4, 4, 4, 5, 4, 1, 5, 4, 4, 5, 4, 5, 4, 1],
+					 [5, 4, 5, 4, 5, 4, 1, 5, 4, 5, 4, 5, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 1],
+					 [4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1],
+					 [4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1],
+					 [4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1],
+					 [4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 1]],
+					[[3, 4, 4, 3, 4],
+					 [5, 4, 5, 4, 4, 4, 5, 4, 5, 4, 5, 5, 5, 4, 5, 1],
+					 [5, 4, 5, 5, 5, 4, 5, 4, 5, 5, 4, 5, 5, 5, 5, 5, 1],
+					 [5, 5, 5, 6, 5, 6, 1, 6, 6, 5, 5, 5, 6, 1, 6, 6, 5, 5, 6, 5, 1, 5, 5, 6, 5, 5, 5, 1],
+					 [5, 5, 5, 5, 5, 4, 1, 5, 5, 5, 5, 5, 4, 1, 5, 5, 5, 5, 5, 5, 1],
+					 [5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1, 5, 4, 5, 5, 5, 5, 1],
+					 [5, 5, 6, 5, 5, 5, 1, 5, 6, 5, 6, 5, 5, 1, 5, 5, 5, 5, 5, 6, 1, 5, 5, 4, 5, 5, 5, 1],
+					 [5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1],
+					 [5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1],
+					 [5, 5, 5, 5, 5, 4, 1, 5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 1]]]
 
 	# d = Device('9aa84043', adb_server_host='0.0.0.0', adb_server_port='4723')
 	driver.find_element_by_android_uiautomator('text("ALLOW")').click()
@@ -93,11 +116,11 @@ if __name__ == '__main__':
 
 	for menu in range(2):
 		check_main_menu(menu)
-		for section in range(12):
+		for section in range(10):
 			check_section(menu, section)
 			for sub_section in range(num_of_ss[menu][section]):
 				check_sub_section(menu, section, sub_section)
-				for game in range(num_of_games[menu][section][sub_section]:
+				for game in range(num_of_games[menu][section][sub_section]):
 					check_games(menu, section, sub_section, game)
 	
 	# testimg = cv2.imread(r"C:\Users\MAQUser\Documents\workspace\Screenshots\Nexus 6\testrun\homescreen.png",0)
