@@ -184,13 +184,6 @@ std::string LanguageManager::getCurrentLocaleCode()
 
 std::string LanguageManager::soundPathForWordFile(std::string& wordFile)
 {
-    std::string folder;
-
-//    switch (_langType) {
-//        case ENGLISH: folder = "Common/Sounds/Pam.en_US/"; break;
-//        case SWAHILI: folder = "Common/Sounds/Imma.sw_TZ/"; break;
-//    }
-
     std::string path = findLocalizedResource("LetterVoice/"+wordFile);
     if (path!="") return path;
     path = findLocalizedResource("WordVoice/"+wordFile);

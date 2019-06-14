@@ -31,8 +31,8 @@ public:
     
     virtual bool init() override;
 
-	virtual void ThrowIn() override {};
-	virtual void ThrowOut() override {};
+	virtual void ThrowIn() {};
+	virtual void ThrowOut() {};
 
 	void SetBasePos(const Vec2& basePos) { _basePos = basePos; };
 	Vec2 GetBasePos() const { return _basePos; }
