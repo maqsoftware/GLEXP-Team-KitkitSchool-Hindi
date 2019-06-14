@@ -1085,70 +1085,110 @@ void DailyScene2::lightFall(LightBall *l, bool first)
 
 void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int maxAvailable)
 {
-   //                                                                                                                                                                                                                                                                                                                                         GameSoundManager::getInstance()->playEffectSoundForAutoStart("WordVoice/GameName/"+gameName+".m4a");
-//     if(gameName=="Animal Puzzle")
-      string _game = gameName ;
+                                                                                                                                                                                                                                                                                                                                 GameSoundManager::getInstance()->playEffectSoundForAutoStart("WordVoice/GameName/"+gameName+".m4a");
 
-     if(_game=="AnimalPuzzle")
-         VoiceMoldManager::shared()->speak("पशु ","hi-IN");
-     if(_game=="WhatisThis")
-         VoiceMoldManager::shared()->speak("यह क्या है","hi-IN");
-      if(_game=="AlphabetPuzzle")
-     VoiceMoldManager::shared()->speak("वर्णमाला पहेली","hi-IN");
-    if(_game=="bookwithquiz")
+    string _game = gameName ;
+
+    if(_game == "AlphabetPuzzle")
+        VoiceMoldManager::shared()->speak("वर्णमाला पहेली","hi-IN");
+    if(_game=="AnimalPuzzle")
+        VoiceMoldManager::shared()->speak("पशु पहेली","hi-IN");
+    if(_game=="BirdPhonics")
         VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="SentenceMaker")
-        VoiceMoldManager::shared()->speak("वाक्य बनाने वाला","hi-IN");
-    if(_game=="SentenceBridge")
-        VoiceMoldManager::shared()->speak("वाक्य पुल","hi-IN");
+    if(_game=="BookWithQuiz")
+        VoiceMoldManager::shared()->speak("प्रश्नोत्तरी के साथ बुक करें","hi-IN");
+    if(_game=="Counting")
+        VoiceMoldManager::shared()->speak("गिनती","hi-IN");
+    if(_game=="DoubleDigit")
+        VoiceMoldManager::shared()->speak("दो अंक का गणित","hi-IN");
     if(_game=="EquationMaker")
         VoiceMoldManager::shared()->speak("समीकरण बनाने वाला","hi-IN");
-    if(_game=="ReadingBird")
-        VoiceMoldManager::shared()->speak("पढ़ने वाला पक्षी","hi-IN");
-    if(_game=="SoundTrain")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="LetterTracing")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="LetterMatching")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+    if(_game=="FeedingTime")
+        VoiceMoldManager::shared()->speak("खिलाने का समय","hi-IN");
+    if(_game=="FindTheMatch")
+        VoiceMoldManager::shared()->speak(" जोड़ी खोजिए","hi-IN");
+    if(_game=="FishTank")
+        VoiceMoldManager::shared()->speak(" मछली घर","hi-IN");
     if(_game=="HundredPuzzle")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="ThirtyPuzzle")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+        VoiceMoldManager::shared()->speak("सौ पहेली ","hi-IN");
+    if(_game=="Labeling")
+        VoiceMoldManager::shared()->speak("अंकितक लगाना ","hi-IN");
+    if(_game=="LetterMatching")
+        VoiceMoldManager::shared()->speak("अक्षर मिलाना ","hi-IN");
+    if(_game=="LetterTrace")
+        VoiceMoldManager::shared()->speak("अक्षर अनुरेखण","hi-IN");
+    if(_game=="LetterTracingCard")
+        VoiceMoldManager::shared()->speak("अक्षर ट्रेसिंग कार्ड","hi-IN");
+    if(_game=="LineMatching")
+        VoiceMoldManager::shared()->speak("रेखा मिलान ","hi-IN");
+    if(_game=="LineTracing")
+        VoiceMoldManager::shared()->speak("रेखा अनुरेखण","hi-IN");
+    if(_game=="LRComprehension")
+        VoiceMoldManager::shared()->speak("समझ बुझ","hi-IN");
+    if(_game=="MangoShop")
+        VoiceMoldManager::shared()->speak("आम की दुकान","hi-IN");
+    if(_game=="MathKicker")
+        VoiceMoldManager::shared()->speak("मैथ्स किकर ","hi-IN");
+    if(_game=="MissingNumber")
+        VoiceMoldManager::shared()->speak("अनुपस्तिथ संख्या","hi-IN");
+    if(_game=="MovingInsects")
+        VoiceMoldManager::shared()->speak("कीड़े की गिनती","hi-IN");
+    if(_game=="MultiplicationBoard")
+        VoiceMoldManager::shared()->speak("गुणा  पट्ट","hi-IN");
+    if(_game=="NumberMatching")
+        VoiceMoldManager::shared()->speak("संख्या मिलाना","hi-IN");
+    if(_game=="NumberPuzzle")
+        VoiceMoldManager::shared()->speak("संख्या पहेली ","hi-IN");
+    if(_game=="NumberTracing")
+        VoiceMoldManager::shared()->speak("संख्या अनुरेखण  ","hi-IN");
+    if(_game=="NumberTracingExt")
+        VoiceMoldManager::shared()->speak("संख्या अनुरेखण  ","hi-IN");
+    if(_game=="NumberTrain")
+        VoiceMoldManager::shared()->speak("संख्या ट्रेन ","hi-IN");
+    if(_game=="PatternTrain")
+        VoiceMoldManager::shared()->speak("पैटर्न ट्रेन ","hi-IN");
+    if(_game=="PlaceValue")
+        VoiceMoldManager::shared()->speak("मान रखे ","hi-IN");
+    if(_game=="QuickFacts")
+        VoiceMoldManager::shared()->speak("त्वरित तथ्य","hi-IN");
+    if(_game=="ReadingBird")
+        VoiceMoldManager::shared()->speak("पढ़ने वाला पक्षी","hi-IN");
+    if(_game=="SentenceBridge")
+        VoiceMoldManager::shared()->speak("वाक्य पुल","hi-IN");
+    if(_game=="SentenceMaker")
+        VoiceMoldManager::shared()->speak("वाक्य बनाने वाला","hi-IN");
     if(_game=="ShapeMatching")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+        VoiceMoldManager::shared()->speak("आकार मिलाना","hi-IN");
+    if(_game=="SoundTrain")
+        VoiceMoldManager::shared()->speak("ध्वनि ट्रेन","hi-IN");
+    if(_game=="Spelling")
+        VoiceMoldManager::shared()->speak("वर्तनी","hi-IN");
+    if(_game=="Tapping")
+        VoiceMoldManager::shared()->speak("पॉप","hi-IN");
+    if(_game=="BubblePop")
+        VoiceMoldManager::shared()->speak(" क्या है","hi-IN");
+    if(_game=="StarFall")
+        VoiceMoldManager::shared()->speak("टाइपिंग ","hi-IN");
+    if(_game=="ThirtyPuzzle")
+        VoiceMoldManager::shared()->speak("तीस पहेली","hi-IN");
+    if(_game=="WhatIsThis")
+        VoiceMoldManager::shared()->speak("यह क्या है","hi-IN");
     if(_game=="WordWindow")
         VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
     if(_game=="WordTracing")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+        VoiceMoldManager::shared()->speak("शब्द अनुरेखण ","hi-IN");
     if(_game=="WordKicker")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+        VoiceMoldManager::shared()->speak("शब्द किकर","hi-IN");
     if(_game=="WordNote")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+        VoiceMoldManager::shared()->speak("शब्द नोट","hi-IN");
     if(_game=="WordMatrix")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
+        VoiceMoldManager::shared()->speak("शब्द आव्यूह","hi-IN");
     if(_game=="WordMachine")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="TutorialTrace")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="Tapping")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="StarFall")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="Spelling")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="QuickTrain")
-        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-    if(_game=="PlaceValue")
-        VoiceMoldManager::shared()->speak()
-
-
-
-
-//
-//     else
-//         VoiceMoldManager::shared()->speak("क्या","hi-IN");
-
+        VoiceMoldManager::shared()->speak("शब्द मशीन","hi-IN");
+    if(_game=="WordWindow")
+        VoiceMoldManager::shared()->speak("वर्ड विंडो","hi-IN");
+//    else
+//        VoiceMoldManager::shared()->speak("वर्ड","hi-IN");
 
     Size popupSize = Size(1540, 1404);
     auto winSize = Director::getInstance()->getWinSize();
