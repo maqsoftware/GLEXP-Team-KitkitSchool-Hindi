@@ -31,6 +31,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/roundtextview"
@@ -43,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/english"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/english"
+        app:layout_constraintTop_toTopOf="@+id/guideline23"
         tools:visibility="visible" />
 
     <TextView
@@ -52,20 +53,21 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/roundtextview"
         android:fontFamily="Segoe UI"
         android:gravity="center_horizontal"
-        android:text="English\\अंग्रेज़ी"
 
+        android:text="English\\अंग्रेज़ी"
         android:textColor="@color/mathsEnglish"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/gotodashboard"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/gotodashboard"
+        app:layout_constraintTop_toTopOf="@+id/guideline23"
         tools:visibility="visible" />
 
 
@@ -76,8 +78,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
         android:layout_marginBottom="70dp"
         android:background="@drawable/back_arrow_inactive"
         app:layout_constraintBottom_toTopOf="@+id/guideline20"
@@ -96,32 +98,32 @@
         android:progressDrawable="@drawable/circle"
         app:layout_constraintBottom_toTopOf="@+id/math"
         app:layout_constraintEnd_toEndOf="@+id/math"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="@+id/math"
         app:layout_constraintTop_toBottomOf="@+id/math"
-        app:layout_constraintVertical_bias="0.41000003" />
+        app:layout_constraintVertical_bias="0.29000002" />
 
     <ProgressBar
         android:id="@+id/progressBarEnglish"
         style="?android:attr/progressBarStyleHorizontal"
-        android:max="100"
-        android:progress="15"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:indeterminate="false"
         android:background="@drawable/circlr_shape"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="15"
+        android:progressDrawable="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="@+id/english"
         app:layout_constraintEnd_toEndOf="@+id/english"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="@+id/english"
         app:layout_constraintTop_toTopOf="@+id/english"
-        android:progressDrawable="@drawable/circle"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.98" />
 
     <Button
         android:id="@+id/gotodashboard"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -132,13 +134,13 @@
         android:padding="10dp"
         android:text="Go to Dashboard\nडैशबोर्ड पर जाएं"
         android:textColor="#ffffff"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.895"
+        app:layout_constraintTop_toTopOf="@+id/guideline23"
         app:srcCompat="@color/dashboardRed" />
 
     <android.support.constraint.Guideline
@@ -195,13 +197,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.29" />
+        app:layout_constraintGuide_percent="0.24" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.17" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8111111" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 
 </android.support.constraint.ConstraintLayout>

@@ -113,6 +113,15 @@ public class MultiUserActivity extends AppCompatActivity {
         updateage.setText(user.getAge());
         Window window = updateUserDialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+            View v = window.getDecorView();
+            v.setSystemUiVisibility(View.GONE);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            //for new api versions.
+            View decorView = window.getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            decorView.setSystemUiVisibility(uiOptions);
+        }
         updateUserDialog.show();
         // Go Back listener
         goback.setOnClickListener(new View.OnClickListener() {
@@ -230,6 +239,15 @@ public class MultiUserActivity extends AppCompatActivity {
             addUserDialog.show();
             Window window = addUserDialog.getWindow();
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+            if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+                View vv = window.getDecorView();
+                vv.setSystemUiVisibility(View.GONE);
+            } else if (Build.VERSION.SDK_INT >= 19) {
+                //for new api versions.
+                View decorView = window.getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+                decorView.setSystemUiVisibility(uiOptions);
+            }
 
 
             // Go Back listener
@@ -266,16 +284,26 @@ public class MultiUserActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     try {
+                        int result = Integer.parseInt(userAge.getText().toString());
                         KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
                         k = dbHandler.numUser();
-                        if (imageInByte != null && userAge != null) {
-                            User user = new User("user-" + Integer.toString(k), userAge.getText().toString(), imageInByte);
-                            dbHandler.addUser(user);
-                            dbHandler.setCurrentUser(user);
+                        if (imageInByte != null) {
+                            if( result>= 1) {
+                                User user = new User("user-" + Integer.toString(k), userAge.getText().toString(), imageInByte);
+                                dbHandler.addUser(user);
+                                dbHandler.setCurrentUser(user);
 
-                            Intent intent = new Intent(MultiUserActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                                Intent intent = new Intent(MultiUserActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(), "Invalid Age",Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        else{
+                            Toast.makeText(getApplicationContext(), "Age or Image missing",Toast.LENGTH_LONG).show();
                         }
 
                     } catch (Exception e) {
@@ -310,6 +338,17 @@ public class MultiUserActivity extends AppCompatActivity {
             imagePager.setAdapter(new SlidingPagerAdapter(MultiUserActivity.this, users));
 
             selectUserDialog.show();
+            Window window = selectUserDialog.getWindow();
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+            if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+                View v = window.getDecorView();
+                v.setSystemUiVisibility(View.GONE);
+            } else if (Build.VERSION.SDK_INT >= 19) {
+                //for new api versions.
+                View decorView = window.getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+                decorView.setSystemUiVisibility(uiOptions);
+            }
 
             goToDashboard.setOnClickListener(new View.OnClickListener() {
                 @Override
