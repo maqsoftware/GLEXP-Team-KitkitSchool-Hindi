@@ -22,14 +22,14 @@ using namespace std;
 class QuickFactsInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() { return "QuickFacts"; }
-    virtual std::string getSceneName() { return "QuickFactsScene"; }
+    virtual std::string getGameName() override { return "QuickFacts"; }
+    virtual std::string getSceneName() override { return "QuickFactsScene"; }
     
-    virtual Scene* createScene(std::string levelID) {
+    virtual Scene* createScene(std::string levelID) override {
         return QuickFactsScene::createScene(levelID);
     }
     
-    virtual std::vector<std::string> enumerateLevelIDs();
+    virtual std::vector<std::string> enumerateLevelIDs() override;
     
     
     

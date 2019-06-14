@@ -91,7 +91,7 @@ void Card::drawCardWithProblem(Problem* problem)
             It->cursorScaleNormal = 1.0;
             It->cursorScalePicked = 1.2;
             
-            float traceFieldScaleFactor = problem->characters.size() > 1 ? 0.8f : 0.8f;
+            float traceFieldScaleFactor = 0.8f;
             It->setContentSize(frontFace->getContentSize() * traceFieldScaleFactor);
             It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
             It->setPosition(frontFace->getContentSize().width / 2, frontFace->getContentSize().height / 2 - 65.f);

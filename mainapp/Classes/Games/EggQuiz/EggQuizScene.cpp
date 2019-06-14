@@ -218,7 +218,6 @@ void EggQuizScene::create2DigitNumbersView() {
     if (_problem.questionOption1!="") createSmallSpeakerView(soundsPath+_problem.questionOption1);
     
     {
-        vector<Sprite*> stones;
         int numSection = (_answerInt+9) / 10;
         auto sectionSize = Size(1518, 132);
         auto space = 10;

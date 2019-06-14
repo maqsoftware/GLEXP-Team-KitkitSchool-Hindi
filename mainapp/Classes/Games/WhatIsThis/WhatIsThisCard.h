@@ -31,8 +31,8 @@ public:
     
     virtual bool init() override;
 
-	virtual void ThrowIn() {};
-	virtual void ThrowOut() {};
+	virtual void ThrowIn() override {};
+	virtual void ThrowOut() override {};
 
 	void SetBasePos(const Vec2& basePos) { _basePos = basePos; };
 	Vec2 GetBasePos() const { return _basePos; }
@@ -48,8 +48,8 @@ public:
 	CREATE_FUNC(STTopCard);
 	virtual bool init() override ;
 
-	virtual void ThrowIn();
-	virtual void ThrowOut();
+	virtual void ThrowIn() override;
+	virtual void ThrowOut() override;
 
 	void SetCard(const WhatIsThisCardData& data, const CardType& cardType);
   void SetFail(const bool& fail);
@@ -66,8 +66,8 @@ public:
 	void Flip(const bool& success, const std::function<void()>& cbf);
 	void Fail(const bool& hit, const std::function<void()>& cbf);
 
-	virtual void ThrowIn();
-	virtual void ThrowOut();
+	virtual void ThrowIn() override;
+	virtual void ThrowOut() override;
 
     void loadDurationsheet();
     std::map<std::string,float> _duration;

@@ -24,15 +24,15 @@ using namespace std;
 class LabelingInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() { return "Labeling"; }
-    virtual std::string getSceneName() { return "LabelingScene"; }
+    virtual std::string getGameName() override { return "Labeling"; }
+    virtual std::string getSceneName() override { return "LabelingScene"; }
     
-    virtual Scene* createScene(std::string levelID) {
+    virtual Scene* createScene(std::string levelID) override {
         return LabelingScene::createScene(levelID);
     }
     
     
-    virtual std::vector<std::string> enumerateLevelIDs();
+    virtual std::vector<std::string> enumerateLevelIDs() override;
     
     
     

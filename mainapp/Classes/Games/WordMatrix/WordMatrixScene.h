@@ -60,8 +60,8 @@ class WordMatrixBlock : public Sprite
 public:
     WordMatrixBlock();
     virtual ~WordMatrixBlock(void){}
-    virtual void onEnter();
-    virtual void onExit();
+    virtual void onEnter() override;
+    virtual void onExit() override;
     virtual void touchDelegateRetain();
     virtual void touchDelegateRelease();
     
@@ -102,8 +102,8 @@ class WordMatrixAnswerBlock : public WordMatrixBlock
 public:
     WordMatrixAnswerBlock();
     virtual ~WordMatrixAnswerBlock(void){}
-    virtual void onEnter();
-    virtual void onExit();
+    virtual void onEnter() override;
+    virtual void onExit() override;
     
     static WordMatrixAnswerBlock *create(eMoveBlockType blockType, vector<TEXT_INFO> textInfos, bool swallowTouch = true);
     
@@ -116,7 +116,7 @@ public:
     bool _isAutoMove;
     
 protected:
-    virtual bool onTouchBegan(Touch *pTouch, Event *pEvent);
+    virtual bool onTouchBegan(Touch *pTouch, Event *pEvent) override;
     virtual void onTouchMoved(Touch *pTouch, Event *pEvent);
     virtual void onTouchEnded(Touch *pTouch, Event *pEvent);
     virtual void onTouchCancelled(Touch *pTouch, Event *pEvent);

@@ -2085,7 +2085,7 @@ bool WaterDropLandPiece::init()
         
         if (this->getBoundingBox().containsPoint(pos))
         {
-            PlaceValueScene* scene = (PlaceValueScene*)P->getParent();
+            PlaceValueScene* scene = reinterpret_cast<PlaceValueScene*>(P->getParent());
 
             if (scene->_currentPickedLandPiece != nullptr || scene->_currentPickedTankPiece != nullptr)
                 return false;
@@ -2106,7 +2106,7 @@ bool WaterDropLandPiece::init()
         if (_snapped) return;
         
         auto P = getParent();
-        PlaceValueScene* scene = (PlaceValueScene*)P->getParent();
+        PlaceValueScene* scene = reinterpret_cast<PlaceValueScene*>(P->getParent());
         
         auto pl = P->convertToNodeSpace(T->getPreviousLocation());
         auto cl = P->convertToNodeSpace(T->getLocation());
@@ -2147,7 +2147,7 @@ bool WaterDropLandPiece::init()
         setPicked(false);
         
         auto P = getParent();
-        PlaceValueScene* scene = (PlaceValueScene*)P->getParent();
+        PlaceValueScene* scene = reinterpret_cast<PlaceValueScene*>(P->getParent());
         
         scene->_currentPickedLandPiece = nullptr;
 
@@ -2300,7 +2300,7 @@ bool WaterDropTankPiece::init()
         
         if (this->getBoundingBox().containsPoint(pos))
         {
-            PlaceValueScene* scene = (PlaceValueScene*)P->getParent();
+            PlaceValueScene* scene = reinterpret_cast<PlaceValueScene*>(P->getParent());
 
             if (scene->_currentPickedLandPiece != nullptr || scene->_currentPickedTankPiece != nullptr)
                 return false;
@@ -2354,7 +2354,7 @@ bool WaterDropTankPiece::init()
         setPicked(false);
         
         auto P = getParent();
-        PlaceValueScene* scene = (PlaceValueScene*)P->getParent();
+        PlaceValueScene* scene = reinterpret_cast<PlaceValueScene*>(P->getParent());
         
         scene->_currentPickedTankPiece = nullptr;
         

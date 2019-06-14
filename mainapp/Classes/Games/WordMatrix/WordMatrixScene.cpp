@@ -405,7 +405,7 @@ void WordMatrixScene::makeStage()
     
     int maxR = (int)_moveBlockPanArray->count();
     int blockCnt = 0;
-    WordMatrixMoveBlockLine *blockLine = (WordMatrixMoveBlockLine *)_moveBlockPanArray->getObjectAtIndex(0);
+    WordMatrixMoveBlockLine *blockLine;
     for(int i=0; i<verCnt; i++)
     {
         for(int j=0; j<horCnt; j++)
@@ -415,7 +415,7 @@ void WordMatrixScene::makeStage()
             {
                 if(random >= maxR)  random = 0;
                 
-                blockLine = (WordMatrixMoveBlockLine *)_moveBlockPanArray->getObjectAtIndex(random);
+                blockLine = reinterpret_cast<WordMatrixMoveBlockLine *>(_moveBlockPanArray->getObjectAtIndex(random));
                 if(blockLine->canAddBlock()) break;
                 
                 random++;
@@ -440,7 +440,7 @@ void WordMatrixScene::makeStage()
     }
     for(int i=0; i<moveBlockLineCnt; i++)
     {
-        WordMatrixMoveBlockLine *line = (WordMatrixMoveBlockLine *)_moveBlockPanArray->getObjectAtIndex(i);
+        WordMatrixMoveBlockLine *line = reinterpret_cast<WordMatrixMoveBlockLine *>(_moveBlockPanArray->getObjectAtIndex(i));
         line->setAutoPosition();
     }
     
@@ -503,7 +503,7 @@ void WordMatrixScene::checkEnterAnswerBlock(Vec2 currentPos)
         _pointedBlock = NULL;
         for(int i=0; i<_blockBoard->_answerBlockArray->count(); i++)
         {
-            WordMatrixSlotBlock *answerBlock = (WordMatrixSlotBlock *)_blockBoard->_answerBlockArray->getObjectAtIndex(i);
+            WordMatrixSlotBlock *answerBlock = reinterpret_cast<WordMatrixSlotBlock *>(_blockBoard->_answerBlockArray->getObjectAtIndex(i));
             answerBlock->onOffConnectedBlockEffectImg(false);
             
             Vec2 locationInParent = answerBlock->getParent()->convertToNodeSpace(currentPos);
@@ -525,7 +525,7 @@ void WordMatrixScene::checkAnswerWord(Vec2 currentPos)
     {
         for(int i=0; i<_blockBoard->_answerBlockArray->count(); i++)
         {
-            WordMatrixSlotBlock *answerBlock = (WordMatrixSlotBlock *)_blockBoard->_answerBlockArray->getObjectAtIndex(i);
+            WordMatrixSlotBlock *answerBlock = reinterpret_cast<WordMatrixSlotBlock *>(_blockBoard->_answerBlockArray->getObjectAtIndex(i));
             Vec2 locationInParent = answerBlock->getParent()->convertToNodeSpace(currentPos);
             
             if(answerBlock->getBoundingBox().containsPoint(locationInParent))
@@ -626,7 +626,7 @@ void WordMatrixScene::showMoveBlockPan()
     WordMatrixMoveBlockLine *temp;
     for(int i=0; i<_moveBlockPanArray->count(); i++)
     {
-        temp = (WordMatrixMoveBlockLine *)_moveBlockPanArray->getObjectAtIndex(i);
+        temp = reinterpret_cast<WordMatrixMoveBlockLine *>(_moveBlockPanArray->getObjectAtIndex(i));
         if(i==0)
             _currentMoveBlockPan = temp;
         
@@ -1258,7 +1258,7 @@ void WordMatrixMoveBlockLine::setAutoPosition()
             random++;
         }
         
-        WordMatrixAnswerBlock *child = (WordMatrixAnswerBlock *)_childBlockArray->getObjectAtIndex(random);
+        WordMatrixAnswerBlock *child = reinterpret_cast<WordMatrixAnswerBlock *>(_childBlockArray->getObjectAtIndex(random));
         child->setAnchorPoint(Vec2(0.5f, 0.5f));
         child->setPosition(Vec2(child->getContentSize().width*(cnt+0.5f)+diff*cnt, height/2));
         child->setPrevPos();

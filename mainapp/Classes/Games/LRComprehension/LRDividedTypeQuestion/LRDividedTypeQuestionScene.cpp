@@ -166,7 +166,6 @@ bool LRDividedTypeQuestionScene::isCorrect(std::string answer)
         {
             StrictLogManager::shared()->game_Peek_Answer("LRComprehension", makeWorkPath(), answer, solution);
             return true;
-            break;
         }
     }
     
