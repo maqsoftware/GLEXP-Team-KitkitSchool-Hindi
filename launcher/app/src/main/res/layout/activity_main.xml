@@ -20,16 +20,16 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30px"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="450dp"
             android:layout_toLeftOf="@+id/launcher_title_button"
             android:ellipsize="end"
-            android:gravity="center_vertical"
+            android:gravity="left"
             android:src="@android:color/background_light" />
 
         <TextView
             android:id="@+id/textView_currentUserId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -38,7 +38,8 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:textColor="#FDDB68"
-            android:textSize="60px"
+            android:visibility="invisible"
+            android:textSize="0px"
             tools:visibility="invisible" />
 
 

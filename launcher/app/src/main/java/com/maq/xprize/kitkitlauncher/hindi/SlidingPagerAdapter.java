@@ -1,5 +1,6 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +24,7 @@ public class SlidingPagerAdapter extends PagerAdapter {
     private Context mContext;
     private ArrayList<User> mData;
     private LayoutInflater layoutInflater;
+    Dialog dialog;
 
 
     public SlidingPagerAdapter(@NonNull Context context, ArrayList<User> users) {
@@ -52,8 +54,8 @@ public class SlidingPagerAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.sliding_images,container,false);
         ImageView imageView = (ImageView) view.findViewById(R.id.finaluserimage);
         TextView username = (TextView) view.findViewById(R.id.userN);
-        TextView english = (TextView) view.findViewById(R.id.tv_eng);
-        TextView math = (TextView) view.findViewById(R.id.tv_maths);
+        TextView english = (TextView) MultiUserActivity.selectUserDialog.findViewById(R.id.engprogress);
+        TextView math = (TextView) MultiUserActivity.selectUserDialog.findViewById(R.id.mathprogress);
 
 
         imageView.setImageBitmap(converToBitmap(item.getImage()));
