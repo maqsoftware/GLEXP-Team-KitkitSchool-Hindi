@@ -56,10 +56,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/roundtextview"
+
         android:fontFamily="Segoe UI"
         android:gravity="center_horizontal"
-
         android:text="English\\अंग्रेज़ी"
         android:textColor="@color/mathsEnglish"
         android:textSize="18sp"
@@ -98,10 +99,10 @@
         android:progressDrawable="@drawable/circle"
         app:layout_constraintBottom_toTopOf="@+id/math"
         app:layout_constraintEnd_toEndOf="@+id/math"
-        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/math"
         app:layout_constraintTop_toBottomOf="@+id/math"
-        app:layout_constraintVertical_bias="0.29000002" />
+        app:layout_constraintVertical_bias="0.419" />
 
     <ProgressBar
         android:id="@+id/progressBarEnglish"
@@ -123,7 +124,7 @@
     <Button
         android:id="@+id/gotodashboard"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -138,9 +139,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline23"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@color/dashboardRed" />
 
     <android.support.constraint.Guideline
