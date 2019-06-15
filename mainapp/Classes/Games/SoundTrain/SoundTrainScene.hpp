@@ -61,7 +61,7 @@ private:
     void soundButtonFadeIn();
     void soundButtonFadeOut();
     void soundButtonSpeech();
-    void playSound(string letter);
+    void playSound(const string& letter);
 
     float getLocomotiveStartX();
     float getLocomotiveArriveX();

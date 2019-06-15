@@ -37,8 +37,8 @@ Scene* EggQuizScene::createScene(string course, string level)
     return scene;
 }
 
-void EggQuizScene::setCourse(string course) { _course = course; }
-void EggQuizScene::setLevel(string level) { _level = level; }
+void EggQuizScene::setCourse(const string& course) { _course = course; }
+void EggQuizScene::setLevel(const string& level) { _level = level; }
 
 bool EggQuizScene::init() {
     if (!Layer::init()) return false;
@@ -218,7 +218,6 @@ void EggQuizScene::create2DigitNumbersView() {
     if (_problem.questionOption1!="") createSmallSpeakerView(soundsPath+_problem.questionOption1);
     
     {
-        vector<Sprite*> stones;
         int numSection = (_answerInt+9) / 10;
         auto sectionSize = Size(1518, 132);
         auto space = 10;

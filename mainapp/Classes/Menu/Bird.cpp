@@ -84,7 +84,7 @@ Bird* Bird::create(char category, int level, std::string levelID)
 
 
 
-bool Bird::init(char category, int level, std::string levelID)
+bool Bird::init(char category, int level, const std::string& levelID)
 {
     if (!Node::init()) {
         return false;

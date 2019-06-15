@@ -86,7 +86,7 @@ private:
     void drawPage();
     void drawQuestionImage();
     void drawBottomItems();
-    void playWordSound(string word);
+    void playWordSound(const string& word);
     WordItem* createWordItem(string word);
     Node* createSoundButton();
     vector<string> getRefinedWordSoundName(string value);

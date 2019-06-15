@@ -831,14 +831,14 @@ void QuickFactsScene::onCompleteLevel(float delay)
     }
 }
 
-void QuickFactsScene::playSound(string name)
+void QuickFactsScene::playSound(const string& name)
 {
     string path = "Games/QuickFacts/Sound/"+name;
     
     GameSoundManager::getInstance()->playEffectSound(path);
 }
 
-bool QuickFactsScene::isRightAnswer(string number)
+bool QuickFactsScene::isRightAnswer(const string& number)
 {
     QuickFactsLevelStruct* quizLevel = _sheetData.at(_currentQuizIndex);
     if(quizLevel->rightAnswer == number)

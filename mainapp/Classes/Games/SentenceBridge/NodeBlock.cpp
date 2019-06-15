@@ -35,7 +35,7 @@ void NodeBlock::removeObjects()
 	removeAllChildren();
 }
 
-void NodeBlock::createBlock(string strLetter)
+void NodeBlock::createBlock(const string& strLetter)
 {
 	/*
 	if (LanguageManager::getInstance()->getCurrentLanguageTag() == "sw-TZ")
@@ -176,7 +176,7 @@ void NodeBlock::createBlock(string strLetter)
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void NodeBlock::changeLetter(string strLetter)
+void NodeBlock::changeLetter(const string& strLetter)
 {
 	/*
 	if (LanguageManager::getInstance()->getCurrentLanguageTag() == "sw-TZ")

@@ -161,7 +161,6 @@ namespace ComprehensionTest
             answerPairVector.clear();
             
             std::vector<std::string> rawData;
-            std::vector<std::string> multipleChoiceData;
             
             
             for (int i = 0; i < _comprehensionScene->problemSet.size(); i++)
@@ -247,7 +246,6 @@ namespace ComprehensionTest
                 {
                     StrictLogManager::shared()->game_Peek_Answer("ComprehensionTest", makeWorkPath(), answer, solution);
                     return true;
-                    break;
                 }
             }
             
@@ -255,7 +253,7 @@ namespace ComprehensionTest
             return false;
         }
         
-        void MultipleChoicesScene::solve(std::string answer)
+        void MultipleChoicesScene::solve(const std::string& answer)
         {
             for (int i = 0; i < answerPairVector.size(); i++)
             {

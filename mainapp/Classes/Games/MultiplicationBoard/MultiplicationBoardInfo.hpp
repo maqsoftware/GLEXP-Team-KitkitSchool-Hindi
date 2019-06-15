@@ -24,15 +24,15 @@ using namespace std;
 class MultiplicationBoardInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() { return "MultiplicationBoard"; }
-    virtual std::string getSceneName() { return "MultiplicationBoardScene"; }
+    virtual std::string getGameName() override { return "MultiplicationBoard"; }
+    virtual std::string getSceneName() override { return "MultiplicationBoardScene"; }
     
-    virtual Scene* createScene(std::string levelID) {
+    virtual Scene* createScene(std::string levelID) override {
         return MultiplicationBoardScene::createScene(levelID);
     }
     
     
-    virtual std::vector<std::string> enumerateLevelIDs();
+    virtual std::vector<std::string> enumerateLevelIDs() override;
     int getMaxLevel();
     
     

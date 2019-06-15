@@ -21,7 +21,7 @@ using namespace std;
 class LRSoundButton : public Node
 {
 public:
-    bool init(bool isLarge, string soundName);
+    bool init(bool isLarge, const string& soundName);
     static LRSoundButton* createLarge(string soundName);
     static LRSoundButton* createSmall(string soundName);
     virtual void onEnter() override;

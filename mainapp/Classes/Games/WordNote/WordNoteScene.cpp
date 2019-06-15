@@ -268,7 +268,7 @@ vector<NoteSlot*> WordNoteScene::getAffectedSlots(NoteSlot* noteSlot, Piece* pie
     vector<NoteSlot*> noteSlots;
     noteSlots.clear();
     int letterLength = (int)piece->getLetter().size();
-    bool is2XPiece = letterLength%2 ? false: true;
+    bool is2XPiece = (letterLength % 2 == 0);
 
     switch(letterLength) {
         case 1:

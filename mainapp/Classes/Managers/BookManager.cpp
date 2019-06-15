@@ -29,7 +29,7 @@ void BookManager::addBookInfo(BookInfo *info)
 
 
 
-void BookManager::addBookInfo(string title, LanguageManager::LocaleType lang, string path, string imagePath)
+void BookManager::addBookInfo(const string& title, LanguageManager::LocaleType lang, string path, string imagePath)
 {
     BookInfo *info = new BookInfo;
     info->bookTitle = title;

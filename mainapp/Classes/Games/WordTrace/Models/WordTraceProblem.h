@@ -26,9 +26,9 @@ public:
     
 public:
     Problem();
-    Problem(std::string Text,
-            std::string VideoFileName,
-            std::string TeaserFileName);
+    Problem(const std::string& Text,
+            const std::string& VideoFileName,
+            const std::string& TeaserFileName);
     
 public:
     static Problem fromInputStream(istream& IS);

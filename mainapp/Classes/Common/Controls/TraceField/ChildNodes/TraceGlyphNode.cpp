@@ -84,7 +84,7 @@ void TraceGlyphNode::update(float DeltaSeconds) {
     HasDrawCache = false;
 }
 
-void TraceGlyphNode::drawTraceStringInRange(const TraceIndex& Start, const TraceIndex Stop,
+void TraceGlyphNode::drawTraceStringInRange(const TraceIndex& Start, const TraceIndex& Stop,
                                             float Thickness, cocos2d::Color4B Color)
 {
     const TraceString& String = TheTraceString();

@@ -61,7 +61,7 @@ public:
 
 private:
     Node* createGlow();
-    ui::Button* createButton(string prefix, string text);
+    ui::Button* createButton(const string& prefix, string text);
     
     void showSuccess(char category, int progressLevelIndex, int progressIndex, int score);
     void showFail(char category, int progressLevelIndex, int progressIndex, int score);
@@ -69,9 +69,9 @@ private:
     void loadFishDataFromDB();
     void addFishToDB(Fish* fish);
     
-    int generateFishSkin(string fishID);
+    int generateFishSkin(const string& fishID);
     string generateFishPosition(string fishID);
-    FISH_DATA* findDeleteFish(string fishID, string position = "");
+    FISH_DATA* findDeleteFish(string fishID, const string& position = "");
     
     std::vector<FISH_DATA*> _fishData;
 };

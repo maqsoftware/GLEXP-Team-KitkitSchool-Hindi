@@ -165,14 +165,14 @@ void UserManager::setCurrentLevelID(string levelID)
     }
 }
 
-string UserManager::getCurrentDayKey(string levelID)
+string UserManager::getCurrentDayKey(const string& levelID)
 {
     return _userName+"_currentDay_"+levelID;
 
 }
 
 
-int UserManager::getCurrentDay(string levelID)
+int UserManager::getCurrentDay(const string& levelID)
 {
     if (levelID==_currentLevelID && _currentDay>0) {
         return _currentDay;
@@ -201,7 +201,7 @@ void UserManager::setCurrentDay(string levelID, int day)
     }
 }
 
-string UserManager::getLevelOpenKey(string levelID)
+string UserManager::getLevelOpenKey(const string& levelID)
 {
     return _userName + "_levelOpen_"+levelID;
 }
@@ -255,7 +255,7 @@ bool UserManager::isLevelCleared(string levelID)
 
 }
 
-PretestProgressType UserManager::getPretestProgressType(string levelID) {
+PretestProgressType UserManager::getPretestProgressType(const string& levelID) {
     return PretestProgressType::finish;
 }
 
@@ -284,7 +284,7 @@ void UserManager::setGuideDayStatus(guideDayType type) {
     UserDefault::getInstance()->setIntegerForKey((_userName+"guide_day_flag").c_str(), (int)type);
 }
 
-string UserManager::getDayClearedKey(string levelID, int day)
+string UserManager::getDayClearedKey(const string& levelID, int day)
 {
     return _userName + "_dayCleared_"+levelID+"_"+TodoUtil::itos(day);
 }
@@ -368,7 +368,7 @@ float UserManager::ratioDayCleared(string levelID)
     return ((float)num / (float)(cur->days.size()-1));
 }
 
-string UserManager::getGameClearedKey(string levelID, int day, int gameIndex)
+string UserManager::getGameClearedKey(const string& levelID, int day, int gameIndex)
 {
     return _userName + "_gameCleared_"+levelID+"_"+TodoUtil::itos(day)+"_"+TodoUtil::itos(gameIndex);
 }
@@ -406,16 +406,16 @@ void UserManager::setGameCleared(string levelID, int day, int gameIndex, bool is
     UserDefault::getInstance()->flush();
 }
 
-string UserManager::getSpecialCourseCurrentProgressKey(string levelID, int day) {
+string UserManager::getSpecialCourseCurrentProgressKey(const string& levelID, int day) {
     return _userName + "_SCCurrentProgress_"+levelID+"_"+TodoUtil::itos(day);
 }
 
-void UserManager::setSpecialCourseCurrentProgress(string levelID, int day, int gameIndex) {
+void UserManager::setSpecialCourseCurrentProgress(const string& levelID, int day, int gameIndex) {
     UserDefault::getInstance()->setIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str(), gameIndex);
     UserDefault::getInstance()->flush();
 }
 
-int UserManager::getSpecialCourseCurrentProgress(string levelID, int day) {
+int UserManager::getSpecialCourseCurrentProgress(const string& levelID, int day) {
     return UserDefault::getInstance()->getIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str());
 }
 
@@ -432,11 +432,11 @@ bool UserManager::getSpecialCourseLightOn(char course) {
     return UserDefault::getInstance()->getBoolForKey(getSpecialCourseLightOnKey(course).c_str());
 }
 
-string UserManager::getFishPresentCurrentProgressLevelKey(string levelID) {
+string UserManager::getFishPresentCurrentProgressLevelKey(const string& levelID) {
     return _userName + "_FPCurrentProgressLevel_" + levelID;
 }
 
-void UserManager::setFishPresentCurrentProgressLevel(string levelID, int levelIndex) {
+void UserManager::setFishPresentCurrentProgressLevel(const string& levelID, int levelIndex) {
     if (_gameTestingMode) {
         return;
     }
@@ -444,15 +444,15 @@ void UserManager::setFishPresentCurrentProgressLevel(string levelID, int levelIn
     UserDefault::getInstance()->flush();
 }
 
-int UserManager::getFishPresentCurrentProgressLevel(string levelID) {
+int UserManager::getFishPresentCurrentProgressLevel(const string& levelID) {
     return UserDefault::getInstance()->getIntegerForKey(getFishPresentCurrentProgressLevelKey(levelID).c_str());
 }
 
-string UserManager::getFishPresentCurrentProgressIndexKey(string levelID, int levelIndex) {
+string UserManager::getFishPresentCurrentProgressIndexKey(const string& levelID, int levelIndex) {
     return _userName + "_FPCurrentProgressIndex_" + levelID + "_" + TodoUtil::itos(levelIndex);
 }
 
-void UserManager::setFishPresentCurrentProgressIndex(string levelID, int levelIndex, int index) {
+void UserManager::setFishPresentCurrentProgressIndex(const string& levelID, int levelIndex, int index) {
     if (_gameTestingMode) {
         return;
     }
@@ -474,20 +474,20 @@ bool UserManager::getFishPresentLightOn(char course) {
     return UserDefault::getInstance()->getBoolForKey(getFishPresentLightOnKey(course).c_str());
 }
 
-int UserManager::getFishPresentCurrentProgressIndex(string levelID, int levelIndex) {
+int UserManager::getFishPresentCurrentProgressIndex(const string& levelID, int levelIndex) {
     return UserDefault::getInstance()->getIntegerForKey(getFishPresentCurrentProgressIndexKey(levelID, levelIndex).c_str());
 }
 
-string UserManager::getFishPresentEnableKey(string levelID) {
+string UserManager::getFishPresentEnableKey(const string& levelID) {
     return _userName + "_FPEnable_" + levelID;
 }
 
-void UserManager::setFishPresentEnable(string levelID, bool isEnable) {
+void UserManager::setFishPresentEnable(const string& levelID, bool isEnable) {
     UserDefault::getInstance()->setBoolForKey(getFishPresentEnableKey(levelID).c_str(), isEnable);
     UserDefault::getInstance()->flush();
 }
 
-bool UserManager::isFishPresentEnable(string levelID) {
+bool UserManager::isFishPresentEnable(const string& levelID) {
     return UserDefault::getInstance()->getBoolForKey(getFishPresentEnableKey(levelID).c_str(), true);
 }
 

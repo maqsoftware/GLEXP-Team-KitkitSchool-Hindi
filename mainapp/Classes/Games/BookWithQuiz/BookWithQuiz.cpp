@@ -29,7 +29,7 @@ bool BookWithQuiz::init()
     return true;
 }
 
-Scene* BookWithQuiz::createScene(string bookFolder, int comprehensionTestLevel)
+Scene* BookWithQuiz::createScene(const string& bookFolder, int comprehensionTestLevel)
 {
     auto scene = Scene::create();
     scene->setName("BookWithQuiz");

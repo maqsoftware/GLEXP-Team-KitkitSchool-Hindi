@@ -48,7 +48,7 @@ bool WordBlock::init()
 }
 
 
-void WordBlock::initBlank(string word)
+void WordBlock::initBlank(const string& word)
 {
     _word = word;
     

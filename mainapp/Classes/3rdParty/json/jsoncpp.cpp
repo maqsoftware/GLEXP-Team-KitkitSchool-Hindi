@@ -4164,7 +4164,7 @@ JSONCPP_STRING valueToString(double value, bool useSpecialFloats, unsigned int p
   int len = -1;
 
   char formatString[6];
-  sprintf(formatString, "%%.%dg", precision);
+  sprintf(formatString, "%%.%ug", precision);
 
   // Print into the buffer. We need not request the alternative representation
   // that always has a decimal point because JSON doesn't distingish the
@@ -4626,7 +4626,7 @@ bool StyledWriter::hasCommentForValue(const Value& value) {
 // Class StyledStreamWriter
 // //////////////////////////////////////////////////////////////////
 
-StyledStreamWriter::StyledStreamWriter(JSONCPP_STRING indentation)
+StyledStreamWriter::StyledStreamWriter(const JSONCPP_STRING& indentation)
     : document_(NULL), rightMargin_(74), indentation_(indentation),
       addChildValues_() {}
 

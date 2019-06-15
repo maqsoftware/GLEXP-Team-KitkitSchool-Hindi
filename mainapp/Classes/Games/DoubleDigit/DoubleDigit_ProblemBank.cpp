@@ -55,7 +55,7 @@ int getRandomIntInclusive(int startNum, int endNum)
 }
 
 
-cocos2d::Point genTwoNumbers(std::vector<cocos2d::Point>answerArray, int low_limit_answer_val, int high_limit_answer_val, int startnum, int lastnum, bool l_fixed, int l_fixed_num, bool r_fixed, int r_fixed_num, bool isRegroup, bool isMultiples, int md_type)
+cocos2d::Point genTwoNumbers(const std::vector<cocos2d::Point>&answerArray, int low_limit_answer_val, int high_limit_answer_val, int startnum, int lastnum, bool l_fixed, int l_fixed_num, bool r_fixed, int r_fixed_num, bool isRegroup, bool isMultiples, int md_type)
 {
     int curr_lhs, curr_rhs;
     
@@ -104,7 +104,7 @@ cocos2d::Point genTwoNumbers(std::vector<cocos2d::Point>answerArray, int low_lim
 // startnum: low number value which can be chosen as one number
 // lastnum: high number value which can be chosen as one number
 
-cocos2d::Point genTwoNumbers4Subtraction(std::vector<cocos2d::Point>answerArray, int low_limit_answer_val, int high_limit_answer_val, int startnum, int lastnum, bool l_fixed, int l_fixed_num, bool r_fixed, int r_fixed_num, bool isRegroup, bool isMultiples, int md_type)
+cocos2d::Point genTwoNumbers4Subtraction(const std::vector<cocos2d::Point>&answerArray, int low_limit_answer_val, int high_limit_answer_val, int startnum, int lastnum, bool l_fixed, int l_fixed_num, bool r_fixed, int r_fixed_num, bool isRegroup, bool isMultiples, int md_type)
 {
     int curr_lhs, curr_rhs;
     

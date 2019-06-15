@@ -19,7 +19,7 @@ public:
     bool _hasBox, _replaceable;
     Box *_boxInSlot;
     Vec2 _pos;
-    void setBlank(string letter);
+    void setBlank(const string& letter);
     string _correctAnswer;
 };
 

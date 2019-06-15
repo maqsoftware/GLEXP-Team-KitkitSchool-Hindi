@@ -19,12 +19,12 @@ public:
     virtual bool init();
     virtual ~LogManager(){};
     
-    bool logEventJson(std::string eventName, Json::Value json);
-    bool logEvent(std::string category, std::string action, std::string label, double value);
+    bool logEventJson(const std::string& eventName, Json::Value json);
+    bool logEvent(const std::string& category, const std::string& action, const std::string& label, double value);
     bool tagScreen(std::string screenName);
     
 private:
-    bool logEvent(std::string eventValue);
+    bool logEvent(const std::string& eventValue);
 };
 
 #endif /* LogManager_hpp */

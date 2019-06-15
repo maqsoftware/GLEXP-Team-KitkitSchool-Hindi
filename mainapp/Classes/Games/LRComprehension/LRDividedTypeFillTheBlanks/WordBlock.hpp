@@ -20,7 +20,7 @@ public:
     static Size wordBlockSize;
     static void setWordBlockWidth(float width);
     
-    void initBlank(string word);
+    void initBlank(const string& word);
     void initWord(string word);
     void setPicked(bool picked);
     void setSnapped(bool snapped);

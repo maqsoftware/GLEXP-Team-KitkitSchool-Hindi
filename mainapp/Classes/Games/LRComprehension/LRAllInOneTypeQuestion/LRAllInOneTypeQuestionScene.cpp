@@ -79,7 +79,7 @@ void LRAllInOneTypeQuestionScene::initData()
 {
     answerPairVector.clear();
     
-    LRProblem* problem;
+    LRProblem* problem = NULL;
     
     for (int i = 0; i < _comprehensionScene->problemSet.size(); i++)
     {
@@ -89,31 +89,30 @@ void LRAllInOneTypeQuestionScene::initData()
             break;
         }
     }
-    
-    string rawAnswers;
-    string rawSolution;
-    
-    _guideTextOrSoundPath = problem->script;
-    _questionText = problem->question;
-    _questionSoundPath = problem->audio;
-    
-    _answers.clear();
-    _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option1)));
-    _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option2)));
-    _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option3)));
-    if (TodoUtil::trim(problem->option4).empty() == false)
-    {
-        _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option4)));
+
+    if (problem == NULL) {
+        // error
+    } else {
+        _guideTextOrSoundPath = problem->script;
+        _questionText = problem->question;
+        _questionSoundPath = problem->audio;
+
+        _answers.clear();
+        _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option1)));
+        _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option2)));
+        _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option3)));
+        if (!TodoUtil::trim(problem->option4).empty()) {
+            _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option4)));
+        }
+
+
+        answerPairVector.clear();
+        for (auto answer : _answers) {
+            answerPairVector.push_back(std::pair<std::string, bool>(answer, false));
+        }
+        _solutions.clear();
+        _solutions.push_back(TodoUtil::trim(problem->answer));
     }
-    
-    
-    answerPairVector.clear();
-    for (auto answer : _answers)
-    {
-        answerPairVector.push_back(std::pair<std::string, bool>(answer, false));
-    }
-    _solutions.clear();
-    _solutions.push_back(TodoUtil::trim(problem->answer));
 }
 
 void LRAllInOneTypeQuestionScene::createFixedResources()
@@ -149,7 +148,6 @@ bool LRAllInOneTypeQuestionScene::isCorrect(std::string answer)
         {
             StrictLogManager::shared()->game_Peek_Answer("LRComprehension", makeWorkPath(), answer, solution);
             return true;
-            break;
         }
     }
     
@@ -157,7 +155,7 @@ bool LRAllInOneTypeQuestionScene::isCorrect(std::string answer)
     return false;
 }
 
-void LRAllInOneTypeQuestionScene::solve(std::string answer)
+void LRAllInOneTypeQuestionScene::solve(const std::string& answer)
 {
     for (int i = 0; i < answerPairVector.size(); i++)
     {

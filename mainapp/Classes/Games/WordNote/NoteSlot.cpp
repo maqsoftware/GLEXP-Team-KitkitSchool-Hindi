@@ -54,7 +54,7 @@ int NoteSlot::getCoordinateY() { return _coordinateY; }
 int NoteSlot::getPrevious() { return _previous; }
 int NoteSlot::getNext() { return _next; }
 string NoteSlot::getLetter() { return _letter; }
-void NoteSlot::setLetter(string letter) { _letter = letter; }
+void NoteSlot::setLetter(const string& letter) { _letter = letter; }
 
 void NoteSlot::drawBoundingBox() {
     Color4F boxColor = _isMiddle ? Color4F::GREEN : Color4F::BLUE;

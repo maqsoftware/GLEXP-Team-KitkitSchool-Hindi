@@ -15,7 +15,7 @@
 class LetterTracingCardUtility
 {
 public:
-    static int getLevelByLetter(std::string letter, bool isEnglish);
+    static int getLevelByLetter(const std::string& letter, bool isEnglish);
 };
 
 #endif /* LetterTracingCardUtility_hpp */

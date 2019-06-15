@@ -980,7 +980,7 @@ cocos2d::ValueMap ShapeMatchingScene::pickCards(ShapeMatching::Piece pieceInfo, 
     
 }
 
-std::string ShapeMatchingScene::generateCardImageFilename(std::string shape, std::string type, std::string color, std::string size)
+std::string ShapeMatchingScene::generateCardImageFilename(std::string shape, const std::string& type, const std::string& color, const std::string& size)
 {
     std::string imgPrefix = "matchinggame_";
     

@@ -31,7 +31,7 @@ public:
     ObjectLocation location;
     bool isClosed = false;
     
-    void setImage(std::string folder, std::string imageFile);
+    void setImage(const std::string& folder, std::string imageFile);
     Vec2 getDotPosition();
     void drawDot(DotDirection direction);
     bool isTouchedIn(Vec2 touchPoint);
