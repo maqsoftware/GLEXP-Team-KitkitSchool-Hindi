@@ -126,8 +126,6 @@ void WhatIsThisLayer::StartGame()
     _progressBar->setCurrent(++currentProblemIndex, false);
     
 	GameSoundManager::getInstance()->playEffectSound("WhatIsThis/Sounds/ShowAndTell_SFX_Card_shuffle_short.m4a");
-	//VoiceMoldManager::shared()->speak("india");
-
 	// 상단 카드 설정
 	if (auto card = dynamic_cast<STTopCard*>(topCardNode))
 	{
@@ -377,11 +375,7 @@ void WhatIsThisLayer::LoadDatas()
 
 		cardData.soundDuration = (float)atof(line[paser["answer sound duration"]].c_str());
 		data.answer = cardData;
- //  float speeching(string text)
-  // {
-   	//	 VoiceMoldManager::shared()->speak(text);
 
-  // }
 		for (int i = 1; i < CARD_COUNT; i++)
 		{
 			WhatIsThisCardData cardData;

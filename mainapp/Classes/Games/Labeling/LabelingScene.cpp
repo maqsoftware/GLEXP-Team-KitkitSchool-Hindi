@@ -426,10 +426,9 @@ void LabelingScene::createPuzzle(int index)
             this->runAction(Sequence::create(DelayTime::create(snapAnimationDelay),
                                              CallFunc::create([this,label](){ this->unblockTouches(); _slotPieces.at(_slotPieces.size()-label->_labelId-1)->revealText();}),
                                              DelayTime::create(tearAnimationDelay+additionalDelay),
-                                             CallFunc::create([this,label](){ playSound(label->_voiceFilename); }),
+                                             CallFunc::create([this,label](){ playSound(label->_voiceFilename); }),//tts function for this game
                                              nullptr));
-            
-            
+
             if (_numSnappedPieces >= _labelingPieces.size()) {
                 float voiceDelay = getDuration(label->_voiceFilename);
                 
@@ -651,10 +650,6 @@ void LabelingScene::loadData(int level)
 
 void LabelingScene::playSound(string name)
 {
-    //string path = "Games/Labeling/Sound/"+name;
-
-    //GameSoundManager::getInstance()->playEffectSound(path);
-    //GameSoundManager::getInstance()->playEffectSoundVoiceOnly(path);
     VoiceMoldManager::shared()->speak(name);
 }
 

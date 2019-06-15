@@ -134,16 +134,10 @@ void LRSoundButton::onEnter()
 
 void LRSoundButton::playSound()
 {
-  //  if (FileUtils::getInstance()->isFileExist(kBasePath + _soundName) == false)
-       // return;
-//       if (_durationMap.count(_soundName) == 0)
-//      return;
-    
     _isPlaying = true;
     _defaultImage->setVisible(false);
     _playingImage->setVisible(true);
- //   GameSoundManager::getInstance()->playEffectSoundVoiceOnly(kBasePath + _soundName);
-   VoiceMoldManager::shared()->speak(_soundName);
+   VoiceMoldManager::shared()->speak(_soundName); //tts function for this game module LRComprehension
     DELAYED_CALLFUNC(_durationMap[_soundName], {
         _isPlaying = false;
         _defaultImage->setVisible(true);

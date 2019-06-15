@@ -11,7 +11,7 @@
 #include <Managers/GameSoundManager.h>
 #include <cocos/platform/CCFileUtils.h>
 #include <string>
-#include <Managers/VoiceMoldManager.h>
+
 
 
 using cocos2d::FileUtils;

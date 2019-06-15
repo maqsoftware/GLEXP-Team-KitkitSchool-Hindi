@@ -543,10 +543,7 @@ void ShapeMatchingScene::bindingEvents(ShapeMatchingCard* card)
             auto fileNameVec = TodoUtil::split(card->matchSound, '/');
             auto playFileName = fileNameVec.back();
             if (_duration.count(playFileName)) duration = _duration[playFileName];
-
-            
-           // GameSoundManager::getInstance()->playEffectSound(card->matchSound);
-          VoiceMoldManager::shared()->speak(card->matchSound);
+          VoiceMoldManager::shared()->speak(card->matchSound); //tts implementation for htis module
             
             auto other = card->linkedTarget;
             

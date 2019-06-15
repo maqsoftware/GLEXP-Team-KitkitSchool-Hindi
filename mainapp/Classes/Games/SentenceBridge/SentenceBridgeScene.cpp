@@ -170,7 +170,7 @@ void SentenceBridgeScene::setLevel(int level)
 }
 
 void SentenceBridgeScene::startGame()
-{ //int c=0;
+{
     loadData(_currentLevel, &_currentWorkSheet);
     _currentProblemIndex = 0;
 
@@ -204,11 +204,8 @@ void SentenceBridgeScene::makeSpeakerButton(Size winSize)
 			if (_speakerButton->getBoundingBox().containsPoint(pos)) {
 				 touchSpeakerButton(0);
 			} }
-
-
-
 		return false;
-		// return true;
+
 	};
 	_speakerButton->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
@@ -230,19 +227,14 @@ bool SentenceBridgeScene::touchSpeakerButton(float delayTime)
 		runAction(Sequence::create(
 			DelayTime::create(delayTime),
 			CallFunc::create([this, strSoundFileName]() {
-				//GameSoundManager::getInstance()->playEffectSound("sentencebridge/sound/" + strSoundFileName);
-              //  GameSoundManager::getInstance()->playEffectSoundVoiceOnly("sentencebridge/sound/" + strSoundFileName);
-
-				VoiceMoldManager::shared()->speak(strSoundFileName);
+				VoiceMoldManager::shared()->speak(strSoundFileName); //tts implementation for this module
 			}),
 			nullptr
 		));
 	}
 	else
 	{
-		//GameSoundManager::getInstance()->playEffectSound("sentencebridge/sound/" + strSoundFileName);
-       //voice GameSoundManager::getInstance()->playEffectSoundVoiceOnly("sentencebridge/sound/" + strSoundFileName);
-		VoiceMoldManager::shared()->speak(strSoundFileName);
+		VoiceMoldManager::shared()->speak(strSoundFileName); //tts implementation for this module
 	}
 	
 
@@ -268,7 +260,6 @@ processBlockTouch()
             _blockMoving = true;
             return  true;
         }
-        //touchSpeakerButton(1.0f);
         return false;
 	};
 

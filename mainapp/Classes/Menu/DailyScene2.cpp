@@ -1121,7 +1121,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
         VoiceMoldManager::shared()->speak("अक्षर ट्रेसिंग कार्ड","hi-IN");
     if(_game=="LineMatching")
         VoiceMoldManager::shared()->speak("रेखा मिलान ","hi-IN");
-    if(_game=="LineTracing")
+    if(_game=="LineMatching")
         VoiceMoldManager::shared()->speak("रेखा अनुरेखण","hi-IN");
     if(_game=="LRComprehension")
         VoiceMoldManager::shared()->speak("समझ बुझ","hi-IN");

@@ -192,8 +192,7 @@ float WordNoteScene::speech(string input) {
       return 0.5f;
     } else
    VoiceMoldManager::shared()->speak(input);
-   // return speechWithFiles(input);
-//   }
+
     
 }
 
@@ -213,10 +212,7 @@ float WordNoteScene::speechWithFiles(string input, float timing) {
                 CallFunc::create([this, sd, timing](){
                 //CCLOG("timing:%f", timing);
                 //CCLOG("sound:%s", sd.word.c_str());
-           //     GameSoundManager::getInstance()->playEffectSound("WordNote/Sounds/"+sd.word+".m4a");
-         VoiceMoldManager::shared()->speak(sd.word);
-
-
+         VoiceMoldManager::shared()->speak(sd.word); //Implementation of tts in this module
             }), nullptr));
 
             duration += sd.duration-0.17f;

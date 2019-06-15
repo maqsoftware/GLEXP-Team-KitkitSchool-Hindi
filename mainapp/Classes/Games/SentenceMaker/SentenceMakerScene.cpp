@@ -221,10 +221,9 @@ void SentenceMakerScene::createGame(int problemId)
     _gameNode->addChild(tray);
     
     // Sound Button
-  //  if (FileUtils::getInstance()->isFileExist(/*kSoundPrefixPath +*/ _problemData->soundPath))
-  //  {
+
         _sketchbookPage->addChild(createSoundButton());
-  //  }
+
     
     // Back Button
     auto backButton = TodoSchoolBackButton::create();
@@ -263,7 +262,6 @@ void SentenceMakerScene::onSolve()
 void SentenceMakerScene::onSolvePostProcess()
 {
     GameSoundManager::getInstance()->playEffectSound(kSolveEffectSound);
-   // VoiceMoldManager::shared()->speak(kSolveEffectSound);
     _progressBar->setCurrent(_currentProblem, true);
     
     if (_currentProblem >= _progressBarSize)
@@ -477,9 +475,7 @@ void SentenceMakerScene::playWordSound(string word)
     {
         auto effectName = LanguageManager::getInstance()->soundPathForWordFile(wordSoundName);
         auto seq = Sequence::create(DelayTime::create(delayTime),
-                                    CallFunc::create([this, effectName, wordSoundName]{ VoiceMoldManager::shared()->speak(wordSoundName); }),
-                                                    // {VoiceMoldManager::shared()->speak(wordSoundName);}),
-                                  //  GameSoundManager::getInstance()->playEffectSoundForAutoStart(effectName);
+                                    CallFunc::create([this, effectName, wordSoundName]{ VoiceMoldManager::shared()->speak(wordSoundName); }), //calling tts function for this module
                                     nullptr);
         
         this->runAction(seq);
@@ -514,7 +510,6 @@ WordItem* SentenceMakerScene::createWordItem(string word)
     // (s) touch callback
     item->onCheckTargetBegan = [this, item](){
         GameSoundManager::getInstance()->playEffectSound(kPickEffectSound);
-       // VoiceMoldManager::shared()->speak("abcd");
         auto blank = item->_pair;
         if (blank) blank->_pair = nullptr;
         item->_pair = nullptr;

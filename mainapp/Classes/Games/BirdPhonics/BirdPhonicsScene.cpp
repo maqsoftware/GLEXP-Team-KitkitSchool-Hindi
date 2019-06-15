@@ -76,7 +76,6 @@ void Bread::setWord(string word, string phonic_owner, string word_sound, string 
     auto sprite = Sprite::create("BirdPhonics/phonics_bread_answers.png");
     auto size = sprite->getContentSize();
 
-    
     sprite->setAnchorPoint(Vec2::ZERO);
     addChild(sprite);
     
@@ -123,7 +122,6 @@ void Bread::setWord(string word, string phonic_owner, string word_sound, string 
     
     auto path = StringUtils::format("Games/BirdPhonics/sounds/%s", word_sound.c_str());
     _wordEffect.setPath(path);
-   // VoiceMoldManager::shared()->speak(word_sound);
     singleTouch = true;
     auto *listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
@@ -138,9 +136,8 @@ void Bread::setWord(string word, string phonic_owner, string word_sound, string 
         
         if (box.containsPoint(pos)) {
             _wordEffect.stop();
-           // _wordEffect.play();
-           VoiceMoldManager::shared()->speak(_word);
-       //   _wordEffect.playTtsSound(word);
+           VoiceMoldManager::shared()->speak(_word);//tts tts function for this game module
+
             
             return true;
         }
@@ -157,9 +154,7 @@ void Bread::setWord(string word, string phonic_owner, string word_sound, string 
         if (this->getBoundingBox().containsPoint(pos)) {
             singleTouch = false;
             _wordEffect.stop();
-           // _wordEffect.play();
-           // _wordEffect.playTtsSound(word);
-          VoiceMoldManager::shared()->speak(_word);
+          VoiceMoldManager::shared()->speak(_word);//tts function for this game module
             this->getParent()->reorderChild(this, this->getLocalZOrder());
 //            this->retain();
 //            this->removeFromParent();
