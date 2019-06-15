@@ -12,6 +12,7 @@
 #include <cocos/ui/CocosGUI.h>
 #include <functional>
 #include <string>
+#include <Managers/VoiceMoldManager.h>
 #include "Common/Effects/LightBall.hpp"
 
 USING_NS_CC;
@@ -33,6 +34,8 @@ public:
     void refreshData();
     void setupMangoBoard();
     void setupFreechoiceTab();
+
+
 
     
     virtual void onEnter() override;
@@ -145,11 +148,15 @@ private:
     
     
     bool _touchEnabled;
+
     
 
     
 
 };
+
+
+
 
 
 

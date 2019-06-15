@@ -52,7 +52,7 @@ SoundEffect CommonSound::soundForWord(const std::string& Word) const {
         path = cocos2d::StringUtils::format("WordVoice/%s.wav", Word.c_str());
    }
     return SoundEffect(path.c_str());
-    //VoiceMoldManager::shared()->speak(Word);
+
 }
 
 

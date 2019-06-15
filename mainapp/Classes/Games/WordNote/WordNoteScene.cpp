@@ -215,7 +215,7 @@ float WordNoteScene::speechWithFiles(string input, float timing) {
                 //CCLOG("sound:%s", sd.word.c_str());
            //     GameSoundManager::getInstance()->playEffectSound("WordNote/Sounds/"+sd.word+".m4a");
          VoiceMoldManager::shared()->speak(sd.word);
-                  //  VoiceMoldManager::shared()->speak("क्या");
+
 
             }), nullptr));
 

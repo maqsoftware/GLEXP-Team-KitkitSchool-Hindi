@@ -77,15 +77,8 @@ void SoundEffect::preload() {
 }
 
 void SoundEffect::play() {
-   SoundID = GameSoundManager::getInstance()->playEffectSound(EffectPath);
-  // VoiceMoldManager::shared()->speak(word);
-
+    SoundID = GameSoundManager::getInstance()->playEffectSound(EffectPath);
 }
-
-//void SoundEffect::playTtsSound(const std::string &word) {
-//    VoiceMoldManager::shared()->speak(word);
-//}
-//
 void SoundEffect::playLoop() {
     SoundID = GameSoundManager::getInstance()->playEffectSound(EffectPath, true);
 }

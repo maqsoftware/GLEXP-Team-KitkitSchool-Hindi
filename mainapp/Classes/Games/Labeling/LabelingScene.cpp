@@ -426,7 +426,7 @@ void LabelingScene::createPuzzle(int index)
             this->runAction(Sequence::create(DelayTime::create(snapAnimationDelay),
                                              CallFunc::create([this,label](){ this->unblockTouches(); _slotPieces.at(_slotPieces.size()-label->_labelId-1)->revealText();}),
                                              DelayTime::create(tearAnimationDelay+additionalDelay),
-                                             CallFunc::create([this,label](){ playSound(label->_voiceFilename);/* VoiceMoldManager::shared()->speak(label->_voiceFilename);*/ }),
+                                             CallFunc::create([this,label](){ playSound(label->_voiceFilename); }),
                                              nullptr));
             
             
@@ -649,13 +649,6 @@ void LabelingScene::loadData(int level)
 }
 
 
-//void LabelingScene::playSound(string name)
-//{
-//    string path = "Games/Labeling/Sound/"+name;
-//
-//    //GameSoundManager::getInstance()->playEffectSound(path);
-//    GameSoundManager::getInstance()->playEffectSoundVoiceOnly(path);
-//}
 void LabelingScene::playSound(string name)
 {
     //string path = "Games/Labeling/Sound/"+name;
@@ -671,7 +664,6 @@ void LabelingScene::loadDurationsheet() {
     if (_duration.size() != 0) return;
     std::string rawString = cocos2d::FileUtils::getInstance()->getStringFromFile("Labeling/Sound/Durations.tsv");
     auto data = TodoUtil::readTSV(rawString);
-
     for (auto row : data) {
         if (TodoUtil::trim(row[0]).size() <= 0) continue;
         if (row.size()==1) continue;
