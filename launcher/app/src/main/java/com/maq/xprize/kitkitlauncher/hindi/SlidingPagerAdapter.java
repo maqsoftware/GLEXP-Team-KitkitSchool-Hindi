@@ -26,7 +26,6 @@ public class SlidingPagerAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     Dialog dialog;
 
-
     public SlidingPagerAdapter(@NonNull Context context, ArrayList<User> users) {
 
         mContext = context;
@@ -36,17 +35,11 @@ public class SlidingPagerAdapter extends PagerAdapter {
             User user0 = mData.remove(0);
             mData.add(user0);
         }
-
-
-
     }
-
-
     @Override
     public int getCount() {
         return mData.size();
     }
-
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         User item = mData.get(position);
@@ -70,7 +63,6 @@ public class SlidingPagerAdapter extends PagerAdapter {
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
     }
-
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((ConstraintLayout)object);

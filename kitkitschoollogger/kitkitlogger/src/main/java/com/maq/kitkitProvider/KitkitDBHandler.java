@@ -139,8 +139,8 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
         if (oldVersion < newVersion) {
             List<String> arrSql = new ArrayList<String>();
 
-            arrSql.add("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_DISPLAY_NAME	 + " TEXT DEFAULT ('');");
-            arrSql.add("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_OPEN_LIBRARY	 + " BOOLEAN DEFAULT (" + (User.DEFAULT_OPEN_LIBRARY == false ? 0 : 1) + ");");
+            arrSql.add("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_DISPLAY_NAME + " TEXT DEFAULT ('');");
+            arrSql.add("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_OPEN_LIBRARY + " BOOLEAN DEFAULT (" + (User.DEFAULT_OPEN_LIBRARY == false ? 0 : 1) + ");");
             arrSql.add("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_OPEN_TOOLS + " BOOLEAN DEFAULT (" + (User.DEFAULT_OPEN_TOOLS == false ? 0 : 1) + ");");
             arrSql.add("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_UNLOCK_FISH_BOWL + " BOOLEAN DEFAULT (" + 0 + ");");
             arrSql.add("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_UNLOCK_WRITING_BOARD + " BOOLEAN DEFAULT (" + 0 + ");");
@@ -158,7 +158,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
                 try {
                     db.execSQL(sql);
                 } catch (Exception e) {
-                    Log.e(KitkitDBHandler.class.getName(),"SQL ERROR : " + sql);
+                    Log.e(KitkitDBHandler.class.getName(), "SQL ERROR : " + sql);
                 }
             }
         }
@@ -177,7 +177,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_UNLOCK_COLORING, user.isUnlockColoring());
         values.put(COLUMN_UNLOCK_BLACKBOARD, user.isUnlockBlackboard());
         values.put(COLUMN_FINISH_LAUNCHER_TUTORIAL, user.isFinishLauncherTutorial());
-        values.put(COLUMN_DISPLAY_NAME,user.getDisplayName());
+        values.put(COLUMN_DISPLAY_NAME, user.getDisplayName());
         values.put(COLUMN_OPEN_LIBRARY, user.isOpenLibrary());
         values.put(COLUMN_OPEN_TOOLS, user.isOpenTools());
         values.put(COLUMN_UNLOCK_FISH_BOWL, user.isUnlockFishBowl());
@@ -270,7 +270,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
                 null);
 
         ArrayList<User> result = new ArrayList<User>();
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 User user = new User();
                 user.setID(Integer.parseInt(cursor.getString(0)));
@@ -293,7 +293,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
                 user.setFinishWritingBoardTutorial("1".equals(cursor.getString(17)));
                 result.add(user);
 
-            } while(cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         cursor.close();
@@ -388,7 +388,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
         }
 
         String currentUserName = cursor.getString(0);
-        Log.d(TAG,"HelloWord"+currentUserName);
+        Log.d(TAG, "HelloWord" + currentUserName);
         User user = findUser(currentUserName);
         cursor.close();
         return user;
@@ -406,37 +406,36 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
         }
         String result = cursor.getString(0);
         cursor.close();
-        Log.d(TAG,"HelloWord1"+result);
+        Log.d(TAG, "HelloWord1" + result);
         return result;
     }
 
     public void updateUser(User user) {
 
         String selection = "username = \"" + user.getUserName() + "\"";
-        try{
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_USERNAME, user.getUserName());
-        values.put(COLUMN_AGE, user.getAge());
-        values.put(COLUMN_IMAGE, user.getImage());
-        values.put(COLUMN_STARS, user.getNumStars());
-        values.put(COLUMN_FINISH_TUTORIAL, user.isFinishTutorial());
-        values.put(COLUMN_UNLOCK_DRUM, user.isUnlockDrum());
-        values.put(COLUMN_UNLOCK_MARIMBA, user.isUnlockMarimba());
-        values.put(COLUMN_UNLOCK_DRAWING, user.isUnlockDrawing());
-        values.put(COLUMN_UNLOCK_COLORING, user.isUnlockColoring());
-        values.put(COLUMN_UNLOCK_BLACKBOARD, user.isUnlockBlackboard());
-        values.put(COLUMN_FINISH_LAUNCHER_TUTORIAL, user.isFinishLauncherTutorial());
-        values.put(COLUMN_DISPLAY_NAME, user.getDisplayName());
-        values.put(COLUMN_OPEN_LIBRARY, user.isOpenLibrary());
-        values.put(COLUMN_OPEN_TOOLS, user.isOpenTools());
-        values.put(COLUMN_UNLOCK_FISH_BOWL, user.isUnlockFishBowl());
-        values.put(COLUMN_UNLOCK_WRITING_BOARD, user.isUnlockWritingBoard());
-        values.put(COLUMN_FINISH_WRITING_BOARD_TUTORIAL, user.isFinishWritingBoardTutorial());
-        Log.i("myLog", "value : " + values.toString());
-        myCR.update(KitkitProvider.CONTENT_URI, values, selection, null);
-        }
-        catch (Exception e){
-            Log.e(TAG,"error updating coin:-"+e.getMessage());
+        try {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_USERNAME, user.getUserName());
+            values.put(COLUMN_AGE, user.getAge());
+            values.put(COLUMN_IMAGE, user.getImage());
+            values.put(COLUMN_STARS, user.getNumStars());
+            values.put(COLUMN_FINISH_TUTORIAL, user.isFinishTutorial());
+            values.put(COLUMN_UNLOCK_DRUM, user.isUnlockDrum());
+            values.put(COLUMN_UNLOCK_MARIMBA, user.isUnlockMarimba());
+            values.put(COLUMN_UNLOCK_DRAWING, user.isUnlockDrawing());
+            values.put(COLUMN_UNLOCK_COLORING, user.isUnlockColoring());
+            values.put(COLUMN_UNLOCK_BLACKBOARD, user.isUnlockBlackboard());
+            values.put(COLUMN_FINISH_LAUNCHER_TUTORIAL, user.isFinishLauncherTutorial());
+            values.put(COLUMN_DISPLAY_NAME, user.getDisplayName());
+            values.put(COLUMN_OPEN_LIBRARY, user.isOpenLibrary());
+            values.put(COLUMN_OPEN_TOOLS, user.isOpenTools());
+            values.put(COLUMN_UNLOCK_FISH_BOWL, user.isUnlockFishBowl());
+            values.put(COLUMN_UNLOCK_WRITING_BOARD, user.isUnlockWritingBoard());
+            values.put(COLUMN_FINISH_WRITING_BOARD_TUTORIAL, user.isFinishWritingBoardTutorial());
+            Log.i("myLog", "value : " + values.toString());
+            myCR.update(KitkitProvider.CONTENT_URI, values, selection, null);
+        } catch (Exception e) {
+            Log.e(TAG, "error updating coin:-" + e.getMessage());
         }
     }
 
@@ -548,7 +547,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
                     projection, selection, null,
                     COLUMN_ID + " ASC");
 
-            if(cursor.moveToFirst()) {
+            if (cursor.moveToFirst()) {
                 do {
                     Fish fish = new Fish();
                     fish._id = cursor.getInt(0);
@@ -560,7 +559,7 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
                     fish._position = cursor.getString(6);
                     result.add(fish);
 
-                } while(cursor.moveToNext());
+                } while (cursor.moveToNext());
             }
 
             cursor.close();

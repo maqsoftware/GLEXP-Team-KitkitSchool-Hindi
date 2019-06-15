@@ -88,12 +88,12 @@ public class UserNameActivity extends KitKitLoggerActivity {
         Util.displayUserName(this, (TextView) findViewById(R.id.textView_currentUsername));
 
         User user = ((LauncherApplication) getApplication()).getDbHandler().getCurrentUser();
-        mTvUserNo.setText(getString(R.string.user_no) + " " + user.getUserName().replace("user" , ""));
+        mTvUserNo.setText(getString(R.string.user_no) + " " + user.getUserName().replace("user", ""));
         String displayName = user.getDisplayName();
 
-            mTvUserName.setBackgroundColor(Color.WHITE);
-            mTvUserName.setText(displayName);
-            mVRename.setVisibility(View.VISIBLE);
+        mTvUserName.setBackgroundColor(Color.WHITE);
+        mTvUserName.setText(displayName);
+        mVRename.setVisibility(View.VISIBLE);
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -125,8 +125,7 @@ public class UserNameActivity extends KitKitLoggerActivity {
                     registerUserDialog.show();
                 }
                 break;
-                case R.id.vSelectUserNumber:
-                {
+                case R.id.vSelectUserNumber: {
                     SelectNumberDialog selectNumberDialog = new SelectNumberDialog(UserNameActivity.this, SelectNumberDialog.MODE.USER_NO, new SelectNumberDialog.Callback() {
                         @Override
                         public void onSelectedNumber(int number) {
@@ -142,26 +141,24 @@ public class UserNameActivity extends KitKitLoggerActivity {
                     selectNumberDialog.show();
 
                 }
-                    break;
-                case R.id.vUserNameList:
-                {
+                break;
+                case R.id.vUserNameList: {
                     KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
                     ArrayList<User> users = dbHandler.getUserList();
                     try {
                         schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
                         schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
-                        for (User u:users) {
+                        for (User u : users) {
                             u.setGamesClearedInTotal_L(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_L"), 0));
                             u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
                         }
-                    }
-                    catch (PackageManager.NameNotFoundException ne) {
+                    } catch (PackageManager.NameNotFoundException ne) {
                         Log.e(TAG, ne.toString());
                     }
                     UserNameListDialog userNameListDialog = new UserNameListDialog(UserNameActivity.this, users);
                     userNameListDialog.show();
                 }
-                    break;
+                break;
             }
         }
     };
