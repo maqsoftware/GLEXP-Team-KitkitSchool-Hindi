@@ -25,7 +25,6 @@ struct WordWindowLevelStruct
 	int m_sequenceType;
 	string m_soundFilename;
 	string m_text;
-	string m_text1;
 	string m_exampleNumber[4];
 	string m_exampleWord[4];
 	string m_rightFormula;
@@ -68,8 +67,6 @@ public:
 
 		SEQUENCE_TYPE_MAX,
 	};
-    void speech1(string input);
-
 public:
     static Scene* createScene(string levelID);
     virtual bool init() override;

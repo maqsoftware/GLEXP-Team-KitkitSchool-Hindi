@@ -4,7 +4,6 @@
 #include <vector>
 #include <numeric>
 #include <algorithm>
-#include <Managers/VoiceMoldManager.h>
 #include "ui/CocosGUI.h"
 #include "Managers/LanguageManager.hpp"
 #include "Managers/UserManager.hpp"
@@ -45,8 +44,8 @@ WordWindowLevelStruct::WordWindowLevelStruct()
 	m_worksheet = 0;
 	m_problemNo = 0;
 	m_sequenceType = 0;
-	//m_soundFilename = "";
-	m_text1="";
+	m_soundFilename = "";
+
 	m_text = "";
 	for (int i = 0; i < 4; i++)
 	{
@@ -461,8 +460,8 @@ void WordWindowScene::createPuzzle(int index)
 	startFirstDisableExamples();
 
 	// 문장 사운드 플레이
-	//playSoundQuestion(m_curLevelStruct.m_soundFilename);
-	speech1(m_curLevelStruct.m_text1);
+	playSoundQuestion(m_curLevelStruct.m_soundFilename);
+
 
 	if (m_curLevelStruct.m_sequenceType == SEQUENCE_TYPE_EQUATION)
 	{
@@ -507,8 +506,7 @@ void WordWindowScene::loadData(int level)
 
 		s.m_problemNo = TodoUtil::stoi(row[3]);
 		s.m_sequenceType = TodoUtil::stoi(row[4]);
-
-		s.m_text1=row[5];
+        s.m_soundFilename = row[5];
 		s.m_text = row[6];
 		for (int i = 0; i < 4; i++)
 		{
@@ -565,17 +563,22 @@ void WordWindowScene::loadData(int level)
 
 
 //}
-void WordWindowScene::speech1(string name)
+void WordWindowScene::playSoundQuestion(string name)
 {
 	if(name.empty()==true)
 	{
 		return;
 	}
 
-		VoiceMoldManager::shared()->speak(name,"hi-IN");
-		disableSoundButton();
-		m_soundDuraton= getDuration(name);
-	}
+	string path = "games/wordwindow/sound/" + name;
+
+	GameSoundManager::getInstance()->playEffectSoundVoiceOnly(path);
+
+	disableSoundButton();
+
+	m_soundDuraton = getDuration(name);
+}
+
 
 
 
@@ -3017,9 +3020,8 @@ void WordWindowScene::createSoundButton()
 
 			if (m_soundDuraton <= 0.f)
 			{
-			//	playSoundQuestion(m_curLevelStruct.m_soundFilename);
-
-			speech1(m_curLevelStruct.m_text1);
+				playSoundQuestion(m_curLevelStruct.m_soundFilename);
+				
 			}
 		}
 	});
