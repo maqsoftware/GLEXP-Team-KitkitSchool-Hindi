@@ -110,7 +110,7 @@ Node* FishQuizPopup::createGlow()
 
 
 
-Button* FishQuizPopup::createButton(const string& prefix, string text) {
+Button* FishQuizPopup::createButton(string prefix, string text) {
     auto btn = Button::create(prefix+"_normal.png", prefix+"_active.png");
     
     
@@ -413,7 +413,7 @@ void FishQuizPopup::addFishToDB(Fish* fish) {
     
 }
 
-FISH_DATA* FishQuizPopup::findDeleteFish(string fishID, const string& position) {
+FISH_DATA* FishQuizPopup::findDeleteFish(string fishID, string position) {
     // Fish
     if (TodoUtil::startsWith(fishID, "f")) {
         const int MAX_FISH_COUNT = 20;
@@ -452,7 +452,7 @@ FISH_DATA* FishQuizPopup::findDeleteFish(string fishID, const string& position) 
     return nullptr;
 }
 
-int FishQuizPopup::generateFishSkin(const string& fishID) {
+int FishQuizPopup::generateFishSkin(string fishID) {
     bool isSkin1 = false;
     bool isSkin2 = false;
     

@@ -24,15 +24,15 @@ using namespace std;
 class SentenceBridgeInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() override { return "SentenceBridge"; }
-    virtual std::string getSceneName() override { return "SentenceBridgeScene"; }
+    virtual std::string getGameName() { return "SentenceBridge"; }
+    virtual std::string getSceneName() { return "SentenceBridgeScene"; }
     
-    virtual Scene* createScene(std::string levelID) override {
+    virtual Scene* createScene(std::string levelID) {
         return SentenceBridge::SentenceBridgeScene::createScene(levelID);
     }
     
     
-    virtual std::vector<std::string> enumerateLevelIDs() override;
+    virtual std::vector<std::string> enumerateLevelIDs();
     
     
     

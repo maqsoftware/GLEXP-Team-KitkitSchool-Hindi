@@ -60,14 +60,14 @@ class WordMatrixBlock : public Sprite
 public:
     WordMatrixBlock();
     virtual ~WordMatrixBlock(void){}
-    virtual void onEnter() override;
-    virtual void onExit() override;
+    virtual void onEnter();
+    virtual void onExit();
     virtual void touchDelegateRetain();
     virtual void touchDelegateRelease();
     
     static WordMatrixBlock *create(string fileName, vector<TEXT_INFO> textInfos, bool swallowTouch = true);
     
-    void init(string fileName, const vector<TEXT_INFO>& textInfos);
+    void init(string fileName, vector<TEXT_INFO> textInfos);
     void setShowText(bool enable);
     void onOffEffectImg(bool onOff);
     
@@ -102,12 +102,12 @@ class WordMatrixAnswerBlock : public WordMatrixBlock
 public:
     WordMatrixAnswerBlock();
     virtual ~WordMatrixAnswerBlock(void){}
-    virtual void onEnter() override;
-    virtual void onExit() override;
+    virtual void onEnter();
+    virtual void onExit();
     
     static WordMatrixAnswerBlock *create(eMoveBlockType blockType, vector<TEXT_INFO> textInfos, bool swallowTouch = true);
     
-    void init(eMoveBlockType blockType, const vector<TEXT_INFO>& textInfos);
+    void init(eMoveBlockType blockType, vector<TEXT_INFO> textInfos);
     void setPrevPos();
     void autoMove();
     void playWordSound();
@@ -116,7 +116,7 @@ public:
     bool _isAutoMove;
     
 protected:
-    virtual bool onTouchBegan(Touch *pTouch, Event *pEvent) override;
+    virtual bool onTouchBegan(Touch *pTouch, Event *pEvent);
     virtual void onTouchMoved(Touch *pTouch, Event *pEvent);
     virtual void onTouchEnded(Touch *pTouch, Event *pEvent);
     virtual void onTouchCancelled(Touch *pTouch, Event *pEvent);
@@ -170,7 +170,7 @@ public:
     virtual ~WordMatrixSlotBlock(void){}
     
     static WordMatrixSlotBlock *create(bool showImg, bool isBottom, TEXT_INFO textInfo);
-    void init(bool showImg, bool isBottom, const TEXT_INFO& textInfo);
+    void init(bool showImg, bool isBottom, TEXT_INFO textInfo);
     
     void setConnectedBlock(WordMatrixBlock *verBlock, WordMatrixBlock *horBlock);
     void onOffConnectedBlockEffectImg(bool onOff);

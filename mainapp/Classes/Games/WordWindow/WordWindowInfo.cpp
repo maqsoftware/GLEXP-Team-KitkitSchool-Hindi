@@ -9,6 +9,9 @@ std::vector<std::string> WordWindowInfo::enumerateLevelIDs()
 	string S = FileUtils::getInstance()->getStringFromFile(P);
 	auto data = TodoUtil::readTSV(S);
 
+	std::vector<WordWindowLevelStruct> vecDatas;
+	std::set<int> setWorkSheets;
+
 	int rowIndex = 0;
 	int maxLevel = 0;
 	while (rowIndex < (int)data.size())

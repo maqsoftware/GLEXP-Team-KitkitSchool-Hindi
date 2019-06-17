@@ -44,6 +44,15 @@ void SoundTrain::setType(string letter) {
 
 void SoundTrain::toggleConnector() {
     return;
+    float delay = 1.0;
+    _connectorStatus = !_connectorStatus;
+    
+    runAction(Sequence::create(
+        CallFunc::create([this, delay](){
+        _connector->runAction(EaseOut::create(MoveBy::create(delay, Vec2(_connectorStatus?-80:80,0)), 2));
+        }),
+        nullptr
+    ));
 }
 
 END_NS_SOUNDTRAIN;

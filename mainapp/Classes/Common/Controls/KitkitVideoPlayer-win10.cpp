@@ -43,7 +43,7 @@ KitkitVideoPlayer::KitkitVideoPlayer()
 			double height = panel->ActualHeight;
 			double width = panel->ActualWidth;
 
-			auto view = reinterpret_cast<winVideoView*>(_videoView);
+			auto view = (winVideoView*)_videoView;
 
 			auto canvas = ref new Windows::UI::Xaml::Controls::Canvas();
 			view->canvas = canvas;
@@ -96,7 +96,7 @@ KitkitVideoPlayer::KitkitVideoPlayer()
 KitkitVideoPlayer::~KitkitVideoPlayer()
 {
 	if (_videoView) {
-		auto view = reinterpret_cast<winVideoView*>(_videoView);
+		auto view = (winVideoView*)_videoView;
 		auto dispatcher = cocos2d::GLViewImpl::sharedOpenGLView()->getDispatcher();
 
 
@@ -149,7 +149,7 @@ void KitkitVideoPlayer::draw(Renderer* renderer, const Mat4 &transform, uint32_t
 
 
 		if (_videoView) {
-			auto view = reinterpret_cast<winVideoView*>(_videoView);
+			auto view = (winVideoView*)_videoView;
 			auto mediaSize = getContentSize();
 			auto leftBottom = convertToWorldSpace(Vec2::ZERO);
 			auto rightTop = convertToWorldSpace(Vec2(_contentSize.width, _contentSize.height));
@@ -244,7 +244,7 @@ void KitkitVideoPlayer::play()
 					return ps;
 				};
 
-				auto mediaElement = reinterpret_cast<winVideoView*>(_videoView)->media;
+				auto mediaElement = ((winVideoView*)_videoView)->media;
 				auto urlString = conv(_videoURL);
 				Windows::Foundation::Uri^ uri = ref new Windows::Foundation::Uri(urlString);
 				mediaElement->Source = uri;
@@ -325,7 +325,7 @@ void KitkitVideoPlayer::onExit()
 
 		
 		auto action = dispatcher->RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, ref new Windows::UI::Core::DispatchedHandler([this]() {
-			auto view = reinterpret_cast<winVideoView*>(_videoView);
+			auto view = (winVideoView*)_videoView;
 			view->canvas->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
 
 

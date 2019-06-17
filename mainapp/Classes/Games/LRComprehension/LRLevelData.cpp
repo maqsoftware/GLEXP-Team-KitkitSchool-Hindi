@@ -68,7 +68,7 @@ LRLevelData* LRLevelData::parse()
     return result;
 }
 
-LRComprehensionType LRLevelData::getProblemType(const string& rowValue)
+LRComprehensionType LRLevelData::getProblemType(string rowValue)
 {
     LRComprehensionType returnType;
     

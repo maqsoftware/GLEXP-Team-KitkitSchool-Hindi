@@ -15,14 +15,14 @@ using namespace std;
 class WordWindowInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() override { return "WordWindow"; }
-    virtual std::string getSceneName() override { return "WordWindowScene"; }
+    virtual std::string getGameName() { return "WordWindow"; }
+    virtual std::string getSceneName() { return "WordWindowScene"; }
     
-    virtual Scene* createScene(std::string levelID) override
+    virtual Scene* createScene(std::string levelID)
 	{
 		return WordWindowScene::createScene(levelID);
     }
     
-    virtual std::vector<std::string> enumerateLevelIDs() override;
+    virtual std::vector<std::string> enumerateLevelIDs();
 };
 

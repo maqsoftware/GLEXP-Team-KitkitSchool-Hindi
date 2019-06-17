@@ -1995,7 +1995,7 @@ private:
  */
 class JSON_API StyledStreamWriter {
 public:
-  StyledStreamWriter(const JSONCPP_STRING& indentation = "\t");
+  StyledStreamWriter(JSONCPP_STRING indentation = "\t");
   ~StyledStreamWriter() {}
 
 public:

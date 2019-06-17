@@ -18,8 +18,8 @@ public:
 	virtual bool init() override;
 	void removeObjects();
 
-	void createBlock(const string& strLetter);
-	void changeLetter(const string& strLetter);
+	void createBlock(string strLetter);
+	void changeLetter(string strLetter);
 
 
 	function<bool()> onTouchBegan;

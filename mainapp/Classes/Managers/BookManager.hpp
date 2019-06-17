@@ -44,7 +44,7 @@ public:
     
 
     void addBookInfo(BookInfo *info);
-    void addBookInfo(const string& title, LanguageManager::LocaleType lang, string path, string imagePath = "");
+    void addBookInfo(string title, LanguageManager::LocaleType lang, string path, string imagePath = "");
     
     
     BookInfo* findBookInfo(string title);

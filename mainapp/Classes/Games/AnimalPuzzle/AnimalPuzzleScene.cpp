@@ -494,7 +494,7 @@ void AnimalPuzzleScene::loadData(int level)
 }
 
 
-void AnimalPuzzleScene::playSound(const string& name)
+void AnimalPuzzleScene::playSound(string name)
 {
     string path = "Games/AnimalPuzzle/Sound/"+name;
     

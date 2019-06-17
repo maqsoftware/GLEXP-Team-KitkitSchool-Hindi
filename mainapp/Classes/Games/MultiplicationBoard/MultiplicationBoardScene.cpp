@@ -1263,7 +1263,7 @@ bool MultiplicationBoardPiece::init()
         auto cp = getPosition();
 
         //현재 가이드가 켜졌을때만 snap
-        MultiplicationBoardScene* scene = reinterpret_cast<MultiplicationBoardScene*>(P->getParent());
+        MultiplicationBoardScene* scene = (MultiplicationBoardScene*)P->getParent();
         
         if (_targetNode->getBoundingBox().containsPoint(getPosition()) && scene->getCurGuide()->isVisible())
         {
@@ -1276,7 +1276,7 @@ bool MultiplicationBoardPiece::init()
         setPicked(false);
         
         auto P = getParent();
-        MultiplicationBoardScene* scene = reinterpret_cast<MultiplicationBoardScene*>(P->getParent());
+        MultiplicationBoardScene* scene = (MultiplicationBoardScene*)P->getParent();
         
         //스냅 영역에 들어오고 현재 가이드가 켜졌을때만 snap
         if (_targetNode->getBoundingBox().containsPoint(getPosition()) && scene->getCurGuide()->isVisible())
@@ -1391,7 +1391,7 @@ void MultiplicationBoardPiece::setTexture(int multiplicand, int multiplier)
 void MultiplicationBoardPiece::setLightOn()
 {
     auto P = getParent();
-    MultiplicationBoardScene* scene = reinterpret_cast<MultiplicationBoardScene*>(P->getParent());
+    MultiplicationBoardScene* scene = (MultiplicationBoardScene*)P->getParent();
     
     for (int i = 0; i < _bulb_light->getChildrenCount(); i++)
     {

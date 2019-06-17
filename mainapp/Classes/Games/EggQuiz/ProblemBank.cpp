@@ -55,14 +55,14 @@ float ProblemBank::getDuration(string fileName) {
     return duration;
 }
 
-vector<string> ProblemBank::getLevels(const string& course) {
+vector<string> ProblemBank::getLevels(string course) {
     int sheetNo;
     _levels.clear();
     loadProblemData(course, "", &sheetNo);
     return _levels;
 }
 
-vector<EggQuizTemplateStruct> ProblemBank::loadProblemData(const string& course, string level, int *sheetNo) {
+vector<EggQuizTemplateStruct> ProblemBank::loadProblemData(string course, string level, int *sheetNo) {
     srand((unsigned int)time(NULL));
     
     transform(level.begin(), level.end(), level.begin(), ::tolower);
@@ -513,7 +513,7 @@ string ProblemBank::getJoinString(vector<int> numbers) {
     return rt;
 }
 
-string ProblemBank::getJoinString(vector<string> strings, const string& separator) {
+string ProblemBank::getJoinString(vector<string> strings, string separator) {
     string rt = "";
     for (auto it : strings) {
         if (rt != "") rt += separator;
@@ -535,7 +535,7 @@ bool ProblemBank::checkRegrouping(int number1, char op, int resultCandidate) {
     }
 }
 
-bool ProblemBank::hasSameAnswer(const string& templateName, const string& questionOption1, const string& answer) {
+bool ProblemBank::hasSameAnswer(string templateName, string questionOption1, string answer) {
     for (auto it : _problems) {
         if (templateName == it.templateName && questionOption1 == it.questionOption1 && it.answer == answer) return true;
     }

@@ -29,13 +29,13 @@ bool TextAndTextLayer::init()
     return true;
 }
 
-void TextAndTextLayer::setGuideView(QuestionType questionType, const string& guideTextOrSoundPath)
+void TextAndTextLayer::setGuideView(QuestionType questionType, string guideTextOrSoundPath)
 {
     _questionType = questionType;
     _guideTextOrSoundPath = guideTextOrSoundPath;
 }
 
-void TextAndTextLayer::setQuestionAnswers(const std::string& questionText, std::string questionSoundPath, std::vector<std::string> answerTexts)
+void TextAndTextLayer::setQuestionAnswers(std::string questionText, std::string questionSoundPath, std::vector<std::string> answerTexts)
 {
     random_shuffle(answerTexts.begin(), answerTexts.end());
     
@@ -121,7 +121,7 @@ void TextAndTextLayer::setQuestionAnswers(const std::string& questionText, std::
     //DRAW_DEBUG_AREA(questionLabel);
 }
 
-Node* TextAndTextLayer::createMultiLine(string text, float fontSize, Size dim, const string& fontName, Color4B fontColor, float lineSpacingRatio)
+Node* TextAndTextLayer::createMultiLine(string text, float fontSize, Size dim, string fontName, Color4B fontColor, float lineSpacingRatio)
 {
     vector<string> words = TodoUtil::split(text, ' ');
     

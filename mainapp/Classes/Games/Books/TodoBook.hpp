@@ -95,7 +95,7 @@ public:
     const string pagePrefix = "page/";
     const string wordPrefix = "word/";
     
-    string getWordAudioPath(const string& wordAudio);
+    string getWordAudioPath(string wordAudio);
     
     vector<TodoPage> pages;
     
@@ -105,8 +105,8 @@ public:
     void readCredit(string &data);
 
     
-    bool readFile(const string& prefix, const string& filename = "bookinfo.csv");
-    bool writeFile(const string& prefix, const string& filename = "bookinfo.csv");
+    bool readFile(string prefix, string filename = "bookinfo.csv");
+    bool writeFile(string prefix, string filename = "bookinfo.csv");
 
     
     void addCreditPage();

@@ -24,14 +24,14 @@ MainWork::MainWork()
 , Answer() {
 }
 
-MainWork::MainWork(const string& argOperator,
-                   int argLeftExpr,
-                   int argRightExpr,
-                   int argAnswer)
-: Operator(argOperator)
-, LeftExpr(argLeftExpr)
-, RightExpr(argRightExpr)
-, Answer(argAnswer) {
+MainWork::MainWork(const string& Operator,
+                   int LeftExpr,
+                   int RightExpr,
+                   int Answer)
+: Operator(Operator)
+, LeftExpr(LeftExpr)
+, RightExpr(RightExpr)
+, Answer(Answer) {
 }
 
 MainWork MainWork::randomWork() {

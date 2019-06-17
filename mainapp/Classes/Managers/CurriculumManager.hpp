@@ -26,7 +26,7 @@ public:
     static CurriculumManager* getInstance();
     void init();
 
-    string makeLevelID(const string& lang, char category, int level);
+    string makeLevelID(string lang, char category, int level);
     
     LevelCurriculum* findCurriculum(char category, int level);
     LevelCurriculum* findCurriculum(string levelID);

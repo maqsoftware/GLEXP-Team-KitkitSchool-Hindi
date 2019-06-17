@@ -219,7 +219,7 @@ TraceIndex TraceIndex::indexForStrokeEnd(const TraceStroke& Stroke) const {
     return this->indexForStrokeEnd(nullptr, nullptr, &Stroke);
 }
 
-TraceIndex TraceIndex::clip(const TraceIndex& Begin, const TraceIndex& End) const {
+TraceIndex TraceIndex::clip(const TraceIndex& Begin, const TraceIndex End) const {
     return min(max(Begin, *this), End);
 }
 

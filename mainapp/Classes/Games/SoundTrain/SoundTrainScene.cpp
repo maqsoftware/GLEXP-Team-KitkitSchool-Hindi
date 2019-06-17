@@ -256,7 +256,7 @@ void SoundTrainScene::removeObjects() {
     
 }
 
-void SoundTrainScene::playSound(const string& letter){
+void SoundTrainScene::playSound(string letter){
     CCLOG("playSound");
     {
         string filepath = LanguageManager::getInstance()->findLocalizedResource("SoundTrain/Sounds/"+letter+".m4a");

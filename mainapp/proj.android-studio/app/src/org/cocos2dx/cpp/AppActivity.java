@@ -57,7 +57,6 @@ import org.cocos2dx.lib.Cocos2dxVideoHelper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.UUID;
 import java.util.zip.ZipFile;
 
@@ -595,7 +594,7 @@ public class AppActivity extends Cocos2dxActivity {
     public static String getResourceUri(String filename) {
         File fileCheck = new File(Environment.getExternalStorageDirectory() + File.separator + "Library" + File.separator + "cache.txt");
         if (fileCheck.exists()) {
-            String appLanguage = Cocos2dxHelper.getStringForKey("appLanguage", "sw-tz").toLowerCase(Locale.getDefault());
+            String appLanguage = Cocos2dxHelper.getStringForKey("appLanguage", "sw-tz").toLowerCase();
             String pathExternalRaw = Environment.getExternalStorageDirectory() + File.separator + "Library" + File.separator + appLanguage + File.separator + "res" + File.separator + "raw";
 
             File resourceFile = new File(pathExternalRaw + File.separator + filename + ".mp4");
@@ -692,7 +691,7 @@ public class AppActivity extends Cocos2dxActivity {
 
     public static void playAudio(String filePath) {
         if (mPlayAudio != null) {
-            mPlayAudio.play(filePath.toLowerCase(Locale.getDefault()).replace(" ", "_"));
+            mPlayAudio.play(filePath.toLowerCase().replace(" ", "_"));
         }
     }
 

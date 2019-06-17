@@ -357,6 +357,7 @@ void DailyScene2::refreshData()
             if (game.gameName == "EggQuizLiteracy") continue;
             if (game.gameName == "EggQuizMath") continue;
             if (game.gameName == "Comprehension") continue;
+            if (game.gameName == "EggQuizMath") continue;
             
             bool isNew = false;
             if (cleared) {
@@ -1244,7 +1245,7 @@ void DailyScene2::showClear(int day)
     
     auto cur = CurriculumManager::getInstance()->findCurriculum(_levelID);
     
-    Mango *mango = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(day));
+    Mango *mango = (Mango*)_mangoBoard->getChildByTag(day);
     int nextDay = _currentDay;
     if (nextDay>cur->numDays || nextDay<=0) nextDay = -1;
     
@@ -1257,7 +1258,7 @@ void DailyScene2::showClear(int day)
     if (nextBtn && nextDay>0) {
 
         nextSeq = Sequence::create(CallFunc::create([this, nextDay](){
-            auto nextMango = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(nextDay));
+            auto nextMango = (Mango*)_mangoBoard->getChildByTag(nextDay);
             
             auto seqForNextBtn = Sequence::create(
                                                   DelayTime::create(0.1),
@@ -1333,12 +1334,12 @@ void DailyScene2::dayChosen(int day)
         if (day > _currentDay) {
             UserManager::getInstance()->setCurrentDay(_levelID, day);
             {
-                Mango *m1 = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(_currentDay));
+                Mango *m1 = (Mango*)_mangoBoard->getChildByTag(_currentDay);
                 if (m1) m1->refresh();
             }
             
             {
-                Mango *m2 = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(day));
+                Mango *m2 = (Mango*)_mangoBoard->getChildByTag(day);
                 if (m2) m2->refresh();
             }
 

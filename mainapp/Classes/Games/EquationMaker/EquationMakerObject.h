@@ -43,10 +43,10 @@ public:
 
     void setTopLayer(EquationMakerScene* pLayer);
     void createObject(int type, int rowType, int levelType,
-					  const std::string& name, Size size, bool isSlotIn, bool isSlotHide);
+                      std::string name, Size size, bool isSlotIn, bool isSlotHide);
     
-    void setObjectCard(int num, int levelType, const std::string& name);
-    void setObjectAndNumberCard(int num, int levelType, const std::string& name);
+    void setObjectCard(int num, int levelType, std::string name);
+    void setObjectAndNumberCard(int num, int levelType, std::string name);
     
     void setSlotIn(bool isSlotIn);
     void setShadowVisible(bool isVisible);
@@ -59,7 +59,7 @@ public:
     
     Point getOriginPos();
     
-    std::string getFileName(int levelType, const std::string& name, int num = 0);
+    std::string getFileName(int levelType, std::string name, int num = 0);
     
 public:
     Sprite* m_pCardSprite;

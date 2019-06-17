@@ -58,7 +58,7 @@ public:
 
     static LRLevelData* parse();
     vector<LRProblem*> getRandomProblemsByLevel(int level);
-    static LRComprehensionType getProblemType(const string& rowValue);
+    static LRComprehensionType getProblemType(string rowValue);
 };
 
 #endif /* ProblemData_hpp */

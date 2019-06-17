@@ -28,7 +28,7 @@ bool TextBlock::init()
     return true;
 }
 
-void TextBlock::initAsSlot(const std::string& text)
+void TextBlock::initAsSlot(std::string text)
 {
     CCLOG("initAsSlot");
     _bSlot = true;

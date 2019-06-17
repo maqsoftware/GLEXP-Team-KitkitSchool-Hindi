@@ -17,7 +17,7 @@ public:
     CREATE_FUNC(ImageAndTextLayer);
     virtual bool init() override;
     
-    void setQuestionImage(const std::string& folder, std::string imageFile);
+    void setQuestionImage(std::string folder, std::string imageFile);
     void setAnswers(std::vector<std::string> answerTexts);
     
     LRDividedTypeQuestionScene* parentScene;

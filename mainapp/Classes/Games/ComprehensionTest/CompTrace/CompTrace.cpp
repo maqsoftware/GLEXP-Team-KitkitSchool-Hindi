@@ -62,7 +62,7 @@ cocos2d::Layer* CompTrace::createLayer(ComprehensionScene* parent)
             }
         }
         
-        if (rawData.size() > 4)
+        if (rawData.size() > 3)
         {
             p.Type = CompTraceScene::ProblemType::IMAGE_AND_SOUND;
             p.QuestionSound = rawData[1];

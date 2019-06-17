@@ -48,8 +48,8 @@ public:
 	CREATE_FUNC(STTopCard);
 	virtual bool init() override ;
 
-	virtual void ThrowIn() override;
-	virtual void ThrowOut() override;
+	virtual void ThrowIn();
+	virtual void ThrowOut();
 
 	void SetCard(const WhatIsThisCardData& data, const CardType& cardType);
   void SetFail(const bool& fail);
@@ -66,8 +66,8 @@ public:
 	void Flip(const bool& success, const std::function<void()>& cbf);
 	void Fail(const bool& hit, const std::function<void()>& cbf);
 
-	virtual void ThrowIn() override;
-	virtual void ThrowOut() override;
+	virtual void ThrowIn();
+	virtual void ThrowOut();
 
     void loadDurationsheet();
     std::map<std::string,float> _duration;

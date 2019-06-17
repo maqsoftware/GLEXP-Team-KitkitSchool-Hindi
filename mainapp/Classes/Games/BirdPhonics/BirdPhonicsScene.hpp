@@ -44,7 +44,7 @@ namespace BirdPhonicsSceneSpace
         CREATE_FUNC(Bread);
         Bread(): onGoodDown(nullptr), onBadDown(nullptr) {}
     
-        void setWord(string word, const string& phonic_owner, string word_sound, string phonic_position);
+        void setWord(string word, string phonic_owner, string word_sound, string phonic_position);
         void setTargetBird(Bird* bird);
         
         std::function<void()> onGoodDown;
@@ -68,7 +68,7 @@ namespace BirdPhonicsSceneSpace
 
         
         void setType(int type, std::function<void(void)> func);
-        void setPhonic(const string& phonic_owner, string phonic_sound);
+        void setPhonic(string phonic_owner, string phonic_sound);
         void setLight(Sprite *light) { _light = light; }
         void setTouchEnabled(bool enabled) { _touchEnabled = enabled; }
         

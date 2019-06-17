@@ -57,7 +57,7 @@ bool Slot::initWithSize(SlotSize slotSize) {
     return true;
 }
 
-void Slot::setAnswer(const std::string& answer) {
+void Slot::setAnswer(std::string answer) {
     _answer = answer;
 }
 

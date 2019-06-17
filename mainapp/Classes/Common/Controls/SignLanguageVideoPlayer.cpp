@@ -86,7 +86,7 @@ bool SignLanguageVideoPlayer::init()
     return true;
 }
 
-void SignLanguageVideoPlayer::playVideo(const string& filename)
+void SignLanguageVideoPlayer::playVideo(string filename)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     string uri = getResourceUri(filename);

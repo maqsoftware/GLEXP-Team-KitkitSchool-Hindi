@@ -359,12 +359,12 @@ void LRComprehensionScene::setLevel(int level)
     _currentLevel = level;
 }
 
-void LRComprehensionScene::drawQuestionTitleWithSoundButton(const string& titleText, const string& soundPath, Node* parentNode)
+void LRComprehensionScene::drawQuestionTitleWithSoundButton(string titleText, string soundPath, Node* parentNode)
 {
     drawQuestionTitle(titleText, parentNode, true, soundPath, 40.f);
 }
 
-void LRComprehensionScene::drawQuestionTitle(const string& titleText, Node* parentNode)
+void LRComprehensionScene::drawQuestionTitle(string titleText, Node* parentNode)
 {
     drawQuestionTitle(titleText, parentNode, false, "", -100.f);
 }

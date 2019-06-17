@@ -20,9 +20,9 @@ public:
 	virtual bool init() override;
 	void removeObjects();
 
-	void createBridge(const SentenceBridgeProblemStruct& problem, float winSizeWidth, bool bRightPillar);
+	void createBridge(SentenceBridgeProblemStruct problem, float winSizeWidth, bool bRightPillar);
 
-	void blockTouchMoved(const string& letter, Touch* touch);
+	void blockTouchMoved(string letter, Touch* touch);
 	int blockTouchEnded(string letter, Touch* touch, string logWorkPath);
 	void showAnswer(NodeBlock* blockNode, int foundSentenceIdx, function<void()> onFinished);
 	bool areAllProblemsSolved();

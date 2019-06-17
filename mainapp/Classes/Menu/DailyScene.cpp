@@ -1236,7 +1236,7 @@ void DailyScene::showClear(int day)
     bool lastday = day==cur->numDays;
 
     
-    Mango *mango = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(day));
+    Mango *mango = (Mango*)_mangoBoard->getChildByTag(day);
     int nextDay = _currentDay;
     if (nextDay>cur->numDays || nextDay<=0) nextDay = -1;
     
@@ -1247,7 +1247,7 @@ void DailyScene::showClear(int day)
     if (nextBtn && nextDay>0) {
 
         nextSeq = Sequence::create(CallFunc::create([this, nextDay](){
-            auto nextMango = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(nextDay));
+            auto nextMango = (Mango*)_mangoBoard->getChildByTag(nextDay);
             
             auto seqForNextBtn = Sequence::create(
                                                   DelayTime::create(0.1),
@@ -1355,12 +1355,12 @@ void DailyScene::dayChosen(int day)
             if (_currentDay!=day) {
                 
                 {
-                    Mango *m1 = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(_currentDay));
+                    Mango *m1 = (Mango*)_mangoBoard->getChildByTag(_currentDay);
                     if (m1) m1->setStatus(2);
                 }
                 
                 {
-                    Mango *m2 = reinterpret_cast<Mango*>(_mangoBoard->getChildByTag(day));
+                    Mango *m2 = (Mango*)_mangoBoard->getChildByTag(day);
                     if (m2) m2->setStatus(1);
                 }
                 

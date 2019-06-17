@@ -182,6 +182,7 @@ std::vector<std::vector<std::string>> TodoUtil::readCSV(std::string& filedata)
     
     std::istringstream iss(filedata);
     std::string line;
+    std::string word;
     
     while(iss.good())
     {

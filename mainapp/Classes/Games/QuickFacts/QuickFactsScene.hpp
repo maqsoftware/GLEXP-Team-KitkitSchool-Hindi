@@ -74,11 +74,11 @@ public:
     void onWrong(QuizAnswerPiece* gem);
     void onRight(QuizAnswerPiece* gem);
     
-    void playSound(const string& name);
+    void playSound(string name);
     void playRightEffect(int idx, QuizAnswerPiece* gem);
     
     void disappearQuiz();
-    bool isRightAnswer(const string& number);
+    bool isRightAnswer(string number);
     
     void lifeTimeSliderEvent(Ref *pSender, Slider::EventType type);
     void timeSliderEvent(Ref *pSender, Slider::EventType type);

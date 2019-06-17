@@ -648,7 +648,7 @@ void LabelingScene::loadData(int level)
 }
 
 
-void LabelingScene::playSound(const string& name)
+void LabelingScene::playSound(string name)
 {
     string path = "Games/Labeling/Sound/"+name;
     

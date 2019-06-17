@@ -16,7 +16,7 @@ class Slot : public Node {
 public:
     static Slot* create(SlotSize slotSize);
     DragButton* _targetButton;
-    void setAnswer(const string& answer);
+    void setAnswer(string answer);
     void enableOver();
     void disableOver();
     void registerButton(DragButton* button);

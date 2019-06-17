@@ -57,7 +57,7 @@ LRGuideView* LRGuideView::createWithText(string textContent)
     }
 }
 
-bool LRGuideView::init(bool isSoundType, const string& soundPath, const string& textContent)
+bool LRGuideView::init(bool isSoundType, string soundPath, string textContent)
 {
     if (!Node::init()) return false;
     

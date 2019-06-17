@@ -23,8 +23,8 @@ public:
     virtual bool init() override;
     virtual void onEnter() override;
     virtual void onExit() override;
-    void setCourse(const string& course);
-    void setLevel(const string& level);
+    void setCourse(string course);
+    void setLevel(string level);
     void setParam(string param);
     
     static void resetTryCountFishTest();

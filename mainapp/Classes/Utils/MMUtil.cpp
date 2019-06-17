@@ -110,12 +110,12 @@ void MMUtil::ParseTSV(std::vector<std::vector<std::string>>& result, const std::
 	}
 }
 
-std::string MMUtil::ReplaceReturn(const std::string& source)
+std::string MMUtil::ReplaceReturn(std::string source)
 {
 	return ReplaceString(source, "\\n", "\n");;
 }
 
-std::string MMUtil::ReplaceString(std::string source, const std::string& from, const std::string& to)
+std::string MMUtil::ReplaceString(std::string source, const std::string from, const std::string to)
 {
 	size_t start_pos = 0;
 	auto size = from.size();

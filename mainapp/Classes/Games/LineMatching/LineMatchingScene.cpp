@@ -614,6 +614,7 @@ void LineMatchingScene::set_2Dan(JsonParseData *parseObject, int _useObjectCount
 }
 
 void LineMatchingScene::set_3Dan(JsonParseData *parseObject, int _useObjectCount, int _position){
+    std::vector<std::string> stringSplit;
     Json::Value objectJson;
     std::string jsonName = "";
     std::string objectName = "";

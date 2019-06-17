@@ -34,7 +34,7 @@ bool ImageBlock::init()
     return true;
 }
 
-void ImageBlock::initAsSlot(const std::string& imageFile)
+void ImageBlock::initAsSlot(std::string imageFile)
 {
     CCLOG("initAsSlot");
     _bSlot = true;

@@ -129,47 +129,41 @@ public:
     }
 
     Chain& operator=(const Chain& C) {
-        if (&C != this) {
-            clear();
+        clear();
 
-            ID = new std::pointer_traits<id_type>::element_type();
-            new(&Data) T(C.value());
+        ID = new std::pointer_traits<id_type>::element_type();
+        new(&Data) T(C.value());
 
-            for (auto F: C.Following) {
-                Chain *Target = F.second;
-                Target->Followers[ID] = this;
-            }
-            Following = C.Following;
-
-            for (auto F: C.Followers) {
-                Chain *Target = F.second;
-                Target->Following[ID] = this;
-            }
-            Followers = C.Followers;
+        for (auto F: C.Following) {
+            Chain* Target = F.second;
+            Target->Followers[ID] = this;
         }
-        return *this;
+        Following = C.Following;
+
+        for (auto F: C.Followers) {
+            Chain* Target = F.second;
+            Target->Following[ID] = this;
+        }
+        Followers = C.Followers;
     }
 
     Chain& operator=(Chain&& C) {
-        if (&C != this) {
-            clear();
+        clear();
 
-            ID = new std::pointer_traits<id_type>::element_type();
-            new(&Data) T(std::forward<T>(C.value()));
+        ID = new std::pointer_traits<id_type>::element_type();
+        new(&Data) T(std::forward<T>(C.value()));
 
-            for (auto F: C.Following) {
-                Chain *Target = F.second;
-                Target->Followers[ID] = this;
-            }
-            Following.swap(C.Following);
-
-            for (auto F: C.Followers) {
-                Chain *Target = F.second;
-                Target->Following[ID] = this;
-            }
-            Followers.swap(C.Followers);
+        for (auto F: C.Following) {
+            Chain* Target = F.second;
+            Target->Followers[ID] = this;
         }
-        return *this;
+        Following.swap(C.Following);
+
+        for (auto F: C.Followers) {
+            Chain* Target = F.second;
+            Target->Following[ID] = this;
+        }
+        Followers.swap(C.Followers);
     }
 
     void follow(Chain& Target, bool Update=true) {

@@ -29,7 +29,7 @@ bool ImageAndTextLayer::init()
     return true;
 }
 
-void ImageAndTextLayer::setQuestionImage(const std::string& folder, std::string imageFile)
+void ImageAndTextLayer::setQuestionImage(std::string folder, std::string imageFile)
 {
     _backgroundSprite = Sprite::create("lrcomprehension/common/comprehention_multiplechoice_img.png");
     _backgroundSprite->setContentSize(Size(852, 876));

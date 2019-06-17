@@ -27,7 +27,7 @@ public:
     bool isSolved();
     void onSolve();
     bool isCorrect(string answer);
-    void solve(const string& answer);
+    void solve(string answer);
     int getSolvedCount();
     //void determineItemType();
     

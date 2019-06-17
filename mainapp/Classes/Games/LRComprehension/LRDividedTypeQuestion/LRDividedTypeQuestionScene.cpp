@@ -102,35 +102,28 @@ void LRDividedTypeQuestionScene::initData()
             break;
         }
     }
-
-    if (problem == NULL) {
-        // error
-    } else {
-        _questionText = problem->question;
-        _questionSoundPath = problem->audio;
-
-        _answers.clear();
+    
+    _questionText = problem->question;
+    _questionSoundPath = problem->audio;
+    
+    _answers.clear();
 //    if (TodoUtil::trim(problem->option1).empty() == false) _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option1)));
 //    if (TodoUtil::trim(problem->option2).empty() == false) _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option2)));
 //    if (TodoUtil::trim(problem->option3).empty() == false) _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option3)));
 //    if (TodoUtil::trim(problem->option4).empty() == false) _answers.push_back(lineWrappnig(TodoUtil::trim(problem->option4)));
-        if (!TodoUtil::trim(problem->option1).empty())
-            _answers.push_back(TodoUtil::trim(problem->option1));
-        if (!TodoUtil::trim(problem->option2).empty())
-            _answers.push_back(TodoUtil::trim(problem->option2));
-        if (!TodoUtil::trim(problem->option3).empty())
-            _answers.push_back(TodoUtil::trim(problem->option3));
-        if (!TodoUtil::trim(problem->option4).empty())
-            _answers.push_back(TodoUtil::trim(problem->option4));
+    if (TodoUtil::trim(problem->option1).empty() == false) _answers.push_back(TodoUtil::trim(problem->option1));
+    if (TodoUtil::trim(problem->option2).empty() == false) _answers.push_back(TodoUtil::trim(problem->option2));
+    if (TodoUtil::trim(problem->option3).empty() == false) _answers.push_back(TodoUtil::trim(problem->option3));
+    if (TodoUtil::trim(problem->option4).empty() == false) _answers.push_back(TodoUtil::trim(problem->option4));
 
-
-        answerPairVector.clear();
-        for (auto answer : _answers) {
-            answerPairVector.push_back(std::pair<std::string, bool>(answer, false));
-        }
-        _solutions.clear();
-        _solutions.push_back(TodoUtil::trim(problem->answer));
+    
+    answerPairVector.clear();
+    for (auto answer : _answers)
+    {
+        answerPairVector.push_back(std::pair<std::string, bool>(answer, false));
     }
+    _solutions.clear();
+    _solutions.push_back(TodoUtil::trim(problem->answer));
 }
 
 void LRDividedTypeQuestionScene::createFixedResources()
@@ -166,6 +159,7 @@ bool LRDividedTypeQuestionScene::isCorrect(std::string answer)
         {
             StrictLogManager::shared()->game_Peek_Answer("LRComprehension", makeWorkPath(), answer, solution);
             return true;
+            break;
         }
     }
     
@@ -173,7 +167,7 @@ bool LRDividedTypeQuestionScene::isCorrect(std::string answer)
     return false;
 }
 
-void LRDividedTypeQuestionScene::solve(const std::string& answer)
+void LRDividedTypeQuestionScene::solve(std::string answer)
 {
     for (int i = 0; i < answerPairVector.size(); i++)
     {

@@ -332,7 +332,7 @@ void EquationMakerScene::createPanelObject(Json::Value& val){
     }
 }
 
-float EquationMakerScene::createNoneSlotObject(std::vector<int> vecList, const std::string& file, const std::string& fileOther, float _retStartY, float _marginY){
+float EquationMakerScene::createNoneSlotObject(std::vector<int> vecList, std::string file, std::string fileOther, float _retStartY, float _marginY){
     if((int)vecList.size() > 2){
         int first = vecList[0];
         int sign = vecList[1];
@@ -351,7 +351,7 @@ float EquationMakerScene::createNoneSlotObject(std::vector<int> vecList, const s
     return _retStartY;
 }
 
-void EquationMakerScene::createNoneSlotMinus(int first, int second,std::string file, const std::string& fileOther, float _retStartY, float _marginY){
+void EquationMakerScene::createNoneSlotMinus(int first, int second,std::string file, std::string fileOther, float _retStartY, float _marginY){
     int right = first - second;
     int half = first/2;
     float winHalf = winSize.width/2.f;
@@ -435,7 +435,7 @@ void EquationMakerScene::createNoneSlotMinus(int first, int second,std::string f
     }
 }
 
-void EquationMakerScene::createNoneSlotPlus(int first, int second, const std::string& file, const std::string& fileOther, float _retStartY, float _marginY){
+void EquationMakerScene::createNoneSlotPlus(int first, int second,std::string file, std::string fileOther, float _retStartY, float _marginY){
     int firstHalf = first/2;
     int secondHalf = second/2;
     int rowArray[2][2] = {

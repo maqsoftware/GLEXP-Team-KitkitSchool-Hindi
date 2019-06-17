@@ -32,7 +32,7 @@ namespace ComprehensionTest
             return true;
         }
         
-        void ImageAndImageLayer::setQuestionImage(const std::string& folder, std::string imageFile)
+        void ImageAndImageLayer::setQuestionImage(std::string folder, std::string imageFile)
         {
             auto backgroundSprite = Sprite::create("ComprehensionTest/MultipleChoices/comprehention_multiplechoice_img.png");
             backgroundSprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);

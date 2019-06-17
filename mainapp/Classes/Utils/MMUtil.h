@@ -21,8 +21,8 @@ public:
 	static void GetStringVector(std::vector<std::string>& result, const std::string& szData, const char& cSlicer);
 	static void ParseCSV(std::vector<std::vector<std::string>>& result, const std::string& szData);
 	static void ParseTSV(std::vector<std::vector<std::string>>& result, const std::string& szData);
-	static std::string ReplaceReturn(const std::string& source);
-	static std::string ReplaceString(std::string source, const std::string& from, const std::string& to);
+	static std::string ReplaceReturn(std::string source);
+	static std::string ReplaceString(std::string source, const std::string from, const std::string to);
 private:
 };
 

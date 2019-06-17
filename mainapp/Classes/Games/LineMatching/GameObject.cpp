@@ -8,8 +8,11 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject() : m_fileName(""), m_successFileName(""), m_answer("") {
+GameObject::GameObject(){
     m_objectIndex = 0;
+    m_fileName = "";
+    m_successFileName = "";
+    m_answer = "";
     
     m_spriteBox = NULL;
     m_spriteDot = NULL;

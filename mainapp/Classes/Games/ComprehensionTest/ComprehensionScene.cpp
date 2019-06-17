@@ -91,7 +91,7 @@ Scene* ComprehensionScene::createScene(string bookFolder, int set, bool checkCom
     return scene;
 }
 
-int ComprehensionScene::getNumSet(const string& bookFolder)
+int ComprehensionScene::getNumSet(string bookFolder)
 {
     auto filedata = FileUtils::getInstance()->getStringFromFile(bookFolder+"/compquiz.txt");
     
@@ -378,7 +378,7 @@ void ComprehensionScene::setCheckCompleteCondition(bool checkCompleteCondition)
     _checkCompleteCondition = checkCompleteCondition;
 }
 
-void ComprehensionScene::setBookData(const string& bookFolder, int set)
+void ComprehensionScene::setBookData(string bookFolder, int set)
 {
     _bookFolder = bookFolder;
     _problemSetIndex = set;

@@ -40,7 +40,7 @@ namespace {
 }  // unnamed namespace
 
 
-TraceIndex TraceLocator::bestIndexByFinger(const TraceIndex& PassedIndex, const TraceString& String, Point FingerPoint)
+TraceIndex TraceLocator::bestIndexByFinger(TraceIndex PassedIndex, const TraceString& String, Point FingerPoint)
 {
     TraceIndex BestIndex = TraceIndex::end();
     float BestDistance = distanceLimit;
@@ -78,14 +78,14 @@ TraceIndex TraceLocator::bestIndexByFinger(const TraceIndex& PassedIndex, const 
     return BestIndex;
 }
 
-bool TraceLocator::isBadFinger(const TraceIndex& PassedIndex, const TraceString& String, Point FingerPoint) {
+bool TraceLocator::isBadFinger(TraceIndex PassedIndex, const TraceString& String, Point FingerPoint) {
     TracePoint Item = PassedIndex.pointFor(String);
     float DistanceToFinger = Item.Position.distance(FingerPoint);
 
     return DistanceToFinger >= badFingerDistance;
 }
 
-bool TraceLocator::isItGoodDayToAdvanceStroke(const TraceIndex& PassedIndex, const TraceString& String) {
+bool TraceLocator::isItGoodDayToAdvanceStroke(TraceIndex PassedIndex, const TraceString& String) {
     TraceIndex Start = PassedIndex;
     TraceIndex Stop = PassedIndex.indexForStrokeEnd(String);
 

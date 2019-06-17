@@ -28,6 +28,7 @@ void Subtitle::setFileName(string fileName) {
 
     istringstream iss(rawString);
     string line;
+    string word;
     float start, end;
     bool pushFlag = false;
     

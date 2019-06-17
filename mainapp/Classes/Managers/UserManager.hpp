@@ -71,19 +71,19 @@ public:
     string getCurrentLevelID();
     void setCurrentLevelID(string levelID);
     
-    string getCurrentDayKey(const string& levelID);
-    int getCurrentDay(const string& levelID);
+    string getCurrentDayKey(string levelID);
+    int getCurrentDay(string levelID);
     void setCurrentDay(string levelID, int day);
  
     void setPlayingDay(int day) { _playingDay = day; }
     int getPlayingDay() { return _playingDay; }
     
-    string getLevelOpenKey(const string& levelID);
+    string getLevelOpenKey(string levelID);
     bool isLevelOpen(string levelID);
     void setLevelOpen(string levelID, bool isOpen = true);
     bool isLevelCleared(string levelID);
     
-    PretestProgressType getPretestProgressType(const string& levelID);
+    PretestProgressType getPretestProgressType(string levelID);
     void setPretestProgressType(string levelID, PretestProgressType type);
     
     guideCoopType getGuideCoopStatus();
@@ -92,7 +92,7 @@ public:
     guideDayType getGuideDayStatus();
     void setGuideDayStatus(guideDayType type);
     
-    string getDayClearedKey(const string& levelID, int day);
+    string getDayClearedKey(string levelID, int day);
     bool isDayCleared(string levelID, int day);
     void setDayCleared(string levelID, int day, bool isCleared = true);
     
@@ -105,33 +105,33 @@ public:
     int numDayCleared(string levelID);
     float ratioDayCleared(string levelID);
     
-    string getGameClearedKey(const string& levelID, int day, int gameIndex);
+    string getGameClearedKey(string levelID, int day, int gameIndex);
     bool isGameCleared(string levelID, int day, int gameIndex);
     void setGameCleared(string levelID, int day, int gameIndex, bool isCleared = true);
     
-    string getSpecialCourseCurrentProgressKey(const string& levelID, int day);
-    void setSpecialCourseCurrentProgress(const string& levelID, int day, int gameIndex);
-    int getSpecialCourseCurrentProgress(const string& levelID, int day);
+    string getSpecialCourseCurrentProgressKey(string levelID, int day);
+    void setSpecialCourseCurrentProgress(string levelID, int day, int gameIndex);
+    int getSpecialCourseCurrentProgress(string levelID, int day);
     
     string getSpecialCourseLightOnKey(char course);
     void setSpecialCourseLightOn(char course);
     bool getSpecialCourseLightOn(char course);
     
-    string getFishPresentCurrentProgressLevelKey(const string& levelID);
-    void setFishPresentCurrentProgressLevel(const string& levelID, int levelIndex);
-    int getFishPresentCurrentProgressLevel(const string& levelID);
+    string getFishPresentCurrentProgressLevelKey(string levelID);
+    void setFishPresentCurrentProgressLevel(string levelID, int levelIndex);
+    int getFishPresentCurrentProgressLevel(string levelID);
 
     string getFishPresentLightOnKey(char course);
     void setFishPresentLightOn(char course);
     bool getFishPresentLightOn(char course);
 
-    string getFishPresentCurrentProgressIndexKey(const string& levelID, int levelIndex);
-    void setFishPresentCurrentProgressIndex(const string& levelID, int levelIndex, int index);
-    int getFishPresentCurrentProgressIndex(const string& levelID, int levelIndex);
+    string getFishPresentCurrentProgressIndexKey(string levelID, int levelIndex);
+    void setFishPresentCurrentProgressIndex(string levelID, int levelIndex, int index);
+    int getFishPresentCurrentProgressIndex(string levelID, int levelIndex);
 
-    string getFishPresentEnableKey(const string& levelID);
-    void setFishPresentEnable(const string& levelID, bool isEnable);
-    bool isFishPresentEnable(const string& levelID);
+    string getFishPresentEnableKey(string levelID);
+    void setFishPresentEnable(string levelID, bool isEnable);
+    bool isFishPresentEnable(string levelID);
 
     //string getProgressDataKey();
     //Json::Value getProgressData();

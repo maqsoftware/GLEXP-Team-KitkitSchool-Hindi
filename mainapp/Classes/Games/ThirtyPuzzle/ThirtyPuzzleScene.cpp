@@ -196,11 +196,7 @@ void ThirtyPuzzleScene::setProblem() {
         
         Piece* piece;
         bool inLastLine = (cellCount-i) <10 ? true : false;
-        auto cellNumberIterator = find(begin(questionNumbers), end(questionNumbers), cellNumber),
-                questionNumberEndIterator = questionNumbers.end();
-        int cellNumberPosition = std::distance(begin(questionNumbers), cellNumberIterator),
-                questionNumberEndPosition = std::distance(questionNumbers.begin(), questionNumbers.end());
-        if (cellNumberPosition == questionNumberEndPosition) {
+        if (find(begin(questionNumbers), end(questionNumbers), cellNumber) == questionNumbers.end()) {
             piece = Piece::create();
             piece->setAttribute(cellNumber, fontSize, true, inLastLine);
             

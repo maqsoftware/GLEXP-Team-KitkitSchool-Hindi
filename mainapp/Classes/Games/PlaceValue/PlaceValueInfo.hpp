@@ -24,15 +24,15 @@ using namespace std;
 class PlaceValueInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() override { return "PlaceValue"; }
-    virtual std::string getSceneName() override { return "PlaceValueScene"; }
+    virtual std::string getGameName() { return "PlaceValue"; }
+    virtual std::string getSceneName() { return "PlaceValueScene"; }
     
-    virtual Scene* createScene(std::string levelID) override {
+    virtual Scene* createScene(std::string levelID) {
         return PlaceValueScene::createScene(levelID);
     }
     
     
-    virtual std::vector<std::string> enumerateLevelIDs() override;
+    virtual std::vector<std::string> enumerateLevelIDs();
     int getMaxLevel();
     
     

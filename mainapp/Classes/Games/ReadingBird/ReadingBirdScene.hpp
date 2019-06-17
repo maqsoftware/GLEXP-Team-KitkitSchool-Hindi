@@ -136,7 +136,7 @@ namespace ReadingBird {
         void processOnRecordScore(int score);
         void processOnStopPlayAudio();
         void processOnPlayVolume(int volume);
-        static vector<int> levelIDsFor(bool isSdCard = false, const string& sdcardPath = "");
+        static vector<int> levelIDsFor(bool isSdCard = false, string sdcardPath = "");
     };
 }  // namespace ReadingBird
 #endif /* ReadingBirdScene_hpp */

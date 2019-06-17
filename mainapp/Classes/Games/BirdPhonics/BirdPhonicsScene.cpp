@@ -67,7 +67,7 @@ using namespace BirdPhonicsSceneSpace;
  Bread
  *************/
 
-void Bread::setWord(string word, const string& phonic_owner, string word_sound, string phonic_position)
+void Bread::setWord(string word, string phonic_owner, string word_sound, string phonic_position)
 {
     _word = word;
     _phonic_owner = phonic_owner;
@@ -289,7 +289,7 @@ void Bird::setType(int type, std::function<void(void)> func)
     
 }
 
-void Bird::setPhonic(const string& phonic_owner, string phonic_sound)
+void Bird::setPhonic(string phonic_owner, string phonic_sound)
 {
     _phonic_owner = phonic_owner;
     

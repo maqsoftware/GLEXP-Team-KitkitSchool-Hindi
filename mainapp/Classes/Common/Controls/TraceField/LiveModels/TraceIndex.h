@@ -75,7 +75,7 @@ public:
     TraceIndex indexForStrokeEnd(const TraceGlyph& Glyph) const;
     TraceIndex indexForStrokeEnd(const TraceStroke& Stroke) const;
 
-    TraceIndex clip(const TraceIndex& Begin, const TraceIndex& End) const;
+    TraceIndex clip(const TraceIndex& Begin, const TraceIndex End) const;
 
     const TracePoint& pointFor(const TraceString& String) const;
     const TracePoint& pointFor(const TraceGlyph& Glyph) const;

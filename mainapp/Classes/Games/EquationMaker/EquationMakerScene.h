@@ -133,10 +133,10 @@ private:
     
     void removeAllObject();
     
-    float createNoneSlotObject(std::vector<int> vecList, const std::string& file, const std::string& fileOther, float _retStartY, float _marginY);
+    float createNoneSlotObject(std::vector<int> vecList, std::string file, std::string fileOther, float _retStartY, float _marginY);
 
-    void createNoneSlotPlus(int first, int second, const std::string& file, const std::string& fileOther, float _retStartY, float _marginY);
-    void createNoneSlotMinus(int first, int second,std::string file, const std::string& fileOther, float _retStartY, float _marginY);
+    void createNoneSlotPlus(int first, int second,std::string file, std::string fileOther, float _retStartY, float _marginY);
+    void createNoneSlotMinus(int first, int second,std::string file, std::string fileOther, float _retStartY, float _marginY);
     
     
     float getObjectWidth(int lvType);

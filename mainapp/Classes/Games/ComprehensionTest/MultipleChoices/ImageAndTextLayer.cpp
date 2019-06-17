@@ -35,7 +35,7 @@ namespace ComprehensionTest
             return true;
         }
         
-        void ImageAndTextLayer::setQuestionImage(const std::string& folder, std::string imageFile)
+        void ImageAndTextLayer::setQuestionImage(std::string folder, std::string imageFile)
         {
             _backgroundSprite = Sprite::create("ComprehensionTest/MultipleChoices/comprehention_multiplechoice_img.png");
             _backgroundSprite->setContentSize(Size(852, 876));

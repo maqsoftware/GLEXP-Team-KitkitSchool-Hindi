@@ -16,6 +16,7 @@ int WordMatrixInfo::getMaxLevel()
     auto data = TodoUtil::readTSV(S);
     
     int i = 0;
+    map<int, vector<WORD_MATRIX_DATA>> questionInfoMap;
     while (i < data.size())
     {
         auto row = data[i++];

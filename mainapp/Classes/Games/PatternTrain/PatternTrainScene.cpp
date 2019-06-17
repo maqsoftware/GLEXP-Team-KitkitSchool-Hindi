@@ -696,7 +696,7 @@ void PatternTrainScene::trainJump() {
     int i = 0;
     for (auto freightCar : _freightCars) {
         for (auto slot : freightCar->_slotsInFreightCar) {
-            int soundNumber = 0;
+            int soundNumber;
             if (slot->_boxInSlot->_assignedLetter == "A") soundNumber = 1;
             else if (slot->_boxInSlot->_assignedLetter == "B") soundNumber = 2;
             else if (slot->_boxInSlot->_assignedLetter == "C") soundNumber = 3;

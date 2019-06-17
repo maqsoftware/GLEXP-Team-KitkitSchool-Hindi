@@ -20,7 +20,7 @@ public:
     virtual bool init() override;
     static int _index;
     
-    void setType(const string& letter, string boxPath, PatternTrainProblemBank::shape newShape, bool setAnswer = false);
+    void setType(string letter, string boxPath, PatternTrainProblemBank::shape newShape, bool setAnswer = false);
     void loadOnSlot(Slot *targetSlot);
     void unload(Node *ground);
     void setGlobalZOrderManual(float order);

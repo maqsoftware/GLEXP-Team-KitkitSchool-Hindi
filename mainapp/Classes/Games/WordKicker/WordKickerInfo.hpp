@@ -24,15 +24,15 @@ using namespace std;
 class WordKickerInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() override { return "WordKicker"; }
-    virtual std::string getSceneName() override { return "WordKickerScene"; }
+    virtual std::string getGameName() { return "WordKicker"; }
+    virtual std::string getSceneName() { return "WordKickerScene"; }
     
-    virtual Scene* createScene(std::string levelID) override {
+    virtual Scene* createScene(std::string levelID) {
         return WordKicker::WordKickerScene::createScene(levelID);
     }
     
     
-    virtual std::vector<std::string> enumerateLevelIDs() override;
+    virtual std::vector<std::string> enumerateLevelIDs();
     
     
     
@@ -41,15 +41,15 @@ public:
 class MathKickerInfo : public KitkitGameInfo
 {
 public:
-    virtual std::string getGameName() override { return "MathKicker"; }
-    virtual std::string getSceneName() override { return "MathKickerScene"; }
+    virtual std::string getGameName() { return "MathKicker"; }
+    virtual std::string getSceneName() { return "MathKickerScene"; }
     
-    virtual Scene* createScene(std::string levelID) override {
+    virtual Scene* createScene(std::string levelID) {
         return WordKicker::WordKickerScene::createScene(levelID, WordKicker::MATHKICKER);
     }
     
     
-    virtual std::vector<std::string> enumerateLevelIDs() override;
+    virtual std::vector<std::string> enumerateLevelIDs();
     
     
     

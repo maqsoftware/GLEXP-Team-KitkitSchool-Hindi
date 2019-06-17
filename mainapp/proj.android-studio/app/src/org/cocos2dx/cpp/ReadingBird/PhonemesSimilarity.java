@@ -2,7 +2,6 @@ package org.cocos2dx.cpp.ReadingBird;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class PhonemesSimilarity {
@@ -153,12 +152,12 @@ public class PhonemesSimilarity {
             init();
         }
 
-        phoneme = phoneme.toLowerCase(Locale.getDefault());
+        phoneme = phoneme.toLowerCase();
         result = gNeighborPhonemes.get(phoneme);
         if (result == null) {
-            result = phoneme.toUpperCase(Locale.getDefault());
+            result = phoneme.toUpperCase();
         } else {
-            result = result.toUpperCase(Locale.getDefault());
+            result = result.toUpperCase();
         }
 
         return result;

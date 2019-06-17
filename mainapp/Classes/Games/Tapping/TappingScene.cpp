@@ -389,7 +389,7 @@ void TappingScene::balloonFlown(TappingBalloon *balloon, bool touched)
             _progressBar->setCurrent(_popCount+1, true);
             _popCount++;
             
-            (_popCount % 10) ? popLabel(_popCount, 100, p) : countImage(_popCount, balloon->getCenter());
+            _popCount % 10 ? popLabel(_popCount, 100, p) : countImage(_popCount, balloon->getCenter());
             
             if (_popCount==100) {
                 CompletePopup::create()->show(1.0, [](){

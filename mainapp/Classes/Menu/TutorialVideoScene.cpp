@@ -107,7 +107,7 @@ void TutorialVideoScene::onEnterTransitionDidFinish()
     
 }
 
-cocos2d::Scene* TutorialVideoScene::createScene(const string& gameName, std::function<cocos2d::Scene*(void)> creator, bool allowSkip)
+cocos2d::Scene* TutorialVideoScene::createScene(string gameName, std::function<cocos2d::Scene*(void)> creator, bool allowSkip)
 {
     auto scene = Scene::create();
     auto winSize = Director::getInstance()->getWinSize();
@@ -124,7 +124,7 @@ cocos2d::Scene* TutorialVideoScene::createScene(const string& gameName, std::fun
     return scene;
 }
 
-cocos2d::Scene* TutorialVideoScene::createSceneWithCustomFileName(const string& fileName, std::function<cocos2d::Scene*(void)> creator, bool allowSkip)
+cocos2d::Scene* TutorialVideoScene::createSceneWithCustomFileName(string fileName, std::function<cocos2d::Scene*(void)> creator, bool allowSkip)
 {
     auto scene = Scene::create();
     auto winSize = Director::getInstance()->getWinSize();
@@ -141,27 +141,27 @@ cocos2d::Scene* TutorialVideoScene::createSceneWithCustomFileName(const string& 
     return scene;
 }
 
-bool TutorialVideoScene::tutorialExists(const std::string& gameName)
+bool TutorialVideoScene::tutorialExists(std::string gameName)
 {
     auto path = getTutorialFile(gameName);
     auto exists = FileUtils::getInstance()->isFileExist(path);
     return exists;
 }
 
-bool TutorialVideoScene::tutorialExistsWithCustomName(const std::string& fileName)
+bool TutorialVideoScene::tutorialExistsWithCustomName(std::string fileName)
 {
     auto path = getTutorialFileWithCustomName(fileName);
     auto exists = FileUtils::getInstance()->isFileExist(path);
     return exists;
 }
 
-std::string TutorialVideoScene::getTutorialFile(const std::string& gameName)
+std::string TutorialVideoScene::getTutorialFile(std::string gameName)
 {
     auto path = LanguageManager::getInstance()->findLocalizedResource("TutorialVideo/xPrize Tutorial - " + gameName + ".m4v");
     return path;
 }
 
-std::string TutorialVideoScene::getTutorialFileWithCustomName(const std::string& fileName)
+std::string TutorialVideoScene::getTutorialFileWithCustomName(std::string fileName)
 {
     auto path = LanguageManager::getInstance()->findLocalizedResource("TutorialVideo/" + fileName);
     return path;

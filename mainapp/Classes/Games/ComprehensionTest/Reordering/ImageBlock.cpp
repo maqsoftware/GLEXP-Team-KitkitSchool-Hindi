@@ -37,7 +37,7 @@ bool ImageBlock::init()
     return true;
 }
 
-void ImageBlock::initAsSlot(const std::string& imageFile)
+void ImageBlock::initAsSlot(std::string imageFile)
 {
     CCLOG("initAsSlot");
     _bSlot = true;
@@ -53,7 +53,7 @@ void ImageBlock::initAsSlot(const std::string& imageFile)
     _face->addChild(DottedRect::create(wordBlockSize));
 }
 
-void ImageBlock::initAsBlock(const std::string& folder, std::string imageFile)
+void ImageBlock::initAsBlock(std::string folder, std::string imageFile)
 {
     _bSlot = false;
     _imageFile = imageFile;

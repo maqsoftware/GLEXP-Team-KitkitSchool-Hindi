@@ -18,9 +18,9 @@ Problem::Problem()
 {
 }
 
-Problem::Problem(const std::string& Text,
-                 const std::string& VideoFileName,
-                 const std::string& TeaserFileName)
+Problem::Problem(std::string Text,
+                 std::string VideoFileName,
+                 std::string TeaserFileName)
 : ProblemID(0)
 , Text(Text)
 , VideoFileName(VideoFileName)
