@@ -271,7 +271,12 @@ public class MultiUserActivity extends AppCompatActivity {
                     try {
                         int result = Integer.parseInt(userAge.getText().toString());
                         KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                        k = dbHandler.numUser();
+                        if(dbHandler.numUser() == 0){
+                            k = 0;
+                        }
+                        else {
+                            k = dbHandler.lastRowId();
+                        }
                         if (imageInByte != null) {
                             if( result>= 1) {
                                 User user = new User("user-" + Integer.toString(k), userAge.getText().toString(), imageInByte);
@@ -282,9 +287,9 @@ public class MultiUserActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }
-                            else{
-                                Toast.makeText(getApplicationContext(), "Invalid Age",Toast.LENGTH_LONG).show();
-                            }
+                            //else{
+                              //  Toast.makeText(getApplicationContext(), "Invalid Age",Toast.LENGTH_LONG).show();
+                            //}
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "Age or Image missing",Toast.LENGTH_LONG).show();

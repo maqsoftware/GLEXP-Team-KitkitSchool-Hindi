@@ -315,6 +315,18 @@ public class KitkitDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
+    public int lastRowId() {
+        String[] projection = {"last_insert_rowid()"};
+        Cursor cursor = myCR.query(KitkitProvider.CONTENT_URI, projection, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int lastRow = cursor.getInt(0);
+            cursor.close();
+            return lastRow;
+        }
+        return 0;
+    }
+
     public int numUser() {
         String[] projection = {"COUNT(*) AS COUNT"};
         Cursor cursor = myCR.query(KitkitProvider.CONTENT_URI,
