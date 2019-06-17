@@ -12,6 +12,7 @@ android {
         targetSdkVersion PROP_TARGET_SDK_VERSION
         versionCode 13
         versionName "3.0.4"
+
         lintOptions {
             abortOnError false
         }

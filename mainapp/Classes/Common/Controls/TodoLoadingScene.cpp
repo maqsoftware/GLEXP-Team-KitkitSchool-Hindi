@@ -136,7 +136,6 @@ bool TodoLoadingScene::init(std::function<Scene*(void)> &creator, float loadingT
     loadingLabelEnglish->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     loadingLabelEnglish->setPosition(Vec2(winSize.width/2, winSize.height/2 - imageSize.height/2));
     addChild(loadingLabelEnglish);
-
     return true;
     
 }
