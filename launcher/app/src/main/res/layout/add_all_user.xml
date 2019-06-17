@@ -51,15 +51,15 @@
 
     <Button
         android:id="@+id/register"
-        android:layout_width="wrap_content"
+        android:layout_width="154dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/roundbutton"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="Register\\रजिस्टर"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="@+id/ageInput"
@@ -177,7 +177,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11192214" />
+        app:layout_constraintGuide_percent="0.12" />
 
 
 </android.support.constraint.ConstraintLayout>
