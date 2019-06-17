@@ -46,9 +46,9 @@ public class MultiUserActivity extends AppCompatActivity {
     private byte imageInByte[];
     private Context schoolContext;
     private SharedPreferences schoolPref;
-    private UserNameListDialog userNameListDialog;
     public static Dialog selectUserDialog;
-    private ViewPager imagePager;
+    public static ViewPager imagePager;
+    public static int currentUserId;
     Dialog editPurpose;
     Button exit;
     ImageView picture;
@@ -58,12 +58,10 @@ public class MultiUserActivity extends AppCompatActivity {
     Button update;
     Button delete;
     Button goback;
-
+    ArrayList<User> users;
     Button goToDashboard;
     Dialog updateUserDialog;
     int k =0;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +105,7 @@ public class MultiUserActivity extends AppCompatActivity {
 
         int edituserId = imagePager.getCurrentItem();
         KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-        User user = dbHandler.findUser("user-" + edituserId);
+        User user = dbHandler.findUser(users.get(edituserId).getUserName());
 
         pic.setImageBitmap(converToBitmap(user.getImage()));
         updateage.setText(user.getAge());
@@ -139,8 +137,6 @@ public class MultiUserActivity extends AppCompatActivity {
 
                 Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(takepic, REQUEST_UPDATE);
-
-
                 takepic.setType("image/*");
                 takepic.putExtra("crop", "true");
                 takepic.putExtra("aspectX", 0);
@@ -156,7 +152,7 @@ public class MultiUserActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     int edituserId = imagePager.getCurrentItem();
                     KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                    User user = dbHandler.findUser("user-" + edituserId);
+                    User user = dbHandler.findUser(users.get(edituserId).getUserName());
                     if (user != null) {
                         user.setImage(imageInByte);
                         user.setAge(updateage.getText().toString());
@@ -176,14 +172,13 @@ public class MultiUserActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
                     int edituserId = imagePager.getCurrentItem();
-                    dbHandler.deleteUser("user-" + edituserId);
+                    dbHandler.deleteUser(users.get(edituserId).getUserName());
                     Intent intent = new Intent(MultiUserActivity.this, MultiUserActivity.class);
                     startActivity(intent);
                     finish();
                 }
             });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -196,8 +191,6 @@ public class MultiUserActivity extends AppCompatActivity {
                 if (extras != null) {
                     Bitmap yourImage = extras.getParcelable("data");
                     picture.setImageBitmap(yourImage);
-
-                    //convert Bitmap to byte
 
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     yourImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -222,8 +215,6 @@ public class MultiUserActivity extends AppCompatActivity {
         }
     }
 
-
-
     public void AddAllUser(View v) {
 
         try {
@@ -233,7 +224,6 @@ public class MultiUserActivity extends AppCompatActivity {
             userAge = (EditText) addUserDialog.findViewById(R.id.ageInput);
             submit = (Button) addUserDialog.findViewById(R.id.register);
             picture = (ImageView) addUserDialog.findViewById(R.id.updatepic);
-
 
             // to show the Add user dialog
             addUserDialog.show();
@@ -249,7 +239,6 @@ public class MultiUserActivity extends AppCompatActivity {
                 decorView.setSystemUiVisibility(uiOptions);
             }
 
-
             // Go Back listener
             close.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -259,15 +248,12 @@ public class MultiUserActivity extends AppCompatActivity {
             });
 
             // Code to click picture
-
             btnTakePic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     Intent takepic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(takepic, REQUEST_IMAGE_CAPTURE);
-
-
                     takepic.setType("image/*");
                     takepic.putExtra("crop", "true");
                     takepic.putExtra("aspectX", 0);
@@ -277,7 +263,6 @@ public class MultiUserActivity extends AppCompatActivity {
 
                 }
             });
-
 
             //Register user.
             submit.setOnClickListener(new View.OnClickListener() {
@@ -301,7 +286,6 @@ public class MultiUserActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Invalid Age",Toast.LENGTH_LONG).show();
                             }
                         }
-
                         else{
                             Toast.makeText(getApplicationContext(), "Age or Image missing",Toast.LENGTH_LONG).show();
                         }
@@ -316,15 +300,12 @@ public class MultiUserActivity extends AppCompatActivity {
         catch (Exception ne){
             Toast.makeText(this, "Age or Image missing",Toast.LENGTH_LONG).show();
         }
-
-
     }
-
 
     public void SelectUser(View view) {
         try {
             KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
-            ArrayList<User> users = dbHandler.getUserList();
+            users = dbHandler.getUserList();
             exit = (Button) selectUserDialog.findViewById(R.id.close);
             goToDashboard = (Button) selectUserDialog.findViewById(R.id.gotodashboard);
 
@@ -355,8 +336,8 @@ public class MultiUserActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     try {
                         KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
-                        int userId = imagePager.getCurrentItem();
-                        User user = dbHandler.findUser("user-" + userId);
+                        currentUserId = imagePager.getCurrentItem();
+                        User user = dbHandler.findUser(users.get(currentUserId).getUserName());
                         if(user != null){
                             dbHandler.setCurrentUser(user);
                         }
@@ -370,8 +351,6 @@ public class MultiUserActivity extends AppCompatActivity {
                 }
             });
 
-
-
             exit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -384,5 +363,4 @@ public class MultiUserActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
-
 }
