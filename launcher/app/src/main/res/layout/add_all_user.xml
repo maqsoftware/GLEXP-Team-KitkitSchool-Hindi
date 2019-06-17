@@ -122,7 +122,7 @@
     <ImageView
         android:id="@+id/updatepic"
         android:layout_width="0dp"
-        android:layout_height="155dp"
+        android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
@@ -170,14 +170,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.11" />
+        app:layout_constraintGuide_percent="0.11080711" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11" />
+        app:layout_constraintGuide_percent="0.11192214" />
 
 
 </android.support.constraint.ConstraintLayout>
