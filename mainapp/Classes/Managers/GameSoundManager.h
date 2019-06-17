@@ -72,7 +72,7 @@ public:
 
     void unloadAllEffect();
     void preloadEffect(std::string name);
-    void setFilePath(std::string path);
+    void setFilePath(const std::string& path);
     
     
     std::string getAdultVoiceName(int num, eAdultVoice vType = K_ADULT_VOIDE_NONE);

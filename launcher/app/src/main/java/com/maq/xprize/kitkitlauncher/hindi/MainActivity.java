@@ -1,5 +1,6 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
@@ -10,6 +11,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -25,6 +28,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -32,6 +36,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +47,7 @@ import com.maq.kitkitlogger.KitKitLoggerActivity;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
@@ -73,10 +79,11 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     private static Thread ftpConnector = null;
     private static Thread logUploader = null;
     private static Thread imageUploader = null;
-
+    Dialog selectUserDialog;
     private Context cntx = null;
     private Button mTitle;
     private TextView mTvUserName;
+    private ImageView picture;
 
     /*private _batteryinfo = new PowerConnectionReceiver() {
         @Override
@@ -153,6 +160,8 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         Util.hideSystemUI(this);
         cntx = getBaseContext();
         Util.setScale(this, findViewById(R.id.main_content));
+        selectUserDialog = new Dialog(this);
+        selectUserDialog.setContentView(R.layout.activity_select_user);
 
         /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
 
@@ -240,14 +249,26 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             }
         });
 
+
         mTitle = findViewById(R.id.launcher_title_button);
         Typeface face = Typeface.createFromAsset(getAssets(),
                 "TodoMainCurly.ttf");
         mTitle.setTypeface(face);
         mTitle.setOnTouchListener(mLongTouchListener);
+        KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
+        User user = dbHandler.getCurrentUser();
 
+        picture = findViewById(R.id.userImage);
+        picture.setImageBitmap(converToBitmap(user.getImage()));
         mTvUserName = findViewById(R.id.textView_currentUserId);
-        mTvUserName.setOnTouchListener(mLongTouchListener);
+        picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(MainActivity.this, MultiUserActivity.class);
+               startActivity(intent);
+               finish();
+            }
+        });
 
         registerLockscreenReceiver();
 
@@ -339,6 +360,12 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         if (hasFocus) {
             Util.hideSystemUI(this);
         }
+    }
+
+    public Bitmap converToBitmap(byte[] image){
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(image);
+        Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+        return theImage;
     }
 
     private void refreshUI() {

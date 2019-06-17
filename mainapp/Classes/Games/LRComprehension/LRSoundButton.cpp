@@ -17,7 +17,7 @@ namespace
 
 vector<LRSoundButton*> LRSoundButton::soundButtons = vector<LRSoundButton*>();
 
-bool LRSoundButton::init(bool isLarge, string soundName)
+bool LRSoundButton::init(bool isLarge, const string& soundName)
 {
     if (Node::init() == false)
         return false;

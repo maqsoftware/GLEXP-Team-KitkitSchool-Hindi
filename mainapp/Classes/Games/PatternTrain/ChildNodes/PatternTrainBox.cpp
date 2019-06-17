@@ -82,7 +82,7 @@ void Box::setGlobalZOrderManual(float order){
     if (_deco != nullptr) _deco->setGlobalZOrder(order+2);
 }
 
-void Box::setType(string letter, string boxPath, PatternTrainProblemBank::shape newShape, bool setAnswer) {
+void Box::setType(const string& letter, string boxPath, PatternTrainProblemBank::shape newShape, bool setAnswer) {
     LOGFN();
     _assignedLetter = letter;
     _assignedIndex = Box::_index++;

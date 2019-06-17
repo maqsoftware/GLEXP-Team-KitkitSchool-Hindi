@@ -5,5 +5,4 @@
     coreApp="true"
     android:process="system"
     >
-
 </manifest>

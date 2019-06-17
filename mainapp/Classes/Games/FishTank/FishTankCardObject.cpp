@@ -8,10 +8,9 @@
 
 #include "FishTankCardObject.h"
 
-FishTankCardObject::FishTankCardObject()
+FishTankCardObject::FishTankCardObject() : m_Answer("")
 {
     m_isAnswered = false;
-    m_Answer = "";
     
     m_labelLarge = NULL;
     m_labelSmall = NULL;

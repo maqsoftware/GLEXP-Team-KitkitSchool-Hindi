@@ -47,7 +47,7 @@ public:
 	virtual void EndGame() override;;
 
 	void SetData(int index, const std::string& armatureFile);
-	void SetNextArmatureFile(const std::string armatureFile) { _nextArmatureFile = armatureFile; }
+	void SetNextArmatureFile(const std::string& armatureFile) { _nextArmatureFile = armatureFile; }
 
 private:
 	cocostudio::Armature* LoadArmature(std::string file);

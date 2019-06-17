@@ -43,7 +43,7 @@ public class UserNameListDialog extends Dialog {
         setContentView(R.layout.dialog_user_list);
         Util.setScale(((Activity) context), findViewById(R.id.root));
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(new RecyclerAdapter());
 
@@ -63,8 +63,6 @@ public class UserNameListDialog extends Dialog {
         });
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
         @Override
@@ -78,6 +76,10 @@ public class UserNameListDialog extends Dialog {
             User item = mData.get(position);
             holder.mTvNumber.setText(item.getUserName());
             holder.mTvName.setText(item.getDisplayName());
+            holder.mTvEnglish.setText(String.valueOf(item.getGamesClearedInTotal_L()));
+            holder.mTvMath.setText(String.valueOf(item.getGamesClearedInTotal_M()));
+            holder.mTvTotal.setText(String.valueOf(item.getGamesClearedInTotal_L() + item.getGamesClearedInTotal_M()));
+            holder.mTvCoins.setText(String.valueOf(item.getNumStars()));
             holder.itemView.setBackgroundColor(position % 2 == 0 ? Color.LTGRAY : 0xd5d5d5);
         }
 
@@ -92,11 +94,19 @@ public class UserNameListDialog extends Dialog {
         public class ViewHolder extends RecyclerView.ViewHolder {
             private TextView mTvNumber;
             private TextView mTvName;
+            private TextView mTvEnglish;
+            private TextView mTvMath;
+            private TextView mTvTotal;
+            private TextView mTvCoins;
 
             public ViewHolder(View itemView) {
                 super(itemView);
-                mTvNumber = (TextView) itemView.findViewById(R.id.tv_number);
-                mTvName = (TextView) itemView.findViewById(R.id.tv_name);
+                mTvNumber = itemView.findViewById(R.id.tv_number);
+                mTvName = itemView.findViewById(R.id.tv_name);
+                mTvEnglish = itemView.findViewById(R.id.tv_english);
+                mTvMath = itemView.findViewById(R.id.tv_math);
+                mTvTotal = itemView.findViewById(R.id.tv_total);
+                mTvCoins = itemView.findViewById(R.id.tv_coins);
             }
         }
     }

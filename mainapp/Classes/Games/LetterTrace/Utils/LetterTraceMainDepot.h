@@ -27,7 +27,7 @@ public:
     cocos2d::Sprite* createBackgroundSprite() const;
     cocos2d::Node* createGameNode() const;
     cocos2d::Label* createNextLabel() const;
-    cocos2d::ui::Button* createNextButton(std::string T) const;
+    cocos2d::ui::Button* createNextButton(const std::string& T) const;
 
     void preloadSoundEffects() const;
     SoundEffect soundForLetter(const std::string& Letter) const;
@@ -38,7 +38,7 @@ public:
     SoundEffect soundForBadAssetTouch() const;
     SoundEffect soundForWorkComplete() const;
     
-    std::string videoFilePathByFileName(std::string FileName);
+    std::string videoFilePathByFileName(const std::string& FileName);
     
 private:
     cocos2d::Sprite* createNextButtonBottomSprite() const;

@@ -410,7 +410,7 @@ void CCAppController::startCurriculumGame(std::string levelID, int day, int game
     }
 }
 
-void CCAppController::startFreeChoiceGame(std::string gameName, int level)
+void CCAppController::startFreeChoiceGame(const std::string gameName, int level)
 {
     _isFreeChoice = true;
     startGame(gameName, level);
@@ -980,9 +980,9 @@ void CCAppController::handleGameQuit(bool bImmediately)
     _isFreeChoice = false;
     
     if (bImmediately) {
-        ((CustomDirector*)Director::getInstance())->popScene();
+        reinterpret_cast<CustomDirector*>(Director::getInstance())->popScene();
     } else {
-        ((CustomDirector*)Director::getInstance())->popSceneWithTransition<TransitionFade>(0.5);
+        reinterpret_cast<CustomDirector*>(Director::getInstance())->popSceneWithTransition<TransitionFade>(0.5);
     }
 
 }
@@ -1034,7 +1034,7 @@ void CCAppController::handleGameComplete(int result)
     }
     
     
-    ((CustomDirector*)Director::getInstance())->popSceneWithTransition<TransitionFade>(0.5);
+    reinterpret_cast<CustomDirector*>(Director::getInstance())->popSceneWithTransition<TransitionFade>(0.5);
 }
 
 
@@ -1198,7 +1198,7 @@ void CCAppController::startQuiz(std::string classroom, int studentNumber, std::s
 
 #else
 
-void CCAppController::startQuiz(std::string classroom, int studentNumber, std::string courseKind) {}
+void CCAppController::startQuiz(const std::string& classroom, int studentNumber, const std::string& courseKind) {}
 
 #endif //WINRT
     /*

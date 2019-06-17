@@ -34,7 +34,7 @@ public:
     //bool init(BirdType type, BirdStatus status);
     
     static Bird* create(char category, int level, std::string levelID);
-    bool init(char category, int level, std::string levelID);
+    bool init(char category, int level, const std::string& levelID);
     
 
     void setBirdProgress(float progress);

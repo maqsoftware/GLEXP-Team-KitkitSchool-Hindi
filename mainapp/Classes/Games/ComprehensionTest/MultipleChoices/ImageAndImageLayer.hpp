@@ -28,7 +28,7 @@ namespace ComprehensionTest
             CREATE_FUNC(ImageAndImageLayer);
             virtual bool init() override;
             
-            void setQuestionImage(std::string folder, std::string imageFile);
+            void setQuestionImage(const std::string& folder, std::string imageFile);
             void setAnswers(std::string folder, std::vector<std::string> imageFiles);
             
             MultipleChoicesScene* parentScene;

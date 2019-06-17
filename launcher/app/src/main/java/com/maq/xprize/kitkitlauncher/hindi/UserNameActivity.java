@@ -1,8 +1,12 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -23,6 +27,9 @@ public class UserNameActivity extends KitKitLoggerActivity {
     private TextView mTvUserName;
     private View mVRename;
 
+    private Context schoolContext;
+    private SharedPreferences schoolPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +45,9 @@ public class UserNameActivity extends KitKitLoggerActivity {
             }
         });
 
-        mTvUserNo = (TextView) findViewById(R.id.tvUserNo);
-        mTvUserName = (TextView) findViewById(R.id.tvUserName);
+        mTvUserNo = findViewById(R.id.tvUserNo);
+        mTvUserName = findViewById(R.id.tvUserName);
         mTvUserName.setOnClickListener(mOnClickListener);
-
         mVRename = findViewById(R.id.vRename);
         mVRename.setOnClickListener(mOnClickListener);
         findViewById(R.id.vSelectUserNumber).setOnClickListener(mOnClickListener);
@@ -84,16 +90,10 @@ public class UserNameActivity extends KitKitLoggerActivity {
         User user = ((LauncherApplication) getApplication()).getDbHandler().getCurrentUser();
         mTvUserNo.setText(getString(R.string.user_no) + " " + user.getUserName().replace("user", ""));
         String displayName = user.getDisplayName();
-        if (displayName == null || displayName.isEmpty()) {
-            mTvUserName.setBackgroundResource(R.drawable.rounded_line_blue);
-            mTvUserName.setText("");
-            mVRename.setVisibility(View.INVISIBLE);
 
-        } else {
-            mTvUserName.setBackgroundColor(Color.WHITE);
-            mTvUserName.setText(displayName);
-            mVRename.setVisibility(View.VISIBLE);
-        }
+        mTvUserName.setBackgroundColor(Color.WHITE);
+        mTvUserName.setText(displayName);
+        mVRename.setVisibility(View.VISIBLE);
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -125,8 +125,7 @@ public class UserNameActivity extends KitKitLoggerActivity {
                     registerUserDialog.show();
                 }
                 break;
-                case R.id.vSelectUserNumber:
-                {
+                case R.id.vSelectUserNumber: {
                     SelectNumberDialog selectNumberDialog = new SelectNumberDialog(UserNameActivity.this, SelectNumberDialog.MODE.USER_NO, new SelectNumberDialog.Callback() {
                         @Override
                         public void onSelectedNumber(int number) {
@@ -142,15 +141,24 @@ public class UserNameActivity extends KitKitLoggerActivity {
                     selectNumberDialog.show();
 
                 }
-                    break;
-                case R.id.vUserNameList:
-                {
+                break;
+                case R.id.vUserNameList: {
                     KitkitDBHandler dbHandler = ((LauncherApplication) getApplication()).getDbHandler();
                     ArrayList<User> users = dbHandler.getUserList();
+                    try {
+                        schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
+                        schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+                        for (User u : users) {
+                            u.setGamesClearedInTotal_L(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_L"), 0));
+                            u.setGamesClearedInTotal_M(schoolPref.getInt((u.getUserName() + "_gamesClearedInTotal_en-US_M"), 0));
+                        }
+                    } catch (PackageManager.NameNotFoundException ne) {
+                        Log.e(TAG, ne.toString());
+                    }
                     UserNameListDialog userNameListDialog = new UserNameListDialog(UserNameActivity.this, users);
                     userNameListDialog.show();
                 }
-                    break;
+                break;
             }
         }
     };

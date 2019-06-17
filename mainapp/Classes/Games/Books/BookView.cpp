@@ -687,7 +687,7 @@ string BookView::getCurrentBook() {
     return _currentBook;
 }
 
-void BookView::setCurrentBook(string book) {
+void BookView::setCurrentBook(const string& book) {
     _currentBook = book;
 }
 

@@ -29,8 +29,8 @@ public:
     
     static Size wordBlockSize;
     
-    void initAsSlot(std::string imageFile);
-    void initAsBlock(std::string folder, std::string imageFile);
+    void initAsSlot(const std::string& imageFile);
+    void initAsBlock(const std::string& folder, std::string imageFile);
     
     std::string getValue();
     std::string getSolutionValue();

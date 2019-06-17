@@ -467,7 +467,7 @@ void SentenceMakerScene::drawBottomItems()
     }
 }
 
-void SentenceMakerScene::playWordSound(string word)
+void SentenceMakerScene::playWordSound(const string& word)
 {
     double delayTime = 0;
     auto wordSoundNameVector = getRefinedWordSoundName(word);
@@ -726,7 +726,7 @@ string SentenceMakerScene::getLowerString(string value)
 vector<string> SentenceMakerScene::getRefinedWordSoundName(string value)
 {
     vector<string> soundVector;
-    soundVector.empty();
+    soundVector.clear();
     TodoUtil::replaceAll(value, ".", "");
     
     for (auto eachValue : TodoUtil::split(value, ' '))

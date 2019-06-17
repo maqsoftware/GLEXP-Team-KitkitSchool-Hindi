@@ -5,12 +5,14 @@ package com.maq.kitkitProvider;
  */
 
 
-public class User {
+public class User<string> {
     public static boolean DEFAULT_OPEN_LIBRARY = true;
     public static boolean DEFAULT_OPEN_TOOLS = true;
 
     private int _id;
     private String _username;
+    private String _age;
+    byte[] _image;
     private int _numStars;
     private boolean _finishTutorial;
     private boolean _unlockDrum;
@@ -25,10 +27,14 @@ public class User {
     private boolean _unlockFishBowl;
     private boolean _unlockWritingBoard;
     private boolean _finishWritingBoardTutorial;
+    private int _gamesClearedInTotal_L;              //English Progress
+    private int _gamesClearedInTotal_M;              //Math Progress
 
     public User() {
         this._id = 0;
         this._username = "user";
+        this._image = new byte[]{(byte) 204};
+        this._age = "0";
         this._numStars = 0;
         this._finishTutorial = false;
         this._unlockDrum = true;
@@ -43,11 +49,38 @@ public class User {
         this._unlockFishBowl = false;
         this._unlockWritingBoard = false;
         this._finishWritingBoardTutorial = false;
+        this._gamesClearedInTotal_L = 0;
+        this._gamesClearedInTotal_M = 0;
+    }
+
+    public User(String displayname, String age, byte[] image) {
+        this._id = 0;
+        this._username = displayname;
+        this._age = age;
+        this._image = image;
+        this._numStars = 0;
+        this._finishTutorial = false;
+        this._unlockDrum = true;
+        this._unlockMarimba = true;
+        this._unlockDrawing = true;
+        this._unlockColoring = true;
+        this._unlockBlackboard = true;
+        this._finishLauncherTutorial = false;
+        this._displayName = displayname;
+        this._openLibrary = DEFAULT_OPEN_LIBRARY;
+        this._openTools = DEFAULT_OPEN_TOOLS;
+        this._unlockFishBowl = false;
+        this._unlockWritingBoard = false;
+        this._finishWritingBoardTutorial = false;
+        this._gamesClearedInTotal_L = 0;
+        this._gamesClearedInTotal_M = 0;
     }
 
     public User(int id, String username, int stars) {
         this._id = id;
         this._username = username;
+        this._age = "0";
+        this._image = new byte[]{(byte) 204};
         this._numStars = stars;
         this._finishTutorial = false;
         this._unlockDrum = true;
@@ -62,10 +95,14 @@ public class User {
         this._unlockFishBowl = false;
         this._unlockWritingBoard = false;
         this._finishWritingBoardTutorial = false;
+        this._gamesClearedInTotal_L = 0;
+        this._gamesClearedInTotal_M = 0;
     }
 
     public User(String productname, int stars) {
         this._username = productname;
+        this._age = "0";
+        this._image = new byte[]{(byte) 204};
         this._numStars = stars;
         this._finishTutorial = false;
         this._unlockDrum = true;
@@ -80,6 +117,8 @@ public class User {
         this._unlockFishBowl = false;
         this._unlockWritingBoard = false;
         this._finishWritingBoardTutorial = false;
+        this._gamesClearedInTotal_L = 0;
+        this._gamesClearedInTotal_M = 0;
     }
 
     public void setID(int id) {
@@ -97,6 +136,23 @@ public class User {
     public String getUserName() {
         return this._username;
     }
+
+    public void setAge(String age) {
+        this._age = age;
+    }
+
+    public String getAge() {
+        return this._age;
+    }
+
+    public void setImage(byte[] image){
+        this._image = image;
+    }
+
+    public byte[] getImage() {
+        return this._image;
+    }
+
 
     public void setNumStars(int stars) {
         this._numStars = stars;
@@ -136,11 +192,11 @@ public class User {
     public boolean isFinishLauncherTutorial() {return this._finishLauncherTutorial;}
 
     public void setDisplayName(String name) {
-        _displayName = name;
+        this._displayName = name;
     }
 
     public String getDisplayName() {
-        return _displayName;
+        return this._displayName;
     }
 
     public void setOpenLibrary(boolean open) {
@@ -171,4 +227,11 @@ public class User {
 
     public boolean isFinishWritingBoardTutorial() {return this._finishWritingBoardTutorial;}
 
+    public void setGamesClearedInTotal_L(int gamesClearedInTotal_L) {this._gamesClearedInTotal_L = gamesClearedInTotal_L; }
+
+    public int getGamesClearedInTotal_L() {return this._gamesClearedInTotal_L; }
+
+    public void setGamesClearedInTotal_M(int gamesClearedInTotal_M) {this._gamesClearedInTotal_M = gamesClearedInTotal_M; }
+
+    public int getGamesClearedInTotal_M() {return this._gamesClearedInTotal_M; }
 }

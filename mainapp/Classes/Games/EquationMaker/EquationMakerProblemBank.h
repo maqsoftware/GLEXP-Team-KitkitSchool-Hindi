@@ -67,10 +67,7 @@ public:
         std::vector<int> vecDummy;
         std::vector<sData> vecData;
         
-        sProblem(){
-            file = "";
-            otherFile = "";
-        }
+        sProblem() : file(""), otherFile("") {}
     };
 
 #ifdef IMPORT_TSV_FILE_EQUATION_MAKER

@@ -76,8 +76,8 @@ public:
     
     void setLevel(int level);
     static vector<int> getLevels();
-    void drawQuestionTitleWithSoundButton(string titleText, string soundPath, Node* parentNode);
-    void drawQuestionTitle(string titleText, Node* parentNode);
+    void drawQuestionTitleWithSoundButton(const string& titleText, const string& soundPath, Node* parentNode);
+    void drawQuestionTitle(const string& titleText, Node* parentNode);
     
     std::string getBookName() { return ""; }
     

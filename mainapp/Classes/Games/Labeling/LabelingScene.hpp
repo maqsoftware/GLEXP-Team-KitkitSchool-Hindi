@@ -48,7 +48,7 @@ public:
     void createPuzzle(int index);
     void loadData(int level);
     
-    void playSound(string name);
+    void playSound(const string& name);
     
     void sendLog(int userPick, int correctPick);
 

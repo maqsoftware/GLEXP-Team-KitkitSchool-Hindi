@@ -12,6 +12,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -76,7 +77,7 @@ public class Zip {
             zipActivity.runOnUiThread(new Runnable() {
                 public void run() {
                     // Show the percentage value on progress bar
-                    percentText.setText(finalPercent + " %");
+                    percentText.setText(MessageFormat.format("{0} %", finalPercent));
                 }
             });
 

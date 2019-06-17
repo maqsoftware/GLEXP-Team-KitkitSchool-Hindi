@@ -34,9 +34,9 @@ class ProblemBank {
 public:
     static ProblemBank* getInstance();
     void init();
-    vector<string> getLevels(string course);
+    vector<string> getLevels(const string& course);
 
-    vector<EggQuizTemplateStruct> loadProblemData(string course, string level, int *sheetNo);
+    vector<EggQuizTemplateStruct> loadProblemData(const string& course, string level, int *sheetNo);
     map<string,float> loadDurationsheet();
     float getDuration(string fileName);
     
@@ -45,9 +45,9 @@ public:
     int executeFomula(vector<string> fomula);
     string getFomulaString(vector<string> fomula);
     string getJoinString(vector<int> numbers);
-    string getJoinString(vector<string> strings, string separator = ",");
+    string getJoinString(vector<string> strings, const string& separator = ",");
     bool checkRegrouping(int number1, char op, int resultCandidate);
-    bool hasSameAnswer(string templateName, string questionOption1, string answer);
+    bool hasSameAnswer(const string& templateName, const string& questionOption1, const string& answer);
     
 private:
     vector<EggQuizTemplateStruct> _problems;

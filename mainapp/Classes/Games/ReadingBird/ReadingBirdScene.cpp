@@ -1304,7 +1304,7 @@ void ReadingBirdScene::processOnPlayVolume(int volume)
     changeTalkingAnimation(volume);
 }
 
-vector<int> ReadingBirdScene::levelIDsFor(bool isSdCard, string sdcardPath)
+vector<int> ReadingBirdScene::levelIDsFor(bool isSdCard, const string& sdcardPath)
 {
     vector<int> result;
     string p;

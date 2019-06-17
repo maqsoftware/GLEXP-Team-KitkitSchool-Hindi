@@ -48,7 +48,7 @@ public:
     
     static bool getReadAll() { return _isReadAll; }
     static void setLibraryMode(bool libraryMode) { _libraryMode = libraryMode; }
-    static void setBookLanguage(std::string lang) { _languageCode = lang; }
+    static void setBookLanguage(const std::string& lang) { _languageCode = lang; }
     
     void popBookScene();
 //    void setSoundButton(bool isSelect, ui::ImageView * imageButton, Label * textLabel);
@@ -58,7 +58,7 @@ public:
     bool getSoundSetting();
     void setSoundSetting(bool enable);
     static string getCurrentBook();
-    static void setCurrentBook(string book);
+    static void setCurrentBook(const string& book);
 
 protected:
     bool _checkCompleteCondition = false;

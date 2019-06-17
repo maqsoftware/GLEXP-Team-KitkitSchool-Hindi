@@ -12,15 +12,15 @@ android {
         versionName "3.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    
+
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
         // but continue the build even when errors are found:
         abortOnError false
     }
-    
-	signingConfigs {
+
+    signingConfigs {
         debug {
             storeFile file('../debug.keystore')
             storePassword "android"
@@ -37,7 +37,7 @@ android {
         }
     }
 
-	productFlavors {
+    productFlavors {
 
         englishUS {
 
@@ -47,7 +47,7 @@ android {
 
         }
     }
-	
+
     buildTypes {
         release {
             minifyEnabled false
@@ -76,6 +76,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'de.hdodenhof:circleimageview:3.0.0'
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 //    compile 'com.jakewharton.timber:timber:4.6.0'

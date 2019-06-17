@@ -170,7 +170,7 @@ Node* createGlow()
 
 
 
-Button* createButton(string prefix, string text) {
+Button* createButton(const string& prefix, string text) {
     auto btn = Button::create(prefix+"_normal.png", prefix+"_active.png");
     
     

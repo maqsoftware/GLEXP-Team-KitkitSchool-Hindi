@@ -124,7 +124,7 @@ void GameVideoScene::onEnterTransitionDidFinish()
 
 
 
-cocos2d::Scene* GameVideoScene::createScene(string filename) {
+cocos2d::Scene* GameVideoScene::createScene(const string& filename) {
     
     
     auto scene = Scene::create();
@@ -145,7 +145,7 @@ cocos2d::Scene* GameVideoScene::createScene(string filename) {
     return scene;
 }
 
-bool GameVideoScene::videoExists(std::string filename)
+bool GameVideoScene::videoExists(const std::string& filename)
 {
     
     auto path = getVideoFile(filename);
@@ -155,7 +155,7 @@ bool GameVideoScene::videoExists(std::string filename)
     
 }
 
-std::string GameVideoScene::getVideoFile(std::string filename)
+std::string GameVideoScene::getVideoFile(const std::string& filename)
 {
     string path = "";
     

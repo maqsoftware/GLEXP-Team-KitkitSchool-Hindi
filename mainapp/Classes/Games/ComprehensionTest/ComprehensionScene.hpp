@@ -29,7 +29,7 @@ class ComprehensionScene : public Layer
 public:
     static Scene* createScene(string bookFolder, int set);
     static Scene* createScene(string bookFolder, int set, bool checkCompleteCondition);
-    static int getNumSet(string bookFolder);
+    static int getNumSet(const string& bookFolder);
     
     virtual bool init() override;
     CREATE_FUNC(ComprehensionScene);
@@ -47,7 +47,7 @@ public:
     
     void setCheckCompleteCondition(bool checkCompleteCondition);
     
-    void setBookData(string bookFolder, int set);
+    void setBookData(const string& bookFolder, int set);
     std::string getBookFolder() { return _bookFolder; }
     std::string getBookName();
     int getCurrentProblem();

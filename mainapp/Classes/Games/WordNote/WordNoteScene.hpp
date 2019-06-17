@@ -66,7 +66,7 @@ private:
     Size _winSize, _gameSize;
     float _gameScale;
     float _onCorrectSpeechDuration;
-    float _ttsAlert = false;
+    bool _ttsAlert = false;
     vector<WordNoteLevelStruct> _problems;
     WordNoteLevelStruct _problem;
     vector<PlateSlot*> _plateSlots;

@@ -17,7 +17,6 @@ import java.util.UUID;
 
 public class LauncherApplication extends Application {
 
-    private Thread.UncaughtExceptionHandler defaultExceptionHandler;
     private KitKitLogger logger;
     private KitkitDBHandler dbHandler;
     private User currentUser;
@@ -60,45 +59,6 @@ public class LauncherApplication extends Application {
 
         logger = new KitKitLogger(getPackageName(), getApplicationContext());
         dbHandler = new KitkitDBHandler(getApplicationContext());
-
-        if (dbHandler.numUser() == 0) {
-            //make users in DB
-            for (int i = 0; i < 100; i++) {
-                User user = new User("user" + i, 0);
-//                user.setNumStars(i*50);
-//                user.setFinishTutorial(true);
-                dbHandler.addUser(user);
-
-                if (i == 0) {
-                    dbHandler.setCurrentUser(user);
-                    currentUser = user;
-                    currentUsername = user.getUserName();
-                }
-            }
-
-        }
-        if (currentUser == null) {
-            currentUser = dbHandler.getCurrentUser();
-            currentUsername = currentUser.getUserName();
-        }
-
-        defaultExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-
-        // Setup handler for uncaught exceptions.
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable e) {
-                handleUncaughtException(thread, e);
-            }
-        });
-    }
-
-    public void handleUncaughtException(Thread thread, Throwable e) {
-        e.printStackTrace(); // not all Android versions will print the stack trace automatically
-
-        logger.extractLogToFile();
-
-        defaultExceptionHandler.uncaughtException(thread, e);
     }
 
     public KitKitLogger getLogger() {
@@ -120,5 +80,4 @@ public class LauncherApplication extends Application {
     public KitkitDBHandler getDbHandler() {
         return dbHandler;
     }
-
 }

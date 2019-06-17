@@ -40,7 +40,7 @@ namespace ComprehensionTest
             return true;
         }
         
-        bool ImageAnswerItem::initImage(std::string folder, std::string image, float marginX, float marginY)
+        bool ImageAnswerItem::initImage(const std::string& folder, std::string image, float marginX, float marginY)
         {
             _id = image;
             

@@ -382,7 +382,7 @@ Node* LRDividedTypeFillTheBlanksScene::createWordBlock(string word)
 void LRDividedTypeFillTheBlanksScene::initData()
 {
     std::vector<std::string> rawData;
-    LRProblem* problem;
+    LRProblem* problem = NULL;
     
     for (int i = 0; i < (int)_comprehensionScene->problemSet.size(); i++)
     {
@@ -393,15 +393,22 @@ void LRDividedTypeFillTheBlanksScene::initData()
         }
     }
 
-    rawData.push_back(problem->audio);
-    rawData.push_back(problem->question);
-    string wrongAnswers = "";
-    if (TodoUtil::trim(problem->option1).empty() == false) wrongAnswers += problem->option1;
-    if (TodoUtil::trim(problem->option2).empty() == false) wrongAnswers += "," + problem->option2;
-    if (TodoUtil::trim(problem->option3).empty() == false) wrongAnswers += "," + problem->option3;
-    if (TodoUtil::trim(problem->option4).empty() == false) wrongAnswers += "," + problem->option4;
-    rawData.push_back(wrongAnswers);
-    _problemData = ProblemData::parse(rawData);
+    if (problem == NULL) {
+        // error
+    } else {
+        rawData.push_back(problem->audio);
+        rawData.push_back(problem->question);
+        string wrongAnswers = "";
+        if (!TodoUtil::trim(problem->option1).empty()) wrongAnswers += problem->option1;
+        if (!TodoUtil::trim(problem->option2).empty())
+            wrongAnswers += "," + problem->option2;
+        if (!TodoUtil::trim(problem->option3).empty())
+            wrongAnswers += "," + problem->option3;
+        if (!TodoUtil::trim(problem->option4).empty())
+            wrongAnswers += "," + problem->option4;
+        rawData.push_back(wrongAnswers);
+        _problemData = ProblemData::parse(rawData);
+    }
 }
 
 void LRDividedTypeFillTheBlanksScene::drawFixedResources()

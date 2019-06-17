@@ -22,8 +22,8 @@ public:
     void onExitTransitionDidStart() override;
 
 public:
-    TouchEventLogger(std::string parentName);
-    static TouchEventLogger* create(std::string parentName);
+    TouchEventLogger(const std::string& parentName);
+    static TouchEventLogger* create(const std::string& parentName);
     static cocos2d::Scene* wrapScene(cocos2d::Scene* scene);
 };
 
