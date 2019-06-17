@@ -64,12 +64,12 @@
         android:id="@+id/textView6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:gravity="center"
         android:autoSizeTextType="uniform"
+        android:gravity="center"
         android:text="Select User\nउपयोगकर्ता चयन"
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
@@ -171,13 +171,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11678832" />
+        app:layout_constraintGuide_percent="0.16" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.40389293" />
+        app:layout_constraintGuide_percent="0.45" />
 
 </android.support.constraint.ConstraintLayout>

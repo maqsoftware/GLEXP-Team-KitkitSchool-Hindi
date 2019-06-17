@@ -260,7 +260,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
 
         picture = findViewById(R.id.userImage);
         picture.setImageBitmap(converToBitmap(user.getImage()));
-        mTvUserName = findViewById(R.id.textView_currentUserId);
+       // mTvUserName = findViewById(R.id.textView_currentUserId);
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -276,7 +276,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         Typeface f = Typeface.createFromAsset(getAssets(), "TodoMainCurly.ttf");
         textViewCoinNum.setTypeface(f);
 
-        displayCurrentUser();
+//        displayCurrentUser();
 
         ftpclient = new FtpClient();
 
@@ -815,7 +815,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     }
 
     private void displayCurrentUser() {
-        Util.displayUserName(this, mTvUserName);
+//        Util.displayUserName(this, mTvUserName);
     }
 
     public static File[] getImageFolderList(File folder) {

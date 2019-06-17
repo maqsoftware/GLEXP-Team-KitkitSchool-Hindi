@@ -97,7 +97,7 @@ public class AdministrationActivity extends KitKitLoggerActivity {
     }
 
     private void displayCurrentUser() {
-        Util.displayUserName(this, (TextView) findViewById(R.id.textView_currentUserId));
+       // Util.displayUserName(this, (TextView) findViewById(R.id.textView_currentUserId));
     }
 
     public void onClickReviewMode(View v) {

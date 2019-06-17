@@ -56,7 +56,6 @@
         android:gravity="center_horizontal"
         android:text="Maths\nगणित"
         android:textColor="@color/mathsEnglish"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/english"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
@@ -91,7 +90,6 @@
         android:text="English\nअंग्रेज़ी"
         android:textColor="@color/mathsEnglish"
         android:autoSizeTextType="uniform"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/gotodashboard"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline39"
@@ -180,14 +178,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.61" />
+        app:layout_constraintGuide_percent="0.62" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.39125" />
+        app:layout_constraintGuide_percent="0.39124486" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
@@ -257,21 +255,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.89" />
+        app:layout_constraintGuide_percent="0.92" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.08125" />
+        app:layout_constraintGuide_percent="0.069767445" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.67" />
+        app:layout_constraintGuide_percent="0.71" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline34"

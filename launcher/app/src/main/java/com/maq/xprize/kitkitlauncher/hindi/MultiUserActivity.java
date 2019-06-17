@@ -53,7 +53,7 @@ public class MultiUserActivity extends AppCompatActivity {
     Button exit;
     ImageView picture;
     ImageButton pic;
-
+    Button takeBack;
     EditText updateage;
     Button update;
     Button delete;
@@ -102,6 +102,8 @@ public class MultiUserActivity extends AppCompatActivity {
         goback = (Button) updateUserDialog.findViewById(R.id.goBack);
         delete = (Button) updateUserDialog.findViewById(R.id.deleteUser);
         pic = (ImageButton) updateUserDialog.findViewById(R.id.updatepic);
+        takeBack = (Button) updateUserDialog.findViewById(R.id.back);
+
 
         int edituserId = imagePager.getCurrentItem();
         KitkitDBHandler dbHandler = new KitkitDBHandler(getApplicationContext());
@@ -123,6 +125,13 @@ public class MultiUserActivity extends AppCompatActivity {
         updateUserDialog.show();
         // Go Back listener
         goback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateUserDialog.dismiss();
+            }
+        });
+
+        takeBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updateUserDialog.dismiss();
