@@ -15,9 +15,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/picture"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline40"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,5 +55,12 @@
         app:layout_constraintVertical_bias="0.918"
         android:background="@drawable/roundedit"
         app:srcCompat="@drawable/edit" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.63" />
 
 </android.support.constraint.ConstraintLayout>
