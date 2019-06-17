@@ -53,16 +53,20 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/roundbutton"
         android:text="Register\\रजिस्टर"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="@+id/ageInput"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/ageInput" />
+        app:layout_constraintStart_toStartOf="@+id/ageInput"
+        app:layout_constraintTop_toBottomOf="@+id/ageInput"
+        app:layout_constraintVertical_bias="0.85" />
 
     <EditText
         android:id="@+id/ageInput"
@@ -106,18 +110,18 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/back_arrow_inactive"
-        app:layout_constraintBottom_toTopOf="@+id/guideline18"
-        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintBottom_toTopOf="@+id/guideline28"
+        app:layout_constraintEnd_toStartOf="@+id/guideline27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/updatepic"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="155dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
@@ -160,6 +164,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.62" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
 
 
 </android.support.constraint.ConstraintLayout>

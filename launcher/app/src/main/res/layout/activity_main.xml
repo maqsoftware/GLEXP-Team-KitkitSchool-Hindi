@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="0dp"
-            android:layout_marginRight="450dp"
+            android:layout_marginRight="490dp"
             android:layout_toLeftOf="@+id/launcher_title_button"
             android:ellipsize="end"
             android:gravity="left"
