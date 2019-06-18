@@ -20,12 +20,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="480dp"
-            android:layout_toLeftOf="@+id/launcher_title_button"
+            android:layout_marginLeft="40px"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
             android:ellipsize="end"
-            android:gravity="left"
-            android:src="@android:color/background_light" />
+            android:gravity="left" />
 
 
         <Button

@@ -60,6 +60,8 @@ public class MultiUserActivity extends AppCompatActivity {
     Button goback;
     ArrayList<User> users;
     Button goToDashboard;
+    Button nextimage;
+    Button previousimage;
     Dialog updateUserDialog;
     int k =0;
 
@@ -322,6 +324,8 @@ public class MultiUserActivity extends AppCompatActivity {
             users = dbHandler.getUserList();
             exit = (Button) selectUserDialog.findViewById(R.id.close);
             goToDashboard = (Button) selectUserDialog.findViewById(R.id.gotodashboard);
+            previousimage = (Button) selectUserDialog.findViewById(R.id.previousImage);
+            nextimage = (Button) selectUserDialog.findViewById(R.id.nextImage);
 
             schoolContext = getApplicationContext().createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
             schoolPref = schoolContext.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
@@ -344,6 +348,21 @@ public class MultiUserActivity extends AppCompatActivity {
                 int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
                 decorView.setSystemUiVisibility(uiOptions);
             }
+
+            previousimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imagePager.setCurrentItem(-1, true);
+
+                }
+            });
+
+            nextimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imagePager.setCurrentItem(+1,true);
+                }
+            });
 
             goToDashboard.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -376,5 +395,9 @@ public class MultiUserActivity extends AppCompatActivity {
             Toast.makeText(this, "No user exist",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    private int getItem(int i) {
+        return imagePager.getCurrentItem() + i;
     }
 }

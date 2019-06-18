@@ -49,8 +49,6 @@ public class SlidingPagerAdapter extends PagerAdapter {
         TextView username = (TextView) view.findViewById(R.id.userN);
         TextView english = (TextView) MultiUserActivity.selectUserDialog.findViewById(R.id.engprogress);
         TextView math = (TextView) MultiUserActivity.selectUserDialog.findViewById(R.id.mathprogress);
-
-
         imageView.setImageBitmap(converToBitmap(item.getImage()));
         username.setText(item.getDisplayName());
         english.setText(String.valueOf(item.getGamesClearedInTotal_L()));
@@ -58,7 +56,6 @@ public class SlidingPagerAdapter extends PagerAdapter {
         container.addView(view);
         return view;
     }
-
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view.equals(object);
