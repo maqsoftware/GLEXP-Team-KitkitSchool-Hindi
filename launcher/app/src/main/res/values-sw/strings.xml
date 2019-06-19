@@ -44,6 +44,7 @@
     <string name="number">number</string>
 
     <string name="drums">Ngoma</string>
+    <string name="drum_app_name">Drum</string>
     <string name="marimba">Marimba</string>
     <string name="drawing">Mchoro</string>
     <string name="coloring">Paka Rangi</string>

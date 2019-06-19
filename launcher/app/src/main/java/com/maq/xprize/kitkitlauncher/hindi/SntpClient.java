@@ -239,7 +239,7 @@ public class SntpClient {
         buffer[offset++] = (byte)(seconds >> 24);
         buffer[offset++] = (byte)(seconds >> 16);
         buffer[offset++] = (byte)(seconds >> 8);
-        buffer[offset++] = (byte)(seconds >> 0);
+        buffer[offset++] = (byte)(seconds);
         long fraction = milliseconds * 0x100000000L / 1000L;
         // write fraction in big endian format
         buffer[offset++] = (byte)(fraction >> 24);

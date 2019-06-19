@@ -90,29 +90,9 @@ public class ToolsActivity extends KitKitLoggerActivity {
         drum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!v.isEnabled()) {
-                    return;
-                }
-                ToolsAppView tv = (ToolsAppView) v;
-                if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.drum";
-
-                    try {
-                        //Intent i = getPackageManager().getLaunchIntentForPackage("com.enuma.drum");
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.setComponent(new ComponentName("com.maq.xprize.drum", "com.maq.xprize.drum.activity.MainActivity"));
-                        startActivity(i);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_drum", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Drum: किटकिट स्कूल - Kitkit School module");
-                    }
-
-                } else {
-                    unlock(tv);
-                }
-
-
+                Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drum.activity.DrumActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

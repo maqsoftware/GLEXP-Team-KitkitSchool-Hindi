@@ -1,5 +1,6 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
+import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -64,18 +65,15 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     public static final String PATH_IMAGE_LOG_WRITING_BOARD = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "writingboard" + File.separator + "log_image" + File.separator;
     public static final String PATH_IMAGE_LOG_SEA_WORLD = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "sea_world" + File.separator + "images" + File.separator;
     private static final long logCooldownTimeInMillis = 5 * 60 * 1000; // 5 minutes
-    private static final long timeUpdateRetryTimeInMillis = 1 * 60 * 1000; // 1 minute
+    private static final long timeUpdateRetryTimeInMillis = 60 * 1000; // 1 minute
     private static final long timeUpdateCooldownTimeInMillis = 60 * 60 * 1000; // 60 minutes
     public static String TAG = "MainActivity";
     public static String PLAYSTORE_URL = "https://play.google.com/store/apps/details?id=";
+    protected static PackageManager manager;
     private static Thread ftpConnector = null;
     private static Thread logUploader = null;
     private static Thread imageUploader = null;
-    private static PackageManager manager;
-    private final int MSG_SUCCESS = 2;
     private final int MSG_UPLOAD_IMAGE = 100;
-    private final int MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD = 101;
-    private final int MSG_UPLOAD_LOG_IMAGE_SEA_WORLD = 102;
     Rect mTempRect = new Rect();
     BroadcastReceiver receiver;
     private FtpClient ftpclient = null;
@@ -90,8 +88,8 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
 
         }
     };
-    private List<AppDetail> apps;
     private View.OnTouchListener mBlockViewTouchListener = new View.OnTouchListener() {
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -106,10 +104,14 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             return true;
         }
     };
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
 
         public void handleMessage(android.os.Message msg) {
 
+            int MSG_SUCCESS = 2;
+            int MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD = 101;
+            int MSG_UPLOAD_LOG_IMAGE_SEA_WORLD = 102;
             if (msg.what == 0) {
 // try upload
                 uploadLogs();
@@ -169,6 +171,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         }
     };
     private View.OnTouchListener mLongTouchListener = new View.OnTouchListener() {
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             switch (motionEvent.getAction()) {
@@ -204,18 +207,17 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     };
 
     public static File[] getImageFolderList(File folder) {
-        File[] result = folder.listFiles(new FileFilter() {
+
+        return folder.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
-                if (pathname.isDirectory() == false) {
+                if (!pathname.isDirectory()) {
                     return false;
                 }
 
                 return pathname.getName().startsWith("user");
             }
         });
-
-        return result;
     }
 
     public static ArrayList<File> getImageFileList(File folder) {
@@ -227,7 +229,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         File[] files = folder.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
-                if (pathname.isDirectory() == true) {
+                if (pathname.isDirectory()) {
                     return false;
                 }
 
@@ -264,7 +266,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
 
         try {
             File folder = new File(destFolderPath);
-            if (folder.exists() == false) {
+            if (!folder.exists()) {
                 folder.mkdirs();
             }
 
@@ -309,7 +311,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             return false;
         }
         File parent = new File(file.getParent());
-        if (parent.exists() == false) {
+        if (!parent.exists()) {
             parent.mkdirs();
         }
 
@@ -330,9 +332,8 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     }
 
     public static String getCurrentDisplayTime() {
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String result = dayTime.format(new Date(System.currentTimeMillis()));
-        return result;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        return dayTime.format(new Date(System.currentTimeMillis()));
     }
 
     public static void deleteImageZipFiles() {
@@ -343,13 +344,14 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         File[] files = new File(imagePath + File.separator + TEMP_ZIP_FOLDER_NAME).listFiles();
         if (files != null && files.length > 0) {
             for (File file : files) {
-                if (file.exists() == true) {
+                if (file.exists()) {
                     file.delete();
                 }
             }
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -380,7 +382,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         todoSchoolButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (gotoVideoPlayer() == false) {
+                if (!gotoVideoPlayer()) {
                     try {
                         Intent i = new Intent(Intent.ACTION_MAIN);
                         SharedPreferences prefs = getSharedPreferences("किटकिट स्कूल - Kitkit School", Context.MODE_PRIVATE);
@@ -408,7 +410,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         libraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (gotoVideoPlayer() == false) {
+                if (!gotoVideoPlayer()) {
                     if (view.isEnabled()) {
 //                    Intent i = manager.getLaunchIntentForPackage("com.maq.xprize.kitkitlibrary.english");
                         try {
@@ -435,7 +437,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         toolsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (gotoVideoPlayer() == false) {
+                if (!gotoVideoPlayer()) {
                     if (view.isEnabled()) {
                         Intent i = new Intent(MainActivity.this, ToolsActivity.class);
                         startActivity(i);
@@ -472,6 +474,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         setDefaultPreference();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onPause() {
         super.onPause();
@@ -481,6 +484,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onResume() {
         super.onResume();
@@ -536,6 +540,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private void refreshUI() {
         User currentUser = ((LauncherApplication) getApplication()).getDbHandler().getCurrentUser();
 
@@ -574,7 +579,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
 
     private void loadApps() {
         manager = getPackageManager();
-        apps = new ArrayList<AppDetail>();
+        List<AppDetail> apps = new ArrayList<AppDetail>();
 
         Intent i = new Intent(Intent.ACTION_MAIN, null);
         i.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -595,6 +600,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         return false;
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void connectToSNTPServer(final String server, final boolean updateCooldown) {
         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
 
@@ -633,10 +639,10 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                         status = ftpclient.ftpUpload(
                                 log.getPath(),
                                 log.getName(), "remote/", cntx);
-                        if (status == true) {
+                        if (status) {
                             try {
                                 status = ftpclient.mFTPClient.changeToParentDirectory();
-                                if (status == false) {
+                                if (!status) {
                                     break;
                                 }
                             } catch (Exception e) {
@@ -649,7 +655,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                         }
                     }
 
-                    if (status == true) {
+                    if (status) {
                         Log.d(TAG, "Upload success");
                         lastLogSentTimeInMillis = System.currentTimeMillis();
                         handler.sendEmptyMessage(MSG_UPLOAD_IMAGE);
@@ -676,9 +682,9 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                     String tempZipFolder = imagePath + File.separator + TEMP_ZIP_FOLDER_NAME;
                     File uploadTimeFile = null;
 
-                    if (writeFile(getCurrentDisplayTime(), tempZipFolder + File.separator + UPLOAD_TIME_RECORD_FILE) == true) {
+                    if (writeFile(getCurrentDisplayTime(), tempZipFolder + File.separator + UPLOAD_TIME_RECORD_FILE)) {
                         uploadTimeFile = new File(tempZipFolder + File.separator + UPLOAD_TIME_RECORD_FILE);
-                        if (uploadTimeFile.exists() == false) {
+                        if (!uploadTimeFile.exists()) {
                             uploadTimeFile = null;
                         }
                     }
@@ -692,10 +698,10 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                                     images.add(uploadTimeFile);
                                 }
 
-                                String zipFileName = Build.SERIAL + "_" + userFolder.getName() + "_" + type + ".zip";
-                                if (compressZip(tempZipFolder, zipFileName, images) == true) {
+                                @SuppressLint("HardwareIds") String zipFileName = Build.SERIAL + "_" + userFolder.getName() + "_" + type + ".zip";
+                                if (compressZip(tempZipFolder, zipFileName, images)) {
                                     status = uploadFtpImageFile(new File(tempZipFolder + File.separator + zipFileName));
-                                    if (status == false) {
+                                    if (!status) {
                                         break;
                                     }
                                 }
@@ -703,7 +709,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                         }
                     }
 
-                    if (status == true) {
+                    if (status) {
                         Log.d(TAG, "uploadImages (" + type + ") - Upload success");
                         imageUploader = null;
                         handler.sendEmptyMessage(nextMsgSuccess);
@@ -725,7 +731,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                 file.getPath(),
                 file.getName(), "remote/", cntx);
 
-        if (result == true) {
+        if (result) {
             try {
                 result = ftpclient.mFTPClient.changeToParentDirectory();
             } catch (Exception e) {
@@ -756,12 +762,13 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         return false;
     }
 
+    @SuppressLint("ApplySharedPref")
     private void setDefaultPreference() {
         SharedPreferences preference = getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
         SharedPreferences.Editor editor = getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS).edit();
         editor.putBoolean("review_mode_on", preference.getBoolean("review_mode_on", false));
         editor.putBoolean("sign_language_mode_on", preference.getBoolean("sign_language_mode_on", false));
-        editor.commit();
+        editor.apply();
     }
 
     @Override

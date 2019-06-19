@@ -43,6 +43,7 @@
     <string name="number">number</string>
 
     <string name="drums">Drums\nढोल</string>
+    <string name="drum_app_name">Drum</string>
     <string name="marimba">Xylophone\nमरिम्बा</string>
     <string name="drawing">Drawing\nचित्रकारी</string>
     <string name="coloring">Coloring\nरंग भरे</string>
