@@ -376,7 +376,7 @@ string UserManager::getGameClearedKey(string levelID, int day, int gameIndex)
 
 bool UserManager::isGameCleared(string levelID, int day, int gameIndex)
 {
-    auto key = make_tuple(levelID, day, gameIndex);
+    /*auto key = make_tuple(levelID, day, gameIndex);
     auto it = _gameClearedMap.find(key);
     bool cleared = false;
     if (it==_gameClearedMap.end()) {
@@ -385,15 +385,16 @@ bool UserManager::isGameCleared(string levelID, int day, int gameIndex)
     }else {
         cleared = it->second;
     }
-    return cleared;
+    return cleared;*/
+    return false;
 }
 
 void UserManager::setGameCleared(string levelID, int day, int gameIndex, bool isCleared)
 {
-    auto key = make_tuple(levelID, day, gameIndex);
+    /*auto key = make_tuple(levelID, day, gameIndex);
     _gameClearedMap[key] = isCleared;
     UserDefault::getInstance()->setBoolForKey(getGameClearedKey(levelID, day, gameIndex).c_str(), isCleared);
-    UserDefault::getInstance()->flush();
+    UserDefault::getInstance()->flush();*/
 }
 
 string UserManager::getSpecialCourseCurrentProgressKey(string levelID, int day) {
