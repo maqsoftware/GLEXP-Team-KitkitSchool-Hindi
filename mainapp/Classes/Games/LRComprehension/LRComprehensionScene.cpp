@@ -130,7 +130,7 @@ void LRComprehensionScene::onExit()
 {
     Layer::onExit();
     LRSoundButton::soundButtons.clear();
-    VoiceMoldManager::shared()->speak(" "); //for stopping of sound
+    VoiceMoldManager::shared()->speak(" ");
     GameSoundManager::getInstance()->stopBGM();
     GameSoundManager::getInstance()->stopAllEffects();
 }

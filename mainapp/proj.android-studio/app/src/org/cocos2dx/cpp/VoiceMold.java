@@ -75,6 +75,8 @@ public class VoiceMold {
         }
 
         String text = "";
+        wrapper.getTts().setPitch(1.2f);
+         wrapper.getTts().setSpeechRate(0.75f);
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
     }
 
