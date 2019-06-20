@@ -23,6 +23,7 @@ import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
 import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
+import com.maq.xprize.drum.activity.DrumActivity;
 
 /**
  * Created by ingtellect on 1/3/17.
@@ -90,9 +91,24 @@ public class ToolsActivity extends KitKitLoggerActivity {
         drum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drum.activity.DrumActivity.class);
-                startActivity(intent);
-                finish();
+                if (!v.isEnabled()) {
+                    return;
+                }
+                ToolsAppView tv = (ToolsAppView) v;
+                if (tv.isUnlocked()) {
+                    packageName = "com.maq.xprize.drum";
+                    try {
+                        Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        redirectPopup(packageName, "Drum: किटकिट स्कूल - Kitkit School module");
+                    }
+
+                } else {
+                    unlock(tv);
+                }
+
+
             }
         });
 
