@@ -45,9 +45,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.maq.xprize.drum.activity.DrumActivity"
-            android:screenOrientation="sensorLandscape"/>
-        <activity
             android:name=".UserNameActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
@@ -61,6 +58,9 @@
             android:name=".AdministrationActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name="com.maq.xprize.drum.activity.DrumActivity"
+            android:screenOrientation="sensorLandscape"/>
 
         <receiver
             android:name=".LockScreenReceiver"
