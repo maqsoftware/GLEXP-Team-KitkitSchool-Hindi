@@ -402,12 +402,13 @@ string UserManager::getSpecialCourseCurrentProgressKey(string levelID, int day) 
 }
 
 void UserManager::setSpecialCourseCurrentProgress(string levelID, int day, int gameIndex) {
-    UserDefault::getInstance()->setIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str(), gameIndex);
-    UserDefault::getInstance()->flush();
+    /*UserDefault::getInstance()->setIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str(), gameIndex);
+    UserDefault::getInstance()->flush();*/
 }
 
 int UserManager::getSpecialCourseCurrentProgress(string levelID, int day) {
-    return UserDefault::getInstance()->getIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str());
+    /*return UserDefault::getInstance()->getIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str());*/
+    return 0;
 }
 
 string UserManager::getSpecialCourseLightOnKey(char course) {
@@ -415,12 +416,13 @@ string UserManager::getSpecialCourseLightOnKey(char course) {
 }
 
 void UserManager::setSpecialCourseLightOn(char course) {
-    UserDefault::getInstance()->setBoolForKey(getSpecialCourseLightOnKey(course).c_str(), true);
-    UserDefault::getInstance()->flush();
+    /*UserDefault::getInstance()->setBoolForKey(getSpecialCourseLightOnKey(course).c_str(), true);
+    UserDefault::getInstance()->flush();*/
 }
 
 bool UserManager::getSpecialCourseLightOn(char course) {
-    return UserDefault::getInstance()->getBoolForKey(getSpecialCourseLightOnKey(course).c_str());
+    /*return UserDefault::getInstance()->getBoolForKey(getSpecialCourseLightOnKey(course).c_str());*/
+    return true;
 }
 
 string UserManager::getFishPresentCurrentProgressLevelKey(string levelID) {
