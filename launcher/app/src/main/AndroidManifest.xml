@@ -58,7 +58,14 @@
             android:name=".AdministrationActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
-
+        <activity
+            android:name="com.maq.xprize.marimba.activity.MainActivity"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <receiver
             android:name=".LockScreenReceiver"
             android:enabled="true"

@@ -131,9 +131,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.marimba";
                     try {
-                        //Intent i = getPackageManager().getLaunchIntentForPackage("com.enuma.marimba");
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.setComponent(new ComponentName("com.maq.xprize.marimba", "com.maq.xprize.marimba.activity.MainActivity"));
+                        Intent i = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
                         startActivity(i);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_marimba", "", 0);
