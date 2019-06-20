@@ -163,11 +163,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.blackboard";
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.setComponent(new ComponentName("com.maq.xprize.blackboard", "com.maq.xprize.blackboard.activity.MainActivity"));
+                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.blackboard.activity.MainActivity.class);
                         startActivity(intent);
-                        //Intent i = getPackageManager().getLaunchIntentForPackage("com.enuma.blackboard");
-                        //startActivity(i);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_blackboard", "", 0);
                     } catch (Exception e) {

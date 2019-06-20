@@ -353,7 +353,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_launcher);
         Util.hideSystemUI(this);
         cntx = getBaseContext();
         Util.setScale(this, findViewById(R.id.main_content));
