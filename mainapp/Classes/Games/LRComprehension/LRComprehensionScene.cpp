@@ -130,7 +130,7 @@ void LRComprehensionScene::onExit()
 {
     Layer::onExit();
     LRSoundButton::soundButtons.clear();
-    VoiceMoldManager::shared()->speak(" ");
+    VoiceMoldManager::shared()->speak(" ");        //To stop the speech of tts after clicking back button 
     GameSoundManager::getInstance()->stopBGM();
     GameSoundManager::getInstance()->stopAllEffects();
 }

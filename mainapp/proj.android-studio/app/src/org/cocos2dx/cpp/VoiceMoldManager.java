@@ -68,7 +68,6 @@ public class VoiceMoldManager
     }
 
     public void speak(String text, String locale) {
-
         VoiceMold mold = moldForLocale(locale);
         mold.speak(text);
     }

@@ -65,7 +65,6 @@ public class DownloadExpansionFile extends Activity implements IDownloaderClient
             1392625142 // the length of the file in bytes
             )
             ;
-    
     /* expansion service*/
     private static final String LOG_TAG = "LVLDownloader";
     /**
