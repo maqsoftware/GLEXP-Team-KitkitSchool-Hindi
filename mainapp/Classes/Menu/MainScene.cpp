@@ -830,8 +830,4 @@ void MainScene::openAllLevels(){
                 UserManager::getInstance()->setDayCleared(cur.levelID, i);
             }
         }
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        JniHelper::callStaticVoidMethod("org/cocos2dx/cpp/AppActivity", "setUnlockFishBowl", false);
-#endif
-        NativeAlert::show("Cirriculum unlocked!", "", "OK");
 }

@@ -273,7 +273,7 @@ void CoopScene::setupCoop()
     auto onFinishTurnLight = [this, category](Room* room) {
         if (room->bird->getCategoryLevel() == 6) {
             if (_rooms.size() > LEVEL_FISH_PRESENT && !UserManager::getInstance()->getFishPresentLightOn(category)) {
-                _rooms[LEVEL_FISH_PRESENT]->turnLight(true, true);
+                _rooms[LEVEL_FISH_PRESENT]->turnLight(false, false);
                 UserManager::getInstance()->setFishPresentLightOn(category);
             }
         }
@@ -1289,10 +1289,11 @@ void Room::turnLight(bool turnOn, bool animate)
 }
 
 bool Room::isEnableFishPresent() {
-    if (!UserManager::getInstance()->isFishPresentEnable(levelID)) {
+   /* if (!UserManager::getInstance()->isFishPresentEnable(levelID)) {
         return false;
     }
 
-    return true;
+    return true;*/
+   return false;
 }
 
