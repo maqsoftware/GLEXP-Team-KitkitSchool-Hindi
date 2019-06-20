@@ -308,9 +308,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                     packageName = "com.maq.xprize.writingboard";
                     if (gotoVideoPlayerForWritingBoard() == false) {
                         try {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.setComponent(new ComponentName("com.maq.xprize.writingboard", "com.maq.xprize.writingboard.activity.MainActivity"));
-                            intent.putExtra("LANGUAGE", getAppLanguage());
+                            Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.writingboard.activity.MainActivity.class);
                             startActivity(intent);
                             KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                             logger.logEvent("ToolsActivity", "start_writing_board", "", 0);
@@ -340,7 +338,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MainActivity.PLAYSTORE_URL + packageName)));
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(com.maq.xprize.kitkitlauncher.hindi.MainActivity.PLAYSTORE_URL + packageName)));
                             }
                         })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
