@@ -1,5 +1,6 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -23,6 +24,8 @@ import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
 import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
+import com.maq.xprize.drawingcoloring.activity.ColoringActivity;
+import com.maq.xprize.drawingcoloring.activity.DrawingActivity;
 
 /**
  * Created by ingtellect on 1/3/17.
@@ -195,13 +198,9 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drawingcoloring";
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.putExtra("LANGUAGE", getAppLanguage());
-                        intent.setClassName("com.maq.xprize.drawingcoloring", "com.maq.xprize.drawingcoloring.activity.DrawingActivity");
+                        Intent intent = new Intent(ToolsActivity.this, ColoringActivity.class);
                         startActivity(intent);
 
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_drawing", "", 0);
                     } catch (Exception e) {
                         redirectPopup(packageName, "Drawing: किटकिट स्कूल - Kitkit School module");
                     }
@@ -228,13 +227,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drawingcoloring";
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.putExtra("LANGUAGE", getAppLanguage());
-                        intent.setClassName("com.maq.xprize.drawingcoloring", "com.maq.xprize.drawingcoloring.activity.ColoringActivity");
+                        Intent intent = new Intent(ToolsActivity.this, DrawingActivity.class);
                         startActivity(intent);
-
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_coloring", "", 0);
                     } catch (Exception e) {
                         redirectPopup(packageName, "Drawing: किटकिट स्कूल - Kitkit School module");
                     }
@@ -261,6 +255,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                         startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_album", "", 0);
+//                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.xprize_gallery.activity.MainActivity.class);
+//                        startActivity(intent);
                     } catch (Exception e) {
                         redirectPopup(packageName, "Gallery: किटकिट स्कूल - Kitkit School module");
                     }
@@ -306,7 +302,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.writingboard";
-                    if (gotoVideoPlayerForWritingBoard() == false) {
+                    if (!gotoVideoPlayerForWritingBoard()) {
                         try {
                             Intent intent = new Intent(Intent.ACTION_MAIN);
                             intent.setComponent(new ComponentName("com.maq.xprize.writingboard", "com.maq.xprize.writingboard.activity.MainActivity"));
@@ -340,7 +336,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MainActivity.PLAYSTORE_URL + packageName)));
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(com.maq.xprize.kitkitlauncher.hindi.MainActivity.PLAYSTORE_URL + packageName)));
                             }
                         })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -353,6 +349,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 .show();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onPause() {
         super.onPause();
@@ -362,6 +359,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onResume() {
         super.onResume();
@@ -390,6 +388,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
         }
     }
 
+    @SuppressLint("DefaultLocale")
     public void refreshLock() {
         currentUser = ((LauncherApplication) getApplication()).getDbHandler().getCurrentUser();
 
@@ -494,6 +493,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                     public void onAnimationStart(Animation animation) {
                     }
 
+                    @SuppressLint("DefaultLocale")
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         coin.setVisibility(View.GONE);
@@ -538,7 +538,6 @@ public class ToolsActivity extends KitKitLoggerActivity {
                     public void onAnimationRepeat(Animation animation) {
                     }
                 });
-            } else {
             }
             coin.setAnimation(anim);
         }
@@ -547,7 +546,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
     private boolean gotoVideoPlayerForWritingBoard() {
         User user = ((LauncherApplication) getApplication()).getDbHandler().getCurrentUser();
 
-        if (user != null && user.isFinishWritingBoardTutorial() == false) {
+        if (user != null && !user.isFinishWritingBoardTutorial()) {
             user.setFinishWritingBoardTutorial(true);
             ((LauncherApplication) getApplication()).getDbHandler().updateUser(user);
 
