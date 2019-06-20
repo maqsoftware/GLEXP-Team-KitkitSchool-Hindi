@@ -62,7 +62,7 @@ public class DownloadExpansionFile extends Activity implements IDownloaderClient
             true, // true signifies a main file
             9, // the version of the APK that the file was uploaded
             // against
-            1392625142 // the length of the file in bytes
+            1392625401 // the length of the file in bytes
             )
             ;
     /* expansion service*/
