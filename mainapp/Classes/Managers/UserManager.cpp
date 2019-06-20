@@ -376,25 +376,11 @@ string UserManager::getGameClearedKey(string levelID, int day, int gameIndex)
 
 bool UserManager::isGameCleared(string levelID, int day, int gameIndex)
 {
-    /*auto key = make_tuple(levelID, day, gameIndex);
-    auto it = _gameClearedMap.find(key);
-    bool cleared = false;
-    if (it==_gameClearedMap.end()) {
-        cleared = UserDefault::getInstance()->getBoolForKey(getGameClearedKey(levelID, day, gameIndex).c_str(), false);
-        _gameClearedMap[key] = cleared;
-    }else {
-        cleared = it->second;
-    }
-    return cleared;*/
     return false;
 }
 
 void UserManager::setGameCleared(string levelID, int day, int gameIndex, bool isCleared)
 {
-    /*auto key = make_tuple(levelID, day, gameIndex);
-    _gameClearedMap[key] = isCleared;
-    UserDefault::getInstance()->setBoolForKey(getGameClearedKey(levelID, day, gameIndex).c_str(), isCleared);
-    UserDefault::getInstance()->flush();*/
 }
 
 string UserManager::getSpecialCourseCurrentProgressKey(string levelID, int day) {
@@ -402,26 +388,20 @@ string UserManager::getSpecialCourseCurrentProgressKey(string levelID, int day) 
 }
 
 void UserManager::setSpecialCourseCurrentProgress(string levelID, int day, int gameIndex) {
-    /*UserDefault::getInstance()->setIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str(), gameIndex);
-    UserDefault::getInstance()->flush();*/
+    UserDefault::getInstance()->setIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str(), gameIndex);
+    UserDefault::getInstance()->flush();
 }
 
 int UserManager::getSpecialCourseCurrentProgress(string levelID, int day) {
-    /*return UserDefault::getInstance()->getIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str());*/
-    return 0;
+    return UserDefault::getInstance()->getIntegerForKey(getSpecialCourseCurrentProgressKey(levelID, day).c_str());
 }
 
 string UserManager::getSpecialCourseLightOnKey(char course) {
     return _userName + "_SCLight_" + course;
 }
 
-void UserManager::setSpecialCourseLightOn(char course) {
-    /*UserDefault::getInstance()->setBoolForKey(getSpecialCourseLightOnKey(course).c_str(), true);
-    UserDefault::getInstance()->flush();*/
-}
 
 bool UserManager::getSpecialCourseLightOn(char course) {
-    /*return UserDefault::getInstance()->getBoolForKey(getSpecialCourseLightOnKey(course).c_str());*/
     return true;
 }
 
@@ -478,10 +458,6 @@ string UserManager::getFishPresentEnableKey(string levelID) {
 void UserManager::setFishPresentEnable(string levelID, bool isEnable) {
     UserDefault::getInstance()->setBoolForKey(getFishPresentEnableKey(levelID).c_str(), isEnable);
     UserDefault::getInstance()->flush();
-}
-
-bool UserManager::isFishPresentEnable(string levelID) {
-    return UserDefault::getInstance()->getBoolForKey(getFishPresentEnableKey(levelID).c_str(), true);
 }
 
 /*

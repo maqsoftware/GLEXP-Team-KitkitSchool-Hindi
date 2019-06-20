@@ -1289,11 +1289,6 @@ void Room::turnLight(bool turnOn, bool animate)
 }
 
 bool Room::isEnableFishPresent() {
-   /* if (!UserManager::getInstance()->isFishPresentEnable(levelID)) {
-        return false;
-    }
-
-    return true;*/
    return false;
 }
 
