@@ -1088,75 +1088,63 @@ void DailyScene2::lightFall(LightBall *l, bool first)
 void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int maxAvailable)
 {
                                                                                                                                                                                                                                                                                                                                  GameSoundManager::getInstance()->playEffectSoundForAutoStart("WordVoice/GameName/"+gameName+".m4a");
-    map<int, string> gquiz1;
-    gquiz1.insert(pair<int, string>(1, "AlphabetPuzzle"));
-    gquiz1.insert(pair<int, string>(2, "AnimalPuzzle"));
-    gquiz1.insert(pair<int, string>(3, "BirdPhonics"));
-    gquiz1.insert(pair<int, string>(4, "BookWithQuiz"));
-    gquiz1.insert(pair<int, string>(5, "Counting"));
-    gquiz1.insert(pair<int, string>(6, "DoubleDigit"));
-    gquiz1.insert(pair<int, string>(7, "EquationMaker"));
-    gquiz1.insert(pair<int, string>(8, "FeedingTime"));
-    gquiz1.insert(pair<int, string>(9, "FindTheMatch"));
-    gquiz1.insert(pair<int, string>(10,"FishTank"));
-    gquiz1.insert(pair<int, string>(11,"HundredPuzzle"));
-    gquiz1.insert(pair<int, string>(12, "Labeling"));
-    gquiz1.insert(pair<int, string>(13, "LetterMatching"));
-    gquiz1.insert(pair<int, string>(14, "TutorialTrace"));
-    gquiz1.insert(pair<int, string>(15, "LetterTrace"));
-    gquiz1.insert(pair<int, string>(16, "LetterTracingCard"));
-    gquiz1.insert(pair<int, string>(17, "LineMatching"));
-    gquiz1.insert(pair<int, string>(18, "LRComprehension"));
-    gquiz1.insert(pair<int, string>(19, "MangoShop"));
-    gquiz1.insert(pair<int, string>(20, "MathKicker"));
-    gquiz1.insert(pair<int, string>(21, "MisingNumber"));
-    gquiz1.insert(pair<int, string>(22,"MovingInsects"));
-    gquiz1.insert(pair<int, string>(23, "MultiplicationBoard"));
-    gquiz1.insert(pair<int, string>(24,"NumberMatching"));
-    gquiz1.insert(pair<int, string>(26, "NumberTracing"));
-    gquiz1.insert(pair<int, string>(25,"NumberPuzzle"));
-    gquiz1.insert(pair<int, string>(27,"NumberTracingExt"));
-    gquiz1.insert(pair<int, string>(28, "NumberTrain"));
-    gquiz1.insert(pair<int, string>(29, "PatternTrain"));
-    gquiz1.insert(pair<int, string>(30, "PlaceValue"));
-    gquiz1.insert(pair<int, string>(31, "QuickFacts"));
-    gquiz1.insert(pair<int, string>(32, "ReadingBird"));
-    gquiz1.insert(pair<int, string>(33, "SentenceBridge"));
-    gquiz1.insert(pair<int, string>(34, "SentenceMaker"));
-    gquiz1.insert(pair<int, string>(35, "ShapeMatching"));
-    gquiz1.insert(pair<int, string>(36, "SoundTrain"));
-    gquiz1.insert(pair<int, string>(37, "Spelling"));
-    gquiz1.insert(pair<int, string>(38,"BubblePop"));
-    gquiz1.insert(pair<int, string>(39,"Bubble"));
-    gquiz1.insert(pair<int, string>(40,"StarFall"));
-    gquiz1.insert(pair<int, string>(41, "ThirtyPuzzle"));
-    gquiz1.insert(pair<int, string>(42, "WhatIsThis"));
-    gquiz1.insert(pair<int, string>(43, "WordWindow"));
-    gquiz1.insert(pair<int, string>(44, "WordTracing"));
-    gquiz1.insert(pair<int, string>(45, "WordKicker"));
-    gquiz1.insert(pair<int, string>(46, "WordNote"));
-    gquiz1.insert(pair<int, string>(47, "WordMatrix"));
-    gquiz1.insert(pair<int, string>(48,"WordMachine"));
-    gquiz1.insert(pair<int, string>(49, "WordWindow"));
-
-
-    map<int, string>::iterator itr;
-    int index = 0;
-    for (itr = gquiz1.begin(); itr != gquiz1.end(); ++itr){
-        if(itr->second == gameName){
-            index = itr->first;
-            break;
-        }
-    }
-
-
+    map<string, string> gquiz1;
+    gquiz1.insert(pair<string, string>("AlphabetPuzzle","वर्णमाला पहेली"));
+    gquiz1.insert(pair<string, string>("AnimalPuzzle","पशु पहेली"));
+    gquiz1.insert(pair<string, string>(3, "BirdPhonics"));
+    gquiz1.insert(pair<string, string>(4, "BookWithQuiz"));
+    gquiz1.insert(pair<string, string>(5, "Counting"));
+    gquiz1.insert(pair<string, string>(6, "DoubleDigit"));
+    gquiz1.insert(pair<string, string>(7, "EquationMaker"));
+    gquiz1.insert(pair<string, string>(8, "FeedingTime"));
+    gquiz1.insert(pair<string, string>(9, "FindTheMatch"));
+    gquiz1.insert(pair<string, string>(10,"FishTank"));
+    gquiz1.insert(pair<string, string>(11,"HundredPuzzle"));
+    gquiz1.insert(pair<string, string>(12, "Labeling"));
+    gquiz1.insert(pair<string, string>(13, "LetterMatching"));
+    gquiz1.insert(pair<string, string>(14, "TutorialTrace"));
+    gquiz1.insert(pair<string, string>(15, "LetterTrace"));
+    gquiz1.insert(pair<string, string>(16, "LetterTracingCard"));
+    gquiz1.insert(pair<string, string>(17, "LineMatching"));
+    gquiz1.insert(pair<string, string>(18, "LRComprehension"));
+    gquiz1.insert(pair<string, string>(19, "MangoShop"));
+    gquiz1.insert(pair<string, string>(20, "MathKicker"));
+    gquiz1.insert(pair<string, string>(21, "MisingNumber"));
+    gquiz1.insert(pair<string, string>(22,"MovingInsects"));
+    gquiz1.insert(pair<string, string>(23, "MultiplicationBoard"));
+    gquiz1.insert(pair<string, string>(24,"NumberMatching"));
+    gquiz1.insert(pair<string, string>(26, "NumberTracing"));
+    gquiz1.insert(pair<string, string>(25,"NumberPuzzle"));
+    gquiz1.insert(pair<string, string>(27,"NumberTracingExt"));
+    gquiz1.insert(pair<string, string>(28, "NumberTrain"));
+    gquiz1.insert(pair<string, string>(29, "PatternTrain"));
+    gquiz1.insert(pair<string, string>(30, "PlaceValue"));
+    gquiz1.insert(pair<string, string>(31, "QuickFacts"));
+    gquiz1.insert(pair<string, string>(32, "ReadingBird"));
+    gquiz1.insert(pair<string, string>(33, "SentenceBridge"));
+    gquiz1.insert(pair<string, string>(34, "SentenceMaker"));
+    gquiz1.insert(pair<string, string>(35, "ShapeMatching"));
+    gquiz1.insert(pair<string, string>(36, "SoundTrain"));
+    gquiz1.insert(pair<string, string>(37, "Spelling"));
+    gquiz1.insert(pair<string, string>(38,"BubblePop"));
+    gquiz1.insert(pair<string, string>(39,"Bubble"));
+    gquiz1.insert(pair<string, string>(40,"StarFall"));
+    gquiz1.insert(pair<string, string>(41, "ThirtyPuzzle"));
+    gquiz1.insert(pair<string, string>(42, "WhatIsThis"));
+    gquiz1.insert(pair<string, string>(43, "WordWindow"));
+    gquiz1.insert(pair<string, string>(44, "WordTracing"));
+    gquiz1.insert(pair<string, string>(45, "WordKicker"));
+    gquiz1.insert(pair<string, string>(46, "WordNote"));
+    gquiz1.insert(pair<string, string>(47, "WordMatrix"));
+    gquiz1.insert(pair<string, string>(48,"WordMachine"));
+    gquiz1.insert(pair<string, string>(49, "WordWindow"));
 
     switch(index)
     {
         case 1:
-            VoiceMoldManager::shared()->speak("वर्णमाला पहेली","hi-IN");
+            VoiceMoldManager::shared()->speak("","hi-IN");
         case 2:
-            VoiceMoldManager::shared()->speak("पशु पहेली","hi-IN");
+            VoiceMoldManager::shared()->speak("","hi-IN");
         case 3:
             VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
         case 4:
@@ -1251,117 +1239,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
                 VoiceMoldManager::shared()->speak("शब्द मशीन","hi-IN");
         case 49:
                 VoiceMoldManager::shared()->speak("वर्ड विंडो","hi-IN");
-
-
-
-
     }
-
-
-//    string _game = gameName ;
-//
-//
-//
-//    }
-//    if(_game == "AlphabetPuzzle")
-//        VoiceMoldManager::shared()->speak("वर्णमाला पहेली","hi-IN");
-//    if(_game=="AnimalPuzzle")
-//        VoiceMoldManager::shared()->speak("पशु पहेली","hi-IN");
-//    if(_game=="BirdPhonics")
-//        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-//    if(_game=="BookWithQuiz")
-//        VoiceMoldManager::shared()->speak("प्रश्नोत्तरी के साथ बुक करें","hi-IN");
-//    if(_game=="Counting")
-//        VoiceMoldManager::shared()->speak("गिनती","hi-IN");
-//    if(_game=="DoubleDigit")
-//        VoiceMoldManager::shared()->speak("दो अंक का गणित","hi-IN");
-//    if(_game=="EquationMaker")
-//        VoiceMoldManager::shared()->speak("समीकरण बनाने वाला","hi-IN");
-//    if(_game=="FeedingTime")
-//        VoiceMoldManager::shared()->speak("खिलाने का समय","hi-IN");
-//    if(_game=="FindTheMatch")
-//        VoiceMoldManager::shared()->speak(" जोड़ी खोजिए","hi-IN");
-//    if(_game=="FishTank")
-//        VoiceMoldManager::shared()->speak(" मछली घर","hi-IN");
-//    if(_game=="HundredPuzzle")
-//        VoiceMoldManager::shared()->speak("सौ पहेली ","hi-IN");
-//    if(_game=="Labeling")
-//        VoiceMoldManager::shared()->speak("अंकितक लगाना ","hi-IN");
-//    if(_game=="LetterMatching")
-//        VoiceMoldManager::shared()->speak("अक्षर मिलाना ","hi-IN");
-//    if(_game=="TutorialTrace")
-//         VoiceMoldManager::shared()->speak("रेखा अनुरेखण","hi-IN");
-//    if(_game=="LetterTrace")
-//        VoiceMoldManager::shared()->speak("अक्षर अनुरेखण","hi-IN");
-//    if(_game=="LetterTracingCard")
-//        VoiceMoldManager::shared()->speak("अक्षर ट्रेसिंग कार्ड","hi-IN");
-//    if(_game=="LineMatching")
-//        VoiceMoldManager::shared()->speak("रेखा मिलान","hi-IN");
-//    if(_game=="LRComprehension")
-//        VoiceMoldManager::shared()->speak("समझ बुझ","hi-IN");
-//    if(_game=="MangoShop")
-//        VoiceMoldManager::shared()->speak("आम की दुकान","hi-IN");
-//    if(_game=="MathKicker")
-//        VoiceMoldManager::shared()->speak("मैथ्स किकर ","hi-IN");
-//    if(_game=="MissingNumber")
-//        VoiceMoldManager::shared()->speak("अनुपस्तिथ संख्या","hi-IN");
-//    if(_game=="MovingInsects")
-//        VoiceMoldManager::shared()->speak("कीड़े की गिनती","hi-IN");
-//    if(_game=="MultiplicationBoard")
-//        VoiceMoldManager::shared()->speak("गुणा  पट्ट","hi-IN");
-//    if(_game=="NumberMatching")
-//        VoiceMoldManager::shared()->speak("संख्या मिलाना","hi-IN");
-//    if(_game=="NumberPuzzle")
-//        VoiceMoldManager::shared()->speak("संख्या पहेली ","hi-IN");
-//    if(_game=="NumberTracing")
-//        VoiceMoldManager::shared()->speak("संख्या अनुरेखण  ","hi-IN");
-//    if(_game=="NumberTracingExt")
-//        VoiceMoldManager::shared()->speak("संख्या अनुरेखण  ","hi-IN");
-//    if(_game=="NumberTrain")
-//        VoiceMoldManager::shared()->speak("संख्या ट्रेन ","hi-IN");
-//    if(_game=="PatternTrain")
-//        VoiceMoldManager::shared()->speak("पैटर्न ट्रेन ","hi-IN");
-//    if(_game=="PlaceValue")
-//        VoiceMoldManager::shared()->speak("मान रखे ","hi-IN");
-//    if(_game=="QuickFacts")
-//        VoiceMoldManager::shared()->speak("त्वरित तथ्य","hi-IN");
-//    if(_game=="ReadingBird")
-//        VoiceMoldManager::shared()->speak("पढ़ने वाला पक्षी","hi-IN");
-//    if(_game=="SentenceBridge")
-//        VoiceMoldManager::shared()->speak("वाक्य पुल","hi-IN");
-//    if(_game=="SentenceMaker")
-//        VoiceMoldManager::shared()->speak("वाक्य बनाने वाला","hi-IN");
-//    if(_game=="ShapeMatching")
-//        VoiceMoldManager::shared()->speak("आकार मिलाना","hi-IN");
-//    if(_game=="SoundTrain")
-//        VoiceMoldManager::shared()->speak("ध्वनि ट्रेन","hi-IN");
-//    if(_game=="Spelling")
-//        VoiceMoldManager::shared()->speak("वर्तनी","hi-IN");
-//    if(_game=="Tapping")
-//        VoiceMoldManager::shared()->speak("पॉप","hi-IN");
-//    if(_game=="BubblePop")
-//        VoiceMoldManager::shared()->speak(" क्या है","hi-IN");
-//    if(_game=="StarFall")
-//        VoiceMoldManager::shared()->speak("टाइपिंग ","hi-IN");
-//    if(_game=="ThirtyPuzzle")
-//        VoiceMoldManager::shared()->speak("तीस पहेली","hi-IN");
-//    if(_game=="WhatIsThis")
-//        VoiceMoldManager::shared()->speak("यह क्या है","hi-IN");
-//    if(_game=="WordWindow")
-//        VoiceMoldManager::shared()->speak("पक्षी की ध्वनि","hi-IN");
-//    if(_game=="WordTracing")
-//        VoiceMoldManager::shared()->speak("शब्द अनुरेखण ","hi-IN");
-//    if(_game=="WordKicker")
-//        VoiceMoldManager::shared()->speak("शब्द किकर","hi-IN");
-//    if(_game=="WordNote")
-//        VoiceMoldManager::shared()->speak("शब्द नोट","hi-IN");
-//    if(_game=="WordMatrix")
-//        VoiceMoldManager::shared()->speak("शब्द आव्यूह","hi-IN");
-//    if(_game==""WordMachine)
-//        VoiceMoldManager::shared()->speak("शब्द मशीन","hi-IN");
-//    if(_game=="WordWindow")
-//        VoiceMoldManager::shared()->speak("वर्ड विंडो","hi-IN");
-
 
     Size popupSize = Size(1540, 1404);
     auto winSize = Director::getInstance()->getWinSize();
