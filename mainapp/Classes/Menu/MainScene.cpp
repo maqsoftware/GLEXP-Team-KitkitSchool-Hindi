@@ -827,8 +827,8 @@ void MainScene::openAllLevels(){
             LevelCurriculum cur = it.second;
             UserManager::getInstance()->setLevelOpen(cur.levelID);
             UserManager::getInstance()->setPretestProgressType(cur.levelID, PretestProgressType::finish);
-            for (int i=0; i<cur.numDays; i++) {
-                UserManager::getInstance()->setDayCleared(cur.levelID, i);
+            for (int iCounter=0; iCounter<cur.numDays; iCounter++) {
+                UserManager::getInstance()->setDayCleared(cur.levelID, iCounter);
             }
         }
 }
