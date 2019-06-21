@@ -743,11 +743,6 @@ void CoopScene::onEnterTransitionDidFinish()
                     UserManager::getInstance()->setDayCleared(levelID, i+1);
                     auto day = i+1;
                     auto dayCur = cur->getDayCurriculum(day);
-                    if (dayCur) {
-                        for (int j=0; j<=dayCur->numGames; j++) {
-                            UserManager::getInstance()->setGameCleared(cur->levelID, day, j);
-                        }
-                    }
                 }
             }
             case PretestProgressType::fail:

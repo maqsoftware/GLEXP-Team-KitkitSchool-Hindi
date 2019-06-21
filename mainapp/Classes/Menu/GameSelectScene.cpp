@@ -469,7 +469,6 @@ GameSelectScene::addDayGameButtons(std::string levelID, int day, Vector<ui::Butt
             if (dayCur) {
                 for (int i = 0; i < dayCur->numGames; i++) {
                     if (!UserManager::getInstance()->isGameCleared(levelID, day, i)) {
-                        UserManager::getInstance()->setGameCleared(levelID, day, i);
                         break;
                     }
                 }
@@ -504,10 +503,6 @@ GameSelectScene::addDayGameButtons(std::string levelID, int day, Vector<ui::Butt
         _debugView->addChild(sk2);
         sk2->addClickEventListener([dayCur, levelID, day, this](Ref *) {
             if (dayCur) {
-                for (int i = 0; i < dayCur->numGames; i++) {
-                    UserManager::getInstance()->setGameCleared(levelID, day, i);
-
-                }
                 if (dayCur->isEggQuiz && !dayCur->isMiniQuiz) {
                     if (UserManager::getInstance()->getPretestProgressType(levelID) !=
                         PretestProgressType::finish) {

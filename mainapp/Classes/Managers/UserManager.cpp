@@ -335,12 +335,6 @@ void UserManager::clearDayProgress(string levelID, int day)
     auto cur = CurriculumManager::getInstance()->findCurriculum(levelID);
     auto dayCurr = cur->getDayCurriculum(day);
     if (!dayCurr) return;
-
-    for (int i=0; i<dayCurr->numGames; i++) {
-        UserManager::getInstance()->setGameCleared(levelID, day, i, false);
-    }
-
-
 }
 
 int UserManager::numDayCleared(string levelID)
@@ -377,10 +371,6 @@ string UserManager::getGameClearedKey(string levelID, int day, int gameIndex)
 bool UserManager::isGameCleared(string levelID, int day, int gameIndex)
 {
     return false;
-}
-
-void UserManager::setGameCleared(string levelID, int day, int gameIndex, bool isCleared)
-{
 }
 
 string UserManager::getSpecialCourseCurrentProgressKey(string levelID, int day) {
