@@ -17,7 +17,6 @@
 using namespace cocos2d::ui;
 using namespace std;
 string x;
-
 namespace WordWindowSceneSpace
 {
     const char* defaultFont = "fonts/chanakya.ttf";
@@ -45,7 +44,6 @@ WordWindowLevelStruct::WordWindowLevelStruct()
 	m_problemNo = 0;
 	m_sequenceType = 0;
 	m_soundFilename = "";
-
 	m_text = "";
 	for (int i = 0; i < 4; i++)
 	{
@@ -244,8 +242,6 @@ bool WordWindowScene::init()
 
 	return true;
 }
-
-
 
 void WordWindowScene::createBackground()
 {
@@ -462,7 +458,6 @@ void WordWindowScene::createPuzzle(int index)
 	// 문장 사운드 플레이
 	playSoundQuestion(m_curLevelStruct.m_soundFilename);
 
-
 	if (m_curLevelStruct.m_sequenceType == SEQUENCE_TYPE_EQUATION)
 	{
 		selectStone();
@@ -578,11 +573,6 @@ void WordWindowScene::playSoundQuestion(string name)
 
 	m_soundDuraton = getDuration(name);
 }
-
-
-
-
-
 
 void WordWindowScene::stopSoundQuestion()
 {
@@ -3021,7 +3011,6 @@ void WordWindowScene::createSoundButton()
 			if (m_soundDuraton <= 0.f)
 			{
 				playSoundQuestion(m_curLevelStruct.m_soundFilename);
-				
 			}
 		}
 	});

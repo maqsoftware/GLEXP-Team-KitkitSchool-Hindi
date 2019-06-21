@@ -131,13 +131,13 @@ void LRSoundButton::onEnter()
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
-
+ // Implementation of tts for this game module
 void LRSoundButton::playSound()
 {
     _isPlaying = true;
     _defaultImage->setVisible(false);
     _playingImage->setVisible(true);
-   VoiceMoldManager::shared()->speak(_soundName); //tts function for this game module LRComprehension
+   VoiceMoldManager::shared()->speak(_soundName);
     DELAYED_CALLFUNC(_durationMap[_soundName], {
         _isPlaying = false;
         _defaultImage->setVisible(true);

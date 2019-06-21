@@ -35,7 +35,6 @@ public:
     void preload();
     void play();
     void playLoop();
-
     void stop();
     //void unload();  // XXX: Not implemented.
     // NB(xenosoz, 2016): Sugars

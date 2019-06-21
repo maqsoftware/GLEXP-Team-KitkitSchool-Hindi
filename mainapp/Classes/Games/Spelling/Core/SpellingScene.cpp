@@ -13,7 +13,6 @@
 #include "../Utils/SpellingMainDepot.h"
 #include <Common/Controls/TodoSchoolBackButton.hpp>
 #include <Managers/StrictLogManager.h>
-#include <Managers/VoiceMoldManager.h>
 
 #include "CCAppController.hpp"
 

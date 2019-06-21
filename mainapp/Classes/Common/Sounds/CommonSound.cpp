@@ -3,9 +3,7 @@
 //  KitkitSchool
 //
 //  Created by Gunho Lee on 12/22/17.
-//
 
-//#include <Managers/VoiceMoldManager.h>
 #include "CommonSound.hpp"
 
 
@@ -54,7 +52,6 @@ SoundEffect CommonSound::soundForWord(const std::string& Word) const {
     return SoundEffect(path.c_str());
 
 }
-
 
 
 

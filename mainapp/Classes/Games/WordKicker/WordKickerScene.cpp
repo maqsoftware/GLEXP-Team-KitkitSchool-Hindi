@@ -820,12 +820,12 @@ bool WordKickerScene::touchSpeakerButton(bool bIsKicker, bool bResetBirdMark)
 
 	if (bIsKicker)
 	{
-		VoiceMoldManager::shared()->speak(strSoundFileName); //tts implementation for wordkicker
+		VoiceMoldManager::shared()->speak(strSoundFileName); // tts implementation for wordkicker
 		duration /= 1.2f;
 	}
 	else
 	{
-		VoiceMoldManager::shared()->speak(strSoundFileName); //tts implementation
+		VoiceMoldManager::shared()->speak(strSoundFileName);
 
 	}
 

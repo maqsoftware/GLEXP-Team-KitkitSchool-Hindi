@@ -19,8 +19,7 @@
 
 
 #include "CCAppController.hpp"
-//#include "UIWidget.h"
-//#include "VoiceMold.java"
+
 
 using namespace cocos2d::ui;
 using namespace std;
@@ -121,7 +120,6 @@ bool SentenceBridgeScene::init()
             if (e == Widget::TouchEventType::ENDED) {
 				if (_touchEnabled)
 				{
-				    //VoiceMoldManager::shared()->speak(soundFileName);
 					_bridgeMainNode->debugSolveAll();
 					onBridgeComplete();
 				}
@@ -200,23 +198,22 @@ void SentenceBridgeScene::makeSpeakerButton(Size winSize)
 	listener->onTouchBegan = [this](Touch* T, Event* E) {
 		if (_touchEnabled && !_speakerPlaying)
 		{
-		auto pos = _speakerButton->getParent()->convertToNodeSpace(T->getLocation());
+		    auto pos = _speakerButton->getParent()->convertToNodeSpace(T->getLocation());
 			if (_speakerButton->getBoundingBox().containsPoint(pos)) {
 				 touchSpeakerButton(0);
-			} }
+			}
+		}
 		return false;
-
 	};
 	_speakerButton->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
-
+// Implementation of tts for this module
 bool SentenceBridgeScene::touchSpeakerButton(float delayTime)
 {
 	_speakerPlaying = true;
 	_speakerButton->setTexture(resourcePath + "button-speaker-playing.png");
 
 	string strSoundFileName = _problems[_currentProblemIndex].SentenceSound;
-	//oat fSoundFileDuration =VoiceMoldManager::shared()->guessSpeakDuration(strSoundFileName);
 	float fSoundFileDuration = getDuration(strSoundFileName);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	TodoUtil::replace(strSoundFileName, ".m4a", ".mp3");
@@ -227,14 +224,14 @@ bool SentenceBridgeScene::touchSpeakerButton(float delayTime)
 		runAction(Sequence::create(
 			DelayTime::create(delayTime),
 			CallFunc::create([this, strSoundFileName]() {
-				VoiceMoldManager::shared()->speak(strSoundFileName); //tts implementation for this module
+				VoiceMoldManager::shared()->speak(strSoundFileName);
 			}),
 			nullptr
 		));
 	}
 	else
 	{
-		VoiceMoldManager::shared()->speak(strSoundFileName); //tts implementation for this module
+		VoiceMoldManager::shared()->speak(strSoundFileName);
 	}
 	
 
@@ -251,8 +248,7 @@ bool SentenceBridgeScene::touchSpeakerButton(float delayTime)
 	return true;
 }
 
-void SentenceBridgeScene::
-processBlockTouch()
+void SentenceBridgeScene::processBlockTouch()
 {
 	_blockMainNode->onBlockTouchBegan = [this]() {
         if (_touchEnabled && !_blockMoving) {

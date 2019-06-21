@@ -372,7 +372,6 @@ void WhatIsThisLayer::LoadDatas()
 		cardData.answer = MMUtil::ReplaceReturn(line[paser["answer"]]);
 		cardData.pic = line[paser["answer pic"]];
 		cardData.sound = line[paser["answer sound"]];
-
 		cardData.soundDuration = (float)atof(line[paser["answer sound duration"]].c_str());
 		data.answer = cardData;
 
@@ -382,8 +381,6 @@ void WhatIsThisLayer::LoadDatas()
 			cardData.answer = MMUtil::ReplaceReturn(line[paser[StringUtils::format("wrong answer %d", i)]]);
 			cardData.pic = line[paser[StringUtils::format("wrong answer %d pic", i)]];
 			cardData.sound = line[paser[StringUtils::format("wrong answer %d sound", i)]];
-
-
 			cardData.soundDuration = (float)atof(line[paser[StringUtils::format("wrong answer %d sound duration", i)]].c_str());
 			if (!cardData.answer.empty() || !cardData.pic.empty())
 				data.wrong_answer.push_back(cardData);
@@ -424,7 +421,7 @@ bool WhatIsThisScene::init()
         return false;
     }
 
-	setName(" WhatIsThisScene");
+	setName("WhatIsThisScene");
 
 	mainLayer = WhatIsThisLayer::create();
     mainLayer->initUI();

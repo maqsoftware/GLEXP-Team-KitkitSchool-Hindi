@@ -14,6 +14,9 @@
 #include <string>
 #include <Managers/VoiceMoldManager.h>
 #include "Common/Effects/LightBall.hpp"
+#include <iostream>
+#include <utility>
+#include<map>
 
 USING_NS_CC;
 
@@ -34,8 +37,6 @@ public:
     void refreshData();
     void setupMangoBoard();
     void setupFreechoiceTab();
-
-
 
     
     virtual void onEnter() override;
@@ -148,15 +149,11 @@ private:
     
     
     bool _touchEnabled;
-
     
 
     
 
 };
-
-
-
 
 
 

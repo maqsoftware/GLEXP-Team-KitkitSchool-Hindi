@@ -221,10 +221,8 @@ void SentenceMakerScene::createGame(int problemId)
     _gameNode->addChild(tray);
     
     // Sound Button
-
         _sketchbookPage->addChild(createSoundButton());
 
-    
     // Back Button
     auto backButton = TodoSchoolBackButton::create();
     backButton->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
@@ -244,14 +242,14 @@ bool SentenceMakerScene::isSolved()
     }
     return true;
 }
-
+// Implementation of tts for this module
 void SentenceMakerScene::onSolve()
 {
     _blocker->setEnabled(true);
     
     auto delayTime = getSentenceDuration(_problemData->soundPath);
     auto seq = Sequence::create(DelayTime::create(kSentenceDelayTime),
-                                CallFunc::create([this](){// GameSoundManager::getInstance()->playEffectSoundForAutoStart(kSoundPrefixPath + _problemData->soundPath); }),
+                                CallFunc::create([this](){
                                     VoiceMoldManager::shared()->speak(_problemData->soundPath);}),
                                 DelayTime::create(kSentenceDelayTime + delayTime),
                                 CallFunc::create([this](){ onSolvePostProcess(); }),
@@ -475,7 +473,7 @@ void SentenceMakerScene::playWordSound(string word)
     {
         auto effectName = LanguageManager::getInstance()->soundPathForWordFile(wordSoundName);
         auto seq = Sequence::create(DelayTime::create(delayTime),
-                                    CallFunc::create([this, effectName, wordSoundName]{ VoiceMoldManager::shared()->speak(wordSoundName); }), //calling tts function for this module
+                                    CallFunc::create([this, effectName, wordSoundName]{ VoiceMoldManager::shared()->speak(wordSoundName); }),
                                     nullptr);
         
         this->runAction(seq);
@@ -643,7 +641,6 @@ Node* SentenceMakerScene::createSoundButton()
     soundButton->setPosition(Vec2(130.f, _sketchbookPage->getContentSize().height - 180.f));
     soundButton->addTouchEventListener([this](Ref*,Widget::TouchEventType e) {
         if (e == Widget::TouchEventType::ENDED) {
-           // GameSoundManager::getInstance()->playEffectSoundForAutoStart(kSoundPrefixPath + _problemData->soundPath);
            VoiceMoldManager::shared()->speak(_problemData->soundPath);
         }
     });

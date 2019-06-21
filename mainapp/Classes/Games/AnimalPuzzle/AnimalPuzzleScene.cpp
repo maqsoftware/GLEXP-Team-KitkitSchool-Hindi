@@ -228,7 +228,7 @@ void AnimalPuzzleScene::onPuzzleComplete()
 
     if (_currentPuzzleIndex>=_puzzles.size()) {
         auto seq = Sequence::create(DelayTime::create(1.0),
-                                    CallFunc::create([this, e](){ playSound(e.soundFilename); }), //tts calling function
+                                    CallFunc::create([this, e](){ playSound(e.soundFilename); }),
                                     nullptr);
         this->runAction(seq);
         
@@ -238,7 +238,7 @@ void AnimalPuzzleScene::onPuzzleComplete()
         });
     } else {
         auto seq = Sequence::create(DelayTime::create(1.0),
-                                    CallFunc::create([this, e](){ playSound(e.soundFilename); }), //tts calling function
+                                    CallFunc::create([this, e](){ playSound(e.soundFilename); }),
                                     DelayTime::create(voiceDelay+1.0),
                                     CallFunc::create([this, label](){ label->removeFromParent(); showPuzzle(_currentPuzzleIndex); }),
                                     nullptr);
@@ -494,12 +494,11 @@ void AnimalPuzzleScene::loadData(int level)
     }
 }
 
-
+ // implementation of tts for this module
 void AnimalPuzzleScene::playSound(string name)
 {
     VoiceMoldManager::shared()->speak(name);
 }
-
 
 void AnimalPuzzleScene::loadDurationsheet() {
 

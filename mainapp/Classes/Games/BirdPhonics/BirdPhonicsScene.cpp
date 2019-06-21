@@ -136,8 +136,7 @@ void Bread::setWord(string word, string phonic_owner, string word_sound, string 
         
         if (box.containsPoint(pos)) {
             _wordEffect.stop();
-           VoiceMoldManager::shared()->speak(_word);//tts tts function for this game module
-
+           VoiceMoldManager::shared()->speak(_word);   // Implementation of tts for this module
             
             return true;
         }
@@ -370,13 +369,11 @@ void Bird::eatBread(Bread *bread)
     double now = getCurrentTimeOfDouble();
 
     if (now - chirpTime > 0.5f) {
-     //   bread->_wordEffect.play();
         VoiceMoldManager::shared()->speak(bread->_word);
 
     } else {
         this->runAction(Sequence::create(DelayTime::create(0.5),
                                          CallFunc::create([this, bread]() {
-                                          //  bread->_wordEffect.play();
                                              VoiceMoldManager::shared()->speak(bread->_word);
         }), nullptr));
     }

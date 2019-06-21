@@ -373,7 +373,7 @@ void LabelingScene::createPuzzle(int index)
         slotNode->runAction(Sequence::create(DelayTime::create(currentDelay),
                                              EaseElasticInOut::create(ScaleTo::create(popDelay, 1.0f)),
                                              DelayTime::create(0.01f),
-                                             CallFunc::create([this](){ slotApperEffect().play(); }),
+                                             CallFunc::create([this](){ slotApperEffect().play();}),
                                              nullptr));
         if (i == 1)
             currentDelay += slotAppearDelay + 0.2f;
@@ -426,9 +426,8 @@ void LabelingScene::createPuzzle(int index)
             this->runAction(Sequence::create(DelayTime::create(snapAnimationDelay),
                                              CallFunc::create([this,label](){ this->unblockTouches(); _slotPieces.at(_slotPieces.size()-label->_labelId-1)->revealText();}),
                                              DelayTime::create(tearAnimationDelay+additionalDelay),
-                                             CallFunc::create([this,label](){ playSound(label->_voiceFilename); }),//tts function for this game
+                                             CallFunc::create([this,label](){ playSound(label->_voiceFilename);}),
                                              nullptr));
-
             if (_numSnappedPieces >= _labelingPieces.size()) {
                 float voiceDelay = getDuration(label->_voiceFilename);
                 
@@ -647,12 +646,11 @@ void LabelingScene::loadData(int level)
     }
 }
 
-
+// Implementation of tts for this module
 void LabelingScene::playSound(string name)
 {
     VoiceMoldManager::shared()->speak(name);
 }
-
 
 void LabelingScene::loadDurationsheet() {
 

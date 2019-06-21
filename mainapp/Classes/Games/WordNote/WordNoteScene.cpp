@@ -192,7 +192,6 @@ float WordNoteScene::speech(string input) {
       return 0.5f;
     } else
    VoiceMoldManager::shared()->speak(input);
-
     
 }
 
@@ -212,7 +211,7 @@ float WordNoteScene::speechWithFiles(string input, float timing) {
                 CallFunc::create([this, sd, timing](){
                 //CCLOG("timing:%f", timing);
                 //CCLOG("sound:%s", sd.word.c_str());
-         VoiceMoldManager::shared()->speak(sd.word); //Implementation of tts in this module
+         VoiceMoldManager::shared()->speak(sd.word);  // Implementation of tts in this module
             }), nullptr));
 
             duration += sd.duration-0.17f;

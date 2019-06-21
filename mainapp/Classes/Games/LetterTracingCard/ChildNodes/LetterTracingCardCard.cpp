@@ -237,7 +237,7 @@ void Card::FlipToBack()
         {
 #ifdef IMPORT_TSV_FILE_LETTER_TRACING_CARD
             auto file = MainDepot().assetPrefix() + "/Sounds/" + audioName;
-           VoiceMoldManager::shared()->speak(audioName);  //tts implementation for this module
+           VoiceMoldManager::shared()->speak(audioName);   // implementation of tts for this module
 #else
             auto file = MainDepot().assetPrefix() + "/Sounds/" + word + ".m4a";
             if (FileUtils::getInstance()->isFileExist(file)) {
