@@ -557,7 +557,6 @@ void WordWindowScene::loadData(int level)
 }
 
 
-//}
 void WordWindowScene::playSoundQuestion(string name)
 {
 	if(name.empty()==true)
