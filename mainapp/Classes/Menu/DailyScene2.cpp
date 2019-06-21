@@ -1115,6 +1115,8 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
         VoiceMoldManager::shared()->speak("अंकितक लगाना ","hi-IN");
     if(_game=="LetterMatching")
         VoiceMoldManager::shared()->speak("अक्षर मिलाना ","hi-IN");
+    if(_game=="TutorialTrace")
+         VoiceMoldManager::shared()->speak("रेखा अनुरेखण","hi-IN");
     if(_game=="LetterTrace")
         VoiceMoldManager::shared()->speak("अक्षर अनुरेखण","hi-IN");
     if(_game=="LetterTracingCard")
