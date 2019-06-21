@@ -819,6 +819,7 @@ void MainScene::resume() {
     }
 }
 
+// function to open all modules
 void MainScene::openAllLevels(){
         auto lang = LanguageManager::getInstance()->getCurrentLanguageTag();
 
