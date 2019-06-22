@@ -1126,7 +1126,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
     gquiz1.insert(pair<string, string>("ShapeMatching", "आकार मिलाना"));
     gquiz1.insert(pair<string, string>("SoundTrain", "ध्वनि ट्रेन"));
     gquiz1.insert(pair<string, string>("Spelling", "वर्तनी"));
-    gquiz1.insert(pair<string, string>("BubblePop", "बबल पॉप"));
+    gquiz1.insert(pair<string, string>("Tapping", "बबल पॉप"));
     gquiz1.insert(pair<string, string>("StarFall", "टाइपिंग"));
     gquiz1.insert(pair<string, string>("ThirtyPuzzle", "30 पहेली"));
     gquiz1.insert(pair<string, string>("WhatIsThis", "यह क्या है?"));
