@@ -1109,7 +1109,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
     gquiz1.insert(pair<string, string>("LRComprehension", "समझ बुझ"));
     gquiz1.insert(pair<string, string>("MangoShop", "आम की दुकान"));
     gquiz1.insert(pair<string, string>("MathKicker", "मैथ्स किकर"));
-    gquiz1.insert(pair<string, string>("MisingNumber", "अनुपस्तिथ संख्या"));
+    gquiz1.insert(pair<string, string>("MissingNumber", "अनुपस्तिथ संख्या"));
     gquiz1.insert(pair<string, string>("MovingInsects", "कीड़े की गिनती"));
     gquiz1.insert(pair<string, string>("MultiplicationBoard", "गुणा  पट्ट"));
     gquiz1.insert(pair<string, string>("NumberMatching", "संख्या मिलाना"));
