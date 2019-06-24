@@ -109,3 +109,4 @@ mainapp/Resources/*
 !mainapp/Resources/readme.txt
 
 maqpublisher.keystore
+mainapp/proj.android-studio/app/google-services.json

@@ -41,6 +41,7 @@ import android.os.Process;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.maq.kitkitProvider.Fish;
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
@@ -69,6 +70,8 @@ public class AppActivity extends Cocos2dxActivity {
     public static String _launchString;
     private Cocos2dxGLSurfaceView glSurfaceView;
     public static KitkitDBHandler _dbHandler;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private static String TAG = "KitkitSchoolActivity";
     private static final String EXPANSION_FILE_VERSION_KEY_NAME = "0";
@@ -129,6 +132,7 @@ public class AppActivity extends Cocos2dxActivity {
         isPermissionGranted();
         _activity = this;
         _dbHandler = new KitkitDBHandler(_activity);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
