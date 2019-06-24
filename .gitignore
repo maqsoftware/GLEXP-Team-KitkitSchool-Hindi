@@ -110,3 +110,4 @@ mainapp/Resources/*
 
 maqpublisher.keystore
 mainapp/proj.android-studio/app/google-services.json
+launcher/app/google-services.json
