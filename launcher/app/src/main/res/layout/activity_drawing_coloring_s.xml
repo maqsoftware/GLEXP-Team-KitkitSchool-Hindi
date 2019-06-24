@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/drawingpad_background"
-    tools:context=".activity.DrawingColoringActivity">
+    tools:context="com.maq.xprize.drawingcoloring.activity.DrawingColoringActivity">
 
     <ImageView
         android:id="@+id/v_back"
