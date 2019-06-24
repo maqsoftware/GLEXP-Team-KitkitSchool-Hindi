@@ -99,6 +99,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                     packageName = "com.maq.xprize.drum";
 
                     try {
+//                        Calling Drum's main activity
                         Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
                         startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
@@ -130,6 +131,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.marimba";
                     try {
+//                        Calling Marimba's main activity
                         Intent i = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
                         startActivity(i);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
@@ -160,6 +162,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.blackboard";
                     try {
+//                        Calling Black Board's main activity
                         Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.blackboard.activity.MainActivity.class);
                         startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
@@ -189,6 +192,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drawingcoloring";
                     try {
+//                        Calling Drawing's main activity
                         Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.drawingcoloring.activity.DrawingActivity.class);
                         startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
@@ -219,6 +223,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drawingcoloring";
                     try {
+//                        Calling Coloring's main activity
                         Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.ColoringActivity.class);
                         startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
@@ -242,8 +247,13 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
+                    /*
+                     * Added all the files of the Gallery app in the package com.maq.xprize.kitkitlauncher.hindi
+                     * This resolved "com.maq.xprize.xprize_gallery" PackageNotFound error
+                     */
                     packageName = "com.maq.xprize.kitkitlauncher.hindi";
                     try {
+//                        Calling Gallery's main activity
                         Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.kitkitlauncher.hindi.activity.GalleryActivity.class);
                         startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
@@ -295,6 +305,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                     packageName = "com.maq.xprize.writingboard";
                     if (!gotoVideoPlayerForWritingBoard()) {
                         try {
+//                            Calling Writing Board's main activity
                             Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.writingboard.activity.MainActivity.class);
                             startActivity(intent);
                             KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
