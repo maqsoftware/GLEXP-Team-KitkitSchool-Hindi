@@ -132,8 +132,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                     packageName = "com.maq.xprize.marimba";
                     try {
 //                        Calling Marimba's main activity
-                        Intent i = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
-                        startActivity(i);
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
+                        startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_marimba", "", 0);
                     } catch (Exception e) {
