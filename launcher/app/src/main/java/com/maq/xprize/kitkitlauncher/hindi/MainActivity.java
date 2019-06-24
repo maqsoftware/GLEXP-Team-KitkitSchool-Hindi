@@ -62,7 +62,6 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     public static final String TEMP_ZIP_FOLDER_NAME = "TEMP";
     public static final String UPLOAD_TIME_RECORD_FILE = "upload_time.txt";
     public static final String PATH_IMAGE_LOG_WRITING_BOARD = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "writingboard" + File.separator + "log_image" + File.separator;
-    public static final String PATH_IMAGE_LOG_SEA_WORLD = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "sea_world" + File.separator + "images" + File.separator;
     private static final long logCooldownTimeInMillis = 5 * 60 * 1000; // 5 minutes
     private static final long timeUpdateRetryTimeInMillis = 1 * 60 * 1000; // 1 minute
     private static final long timeUpdateCooldownTimeInMillis = 60 * 60 * 1000; // 60 minutes
@@ -75,7 +74,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     private final int MSG_SUCCESS = 2;
     private final int MSG_UPLOAD_IMAGE = 100;
     private final int MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD = 101;
-    private final int MSG_UPLOAD_LOG_IMAGE_SEA_WORLD = 102;
+
     Rect mTempRect = new Rect();
     BroadcastReceiver receiver;
     private FtpClient ftpclient = null;
@@ -132,10 +131,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                 uploadImages(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath(), "drawing", 20, MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD);
 
             } else if (msg.what == MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD) {
-                uploadImages(PATH_IMAGE_LOG_WRITING_BOARD, "writingboard", 0, MSG_UPLOAD_LOG_IMAGE_SEA_WORLD);
-
-            } else if (msg.what == MSG_UPLOAD_LOG_IMAGE_SEA_WORLD) {
-                uploadImages(PATH_IMAGE_LOG_SEA_WORLD, "seaworld", 100, MSG_SUCCESS);
+                uploadImages(PATH_IMAGE_LOG_WRITING_BOARD, "writingboard", 0, MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD);
 
             } else {
 //Toast.makeText(MainActivity.this, "Unable to Perform Action! : " + msg.what,
