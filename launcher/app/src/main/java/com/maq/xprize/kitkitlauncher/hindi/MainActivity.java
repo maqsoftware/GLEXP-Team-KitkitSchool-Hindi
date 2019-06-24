@@ -74,7 +74,6 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     private final int MSG_SUCCESS = 2;
     private final int MSG_UPLOAD_IMAGE = 100;
     private final int MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD = 101;
-
     Rect mTempRect = new Rect();
     BroadcastReceiver receiver;
     private FtpClient ftpclient = null;
