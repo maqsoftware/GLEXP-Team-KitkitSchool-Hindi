@@ -131,6 +131,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                 uploadImages(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath(), "drawing", 20, MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD);
 
             } else if (msg.what == MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD) {
+//                Changed MSG_UPLOAD_LOG_IMAGE_SEA_WORLD to MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD
                 uploadImages(PATH_IMAGE_LOG_WRITING_BOARD, "writingboard", 0, MSG_UPLOAD_LOG_IMAGE_WRITING_BOARD);
 
             } else {
