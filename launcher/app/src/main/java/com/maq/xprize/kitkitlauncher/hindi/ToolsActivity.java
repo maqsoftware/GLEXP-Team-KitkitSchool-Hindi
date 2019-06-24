@@ -23,6 +23,7 @@ import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
 import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
+import com.maq.xprize.drum.activity.DrumActivity;
 
 /**
  * Created by ingtellect on 1/3/17.
@@ -98,10 +99,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                     packageName = "com.maq.xprize.drum";
 
                     try {
-                        //Intent i = getPackageManager().getLaunchIntentForPackage("com.enuma.drum");
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.setComponent(new ComponentName("com.maq.xprize.drum", "com.maq.xprize.drum.activity.MainActivity"));
-                        startActivity(i);
+                        Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
+                        startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_drum", "", 0);
                     } catch (Exception e) {
@@ -131,9 +130,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.marimba";
                     try {
-                        //Intent i = getPackageManager().getLaunchIntentForPackage("com.enuma.marimba");
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.setComponent(new ComponentName("com.maq.xprize.marimba", "com.maq.xprize.marimba.activity.MainActivity"));
+                        Intent i = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
                         startActivity(i);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_marimba", "", 0);
@@ -163,11 +160,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.blackboard";
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.setComponent(new ComponentName("com.maq.xprize.blackboard", "com.maq.xprize.blackboard.activity.MainActivity"));
+                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.blackboard.activity.MainActivity.class);
                         startActivity(intent);
-                        //Intent i = getPackageManager().getLaunchIntentForPackage("com.enuma.blackboard");
-                        //startActivity(i);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_blackboard", "", 0);
                     } catch (Exception e) {
@@ -195,11 +189,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drawingcoloring";
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.putExtra("LANGUAGE", getAppLanguage());
-                        intent.setClassName("com.maq.xprize.drawingcoloring", "com.maq.xprize.drawingcoloring.activity.DrawingActivity");
+                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.drawingcoloring.activity.DrawingActivity.class);
                         startActivity(intent);
-
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_drawing", "", 0);
                     } catch (Exception e) {
@@ -228,11 +219,8 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drawingcoloring";
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.putExtra("LANGUAGE", getAppLanguage());
-                        intent.setClassName("com.maq.xprize.drawingcoloring", "com.maq.xprize.drawingcoloring.activity.ColoringActivity");
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.ColoringActivity.class);
                         startActivity(intent);
-
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_coloring", "", 0);
                     } catch (Exception e) {
@@ -254,10 +242,9 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.xprize_gallery";
+                    packageName = "com.maq.xprize.kitkitlauncher.hindi";
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.setComponent(new ComponentName("com.maq.xprize.xprize_gallery", "com.maq.xprize.xprize_gallery.activity.MainActivity"));
+                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.kitkitlauncher.hindi.activity.GalleryActivity.class);
                         startActivity(intent);
                         KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_album", "", 0);
@@ -306,11 +293,9 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.writingboard";
-                    if (gotoVideoPlayerForWritingBoard() == false) {
+                    if (!gotoVideoPlayerForWritingBoard()) {
                         try {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.setComponent(new ComponentName("com.maq.xprize.writingboard", "com.maq.xprize.writingboard.activity.MainActivity"));
-                            intent.putExtra("LANGUAGE", getAppLanguage());
+                            Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.writingboard.activity.MainActivity.class);
                             startActivity(intent);
                             KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
                             logger.logEvent("ToolsActivity", "start_writing_board", "", 0);
