@@ -1,12 +1,9 @@
 package com.maq.xprize.kitkitlauncher.hindi;
 
-import android.app.AlertDialog;
 import android.content.ComponentName;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.MotionEvent;
@@ -97,17 +94,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drum";
-
-                    try {
-//                        Calling Drum's main activity
-                        Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
-                        startActivity(intent);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_drum", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Drum: किटकिट स्कूल - Kitkit School module");
-                    }
-
+//                    Calling Drum's main activity
+                    Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_drum", "", 0);
                 } else {
                     unlock(tv);
                 }
@@ -129,17 +120,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.marimba";
-                    try {
-//                        Calling Marimba's main activity
-                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
-                        startActivity(intent);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_marimba", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Marimba: किटकिट स्कूल - Kitkit School module");
-                    }
-
+//                    Calling Marimba's main activity
+                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_marimba", "", 0);
                 } else {
                     unlock(tv);
                 }
@@ -160,16 +145,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.blackboard";
-                    try {
-//                        Calling Black Board's main activity
-                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.blackboard.activity.MainActivity.class);
-                        startActivity(intent);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_blackboard", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Blackboard: किटकिट स्कूल - Kitkit School module");
-                    }
+//                    Calling Black Board's main activity
+                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.blackboard.activity.MainActivity.class);
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_blackboard", "", 0);
                 } else {
                     unlock(tv);
                 }
@@ -190,16 +170,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.drawingcoloring";
-                    try {
-//                        Calling Drawing's main activity
-                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.drawingcoloring.activity.DrawingActivity.class);
-                        startActivity(intent);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_drawing", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Drawing: किटकिट स्कूल - Kitkit School module");
-                    }
+//                    Calling Drawing's main activity
+                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.DrawingActivity.class);
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_drawing", "", 0);
                 } else {
                     unlock(tv);
                 }
@@ -221,16 +196,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.drawingcoloring";
-                    try {
-//                        Calling Coloring's main activity
-                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.ColoringActivity.class);
-                        startActivity(intent);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_coloring", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Drawing: किटकिट स्कूल - Kitkit School module");
-                    }
+//                    Calling Coloring's main activity
+                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.ColoringActivity.class);
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_coloring", "", 0);
                 } else {
                     unlock(tv);
                 }
@@ -247,20 +217,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    /*
-                     * Added all the files of the Gallery app in the package com.maq.xprize.kitkitlauncher.hindi
-                     * This resolved "com.maq.xprize.xprize_gallery" PackageNotFound error
-                     */
-                    packageName = "com.maq.xprize.kitkitlauncher.hindi";
-                    try {
-//                        Calling Gallery's main activity
-                        Intent intent = new Intent(ToolsActivity.this,com.maq.xprize.kitkitlauncher.hindi.activity.GalleryActivity.class);
-                        startActivity(intent);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_album", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Gallery: किटकिट स्कूल - Kitkit School module");
-                    }
+//                  Calling Gallery's main activity
+                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.kitkitlauncher.hindi.activity.GalleryActivity.class);
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_album", "", 0);
                 } else {
                     unlock(tv);
                 }
@@ -277,17 +238,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.FB";
-                    try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.setComponent(new ComponentName("com.maq.xprize.FB", "org.cocos2dx.cpp.AppActivity"));
-                        startActivity(intent);
-                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                        logger.logEvent("ToolsActivity", "start_fish_bowl", "", 0);
-                    } catch (Exception e) {
-                        redirectPopup(packageName, "Sea World: किटकिट स्कूल - Kitkit School module");
-                    }
-
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.setComponent(new ComponentName("com.maq.xprize.FB", "org.cocos2dx.cpp.AppActivity"));
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_fish_bowl", "", 0);
                 }
             }
         });
@@ -303,18 +258,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.writingboard";
-                    if (!gotoVideoPlayerForWritingBoard()) {
-                        try {
-//                            Calling Writing Board's main activity
-                            Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.writingboard.activity.MainActivity.class);
-                            startActivity(intent);
-                            KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                            logger.logEvent("ToolsActivity", "start_writing_board", "", 0);
-                        } catch (Exception e) {
-                            redirectPopup(packageName, "Writing Board: किटकिट स्कूल - Kitkit School module");
-                        }
-                    }
-
+//                    Calling Writing Board's main activity
+                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.writingboard.activity.MainActivity.class);
+                    startActivity(intent);
+                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                    logger.logEvent("ToolsActivity", "start_writing_board", "", 0);
                 } else {
                     unlock(tv);
                 }
@@ -325,28 +273,6 @@ public class ToolsActivity extends KitKitLoggerActivity {
         Typeface f = Typeface.createFromAsset(getAssets(), "TodoMainCurly.ttf");
         textViewCoinNum.setTypeface(f);
 
-    }
-
-    private void redirectPopup(final String packageName, final String appTitle) {
-
-        new AlertDialog.Builder(this)
-                .setTitle("Download " + appTitle)
-                .setMessage(getString(R.string.dialog_message))
-                .setPositiveButton("Continue",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MainActivity.PLAYSTORE_URL + packageName)));
-                            }
-                        })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create()
-                .show();
     }
 
     @Override
