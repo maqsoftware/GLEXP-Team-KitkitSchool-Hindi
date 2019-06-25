@@ -24,7 +24,6 @@ import android.widget.LinearLayout;
 
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
-import com.maq.xprize.kitkitlauncher.hindi.R;
 import com.maq.xprize.drawingcoloring.activity.base.BaseActivity;
 import com.maq.xprize.drawingcoloring.core.Const;
 import com.maq.xprize.drawingcoloring.dialog.DialogSelectColoringBackground;
@@ -36,6 +35,7 @@ import com.maq.xprize.drawingcoloring.utility.Util;
 import com.maq.xprize.drawingcoloring.view.ViewDrawingColoring;
 import com.maq.xprize.drawingcoloring.view.ViewPen;
 import com.maq.xprize.drawingcoloring.view.base.LockableScrollView;
+import com.maq.xprize.kitkitlauncher.hindi.R;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -47,14 +47,10 @@ import java.util.Locale;
 
 public class DrawingColoringActivity extends BaseActivity {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private final int TOTAL_PEN_COLOR_COUNT = 18;
     public static final int TOTAL_BG_COLOR_COUNT = 6;
     private final String TIME_FORMAT = "yyyy-MM-dd-HH-mm-ss";
     private final long MAX_SAVE_AMOUNT = (200 * 1024 * 1024);
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private BaseActivity mThisActivity;
     protected Preference mPreference;
@@ -63,8 +59,6 @@ public class DrawingColoringActivity extends BaseActivity {
     private KitkitDBHandler mKitkitDBHandler;
     private User mUser;
     private String mSavePath = "";
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     protected ImageView mVChangeBg;
     private View mVSave;
@@ -75,8 +69,6 @@ public class DrawingColoringActivity extends BaseActivity {
     private ViewPen[] mVPens = new ViewPen[TOTAL_PEN_COLOR_COUNT];
     private ViewPen[] mVSelectedPensEffect = new ViewPen[TOTAL_PEN_COLOR_COUNT];
     private ImageView mIvSaveEffect;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private int[] PEN_COLORS = new int[TOTAL_PEN_COLOR_COUNT];
     private int[] BG_COLORS = new int[TOTAL_BG_COLOR_COUNT];
@@ -93,8 +85,6 @@ public class DrawingColoringActivity extends BaseActivity {
     private View mDecorView;
     private int mUiOption;
     private boolean mbSmallLCD = false;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,8 +134,6 @@ public class DrawingColoringActivity extends BaseActivity {
         super.onResume();
         getUser();
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void setLanguage(String language) {
         if (language == null || language.isEmpty()) {
@@ -273,7 +261,6 @@ public class DrawingColoringActivity extends BaseActivity {
             mVPens[i] = new ViewPen(this);
             mVPens[i].setPenImage(mbSmallLCD ? RESOURCE_PEN_S[i] : RESOURCE_PEN[i], null);
             mVPens[i].setTag(new Integer(i));
-//            mVPens[i].setOnClickListener(mOnClickListener);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, bitmapPenSelected.getHeight());
             if (i != 0) {
@@ -355,12 +342,10 @@ public class DrawingColoringActivity extends BaseActivity {
 
     private void startChalkingSound() {
         mbSoundingChalk = true;
-        //mEffectSound.startSoundPool(EffectSound.SOUND_CHALK, -1);
     }
 
     private void stopChalkingSound() {
         mbSoundingChalk = false;
-        //mEffectSound.stopSoundPool(EffectSound.SOUND_CHALK);
     }
 
     private void getUser() {
@@ -425,17 +410,12 @@ public class DrawingColoringActivity extends BaseActivity {
         Util.getElapsedTime("processSaveAmount");
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             int id = view.getId();
             Integer colorIndexTag = (Integer) view.getTag();
-            if (colorIndexTag != null) {
-//                setPenColor(colorIndexTag.intValue());
-
-            } else {
+            if (colorIndexTag == null) {
                 if (id == R.id.v_back) {
                     finish();
 
@@ -578,12 +558,6 @@ public class DrawingColoringActivity extends BaseActivity {
                         stopChalkingSound();
                     }
                 }
-
-//                if (mbSoundingChalk == true) {
-//                    mEffectSound.setVolume(EffectSound.SOUND_CHALK, (float)Math.random());
-//                }
-
-
                 mVDrawingColoring.doTouchEvent(event.getAction() & MotionEvent.ACTION_MASK, x - mTempRect.left, y - mTempRect.top);
             }
 
@@ -592,8 +566,6 @@ public class DrawingColoringActivity extends BaseActivity {
             return true;
         }
     };
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     protected void setMode(ViewDrawingColoring.MODE mode) {
         mVDrawingColoring.setMode(mode);

@@ -37,8 +37,6 @@ public class BaseActivity extends KitKitLoggerActivity implements UtilHandlerThr
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
     public void startHandlerThread() {
         mUtilHandlerThread.setup(this.getClass().getName(), this);
     }

@@ -23,11 +23,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private final int MAX_BAR_COUNT = 8;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private View[] mVBars = new View[MAX_BAR_COUNT];
     private Rect mTempRect = new Rect();
@@ -38,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private int mUiOption;
 
     private float mScale;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -73,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         outState.putBoolean("KEY_PAUSE", true);
         super.onSaveInstanceState(outState);
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void setImmersiveMode() {
         mDecorView = getWindow().getDecorView();
@@ -137,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale);
         v.startAnimation(animation);
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override

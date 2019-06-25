@@ -11,24 +11,18 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
-import com.maq.xprize.kitkitlauncher.hindi.R;
 import com.maq.xprize.drawingcoloring.utility.Util;
+import com.maq.xprize.kitkitlauncher.hindi.R;
 
 public class ViewPen extends AppCompatImageView {
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private Context mContext;
     private float mNormalMarginTop;
     private float mNormalMarginLeft;
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private Bitmap mBitmapPen;
     private Bitmap mBitmapSelect;
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public ViewPen(Context context) {
         super(context);
@@ -85,8 +79,6 @@ public class ViewPen extends AppCompatImageView {
             }
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public void setPenImage(int resourceIdPen, Bitmap bitmapSelect) {
         if (resourceIdPen != -1) {

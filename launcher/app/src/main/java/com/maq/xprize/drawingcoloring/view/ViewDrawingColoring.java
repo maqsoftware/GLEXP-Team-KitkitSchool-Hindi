@@ -17,73 +17,31 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.maq.xprize.kitkitlauncher.hindi.R;
 import com.maq.xprize.drawingcoloring.utility.Misc;
 import com.maq.xprize.drawingcoloring.utility.Util;
+import com.maq.xprize.kitkitlauncher.hindi.R;
 
 import java.io.File;
 
-/**
- * MODE.DRAWING : 크레용 질감 표현 (Brush Image (5 * 2) 이용)
- * MODE.COLORING : 2017.09.12 DRAWING 과 동일하게 변경 (이전 일반 Path 표현)
- * 임시 작업 파일의 Save, Restore, Delete 기능 제공
- */
 public class ViewDrawingColoring extends View {
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public enum MODE {
         DRAWING,
         COLORING
     }
-
-    /**
-     * Brush 이미지의 수평 갯수
-     */
     private final int BRUSH_WIDTH_COUNT = 5;
-
-    /**
-     * Brush 이미지의 수직 갯수
-     */
     private final int BRUSH_HEIGHT_COUNT = 2;
-
-    /**
-     * Brush 이미지의 Brush 갯수
-     */
     private final int BRUSH_COUNT = BRUSH_WIDTH_COUNT * BRUSH_HEIGHT_COUNT;
-
-    /**
-     * 하나의 Brush Image width
-     */
     private int BRUSH_POINT_WIDTH = 0;
-
-    /**
-     * 하나의 Brush Image height
-     */
     private int BRUSH_POINT_HEIGHT = 0;
-
-    /**
-     * Touch 의 Move Event 가 TOUCH_TOLERANCE 이내로 움직이면 무시
-     */
     private static final float TOUCH_TOLERANCE = 4;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private Context mContext;
 
-    ////////////////////////////////////////////////////////////////////////////////
-
-    /** 원본 Brush Alpha 채널 이미지 */
     private Bitmap mBitmapBrushAlphaChannel;
-
-    /** 실제 사용하는 Brush 이미지 */
     private Bitmap mBitmapBrush;
-
-    /** Double Buffer */
     private Bitmap mBitmapBuffer;
     private Canvas mCanvasBuffer;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private Callback mCallback;
     private MODE mMode = MODE.DRAWING;
@@ -91,7 +49,6 @@ public class ViewDrawingColoring extends View {
     private int mTouchId;
     private float mTouchPosX, mTouchPosY;
 
-    /** 일반적으로 사용 Paint */
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
 
     private Paint mPaintDrawing = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
@@ -100,7 +57,6 @@ public class ViewDrawingColoring extends View {
     private Path mPathColoring = new Path();
     private Rect mRect = new Rect();
     private boolean mbInit = false;
-    ////////////////////////////////////////////////////////////////////////////////
 
     public ViewDrawingColoring(Context context) {
         super(context);
@@ -136,8 +92,6 @@ public class ViewDrawingColoring extends View {
         mPaintColoring.setStrokeWidth(BRUSH_POINT_WIDTH / 3.0f * 2);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -156,63 +110,11 @@ public class ViewDrawingColoring extends View {
 
         canvas.drawBitmap(mBitmapBuffer, 0, 0, mPaint);
 
-//        if (mMode == MODE.COLORING) {
-//            if (mPathColoring.isEmpty() == false) {
-//                canvas.drawPath(mPathColoring, mPaintColoring);
-//            }
-//        }
     }
-
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        float x;
-//        float y;
-//
-//        switch (event.getAction() & MotionEvent.ACTION_MASK) {
-//            case MotionEvent.ACTION_DOWN:
-//                mTouchId = event.getPointerId(0);
-//                x = event.getX(event.findPointerIndex(mTouchId));
-//                y = event.getY(event.findPointerIndex(mTouchId));
-//
-//                doTouchDown(x, y);
-//                invalidate();
-//                break;
-//
-//            case MotionEvent.ACTION_MOVE:
-//                if (event.findPointerIndex(mTouchId) != -1) {
-//                    x = event.getX(event.findPointerIndex(mTouchId));
-//                    y = event.getY(event.findPointerIndex(mTouchId));
-//                    doTouchMove(x, y);
-//                }
-//                invalidate();
-//                break;
-//
-//            case MotionEvent.ACTION_UP:
-//                if (event.findPointerIndex(mTouchId) != -1) {
-//                    x = event.getX(event.findPointerIndex(mTouchId));
-//                    y = event.getY(event.findPointerIndex(mTouchId));
-//                    doTouchUp(x, y);
-//                }
-//                invalidate();
-//                break;
-//        }
-//
-//        return true;
-//    }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void doTouchDown(float x, float y) {
         mTouchPosX = x;
         mTouchPosY = y;
-
-//        if (mMode == MODE.DRAWING) {
-//            drawLineWithBrush(mCanvasBuffer, (int) mTouchPosX, (int) mTouchPosY, (int) mTouchPosX, (int) mTouchPosY);
-//
-//        } else {
-//            mPathColoring.moveTo(mTouchPosX, mTouchPosY);
-//
-//        }
 
         drawLineWithBrush(mCanvasBuffer, (int) mTouchPosX, (int) mTouchPosY, (int) mTouchPosX, (int) mTouchPosY);
 
@@ -229,36 +131,13 @@ public class ViewDrawingColoring extends View {
         float dx = Math.abs(x - mTouchPosX);
         float dy = Math.abs(y - mTouchPosY);
         if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-
-//            if (mMode == MODE.DRAWING) {
-//                drawLineWithBrush(mCanvasBuffer, (int) mTouchPosX, (int) mTouchPosY, (int) x, (int) y);
-//
-//            } else {
-//                mPathColoring.quadTo(mTouchPosX, mTouchPosY, (x + mTouchPosX) / 2, (y + mTouchPosY) / 2);
-//
-//            }
-
             drawLineWithBrush(mCanvasBuffer, (int) mTouchPosX, (int) mTouchPosY, (int) x, (int) y);
-
             mTouchPosX = x;
             mTouchPosY = y;
         }
     }
 
     private void doTouchUp(float x, float y) {
-//        if (mMode == MODE.COLORING) {
-//            if (x == mTouchPosX && y == mTouchPosY) {
-//                mPathColoring.quadTo(x, y, (x + mTouchPosX) / 2 + 1, (y + mTouchPosY) / 2 + 1);
-//
-//            } else {
-//                mPathColoring.quadTo(x, y, (x + mTouchPosX) / 2, (y + mTouchPosY) / 2);
-//
-//            }
-//
-//            mCanvasBuffer.drawPath(mPathColoring, mPaintColoring);
-//            mPathColoring.reset();
-//        }
-
         mTouchPosX = Float.MIN_VALUE;
         mTouchPosY = Float.MIN_VALUE;
     }
@@ -329,8 +208,6 @@ public class ViewDrawingColoring extends View {
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     public void setCallback(Callback callback) {
         mCallback = callback;
     }
@@ -346,24 +223,11 @@ public class ViewDrawingColoring extends View {
 
     public void setPenColor(int color) {
         mCurrentColor = color;
-
-//        if (mMode == MODE.DRAWING) {
-//            mBitmapBrush.eraseColor(color);
-//            Canvas canvas = new Canvas(mBitmapBrush);
-//            Paint paint = new Paint(mPaintDrawing);
-//            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-//            canvas.drawBitmap(mBitmapBrushAlphaChannel, 0, 0, paint);
-//
-//        } else {
-//            mPaintColoring.setColor(color);
-//
-//        }
-
-            mBitmapBrush.eraseColor(color);
-            Canvas canvas = new Canvas(mBitmapBrush);
-            Paint paint = new Paint(mPaintDrawing);
-            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-            canvas.drawBitmap(mBitmapBrushAlphaChannel, 0, 0, paint);
+        mBitmapBrush.eraseColor(color);
+        Canvas canvas = new Canvas(mBitmapBrush);
+        Paint paint = new Paint(mPaintDrawing);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        canvas.drawBitmap(mBitmapBrushAlphaChannel, 0, 0, paint);
     }
 
     public void clearAll() {
@@ -407,7 +271,6 @@ public class ViewDrawingColoring extends View {
     public boolean isInit() {
         return mbInit;
     }
-    ////////////////////////////////////////////////////////////////////////////////
 
     public interface Callback {
         void onTouchDownForDrawing();

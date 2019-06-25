@@ -23,24 +23,16 @@ import com.maq.xprize.kitkitlauncher.hindi.R;
 
 public class DrumActivity extends AppCompatActivity {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private EffectSound mEffectSound;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private ImageView mIvDrum;
     private Bitmap mColorInfoBitmap;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private Matrix mInvertMatrix = new Matrix();
     private float[] mTransPosition = new float[2];
 
     private View mDecorView;
     private int mUiOption;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -59,8 +51,6 @@ public class DrumActivity extends AppCompatActivity {
             mDecorView.setSystemUiVisibility(mUiOption);
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void setImmersiveMode() {
         mDecorView = getWindow().getDecorView();
@@ -154,8 +144,6 @@ public class DrumActivity extends AppCompatActivity {
             startAnimation(mIvDrum);
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override

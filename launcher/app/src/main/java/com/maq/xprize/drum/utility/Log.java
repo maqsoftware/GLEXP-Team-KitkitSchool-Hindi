@@ -90,10 +90,7 @@ public final class Log {
         try {
             if (rtn.contains(".")) {
                 rtn = rtn.substring(rtn.lastIndexOf(".") + 1);
-            } else {
-                // class_name = class_name.replace(context.getPackageName() + ".", "");
             }
-
             if (rtn.contains("$")) {
                 rtn = rtn.substring(0, rtn.indexOf("$"));
             }
@@ -117,8 +114,6 @@ public final class Log {
                 prev_method_name = a[3].getMethodName();
                 prev_line = a[3].getLineNumber();
             }
-
-            // if (prev_class_name.length() > 0 && prev_class_name.equalsIgnoreCase(class_name) == false)
             if (prev_method_name.length() > 0) {
                 rtn = class_name + "(" + a[2].getMethodName() + ":" + a[2].getLineNumber() + " <- " + prev_method_name + ":" + prev_line + ")" + "\t" + val;
             } else {

@@ -86,8 +86,6 @@ public class SlideActivity extends BaseActivity implements
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
     private void setPageInfo(int position) {
         if (mItems.size() > 1) {
             if (position == 0) {

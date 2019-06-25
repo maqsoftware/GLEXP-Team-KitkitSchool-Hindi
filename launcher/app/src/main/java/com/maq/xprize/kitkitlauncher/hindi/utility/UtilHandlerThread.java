@@ -11,8 +11,6 @@ public class UtilHandlerThread {
     private Callback mCallback;
     private String mOwnerClassName;
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private class MainWorkerHandler extends Handler {
         public MainWorkerHandler(Looper looper) {
             super(looper);
@@ -31,8 +29,6 @@ public class UtilHandlerThread {
             }
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public interface Callback {
         void handleThreadMessage(Message message);

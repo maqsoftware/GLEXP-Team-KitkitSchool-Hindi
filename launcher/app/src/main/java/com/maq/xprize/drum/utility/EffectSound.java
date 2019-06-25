@@ -10,13 +10,9 @@ import java.util.HashMap;
 
 public class EffectSound {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     public static int SOUND_BASS = 0;
     public static int SOUND_TONE = 1;
     public static int SOUND_SLAP = 2;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private static EffectSound _self = null;
     private SoundPool soundPool;

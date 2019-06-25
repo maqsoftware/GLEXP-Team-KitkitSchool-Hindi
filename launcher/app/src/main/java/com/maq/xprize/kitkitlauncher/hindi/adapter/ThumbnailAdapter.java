@@ -32,8 +32,6 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<ThumbnailAdapter.View
     private int mGap = 0;
     private float mAspectRatio = 1.0f;
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     public ThumbnailAdapter(Activity activity, ArrayList<ItemImage> items, int spanCount, int gap) {
         mActivity = activity;
         mItems = items;
@@ -70,7 +68,6 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<ThumbnailAdapter.View
         holder.mImageView.setImageBitmap(null);
         if (item.mThumbnailPath.isEmpty() == true) {
             item.mThumbnailPath = item.mImagePath;
-//            item.mThumbnailPath = Util.getThumbnailPath(mActivity, item.mImagePath);
         }
 
         ImageLoader.getInstance().displayImage("file:///" + item.mThumbnailPath, holder.mImageView);
@@ -84,8 +81,6 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<ThumbnailAdapter.View
                     Log.i("before modified : " + item.mLastModified);
 
                     try {
-                        // file.setLastModified() not working
-
                         RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
                         long length = randomAccessFile.length();
                         randomAccessFile.setLength(length + 1);
@@ -110,8 +105,6 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<ThumbnailAdapter.View
     public int getItemCount() {
         return mItems.size();
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView;

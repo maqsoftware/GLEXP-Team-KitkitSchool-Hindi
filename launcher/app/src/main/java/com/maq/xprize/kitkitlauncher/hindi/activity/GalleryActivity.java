@@ -29,8 +29,6 @@ import static com.maq.xprize.kitkitlauncher.hindi.core.GalleryApplication.initIm
 
 public class GalleryActivity extends BaseActivity {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private final int BG_MSG_READ_DATA = 0;
     private final int MSG_SHOW_PROGRESS = 1;
     private final int MSG_HIDE_PROGRESS = 2;
@@ -39,20 +37,14 @@ public class GalleryActivity extends BaseActivity {
     private final int SPAN_COUNT = 4;
     private final int GAP_DP = 10;
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private RecyclerView mRecyclerView;
     private View mVProgress;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private ArrayList<ItemImage> mData = new ArrayList<>();
     private long mLastModified = 0L;
     private long mLastModifiedUserFolder = 0L;
     private KitkitDBHandler mKitkitDBHandler;
     private User mUser;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,8 +101,6 @@ public class GalleryActivity extends BaseActivity {
                 break;
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void setupView() {
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -189,8 +179,6 @@ public class GalleryActivity extends BaseActivity {
                 if (file.isDirectory() == false) {
                     ItemImage itemImage = new ItemImage();
                     itemImage.mImagePath = file.getAbsolutePath();
-                    // too slow
-//                itemImage.mThumbnailPath = Util.getThumbnailPath(mThisActivity, itemImage.mImagePath);
                     itemImage.mThumbnailPath = itemImage.mImagePath;
                     itemImage.mLastModified = file.lastModified();
                     mData.add(itemImage);

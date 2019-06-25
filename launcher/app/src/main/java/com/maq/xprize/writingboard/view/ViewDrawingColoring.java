@@ -34,13 +34,10 @@ import java.io.File;
  */
 public class ViewDrawingColoring extends View {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
-    public enum MODE {
-        DRAWING,
-        ERASE
-    }
-
+    /**
+     * Touch 의 Move Event 가 TOUCH_TOLERANCE 이내로 움직이면 무시
+     */
+    private static final float TOUCH_TOLERANCE = 4;
     /**
      * Brush 이미지의 수평 갯수
      */
@@ -76,61 +73,42 @@ public class ViewDrawingColoring extends View {
      * 하나의 Brush Image height
      */
     private int BRUSH_POINT_HEIGHT = 0;
-
-    /**
-     * Touch 의 Move Event 가 TOUCH_TOLERANCE 이내로 움직이면 무시
-     */
-    private static final float TOUCH_TOLERANCE = 4;
-
-    ////////////////////////////////////////////////////////////////////////////////
-
     private Context mContext;
     private boolean mbSmallLCD;
     private boolean mbNeedSave;
     private String mLoadImagePath = "";
     private boolean mbEnableTouch = true;
-
-    ////////////////////////////////////////////////////////////////////////////////
-
     /**
      * 원본 Brush Alpha 채널 이미지
      */
     private Bitmap mBitmapBrushAlphaChannel;
-
     /**
      * 실제 사용하는 Brush 이미지
      */
     private Bitmap mBitmapBrush;
-
     /**
      * Double Buffer
      */
     private Bitmap mBitmapBuffer;
     private Canvas mCanvasBuffer;
+    /**
+     * 지우개
+     */
+    private Bitmap mBitmapEraser;
 
     /**
      * Eraser Trace 를 위한 Buffer
      */
 //    private static Bitmap mBitmapTraceBuffer;
 //    private static Canvas mCanvasTraceBuffer;
-
-    /**
-     * 지우개
-      */
-    private Bitmap mBitmapEraser;
-
     /**
      * 일반적으로 사용 Paint
      */
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
-
     private Paint mPaintDrawing = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
     private Paint mPaintEraser = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
     private Paint mPaintTrace = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
     private Paint mPaintTraceBuffer = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
-
-    ////////////////////////////////////////////////////////////////////////////////
-
     private Callback mCallback;
     private MODE mMode = MODE.DRAWING;
     private int mCurrentColor;
@@ -139,14 +117,10 @@ public class ViewDrawingColoring extends View {
     private float mEraserOffsetX, mEraserOffsetY;
     private RectF mEraserRect = new RectF();
     private RectF mTempRect = new RectF();
-
     private Property mPropertyEraser = new Property();
     private ValueAnimator mAnimatorTrace = null;
     private EffectSound mEffectSound;
     private boolean mbSoundingChalk = false;
-
-    ////////////////////////////////////////////////////////////////////////////////
-
     public ViewDrawingColoring(Context context) {
         super(context);
         init(context);
@@ -164,7 +138,7 @@ public class ViewDrawingColoring extends View {
 
     private void init(Context context) {
         mContext = context;
-        Point size = Util.getWindowSize((Activity)context);
+        Point size = Util.getWindowSize((Activity) context);
         mbSmallLCD = (size.x <= 1280);
 
         mEffectSound = EffectSound.getInstance(mContext);
@@ -180,7 +154,7 @@ public class ViewDrawingColoring extends View {
 
         mBitmapEraser = BitmapFactory.decodeResource(mContext.getResources(), mbSmallLCD ? R.drawable.tool_writingboard_eraser_s : R.drawable.tool_writingboard_eraser);
         if (mbSmallLCD == true) {
-            mEraserRect.set(0,  0, 293 / 2, 164 / 2);
+            mEraserRect.set(0, 0, 293 / 2, 164 / 2);
 
         } else {
             mEraserRect.set(0, 0, 293, 164);
@@ -206,8 +180,6 @@ public class ViewDrawingColoring extends View {
         mbNeedSave = false;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -219,12 +191,6 @@ public class ViewDrawingColoring extends View {
             mBitmapBuffer = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
             mCanvasBuffer = new Canvas(mBitmapBuffer);
             mBitmapBuffer.eraseColor(Color.TRANSPARENT);
-
-//            if (mBitmapTraceBuffer == null) {
-//                mBitmapTraceBuffer = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-//                mCanvasTraceBuffer = new Canvas(mBitmapTraceBuffer);
-//            }
-//            mBitmapTraceBuffer.eraseColor(Color.TRANSPARENT);
 
             ERASER_DEFAULT_POS_X = getWidth() - mBitmapEraser.getWidth() - mBitmapEraser.getWidth() / 6;
             if (mbSmallLCD == true) {
@@ -244,21 +210,16 @@ public class ViewDrawingColoring extends View {
             }
 
             if (!mLoadImagePath.isEmpty())
-            if (new File(mLoadImagePath).exists()) {
-                Bitmap bitmap = Util.getBitmapFromFile(mLoadImagePath);
-                mCanvasBuffer.drawBitmap(bitmap, 0, 0, mPaintDrawing);
-            }
+                if (new File(mLoadImagePath).exists()) {
+                    Bitmap bitmap = Util.getBitmapFromFile(mLoadImagePath);
+                    mCanvasBuffer.drawBitmap(bitmap, 0, 0, mPaintDrawing);
+                }
 
         }
 
         canvas.save();
         canvas.clipRect(0, 0, getWidth(), getHeight() - PADDING_BOTTOM);
         canvas.drawBitmap(mBitmapBuffer, 0, 0, mPaint);
-
-//        if (mMode == MODE.ERASE || mPaintTraceBuffer.getAlpha() > 0) {
-//            canvas.drawBitmap(mBitmapTraceBuffer, 0, 0, mPaintTraceBuffer);
-//        }
-
         canvas.restore();
         canvas.drawBitmap(mBitmapEraser, mPropertyEraser.getX(), mPropertyEraser.getY(), mPaint);
     }
@@ -314,8 +275,6 @@ public class ViewDrawingColoring extends View {
         return true;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private void doTouchDown(float x, float y) {
         mTouchPosX = x;
         mTouchPosY = y;
@@ -336,10 +295,6 @@ public class ViewDrawingColoring extends View {
             if (mAnimatorTrace != null) {
                 mAnimatorTrace.end();
             }
-
-//            mBitmapTraceBuffer.eraseColor(Color.TRANSPARENT);
-//            mPaintTraceBuffer.setAlpha(255);
-
             mEraserOffsetX = mTouchPosX - mPropertyEraser.getX();
             mEraserOffsetY = mTouchPosY - mPropertyEraser.getY();
 
@@ -350,12 +305,6 @@ public class ViewDrawingColoring extends View {
                     (int) mPropertyEraser.getX() + mBitmapEraser.getWidth() / 2, (int) mPropertyEraser.getY() + mBitmapEraser.getHeight() / 2,
                     (int) mPropertyEraser.getX() + mBitmapEraser.getWidth() / 2, (int) mPropertyEraser.getY() + mBitmapEraser.getHeight() / 2,
                     mPaintEraser);
-
-//            eraseLine(mCanvasTraceBuffer,
-//                    (int) mPropertyEraser.getX() + mBitmapEraser.getWidth() / 2, (int) mPropertyEraser.getY() + mBitmapEraser.getHeight() / 2,
-//                    (int) mPropertyEraser.getX() + mBitmapEraser.getWidth() / 2, (int) mPropertyEraser.getY() + mBitmapEraser.getHeight() / 2,
-//                    mPaintTrace);
-
         }
 
         if (mCallback != null) {
@@ -387,11 +336,6 @@ public class ViewDrawingColoring extends View {
                         (int) oldX + mBitmapEraser.getWidth() / 2, (int) oldY + mBitmapEraser.getHeight() / 2,
                         (int) mPropertyEraser.getX() + mBitmapEraser.getWidth() / 2, (int) mPropertyEraser.getY() + mBitmapEraser.getHeight() / 2,
                         mPaintEraser);
-
-//                eraseLine(mCanvasTraceBuffer,
-//                        (int) oldX + mBitmapEraser.getWidth() / 2, (int) oldY + mBitmapEraser.getHeight() / 2,
-//                        (int) mPropertyEraser.getX() + mBitmapEraser.getWidth() / 2, (int) mPropertyEraser.getY() + mBitmapEraser.getHeight() / 2,
-//                        mPaintTrace);
             }
 
             if (mbSoundingChalk == false) {
@@ -571,33 +515,12 @@ public class ViewDrawingColoring extends View {
         mEffectSound.stopSoundPool(EffectSound.SOUND_ERASER);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
-    private class Property {
-        public float x;
-        public float y;
-
-        public void setX(float x) {
-            this.x = x;
-        }
-
-        public void setY(float y) {
-            this.y = y;
-        }
-
-        public float getX() {
-            return x;
-        }
-
-        public float getY() {
-            return y;
-        }
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////
-
     public void setCallback(Callback callback) {
         mCallback = callback;
+    }
+
+    public MODE getMode() {
+        return mMode;
     }
 
     public void setMode(MODE mode) {
@@ -606,10 +529,6 @@ public class ViewDrawingColoring extends View {
         if (mode != MODE.ERASE) {
             setPenColor(mCurrentColor);
         }
-    }
-
-    public MODE getMode() {
-        return mMode;
     }
 
     public void setPenColor(int color) {
@@ -645,15 +564,35 @@ public class ViewDrawingColoring extends View {
 
     public void setTouchEnable(boolean bEnable) {
         mbEnableTouch = bEnable;
-//        if (mBitmapTraceBuffer != null) {
-//            mBitmapTraceBuffer.eraseColor(Color.TRANSPARENT);
-//            mPaintTraceBuffer.setAlpha(255);
-//        }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
+    public enum MODE {
+        DRAWING,
+        ERASE
+    }
 
     public interface Callback {
         void onTouchDownForDrawing();
+    }
+
+    private class Property {
+        public float x;
+        public float y;
+
+        public float getX() {
+            return x;
+        }
+
+        public void setX(float x) {
+            this.x = x;
+        }
+
+        public float getY() {
+            return y;
+        }
+
+        public void setY(float y) {
+            this.y = y;
+        }
     }
 }

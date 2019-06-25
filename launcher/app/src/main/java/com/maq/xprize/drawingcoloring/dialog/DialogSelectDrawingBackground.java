@@ -9,18 +9,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.maq.xprize.kitkitlauncher.hindi.R;
 import com.maq.xprize.drawingcoloring.activity.DrawingColoringActivity;
 import com.maq.xprize.drawingcoloring.utility.Util;
+import com.maq.xprize.kitkitlauncher.hindi.R;
 
 public class DialogSelectDrawingBackground extends Dialog {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private Context mContext;
     private Callback mCallback;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public DialogSelectDrawingBackground(Context context, Callback callback) {
         super(context);
@@ -36,8 +32,6 @@ public class DialogSelectDrawingBackground extends Dialog {
         setUpView();
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private void setUpView() {
         findViewById(R.id.layout_root).setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -52,7 +46,6 @@ public class DialogSelectDrawingBackground extends Dialog {
         findViewById(R.id.iv_background).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                // do nothing
                 return true;
             }
         });
@@ -66,8 +59,6 @@ public class DialogSelectDrawingBackground extends Dialog {
 
         Util.setScale((Activity)mContext, findViewById(R.id.layout_root), true);
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override

@@ -21,17 +21,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import com.maq.xprize.kitkitlauncher.hindi.R;
 import com.maq.xprize.blackboard.utility.EffectSound;
 import com.maq.xprize.blackboard.utility.Log;
 import com.maq.xprize.blackboard.utility.Util;
+import com.maq.xprize.kitkitlauncher.hindi.R;
 
 /**
  * MODE.DRAWING : 크레용 질감 표현 (Brush Image (5 * 2) 이용)
  */
 public class ViewDrawingColoring extends View {
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public enum MODE {
         DRAWING,
@@ -79,12 +77,8 @@ public class ViewDrawingColoring extends View {
      */
     private static final float TOUCH_TOLERANCE = 4;
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private Context mContext;
     private boolean mbSmallLCD;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     /**
      * 원본 Brush Alpha 채널 이미지
@@ -123,8 +117,6 @@ public class ViewDrawingColoring extends View {
     private Paint mPaintTrace = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
     private Paint mPaintTraceBuffer = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private Callback mCallback;
     private MODE mMode = MODE.DRAWING;
     private int mCurrentColor;
@@ -138,8 +130,6 @@ public class ViewDrawingColoring extends View {
     private ValueAnimator mAnimatorTrace = null;
     private EffectSound mEffectSound;
     private boolean mbSoundingChalk = false;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public ViewDrawingColoring(Context context) {
         super(context);
@@ -198,8 +188,6 @@ public class ViewDrawingColoring extends View {
         mPaintTrace.setStrokeCap(Paint.Cap.ROUND);
         mPaintTrace.setStrokeWidth(mEraserRect.height());
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -293,8 +281,6 @@ public class ViewDrawingColoring extends View {
 
         return true;
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void doTouchDown(float x, float y) {
         mTouchPosX = x;
@@ -549,8 +535,6 @@ public class ViewDrawingColoring extends View {
         mEffectSound.stopSoundPool(EffectSound.SOUND_ERASER);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private class Property {
         public float x;
         public float y;
@@ -571,8 +555,6 @@ public class ViewDrawingColoring extends View {
             return y;
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public void setCallback(Callback callback) {
         mCallback = callback;
@@ -607,8 +589,6 @@ public class ViewDrawingColoring extends View {
     public void stopSound() {
         stopChalkingSound();
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public interface Callback {
         void onTouchDownForDrawing();

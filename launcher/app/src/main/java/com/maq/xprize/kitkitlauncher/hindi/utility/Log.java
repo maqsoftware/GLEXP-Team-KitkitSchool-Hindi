@@ -90,10 +90,7 @@ public final class Log {
         try {
             if (rtn.contains(".")) {
                 rtn = rtn.substring(rtn.lastIndexOf(".") + 1);
-            } else {
-                // class_name = class_name.replace(context.getPackageName() + ".", "");
             }
-
             if (rtn.contains("$")) {
                 rtn = rtn.substring(0, rtn.indexOf("$"));
             }

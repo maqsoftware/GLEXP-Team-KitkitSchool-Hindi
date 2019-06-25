@@ -95,8 +95,6 @@ public class Util {
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
     public static class StaticHandler extends Handler {
         private final WeakReference<HandlerInterface> mHandlerInterface;
 

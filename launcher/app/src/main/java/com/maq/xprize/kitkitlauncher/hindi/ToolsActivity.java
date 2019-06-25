@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,11 +95,16 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
                     packageName = "com.maq.xprize.drum";
+                    try {
 //                    Calling Drum's main activity
-                    Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_drum", "", 0);
+                        Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_drum", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Drum Intent Error:" + e);
+                        e.printStackTrace();
+                    }
                 } else {
                     unlock(tv);
                 }
@@ -120,11 +126,16 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
+                    try {
 //                    Calling Marimba's main activity
-                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_marimba", "", 0);
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.marimba.activity.MainActivity.class);
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_marimba", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Marimba Intent Error:" + e);
+                        e.printStackTrace();
+                    }
                 } else {
                     unlock(tv);
                 }
@@ -145,11 +156,16 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
+                    try {
 //                    Calling Black Board's main activity
-                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.blackboard.activity.MainActivity.class);
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_blackboard", "", 0);
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.blackboard.activity.MainActivity.class);
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_blackboard", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Black Board Intent Error:" + e);
+                        e.printStackTrace();
+                    }
                 } else {
                     unlock(tv);
                 }
@@ -170,11 +186,16 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
+                    try {
 //                    Calling Drawing's main activity
-                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.DrawingActivity.class);
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_drawing", "", 0);
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.DrawingActivity.class);
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_drawing", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Drawing Intent Error:" + e);
+                        e.printStackTrace();
+                    }
                 } else {
                     unlock(tv);
                 }
@@ -196,11 +217,16 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
+                    try {
 //                    Calling Coloring's main activity
-                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.ColoringActivity.class);
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_coloring", "", 0);
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.drawingcoloring.activity.ColoringActivity.class);
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_coloring", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Coloring Intent Error:" + e);
+                        e.printStackTrace();
+                    }
                 } else {
                     unlock(tv);
                 }
@@ -217,11 +243,16 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
+                    try {
 //                  Calling Gallery's main activity
-                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.kitkitlauncher.hindi.activity.GalleryActivity.class);
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_album", "", 0);
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.kitkitlauncher.hindi.activity.GalleryActivity.class);
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_album", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Gallery Intent Error:" + e);
+                        e.printStackTrace();
+                    }
                 } else {
                     unlock(tv);
                 }
@@ -238,11 +269,18 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.setComponent(new ComponentName("com.maq.xprize.FB", "org.cocos2dx.cpp.AppActivity"));
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_fish_bowl", "", 0);
+                    packageName = "com.maq.xprize.FB";
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.setComponent(new ComponentName("com.maq.xprize.FB", "org.cocos2dx.cpp.AppActivity"));
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_fish_bowl", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Sea World Intent Error:" + e);
+                        e.printStackTrace();
+                    }
+
                 }
             }
         });
@@ -257,12 +295,16 @@ public class ToolsActivity extends KitKitLoggerActivity {
                 }
                 ToolsAppView tv = (ToolsAppView) v;
                 if (tv.isUnlocked()) {
-                    packageName = "com.maq.xprize.writingboard";
+                    try {
 //                    Calling Writing Board's main activity
-                    Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.writingboard.activity.MainActivity.class);
-                    startActivity(intent);
-                    KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
-                    logger.logEvent("ToolsActivity", "start_writing_board", "", 0);
+                        Intent intent = new Intent(ToolsActivity.this, com.maq.xprize.writingboard.activity.MainActivity.class);
+                        startActivity(intent);
+                        KitKitLogger logger = ((LauncherApplication) getApplication()).getLogger();
+                        logger.logEvent("ToolsActivity", "start_writing_board", "", 0);
+                    } catch (Exception e) {
+                        Log.e("ToolsActivity", "Writing Board Intent Error:" + e);
+                        e.printStackTrace();
+                    }
                 } else {
                     unlock(tv);
                 }
@@ -319,29 +361,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
         textViewNumCoin.setText(String.format("%d", currentUser.getNumStars()));
 
         ToolsAppView drawing = findViewById(R.id.app_drawing);
-//        if (currentUser.isUnlockDrawing()) {
-//            drawing.setUnlocked(true);
-//            drawing.setEnable(true);
-//        } else {
-//            if (currentUser.getNumStars() >= 300) {
-//                drawing.setEnable(true);
-//            } else {
-//                drawing.setEnable(false);
-//            }
-//        }
-
         ToolsAppView coloring = findViewById(R.id.app_coloring);
-//        if (currentUser.isUnlockColoring()) {
-//            coloring.setUnlocked(true);
-//            coloring.setEnable(true);
-//        } else {
-//            if (currentUser.getNumStars() >= 500) {
-//                coloring.setEnable(true);
-//            } else {
-//                coloring.setEnable(false);
-//            }
-//        }
-
         ToolsAppView album = findViewById(R.id.app_album);
         if (drawing.isUnlocked() || coloring.isUnlocked()) {
             album.setUnlocked(true);

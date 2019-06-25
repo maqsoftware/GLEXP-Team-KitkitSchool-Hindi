@@ -14,31 +14,23 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.maq.xprize.kitkitlauncher.hindi.R;
 import com.maq.xprize.drawingcoloring.core.Const;
 import com.maq.xprize.drawingcoloring.utility.Util;
+import com.maq.xprize.kitkitlauncher.hindi.R;
 
 import java.io.File;
 import java.util.ArrayList;
 
 public class DialogSelectColoringBackground extends Dialog {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private final int THUMBNAIL_COUNT_PER_PAGE = 6;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private Context mContext;
     private Callback mCallback;
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private ViewPager mVPager;
     private View mVLeftArrow;
     private View mVRightArrow;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     public DialogSelectColoringBackground(Context context, ArrayList<String> thumbnailList, Callback callback) {
         super(context);
@@ -64,8 +56,6 @@ public class DialogSelectColoringBackground extends Dialog {
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private void setUpView() {
         findViewById(R.id.v_close).setOnClickListener(mOnClickListener);
 
@@ -78,8 +68,6 @@ public class DialogSelectColoringBackground extends Dialog {
         mVPager = (ViewPager) findViewById(R.id.v_pager);
         Util.setScale((Activity)mContext, findViewById(R.id.layout_root), true);
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -141,7 +129,6 @@ public class DialogSelectColoringBackground extends Dialog {
 
         }
     };
-    ////////////////////////////////////////////////////////////////////////////////
 
     private class ThumbnailAdapter extends PagerAdapter {
 

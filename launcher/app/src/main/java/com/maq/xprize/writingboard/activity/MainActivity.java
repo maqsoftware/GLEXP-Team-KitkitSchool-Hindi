@@ -101,8 +101,6 @@ public class MainActivity extends Activity {
         saveImage();
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -159,8 +157,6 @@ public class MainActivity extends Activity {
             return view == object;
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void setImmersiveMode() {
         mDecorView = getWindow().getDecorView();
