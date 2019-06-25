@@ -25,6 +25,9 @@ using namespace cocos2d::experimental;
 using namespace CocosDenshion;
 #endif
 
+#include "firebase/app.h"
+#include "firebase/analytics.h"
+
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(2560, 1800);
@@ -125,6 +128,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // shortcut
     //{ CCAppController::sharedAppController()->startGame("EggQuizLiteracy", 0, "PostTest_N"); return true; }
+
+
+    // Initialize Firebase for Android.
+    firebase::App* app = firebase::App::Create(firebase::AppOptions(), JniHelper::getEnv(), JniHelper::getActivity());
+    firebase::analytics::Initialize(*app);
     
     auto scene = SplashScene::createScene();
     scene->setName("SplashScene");
