@@ -10,13 +10,9 @@ import java.util.HashMap;
 
 public class EffectSound {
 
-    ////////////////////////////////////////////////////////////////////////////////
-
     public static int SOUND_CHALK = 0;
     public static int SOUND_ERASER = 1;
     public static int SOUND_ERASER_POSITION = 2;
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private static EffectSound _self = null;
     private SoundPool soundPool;

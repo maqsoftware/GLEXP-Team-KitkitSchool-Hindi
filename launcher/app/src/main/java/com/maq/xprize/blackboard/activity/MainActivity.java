@@ -5,14 +5,13 @@ import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.maq.xprize.kitkitlauncher.hindi.R;
 import com.maq.xprize.blackboard.utility.Log;
 import com.maq.xprize.blackboard.utility.Util;
 import com.maq.xprize.blackboard.view.ViewDrawingColoring;
+import com.maq.xprize.kitkitlauncher.hindi.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
             mDecorView.setSystemUiVisibility(mUiOption);
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
 
     private void setImmersiveMode() {
         mDecorView = getWindow().getDecorView();
