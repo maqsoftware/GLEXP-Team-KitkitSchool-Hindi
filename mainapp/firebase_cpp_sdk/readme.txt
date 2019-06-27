@@ -1,1 +1,0 @@
-firebase_cpp_sdk library here
