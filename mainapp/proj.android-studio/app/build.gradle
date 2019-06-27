@@ -3,6 +3,40 @@ import org.apache.tools.ant.taskdefs.condition.Os
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+project.ext {
+    // Configure the Firebase C++ SDK location.
+    firebase_cpp_sdk_dir = System.getProperty('firebase_cpp_sdk.dir')
+    if (firebase_cpp_sdk_dir == null || firebase_cpp_sdk_dir.isEmpty()) {
+        firebase_cpp_sdk_dir = System.getenv('FIREBASE_CPP_SDK_DIR')
+        if (firebase_cpp_sdk_dir == null || firebase_cpp_sdk_dir.isEmpty()) {
+            if ((new File('firebase_cpp_sdk')).exists()) {
+                firebase_cpp_sdk_dir = 'firebase_cpp_sdk'
+            } else {
+                throw new StopActionException(
+                        'firebase_cpp_sdk.dir property or the FIREBASE_CPP_SDK_DIR ' +
+                                'environment variable must be set to reference the Firebase C++ ' +
+                                'SDK install directory. This is used to configure static library ' +
+                                'and C/C++ include paths for the SDK.')
+            }
+        }
+    }
+    if (!(new File(firebase_cpp_sdk_dir)).exists()) {
+        throw new StopActionException(
+                sprintf('Firebase C++ SDK directory %s does not exist',
+                        firebase_cpp_sdk_dir))
+    }
+    // Check the NDK location using the same configuration options as the experimental Gradle plug-in.
+    ndk_dir = project.android.ndkDirectory
+    if (ndk_dir == null || !ndk_dir.exists()) {
+        ndk_dir = System.getenv('ANDROID_NDK_HOME')
+        if (ndk_dir == null || ndk_dir.isEmpty()) {
+            throw new StopActionException(
+                    'Android NDK directory should be specified using the ndk.dir ' +
+                            'property or ANDROID_NDK_HOME environment variable.')
+        }
+    }
+}
+
 android {
     compileSdkVersion PROP_COMPILE_SDK_VERSION.toInteger()
     buildToolsVersion "25.0.3"
@@ -43,6 +77,8 @@ android {
                     arguments '-j' + Runtime.runtime.availableProcessors()
                     abiFilters.addAll(PROP_APP_ABI.split(':').collect { it as String })
                 }
+                arguments "FIREBASE_CPP_SDK_DIR=../../${project.ext.firebase_cpp_sdk_dir}"
+                arguments "NDK_APPLICTION_MK=jni/Application.mk"
             }
         }
     }
@@ -111,6 +147,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFile file(project.ext.firebase_cpp_sdk_dir + "/libs/android/app.pro")
+            proguardFile file(project.ext.firebase_cpp_sdk_dir + "/libs/android/analytics.pro")
             if (project.hasProperty("RELEASE_STORE_FILE")) {
                 signingConfig signingConfigs.release
             }
@@ -133,8 +171,6 @@ android {
 }
 
 dependencies {
-    compile 'com.google.firebase:firebase-core:16.0.4'
-    compile 'com.google.firebase:firebase-analytics:16.0.4'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':libcocos2dx')
     compile project(':pocketsphinx-aar')
@@ -144,4 +180,8 @@ dependencies {
 //    englishCompile project(path: ':kitkitlogger', configuration: 'englishRelease')
 //    swahiliCompile project(path: ':kitkitlogger', configuration: 'swahiliRelease')
     compile 'com.android.support.constraint:constraint-layout:1.1.3'
+    compile 'com.google.firebase:firebase-core:16.0.4'
+    compile 'com.google.firebase:firebase-analytics:16.0.4'
+    compile 'com.google.firebase:firebase-common:16.0.4'
+    compile 'com.google.android.gms:play-services-base:12.0.1'
 }

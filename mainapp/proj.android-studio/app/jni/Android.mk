@@ -2,7 +2,11 @@ LOCAL_PATH := $(call my-dir)
 LOCAL_SHORT_COMMANDS := true
 
 # The path to the Firebase C++ SDK, in the project's root directory.
-FIREBASE_CPP_SDK_DIR := ../../../firebase_cpp_sdk
+# FIREBASE_CPP_SDK_DIR := ../../../firebase_cpp_sdk
+
+ifeq ($(FIREBASE_CPP_SDK_DIR),)
+    $(error FIREBASE_CPP_SDK_DIR must specify the Firebase package location.)
+endif
 
 STL := $(firstword $(subst _, ,$(APP_STL)))
 FIREBASE_LIBRARY_PATH := $(FIREBASE_CPP_SDK_DIR)/libs/android/$(TARGET_ARCH_ABI)/$(STL)
@@ -50,8 +54,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
-LOCAL_STATIC_LIBRARIES += firebase_app
 LOCAL_STATIC_LIBRARIES += firebase_analytics
+LOCAL_STATIC_LIBRARIES += firebase_app
 
 # _COCOS_LIB_ANDROID_BEGIN
 # _COCOS_LIB_ANDROID_END

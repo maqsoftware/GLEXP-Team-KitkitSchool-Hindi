@@ -25,8 +25,11 @@ using namespace cocos2d::experimental;
 using namespace CocosDenshion;
 #endif
 
-#include "firebase/app.h"
 #include "firebase/analytics.h"
+#include "firebase/analytics/event_names.h"
+#include "firebase/analytics/parameter_names.h"
+#include "firebase/analytics/user_property_names.h"
+#include "firebase/app.h"
 
 USING_NS_CC;
 
@@ -128,7 +131,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // shortcut
     //{ CCAppController::sharedAppController()->startGame("EggQuizLiteracy", 0, "PostTest_N"); return true; }
-
 
     // Initialize Firebase for Android.
     firebase::App* app = firebase::App::Create(firebase::AppOptions(), JniHelper::getEnv(), JniHelper::getActivity());

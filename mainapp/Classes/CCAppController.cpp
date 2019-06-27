@@ -101,6 +101,12 @@
 #include "CustomDirector.h"
 #include "3rdParty/CCNativeAlert.h"
 
+#include "firebase/analytics.h"
+#include "firebase/analytics/event_names.h"
+#include "firebase/analytics/parameter_names.h"
+#include "firebase/analytics/user_property_names.h"
+#include "firebase/app.h"
+
 using namespace std;
 USING_NS_CC;
 
@@ -973,6 +979,20 @@ void CCAppController::handleGameQuit(bool bImmediately)
             StrictLogManager::shared()->game_End_Quit(_currentGame, _currentLevel, duration);
         }
     }
+
+    std::stringstream ss;
+    ss << _currentLevel;
+
+    const char *const kEventLevelEnd = "level_end";
+    const char *const kParameterLevelName = _currentGame.c_str();
+    const char *const kParameterSuccess = "quit_or_complete";
+
+    const firebase::analytics::Parameter level_end_parameters[] = {
+            firebase::analytics::Parameter(kParameterLevelName,  ss.str().c_str()),
+            firebase::analytics::Parameter(kParameterSuccess,  "quit"),
+    };
+
+    firebase::analytics::LogEvent(kEventLevelEnd, level_end_parameters, sizeof(level_end_parameters) / sizeof(level_end_parameters[0]));
     
     _currentGame = "";
     _currentParam = "";
@@ -1019,8 +1039,21 @@ void CCAppController::handleGameComplete(int result)
     else {
         StrictLogManager::shared()->game_End_Complete(_currentGame, _currentLevel, duration, result);
     }
-    
-    
+
+    std::stringstream ss;
+    ss << _currentLevel;
+
+    const char *const kEventLevelEnd = "level_end";
+    const char *const kParameterLevelName = _currentGame.c_str();
+    const char *const kParameterSuccess = "quit_or_complete";
+
+    const firebase::analytics::Parameter level_end_parameters[] = {
+            firebase::analytics::Parameter(kParameterLevelName,  ss.str().c_str()),
+            firebase::analytics::Parameter(kParameterSuccess,  "complete"),
+    };
+
+    firebase::analytics::LogEvent(kEventLevelEnd, level_end_parameters, sizeof(level_end_parameters) / sizeof(level_end_parameters[0]));
+
     _currentGame = "";
     _currentParam = "";
     _currentLevel = 0;
