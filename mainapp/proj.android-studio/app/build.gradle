@@ -65,7 +65,8 @@ android {
 
                     def module_paths = [project.file("../../cocos2d").absolutePath,
                                         project.file("../../cocos2d/cocos").absolutePath,
-                                        project.file("../../cocos2d/external").absolutePath]
+                                        project.file("../../cocos2d/external").absolutePath,
+                                        project.file("../${project.ext.firebase_cpp_sdk_dir}").absolutePath]
                     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                         // should use '/'
                         module_paths = module_paths.collect { it.replaceAll('\\\\', '/') }
@@ -168,6 +169,14 @@ android {
             }
         }
     }
+}
+
+println "firebase_cpp_sdk_dir = $firebase_cpp_sdk_dir"
+println "gradle.firebase_cpp_sdk_dir = $gradle.firebase_cpp_sdk_dir"
+
+apply from: "$gradle.firebase_cpp_sdk_dir/Android/firebase_dependencies.gradle"
+firebaseCpp.dependencies {
+    analytics
 }
 
 dependencies {
