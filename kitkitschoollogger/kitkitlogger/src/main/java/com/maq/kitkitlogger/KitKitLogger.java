@@ -89,7 +89,7 @@ public class KitKitLogger {
 
 
 //        try {
-//            Context launcherContext = ctnx.createPackageContext("com.maq.xprize.kitkitlauncher.hindi", Context.MODE_PRIVATE);
+//            Context launcherContext = ctnx.createPackageContext("org.cocos2dx.cpp.kitkitlauncher.hindi", Context.MODE_PRIVATE);
 //            SharedPreferences prefs = launcherContext.getSharedPreferences("sharedpreference",Context.MODE_PRIVATE);
 //            installId = prefs.getString("installId","");
 //        } catch (PackageManager.NameNotFoundException e) {

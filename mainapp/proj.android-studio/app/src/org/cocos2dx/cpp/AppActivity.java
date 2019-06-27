@@ -103,6 +103,8 @@ public class AppActivity extends Cocos2dxActivity {
                     public void run() {
                         try {
                             _activity.moveTaskToBack(true);
+                            Intent startLauncher = new Intent(_activity, org.cocos2dx.cpp.kitkitlauncher.hindi.MainActivity.class);
+                            _activity.startActivity(startLauncher);
                         } catch (Exception e) {
                             Log.e(TAG, "", e);
                             Process.killProcess(Process.myPid());
@@ -423,7 +425,7 @@ public class AppActivity extends Cocos2dxActivity {
 
         // init sign-language value
         try {
-            Context launcherContext = createPackageContext("com.maq.xprize.kitkitlauncher.hindi", 0);
+            Context launcherContext = createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
             SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
             signModeOn = pref.getBoolean("sign_language_mode_on", false);
             Cocos2dxHelper.setBoolForKey("sign_language_mode_on", signModeOn);
@@ -432,7 +434,7 @@ public class AppActivity extends Cocos2dxActivity {
         }
 
         try {
-            Context launcherContext = createPackageContext("com.maq.xprize.kitkitlauncher.hindi", 0);
+            Context launcherContext = createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
             SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
             appLanguage = pref.getString("appLanguage", getString(com.maq.kitkitlogger.R.string.defaultLanguage));
             Cocos2dxHelper.setStringForKey("appLanguage", appLanguage);
@@ -485,7 +487,7 @@ public class AppActivity extends Cocos2dxActivity {
     public void onResume() {
         {
             try {
-                Context context = createPackageContext("com.maq.xprize.kitkitlauncher.hindi", 0);
+                Context context = createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
                 SharedPreferences pref = context.getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
                 boolean isReviewModeOn = pref.getBoolean("review_mode_on", false);
                 Cocos2dxHelper.setBoolForKey("review_mode_on", isReviewModeOn);
@@ -515,7 +517,7 @@ public class AppActivity extends Cocos2dxActivity {
 
         // sign-language
         try {
-            Context context = createPackageContext("com.maq.xprize.kitkitlauncher.hindi", 0);
+            Context context = createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
             SharedPreferences pref = context.getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
             boolean sharedSignModeOn = pref.getBoolean("sign_language_mode_on", false);
 
@@ -530,7 +532,7 @@ public class AppActivity extends Cocos2dxActivity {
 
         // language
         try {
-            Context context = createPackageContext("com.maq.xprize.kitkitlauncher.hindi", 0);
+            Context context = createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
             SharedPreferences pref = context.getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
             String sharedLang = pref.getString("appLanguage", getString(com.maq.kitkitlogger.R.string.defaultLanguage));
 

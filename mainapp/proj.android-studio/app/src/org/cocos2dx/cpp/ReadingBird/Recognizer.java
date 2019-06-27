@@ -2,8 +2,6 @@ package org.cocos2dx.cpp.ReadingBird;
 
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
-import android.media.audiofx.AcousticEchoCanceler;
-import android.media.audiofx.NoiseSuppressor;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -24,16 +22,16 @@ import edu.cmu.pocketsphinx.FsgModel;
 import edu.cmu.pocketsphinx.Hypothesis;
 
 public class Recognizer {
-    private final Decoder decoder;
-    private final int SAMPLE_RATE = 16000;
     private static final float BUFFER_SIZE_SECONDS = 0.4F;
-    private int bufferSize;
-    private final AudioRecord recorder;
-    private Thread recognizerThread;
-    private final Handler mainHandler = new Handler(Looper.getMainLooper());
-    private final Collection<RecognizerListener> listeners = new HashSet();
     private static int mTriggerVolume;
     private static int mSilentVolume;
+    private final Decoder decoder;
+    private final int SAMPLE_RATE = 16000;
+    private final AudioRecord recorder;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private final Collection<RecognizerListener> listeners = new HashSet();
+    private int bufferSize;
+    private Thread recognizerThread;
     private boolean mbCheckVolume;
     private String mPCMFilePath;
     private boolean mbStop = false;
@@ -73,6 +71,32 @@ public class Recognizer {
         }
     }
 
+    public static int getVolume(short[] buffer, int bufferSize) {
+        int max = 0;
+        for (int i = 0; i < bufferSize; ++i) {
+            if (max < Math.abs(buffer[i])) {
+                max = Math.abs(buffer[i]);
+            }
+        }
+
+        return (int) Math.sqrt(max);
+    }
+
+    public static int getAmplificationVolume(double maxVolume, int curVolume) {
+        double val = 1.0 - ((maxVolume - curVolume) / maxVolume);
+        double amplification = val * val;
+        return (int) (amplification * maxVolume);
+    }
+
+    public static int getVolume(byte[] buffer, int bufferSize) {
+        short[] shortBuffer = new short[bufferSize / 2];
+        for (int i = 0; i < shortBuffer.length; ++i) {
+            shortBuffer[i] = (short) (buffer[i * 2] | (buffer[i * 2 + 1] << 8));
+        }
+
+        return getVolume(shortBuffer, shortBuffer.length);
+    }
+
     public void addListener(RecognizerListener listener) {
         Collection var2 = this.listeners;
         synchronized (this.listeners) {
@@ -108,7 +132,7 @@ public class Recognizer {
                     file.delete();
                 }
 
-                result =  true;
+                result = true;
             } catch (Exception e) {
                 Log.e("myLog", "" + e);
                 result = false;
@@ -203,6 +227,15 @@ public class Recognizer {
 
     public void addAllphoneSearch(String name, File file) {
         this.decoder.setAllphoneFile(name, file.getPath());
+    }
+
+    public void onPause() {
+        mbPause = true;
+    }
+
+    public void onResume() {
+        Log.i("");
+        mbPause = false;
     }
 
     private class TimeoutEvent extends Recognizer.RecognitionEvent {
@@ -362,6 +395,7 @@ public class Recognizer {
 
     private final class RecordThread extends Thread {
         private RecognitionThread mRecognitionThread;
+
         public void run() {
             Recognizer.this.recorder.startRecording();
             if (Recognizer.this.recorder.getRecordingState() == 1) {
@@ -412,8 +446,8 @@ public class Recognizer {
                             }
 
                             if (mbCheckVolume == true) {
-                                Log.i("Recognizer record " + maxIndex +  ", value : " + maxValue + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * maxIndex) + "Hz");
-                                Log.i("-> Recognizer record " + 0 +  ", value : " + Math.abs(toTransform[0]) + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * 0) + "Hz");
+                                Log.i("Recognizer record " + maxIndex + ", value : " + maxValue + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * maxIndex) + "Hz");
+                                Log.i("-> Recognizer record " + 0 + ", value : " + Math.abs(toTransform[0]) + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * 0) + "Hz");
                                 if (mTriggerVolume <= volume && Math.abs(toTransform[0]) < 10) {
                                     mbCheckVolume = false;
                                 }
@@ -421,7 +455,7 @@ public class Recognizer {
                             }
 
                             if (mbCheckVolume == false) {
-                                Log.i("~~~ Recognizer record " + maxIndex +  ", value : " + maxValue + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * maxIndex) + "Hz");
+                                Log.i("~~~ Recognizer record " + maxIndex + ", value : " + maxValue + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * maxIndex) + "Hz");
                                 Recognizer.this.mainHandler.post(Recognizer.this.new ResultEvent(null, false, volume));
                             }
 
@@ -515,40 +549,5 @@ public class Recognizer {
 
             return true;
         }
-    }
-
-    public static int getVolume(short[] buffer, int bufferSize) {
-        int max = 0;
-        for (int i = 0; i < bufferSize; ++i) {
-            if (max < Math.abs(buffer[i])) {
-                max = Math.abs(buffer[i]);
-            }
-        }
-
-        return (int) Math.sqrt(max);
-    }
-
-    public static int getAmplificationVolume(double maxVolume, int curVolume) {
-        double val = 1.0 - ((maxVolume - curVolume) / maxVolume);
-        double amplification = val * val;
-        return (int)(amplification * maxVolume);
-    }
-
-    public static int getVolume(byte[] buffer, int bufferSize) {
-        short[] shortBuffer = new short[bufferSize / 2];
-        for (int i = 0; i < shortBuffer.length; ++i) {
-            shortBuffer[i] = (short)(buffer[i*2] | (buffer[i*2+1] << 8));
-        }
-
-        return getVolume(shortBuffer, shortBuffer.length);
-    }
-
-    public void onPause() {
-        mbPause = true;
-    }
-
-    public void onResume() {
-        Log.i("");
-        mbPause = false;
     }
 }
