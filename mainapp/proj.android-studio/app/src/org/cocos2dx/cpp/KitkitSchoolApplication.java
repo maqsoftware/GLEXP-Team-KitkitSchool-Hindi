@@ -35,13 +35,11 @@ public class KitkitSchoolApplication extends Application {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("appLanguage", lang);
         editor.apply();
-
+//        From application activity of Launcher
         if (dbHandler.numUser() == 0) {
             //make users in DB
             for (int i = 0; i < 100; i++) {
                 User user = new User("user" + i, 0);
-//                user.setNumStars(i*50);
-//                user.setFinishTutorial(true);
                 dbHandler.addUser(user);
 
                 if (i == 0) {

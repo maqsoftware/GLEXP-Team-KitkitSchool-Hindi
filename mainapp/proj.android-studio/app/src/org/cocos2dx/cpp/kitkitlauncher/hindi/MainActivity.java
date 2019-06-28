@@ -386,6 +386,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             public void onClick(View view) {
                 if (gotoVideoPlayer() == false) {
                     try {
+//                        Calling Main App
                         Intent intent;
                         SharedPreferences prefs = getSharedPreferences("किटकिट स्कूल - Kitkit School", Context.MODE_PRIVATE);
                         if (!mainAppFlagFile.exists()) {

@@ -102,6 +102,7 @@ public class AppActivity extends Cocos2dxActivity {
                     @Override
                     public void run() {
                         try {
+//                            Calling Kitkit Launcher MainActivity
                             _activity.moveTaskToBack(true);
                             Intent startLauncher = new Intent(_activity, org.cocos2dx.cpp.kitkitlauncher.hindi.MainActivity.class);
                             _activity.startActivity(startLauncher);
@@ -123,7 +124,6 @@ public class AppActivity extends Cocos2dxActivity {
 
     public static void moveToBackground() {
         _activity.moveTaskToBack(true);
-        //moveTaskToBack(true);
     }
 
     public static void staticSetFullScreen() {
@@ -331,7 +331,6 @@ public class AppActivity extends Cocos2dxActivity {
         return Environment.getExternalStorageDirectory().getAbsolutePath();
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
     // for fishbowl
     public static void addFish(String fishID, int skinNo, String fishName, String position) {
         if (_dbHandler != null) {
