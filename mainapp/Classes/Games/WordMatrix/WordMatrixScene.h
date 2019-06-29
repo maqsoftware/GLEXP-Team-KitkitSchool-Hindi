@@ -90,8 +90,12 @@ protected:
     
     bool playSound;
     int _soundIdx;
+    int _soundIdx2;
     vector<SoundEffect *> _wordSounds;
     SoundEffect *_currentSound;
+    string _speakSound;
+    vector<std::string> s;
+
     vector<float> _soundDurations;
     
     bool _swallowTouch;

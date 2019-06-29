@@ -23,6 +23,9 @@ public:
     //   Use SoundEffect::emptyEffect() instead.
     SoundEffect();
     SoundEffect(const std::string& EffectPath);
+    SoundEffect(const std::string& EffectPath,int flag);
+
+
 
     void setPath(const std::string& path);
     
@@ -36,6 +39,7 @@ public:
     void play();
     void playLoop();
     void stop();
+
     //void unload();  // XXX: Not implemented.
     // NB(xenosoz, 2016): Sugars
     SoundEffect& preloaded();

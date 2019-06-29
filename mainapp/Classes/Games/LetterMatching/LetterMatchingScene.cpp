@@ -21,6 +21,8 @@
 #include <Managers/LanguageManager.hpp>
 #include <Managers/StrictLogManager.h>
 #include <Managers/UserManager.hpp>
+#include <Managers/VoiceMoldManager.h>
+#include <iostream>
 
 #include "CCAppController.hpp"
 
@@ -34,8 +36,7 @@ using namespace cocostudio;
 using namespace cocos2d::ui;
 using namespace std;
 using namespace todoschool::lettermatching;
-
-
+string a;
 namespace LetterMatching
 {
     const char* SOLVE_EFFECT_SOUND = "Common/Sounds/Effect/UI_Star_Collected.m4a";
@@ -210,8 +211,7 @@ void LetterMatchingScene::advanceToNextProblem() {
 }
 
 
-void LetterMatchingScene::initCardList()
-{
+void LetterMatchingScene::initCardList() {
     // NB(xenosoz, 2016): Create grid first and choose points to reduce collisions.
 
     size_t cardCount = _currentLevelMaxCardCount * 2;
@@ -220,11 +220,11 @@ void LetterMatchingScene::initCardList()
 
 
     Rect leftRect(boardRect.getMinX(), boardRect.getMinY(),
-                  boardRect.size.width/2.f, boardRect.size.height);
+                  boardRect.size.width / 2.f, boardRect.size.height);
     Rect rightRect(boardRect.getMidX(), boardRect.getMinY(),
-                   boardRect.size.width/2.f, boardRect.size.height);
+                   boardRect.size.width / 2.f, boardRect.size.height);
 
-    size_t leftCount = (size_t)ceil(cardCount / 2.f);
+    size_t leftCount = (size_t) ceil(cardCount / 2.f);
     size_t rightCount = cardCount - leftCount;
     if (random(0, 1) == 0) { std::swap(leftCount, rightCount); }
 
@@ -239,17 +239,16 @@ void LetterMatchingScene::initCardList()
     appendSelected(leftCount, leftRect);
     appendSelected(rightCount, rightRect);
 
-    for (int i = 0; i < _currentLevelMaxCardCount; i++)
-    {
+    for (int i = 0; i < _currentLevelMaxCardCount; i++) {
         auto pieceInfo = _currentProblem.pieces[i];
 
-        auto cardA = createMatchingCard(++_zOrder, selected[i*2+0],
+        auto cardA = createMatchingCard(++_zOrder, selected[i * 2 + 0],
                                         _currentProblemID, pieceInfo.pieceID, 1,
                                         pieceInfo.imageNameA);
-        auto cardB = createMatchingCard(++_zOrder, selected[i*2+1],
+        auto cardB = createMatchingCard(++_zOrder, selected[i * 2 + 1],
                                         _currentProblemID, pieceInfo.pieceID, 2,
                                         pieceInfo.imageNameB);
-        
+
         // NB(xenosoz, 2016): It seems some LetterMatching resources are in NumberMatching folder
         //   for some reason. I'll just follow that legacy in this time. We need a hero.
         SoundEffect sound;
@@ -257,12 +256,14 @@ void LetterMatchingScene::initCardList()
         sound = sound || SoundEffect("NumberMatching/Sound/" + pieceInfo.matchSound);
         sound = sound || SoundEffect("NumberMatching/Images/Letter/" + pieceInfo.matchSound);
         sound = sound || SoundEffect("NumberMatching/Sound/star.wav");
+      //  if(sound=SoundEffect(""))
 
         sound.preload();
         cardA->matchSound = sound;
         cardB->matchSound = sound;
         matchingCardList.push_back(cardA);
         matchingCardList.push_back(cardB);
+        //  a = pieceInfo.matchSound;
     }
 }
 
@@ -274,7 +275,8 @@ LetterMatchingCard* LetterMatchingScene::createMatchingCard(int zOrder, Point po
     card->setImage(level, type, id, cardImageName);
     card->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     card->setPosition(pos);
-    CCLOG("%f, %f", pos.x, pos.y);
+    CCLOG(" %f, %f", pos.x, pos.y);
+    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hello");
 
 
     card->setScale(_defaultScaleFactor);
@@ -366,7 +368,22 @@ void LetterMatchingScene::bindingEvents(LetterMatchingCard *card)
             card->runAction(Sequence::create(DelayTime::create(0.3f), EaseExponentialIn::create(FadeOut::create(0.3f)), nullptr));
             
             card->runAction(Sequence::create(DelayTime::create(0.3f),CallFunc::create([=](){
-                card->matchSound.play();
+              // card->matchSound.play();
+                string s = card->matchSound.effectPath().c_str();
+               int pos =0,last=0;
+                // Find position of ':' using find()
+                 pos = s.find("d/");
+                 last = s.find(".");
+               //  cout<<"hell1:" ;
+
+                // Copy substring after pos
+                string sub = s.substr(pos + 1,last-pos-1);
+                string sub1=sub.substr(1,3);
+//                __android_log_print(ANDROID_LOG_DEBUG, "TAG","%s",sub1.c_str());
+                if(sub1=="eng")
+                    VoiceMoldManager::shared()->speak(sub.substr(5,1));  //VoiceMoldManager::shared()->speak(sub.substr(4,1));
+                else
+                VoiceMoldManager::shared()->speak(sub);
 
                 this->addStarParticle(card);
                 
