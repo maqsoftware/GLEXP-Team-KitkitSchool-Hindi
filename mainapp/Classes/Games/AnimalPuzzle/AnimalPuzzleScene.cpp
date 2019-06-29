@@ -37,7 +37,7 @@ using namespace std;
 namespace AnimalPuzzleSceneSpace {
 
     
-    const char* defaultFont = "fonts/chanakya.ttf";
+    const char* defaultFont = "arial";
     
     const string resourcePath = "AnimalPuzzle/";
     

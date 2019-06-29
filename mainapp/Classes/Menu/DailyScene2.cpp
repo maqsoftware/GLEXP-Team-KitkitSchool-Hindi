@@ -257,7 +257,7 @@ bool DailyScene2::init(string levelID)
         _panel->setPosition(Vec2(viewSize.width/2, viewSize.height));
         _mainView->addChild(_panel);
         
-        auto panelLabel = TodoUtil::createLabel(_cur->levelTitle, 100, Size::ZERO, defaultFont, Color4B(255, 252, 236, 255));
+        auto panelLabel = TodoUtil::createLabel(_cur->levelTitle, 100, Size::ZERO, "arial", Color4B(255, 252, 236, 255));
         panelLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         panelLabel->setPosition(_panel->getContentSize()/2 - Size(0, 42));
         _panel->addChild(panelLabel);
@@ -477,7 +477,7 @@ void DailyScene2::Mango::setupShape(int birdID, string levelID, int day, bool cr
 //    this->addChild(_labelGlow);
     
     
-    _label = TodoUtil::createLabel(TodoUtil::itos(day), 100, Size::ZERO, defaultFont, Color4B(49, 16, 0, 255));
+    _label = TodoUtil::createLabel(TodoUtil::itos(day), 100, Size::ZERO, "arial", Color4B(49, 16, 0, 255));
     _label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     this->addChild(_label);
     
@@ -871,7 +871,7 @@ void DailyScene2::setupFreechoiceTab()
             string labelHindi = labelName.substr(0, labelName.find(delim));
             string labelEnglish = labelName.substr(labelName.find(delim) + delim.length(),labelName.length()-1);
 
-            auto panelLabelHindi = TodoUtil::createLabelMultilineToFit(labelHindi, 90, Size(btnSize.width, 120), defaultFont, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
+            auto panelLabelHindi = TodoUtil::createLabelMultilineToFit(labelHindi, 90, Size(btnSize.width, 120), "arial", Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
             panelLabelHindi->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
             panelLabelHindi->setPosition(Vec2(btnSize.width/2, 10));
             gameBtn->addChild(panelLabelHindi);
@@ -1182,7 +1182,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
         string labelName = LanguageManager::getInstance()->getLocalizedString(gameName);
         string delim = "$#$";
         string labelHindi = labelName.substr(0, labelName.find(delim));
-        auto l = TodoUtil::createLabelMultilineToFit(labelHindi, 100, Size(900,0), defaultFont, Color4B(255, 210, 74, 255));
+        auto l = TodoUtil::createLabelMultilineToFit(labelHindi, 100, Size(900,0), "arial", Color4B(255, 210, 74, 255));
         l->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
         l->setPosition(panel->getContentSize()/2);
         panel->addChild(l);
@@ -1193,7 +1193,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
     {
         auto filename = "MainScene/FreeChoiceThumbnail/freechoice_game_"+gameName+".png";
         Node *thumb = Sprite::create(filename);
-        if (thumb==nullptr) thumb = TodoUtil::createLabel(gameName, 120, Size(800, 500), defaultFont, Color4B::BLACK);
+        if (thumb==nullptr) thumb = TodoUtil::createLabel(gameName, 120, Size(800, 500), "arial", Color4B::BLACK);
         
         thumb->setPosition(Vec2(winSize.width/2, winSize.height-600));
         popup->addChild(thumb);
@@ -1246,7 +1246,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
             }
             
             
-            auto l = TodoUtil::createLabel(TodoUtil::itos(i+1), 100, Size::ZERO, defaultFont, Color4B::WHITE);
+            auto l = TodoUtil::createLabel(TodoUtil::itos(i+1), 100, Size::ZERO, "arial", Color4B::WHITE);
             l->setPosition(b->getContentSize()/2 + Size(2, -6));
             b->addChild(l);
             

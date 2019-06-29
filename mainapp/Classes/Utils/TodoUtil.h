@@ -81,7 +81,10 @@ public:
     static cocos2d::Label* createLabelMultilineToFit(const std::string &text, float maxFontSize, cocos2d::Size boxSize, const std::string &fontName, const cocos2d::Color4B &color, TextHAlignment hAlignment = TextHAlignment::LEFT, TextVAlignment vAlignment = TextVAlignment::CENTER);
 
     static cocos2d::Label* createLabelMultilineToFitWidth(const std::string &text, float maxFontSize, cocos2d::Size boxSize, const std::string &fontName, const cocos2d::Color4B &color, TextHAlignment hAlignment = TextHAlignment::LEFT, TextVAlignment vAlignment = TextVAlignment::CENTER);
-    
+
+    Label *createLabeltext(const std::string &text, float maxFontSize, Size boxSize,
+                           const std::string &fontName, const Color4B &color, TextHAlignment hAlignment,
+                           TextVAlignment vAlignment);
 };
 
 

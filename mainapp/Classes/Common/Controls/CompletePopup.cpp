@@ -16,7 +16,7 @@ namespace CompletePopupNS {
     std::string labelText() {
         if (LanguageManager::getInstance()->isSwahili())
             return "Vizuri!";
-        return "ÕãéÌ ¥‘Àð!";
+        return "بہت اچھا";
     }
 }  // namespace CompetePopupNS
 using namespace CompletePopupNS;
@@ -131,7 +131,7 @@ bool CompletePopup::init() {
     
 
     
-    _titleTextLabel = Label::createWithTTF(labelText(), "fonts/chanakya.ttf",
+    _titleTextLabel = Label::createWithSystemFont(labelText(), "arial",
                                            100, Size::ZERO,
                                            TextHAlignment::CENTER, TextVAlignment::CENTER);
     _titleTextLabel->setTextColor(Color4B(255, 252, 236, 255));
