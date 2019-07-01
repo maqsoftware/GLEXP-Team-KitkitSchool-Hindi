@@ -60,7 +60,7 @@
     <string name="rename">Rename</string>
     <string name="title_drawing">Drawing</string>
     <string name="title_coloring">Coloring</string>
-
+    <string name="defaultLanguage">en-US</string>
     <string name="white">White</string>
     <string name="green">Green</string>
     <string name="blue">Blue</string>

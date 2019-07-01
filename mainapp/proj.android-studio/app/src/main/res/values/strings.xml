@@ -40,7 +40,7 @@
     <string name="cancel2">CANCEL</string>
     <string name="enter">ENTER</string>
     <string name="number">number</string>
-
+    <string name="defaultLanguage">en-US</string>
     <string name="drums">Drums\nढोल</string>
     <string name="marimba">Xylophone\nमरिम्बा</string>
     <string name="drawing">Drawing\nचित्रकारी</string>
