@@ -41,8 +41,8 @@ public class User {
         this._openLibrary = DEFAULT_OPEN_LIBRARY;
         this._openTools = DEFAULT_OPEN_TOOLS;
         this._unlockFishBowl = false;
-        this._unlockWritingBoard = false;
-        this._finishWritingBoardTutorial = false;
+        this._unlockWritingBoard = true;
+        this._finishWritingBoardTutorial = true;
     }
 
     public User(int id, String username, int stars) {
@@ -60,8 +60,8 @@ public class User {
         this._openLibrary = DEFAULT_OPEN_LIBRARY;
         this._openTools = DEFAULT_OPEN_TOOLS;
         this._unlockFishBowl = false;
-        this._unlockWritingBoard = false;
-        this._finishWritingBoardTutorial = false;
+        this._unlockWritingBoard = true;
+        this._finishWritingBoardTutorial = true;
     }
 
     public User(String productname, int stars) {
@@ -78,8 +78,8 @@ public class User {
         this._openLibrary = DEFAULT_OPEN_LIBRARY;
         this._openTools = DEFAULT_OPEN_TOOLS;
         this._unlockFishBowl = false;
-        this._unlockWritingBoard = false;
-        this._finishWritingBoardTutorial = false;
+        this._unlockWritingBoard = true;
+        this._finishWritingBoardTutorial = true;
     }
 
     public void setID(int id) {
