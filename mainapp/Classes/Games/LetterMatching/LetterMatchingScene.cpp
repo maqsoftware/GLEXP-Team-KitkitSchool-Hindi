@@ -253,9 +253,13 @@ void LetterMatchingScene::initCardList() {
         //   for some reason. I'll just follow that legacy in this time. We need a hero.
         SoundEffect sound;
         sound = sound || SoundEffect(pieceInfo.matchSound);
+        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellofirst %s ",pieceInfo.matchSound.c_str());
         sound = sound || SoundEffect("NumberMatching/Sound/" + pieceInfo.matchSound);
+        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellosecond %s",pieceInfo.matchSound.c_str());
         sound = sound || SoundEffect("NumberMatching/Images/Letter/" + pieceInfo.matchSound);
+        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellothird %s",pieceInfo.matchSound.c_str());
         sound = sound || SoundEffect("NumberMatching/Sound/star.wav");
+        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellofourth");
       //  if(sound=SoundEffect(""))
 
         sound.preload();
@@ -369,7 +373,9 @@ void LetterMatchingScene::bindingEvents(LetterMatchingCard *card)
             
             card->runAction(Sequence::create(DelayTime::create(0.3f),CallFunc::create([=](){
               // card->matchSound.play();
+              __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellosiva");
                 string s = card->matchSound.effectPath().c_str();
+                __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellohh%s",s.c_str());
                int pos =0,last=0;
                 // Find position of ':' using find()
                  pos = s.find("d/");

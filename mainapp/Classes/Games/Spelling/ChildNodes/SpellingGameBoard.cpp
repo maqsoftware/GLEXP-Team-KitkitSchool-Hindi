@@ -7,6 +7,7 @@
 //
 
 
+#include <Managers/VoiceMoldManager.h>
 #include "SpellingGameBoard.h"
 #include "SpellingWordImage.h"
 #include "../Utils/SpellingMainDepot.h"
@@ -73,7 +74,10 @@ FiniteTimeAction* GameBoard::actionForEnter(function<void()> Callback /* = nullp
         return Spawn::create(It);
     }());
     
-    Actions.pushBack(CallFunc::create([this] { SoundForEnter.play(); }));
+    Actions.pushBack(CallFunc::create([this] {
+        __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellojkiddy");
+        SoundForEnter.play();
+    } ));
     Actions.pushBack(CallFunc::create([this, Callback] {
         if (!Callback) { return; }
         NodeScopeGuard Guard(this);
