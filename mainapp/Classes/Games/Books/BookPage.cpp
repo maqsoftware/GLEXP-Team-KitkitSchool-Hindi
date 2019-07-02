@@ -97,7 +97,7 @@ void BookPage::update(float delta)
             _pauseLength = 0;
             _pauseReading = false;
             
-            //GameSoundManager::getInstance()->resumeEffect(_readingAudioID);
+            // GameSoundManager::getInstance()->resumeEffect(_readingAudioID);
             GameSoundManager::getInstance()->resumeBGM();
             
         } else {
@@ -137,7 +137,7 @@ void BookPage::update(float delta)
         
         if (newReadingSentenceIndex!=_readingSentenceIndex) {
             _readingSentenceIndex = newReadingSentenceIndex;
-            //auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
+            // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
             
             GameSoundManager::getInstance()->stopAllEffects();
             std::string readSentence = "";
@@ -146,9 +146,9 @@ void BookPage::update(float delta)
                 readSentence.append(" ");
             }
             VoiceMoldManager::shared()->speak(readSentence); 
-            // //auto audioPath = _book->filePrefix+_book->pagePrefix+sentence.sentenceAudioFilename;
+            // auto audioPath = _book->filePrefix+_book->pagePrefix+sentence.sentenceAudioFilename;
             // auto audioPath = _book->filePrefix + "page/"+newReadingSentence.sentenceAudioFilename;
-            // //_readingAudioID = GameSoundManager::getInstance()->playEffectSound(audioPath);
+            // _readingAudioID = GameSoundManager::getInstance()->playEffectSound(audioPath);
             // GameSoundManager::getInstance()->playBGM(audioPath);
             
             _timeSentence = 0.0;
@@ -218,7 +218,7 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
     unscheduleUpdate();
     
     
-    //_isPortrait = layout==TDBookLayout::Portrait || layout==TDBookLayout::Portrait_Traditional;
+    // _isPortrait = layout==TDBookLayout::Portrait || layout==TDBookLayout::Portrait_Traditional;
     _hasBackCover = layout==TDBookLayout::Portrait || layout==TDBookLayout::Portrait_Traditional;
     
     if (layout==TDBookLayout::Portrait || layout==TDBookLayout::Portrait_Traditional) {
@@ -474,15 +474,15 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
         rightBinding->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
         _rightView->addChild(rightBinding);
         
-//        Sprite *frame;
-//        if (layout==TDBookLayout::Portrait_Traditional) {
-//            frame = Sprite::create("Books/portrait_traditional/koreanbook_cover_illustration_frame.png");
-//        } else {
-//            frame = Sprite::create("Books/portrait/xprize_vertical_cover_illustration_frame.png");
-//        }
-//        
-//        frame->setPosition(imagePos);
-//        _rightView->addChild(frame);
+    //    Sprite *frame;
+    //    if (layout==TDBookLayout::Portrait_Traditional) {
+    //        frame = Sprite::create("Books/portrait_traditional/koreanbook_cover_illustration_frame.png");
+    //    } else {
+    //        frame = Sprite::create("Books/portrait/xprize_vertical_cover_illustration_frame.png");
+    //    }
+       
+    //    frame->setPosition(imagePos);
+    //    _rightView->addChild(frame);
         
         
         
@@ -514,7 +514,7 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
     if (audioPath.length() > 0) {
         auto titleAudioPath = audioPath;
 
-        scheduleOnce([titleAudioPath](float){  // Sound delay
+        scheduleOnce([title](float){  // Sound delay
             VoiceMoldManager::shared()->speak(title);
             // GameSoundManager::getInstance()->playBGM(titleAudioPath);
         }, delay, "titleAudio");
@@ -533,7 +533,7 @@ void BookPage::setPage(TodoBook *book, TodoPage *page, TDBookLayout layout,  boo
     auto folder = _book->filePrefix;
     _bookLayout = layout;
     _withAudio = withAudio;
-    //_isPortrait = layout==TDBookLayout::Portrait || layout==TDBookLayout::Portrait_Traditional;
+    // _isPortrait = layout==TDBookLayout::Portrait || layout==TDBookLayout::Portrait_Traditional;
     _hasBackCover = layout==TDBookLayout::Portrait || layout==TDBookLayout::Portrait_Traditional;
     int pageNum = _page->pageNum;
     if (page->creditPage) {
@@ -837,7 +837,7 @@ void BookPage::setPage(TodoBook *book, TodoPage *page, TDBookLayout layout,  boo
 
 
     
-    //auto image = Sprite::create(_book->imagePrefix+pageObj.pageImageFilename);
+    // auto image = Sprite::create(_book->imagePrefix+pageObj.pageImageFilename);
     auto image = Sprite::create(folder+"page/"+page->pageImageFilename);
     if (!image) image = Sprite::create(folder+"page/"+page->pageImageFilename+".jpg");
     if (!image) image = Sprite::create(folder+"page/"+page->pageImageFilename+".png");
@@ -1329,7 +1329,7 @@ void BookPage::hideLeftHalf(bool animate)
 
 void BookPage::playWordSound(ui::Button *button, string word, float length)
 {
-    //GameSoundManager::getInstance()->pauseEffect(_readingAudioID);
+    // GameSoundManager::getInstance()->pauseEffect(_readingAudioID);
     GameSoundManager::getInstance()->pauseBGM();
     
     
@@ -1454,7 +1454,7 @@ Node* BookPage::createTextViewMultiLine(Size size, float fontSize)
     auto addAudioHandler = [&](Button* button, string word, float length) {
         
         // GameSoundManager::getInstance()->preloadEffect(path);
-        button->addClickEventListener([this, path, button, length](Ref*){
+        button->addClickEventListener([this, word, button, length](Ref*){
             
             playWordSound(button, word, length);
             
