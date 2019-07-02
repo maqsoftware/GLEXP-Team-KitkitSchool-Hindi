@@ -49,6 +49,7 @@ public class AppActivity extends Cocos2dxActivity {
     public static String _launchString;
     private Cocos2dxGLSurfaceView _glSurfaceView;
     private static String TAG = "BookTestActivity";
+    public static AppActivity instance() { return _activity; }
 
     public static String getDocumentsPath() {
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);

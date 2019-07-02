@@ -25,6 +25,7 @@ package org.cocos2dx.cpp;
 
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
