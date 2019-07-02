@@ -515,7 +515,8 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
         auto titleAudioPath = audioPath;
 
         scheduleOnce([titleAudioPath](float){  // Sound delay
-            GameSoundManager::getInstance()->playBGM(titleAudioPath);
+            VoiceMoldManager::shared()->speak(title);
+            // GameSoundManager::getInstance()->playBGM(titleAudioPath);
         }, delay, "titleAudio");
 
         SHOW_SL_VIDEO_IF_ENABLED("common/temp_video_short.mp4");
@@ -1326,14 +1327,14 @@ void BookPage::hideLeftHalf(bool animate)
     }
 }
 
-void BookPage::playWordSound(ui::Button *button, string path, float length)
+void BookPage::playWordSound(ui::Button *button, string word, float length)
 {
     //GameSoundManager::getInstance()->pauseEffect(_readingAudioID);
     GameSoundManager::getInstance()->pauseBGM();
     
     
-    GameSoundManager::getInstance()->playEffectSound(path);
-    
+    // GameSoundManager::getInstance()->playEffectSound(path);
+    VoiceMoldManager::shared()->speak(word);
     if (_isReading) {
         
         button->resetNormalRender();
@@ -1375,9 +1376,10 @@ Node* BookPage::createTextViewOneLine(Size size, float fontSize)
         
         if (_withAudio) {
             auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-            GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
+            VoiceMoldManager::shared()->speak(word.word);
+            // GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
             wordButton->addClickEventListener([this, word, wordAudioPath, wordButton](Ref*){
-                this->playWordSound(wordButton, wordAudioPath, word.wordAudioLength);
+                this->playWordSound(wordButton, word.word, word.wordAudioLength);
             });
         }
         
@@ -1449,11 +1451,12 @@ Node* BookPage::createTextViewMultiLine(Size size, float fontSize)
          
     };
     
-    auto addAudioHandler = [&](Button* button, string path, float length) {
-        GameSoundManager::getInstance()->preloadEffect(path);
+    auto addAudioHandler = [&](Button* button, string word, float length) {
+        
+        // GameSoundManager::getInstance()->preloadEffect(path);
         button->addClickEventListener([this, path, button, length](Ref*){
             
-            playWordSound(button, path, length);
+            playWordSound(button, word, length);
             
         });
     };
@@ -1497,7 +1500,7 @@ Node* BookPage::createTextViewMultiLine(Size size, float fontSize)
                     
                     if (_withAudio) {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        addAudioHandler(wordButton, wordAudioPath, word.wordAudioLength);
+                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
                         _wordButtons.push_back(wordButton);
                     }
                 }
@@ -1600,8 +1603,8 @@ Node* BookPage::createTextViewMultiLine(Size size, float fontSize)
                     
                     if (_withAudio) {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
-                        addAudioHandler(wordButton, wordAudioPath, word.wordAudioLength);
+                        // GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
+                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
                         
                         _wordButtons.push_back(wordButton);
 
