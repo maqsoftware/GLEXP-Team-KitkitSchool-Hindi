@@ -11,6 +11,7 @@
 #include "Managers/GameSoundManager.h"
 #include "Utils/TodoUtil.h"
 #include "Common/Controls/SignLanguageVideoPlayer.hpp"
+#include "Managers/VoiceMoldManager.h"
 
 
 using namespace ui;
@@ -139,11 +140,16 @@ void BookPage::update(float delta)
             //auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
             
             GameSoundManager::getInstance()->stopAllEffects();
-            
-            //auto audioPath = _book->filePrefix+_book->pagePrefix+sentence.sentenceAudioFilename;
-            auto audioPath = _book->filePrefix + "page/"+newReadingSentence.sentenceAudioFilename;
-            //_readingAudioID = GameSoundManager::getInstance()->playEffectSound(audioPath);
-            GameSoundManager::getInstance()->playBGM(audioPath);
+            std::string readSentence = "";
+            for(auto w: newReadingSentence.words){
+                readSentence.append(w.word);
+                readSentence.append(" ");
+            }
+            VoiceMoldManager::shared()->speak(readSentence); 
+            // //auto audioPath = _book->filePrefix+_book->pagePrefix+sentence.sentenceAudioFilename;
+            // auto audioPath = _book->filePrefix + "page/"+newReadingSentence.sentenceAudioFilename;
+            // //_readingAudioID = GameSoundManager::getInstance()->playEffectSound(audioPath);
+            // GameSoundManager::getInstance()->playBGM(audioPath);
             
             _timeSentence = 0.0;
             
