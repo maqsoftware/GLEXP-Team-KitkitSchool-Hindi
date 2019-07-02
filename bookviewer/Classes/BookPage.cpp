@@ -141,11 +141,17 @@ void BookPage::update(float delta)
             // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
 
             GameSoundManager::getInstance()->stopAllEffects();
-
+            std::string readSentence = "";
+            for (auto w : newReadingSentence.words)
+            {
+                readSentence.append(w.word);
+                readSentence.append(" ");
+            }
+            VoiceMoldManager::shared()->speak(readSentence);
             // auto audioPath = _book->filePrefix+_book->pagePrefix+sentence.sentenceAudioFilename;
-            auto audioPath = _book->filePrefix + "page/" + newReadingSentence.sentenceAudioFilename;
+            // auto audioPath = _book->filePrefix + "page/"+newReadingSentence.sentenceAudioFilename;
             // _readingAudioID = GameSoundManager::getInstance()->playEffectSound(audioPath);
-            GameSoundManager::getInstance()->playBGM(audioPath);
+            // GameSoundManager::getInstance()->playBGM(audioPath);
 
             _timeSentence = 0.0;
         }
@@ -455,15 +461,15 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
         rightBinding->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
         _rightView->addChild(rightBinding);
 
-            //    Sprite *frame;
-            //    if (layout==TDBookLayout::Portrait_Traditional) {
-            //        frame = Sprite::create("Books/portrait_traditional/koreanbook_cover_illustration_frame.png");
-            //    } else {
-            //        frame = Sprite::create("Books/portrait/xprize_vertical_cover_illustration_frame.png");
-            //    }
-        
-            //    frame->setPosition(imagePos);
-            //    _rightView->addChild(frame);
+        //    Sprite *frame;
+        //    if (layout==TDBookLayout::Portrait_Traditional) {
+        //        frame = Sprite::create("Books/portrait_traditional/koreanbook_cover_illustration_frame.png");
+        //    } else {
+        //        frame = Sprite::create("Books/portrait/xprize_vertical_cover_illustration_frame.png");
+        //    }
+
+        //    frame->setPosition(imagePos);
+        //    _rightView->addChild(frame);
     }
 
     auto image = Sprite::create(titleImagePath);
@@ -486,8 +492,9 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
     {
         auto titleAudioPath = audioPath;
 
-        scheduleOnce([titleAudioPath](float) { // Sound delay
-            GameSoundManager::getInstance()->playBGM(titleAudioPath);
+        scheduleOnce([title](float) { // Sound delay
+            VoiceMoldManager::shared()->speak(title);
+            // GameSoundManager::getInstance()->playBGM(titleAudioPath);
         },
                      delay, "titleAudio");
 
@@ -1235,13 +1242,13 @@ void BookPage::hideLeftHalf(bool animate)
     }
 }
 
-void BookPage::playWordSound(ui::Button *button, string path, float length)
+void BookPage::playWordSound(ui::Button *button, string word, float length)
 {
     // GameSoundManager::getInstance()->pauseEffect(_readingAudioID);
     GameSoundManager::getInstance()->pauseBGM();
 
-    GameSoundManager::getInstance()->playEffectSound(path);
-
+    // GameSoundManager::getInstance()->playEffectSound(path);
+    VoiceMoldManager::shared()->speak(word);
     if (_isReading)
     {
 
@@ -1283,9 +1290,10 @@ Node *BookPage::createTextViewOneLine(Size size, float fontSize)
         if (_withAudio)
         {
             auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-            GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
+            VoiceMoldManager::shared()->speak(word.word);
+            // GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
             wordButton->addClickEventListener([this, word, wordAudioPath, wordButton](Ref *) {
-                this->playWordSound(wordButton, wordAudioPath, word.wordAudioLength);
+                this->playWordSound(wordButton, word.word, word.wordAudioLength);
             });
         }
 
@@ -1346,10 +1354,10 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
         return wordButton;
     };
 
-    auto addAudioHandler = [&](Button *button, string path, float length) {
-        GameSoundManager::getInstance()->preloadEffect(path);
-        button->addClickEventListener([this, path, button, length](Ref *) {
-            playWordSound(button, path, length);
+    auto addAudioHandler = [&](Button *button, string word, float length) {
+        // GameSoundManager::getInstance()->preloadEffect(path);
+        button->addClickEventListener([this, word, button, length](Ref *) {
+            playWordSound(button, word, length);
         });
     };
 
@@ -1396,7 +1404,7 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
                     if (_withAudio)
                     {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        addAudioHandler(wordButton, wordAudioPath, word.wordAudioLength);
+                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
                         _wordButtons.push_back(wordButton);
                     }
                 }
@@ -1497,8 +1505,8 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
                     if (_withAudio)
                     {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
-                        addAudioHandler(wordButton, wordAudioPath, word.wordAudioLength);
+                        // GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
+                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
 
                         _wordButtons.push_back(wordButton);
                     }
