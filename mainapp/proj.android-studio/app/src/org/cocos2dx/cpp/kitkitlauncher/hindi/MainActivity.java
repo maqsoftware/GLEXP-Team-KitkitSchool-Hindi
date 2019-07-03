@@ -355,7 +355,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             }
         });
 
-        final String libraryAppPackageName = "com.maq.xprize.kitkitlibrary.english";
+        final String libraryAppPackageName = "com.maq.xprize.booktest";
         ImageButton libraryButton = findViewById(R.id.button_library);
 
         libraryButton.setOnClickListener(new View.OnClickListener() {
