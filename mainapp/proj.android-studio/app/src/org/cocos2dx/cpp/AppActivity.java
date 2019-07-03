@@ -71,7 +71,7 @@ public class AppActivity extends Cocos2dxActivity {
     private Cocos2dxGLSurfaceView glSurfaceView;
     public static KitkitDBHandler _dbHandler;
 
-    private FirebaseAnalytics mFirebaseAnalytics;
+    private static FirebaseAnalytics mFirebaseAnalytics;
 
     private static String TAG = "KitkitSchoolActivity";
     private static final String EXPANSION_FILE_VERSION_KEY_NAME = "0";
@@ -523,6 +523,16 @@ public class AppActivity extends Cocos2dxActivity {
         Process.killProcess(Process.myPid());
         AlarmManager alm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         alm.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, PendingIntent.getActivity(this, 0, new Intent(this, this.getClass()), 0));
+    }
+
+    public static void logFirebaseEvent_playGame(String game, int level, double duration, boolean freechoice, boolean completed) {
+        Bundle params = new Bundle();
+        params.putString("game", game);
+        params.putInt("level", level);
+        params.putDouble("duration", duration);
+        params.putBoolean("freechoice", freechoice);
+        params.putBoolean("completed", completed);
+        mFirebaseAnalytics.logEvent("playGame", params);
     }
 
     public static void updateStars(int numStars) {

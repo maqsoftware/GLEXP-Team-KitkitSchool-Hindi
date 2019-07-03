@@ -101,6 +101,8 @@
 #include "CustomDirector.h"
 #include "3rdParty/CCNativeAlert.h"
 
+#include "platform/android/jni/JniHelper.h"
+
 using namespace std;
 USING_NS_CC;
 
@@ -951,10 +953,23 @@ bool CCAppController::startGame(std::string gameName, int level, std::string par
 
 }
 
+void logFirebaseEvent_playGame(std::string game, int level, double duration, bool freechoice, bool completed) {
+    JniMethodInfo t;
+    bool getInfo = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "logFirebaseEvent_playGame", "(Ljava/lang/String;I;D;Z;Z)V");
+    if (getInfo)
+    {
+        jstring jGame = t.env->NewStringUTF(game.c_str());
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, jGame, level, duration, freechoice, completed);
+        t.env->DeleteLocalRef(t.classID);
+        t.env->DeleteLocalRef(jGame);
+    }
+}
+
 void CCAppController::handleGameQuit(bool bImmediately)
 {
     if (_currentGame != "") {
         double duration = _playTimer->stop();
+        logFirebaseEvent_playGame(_currentGame, _currentLevel, duration, _isFreeChoice, false);
         _playTimer->start();
         
         if (_currentGame == "__BookView__") {
@@ -1002,6 +1017,7 @@ void CCAppController::handleGameComplete(int result)
     
     
     double duration = _playTimer->stop();
+    logFirebaseEvent_playGame(_currentGame, _currentLevel, duration, _isFreeChoice, true);
     _playTimer->start();
     
     if (_currentGame == "__BookView__") {
