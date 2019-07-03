@@ -110,22 +110,11 @@ public class VoiceMold {
                 
                 String duration = mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
                 Log.v("time", duration);
-                long dur = Long.parseLong(duration);
+                float dur = Float.parseFloat(duration);
                 String seconds = String.valueOf((dur % 60000) / 1000);
                 Log.v("seconds", seconds);
                 String minutes = String.valueOf(dur / 60000);
-                out = minutes + ":" + seconds;
-                if (seconds.length() == 1) {
-                    txtTime.setText("0" + minutes + ":0" + seconds);
-                }else {
-                    txtTime.setText("0" + minutes + ":" + seconds);
-                }
-                Log.v("minutes", minutes);
-                // close object
-                metaRetriever.release();
-                (new File(filename)).delete();
-
-                return dur.floatValue() / 1000;
+                return dur / 1000;
             }
             else {
                 Log.e("voice-engine-a", "synthesizeToFile failed");
