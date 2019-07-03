@@ -20,7 +20,6 @@ int WordMatrixInfo::getMaxLevel()
     while (i < data.size())
     {
         auto row = data[i++];
-        /*__android_log_print(ANDROID_LOG_DEBUG, "TAG",(char *)data[i-1]);*/
         int level = TodoUtil::stoi(row[1]);
         
         if(level > maxLevel)

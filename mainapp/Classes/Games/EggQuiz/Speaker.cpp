@@ -7,6 +7,7 @@
 
 #include "Speaker.hpp"
 #include "Managers/GameSoundManager.h"
+#include <Managers/VoiceMoldManager.h>
 
 BEGIN_NS_EGGQUIZ;
 
@@ -74,7 +75,6 @@ bool Speaker::initWithSize(SpeakerSize speakerSize) {
 }
 
 void Speaker::setFileName(string fileName) {
-    if (fileName.find(".m4a") == string::npos) fileName = fileName + ".m4a";
     _fileName = fileName;
 }
 
@@ -110,7 +110,7 @@ void Speaker::setPressed(float delay) {
     for (auto it : files) {
         actions.pushBack(DelayTime::create(delay));
         actions.pushBack(CallFunc::create([this, it](){
-            GameSoundManager::getInstance()->playEffectSoundVoiceOnly(it);
+           VoiceMoldManager::shared()->speak(it);
         }));
         delay += ProblemBank::getInstance()->getDuration(it)+1;
     }

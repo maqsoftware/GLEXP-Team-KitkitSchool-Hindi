@@ -4,6 +4,7 @@
 #include <vector>
 #include <numeric>
 #include <algorithm>
+#include <Managers/VoiceMoldManager.h>
 #include "ui/CocosGUI.h"
 #include "Managers/LanguageManager.hpp"
 #include "Managers/UserManager.hpp"
@@ -562,9 +563,7 @@ void WordWindowScene::playSoundQuestion(string name)
 		return;
 	}
 
-	string path = "games/wordwindow/sound/" + name;
-
-	GameSoundManager::getInstance()->playEffectSoundVoiceOnly(path);
+	VoiceMoldManager::shared()->speak(name);
 
 	disableSoundButton();
 

@@ -11,7 +11,7 @@
 #include <Managers/GameSoundManager.h>
 #include <cocos/platform/CCFileUtils.h>
 #include <string>
-#include <Managers/VoiceMoldManager.h>
+
 
 
 using cocos2d::FileUtils;
@@ -35,32 +35,21 @@ SoundEffect::SoundEffect(const std::string& EffectPath)
     , SoundID(-1)
     , Bad(false)
 {
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG","fileexist");
     if (!EffectPath.empty() && !fileExist(EffectPath)) {
        // NB(xenosoz, 2016): Check for missing sound effects
-        __android_log_print(ANDROID_LOG_DEBUG, "TAG","lastchance");
         CCLOGERROR("File does not exist for SoundEffect: %s", EffectPath.c_str());
        Bad = true;
     }
 }
-//SoundEffect::SoundEffect(const std::string& text,int flag)
-//{
-////
-//    VoiceMoldManager::shared()->speak(text);
-//}
-
-
 
 void SoundEffect::setPath(const std::string &path)
 {
     EffectPath = path;
     SoundID = -1;
     Bad = false;
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG","filee");
     
     if (!EffectPath.empty() && !fileExist(EffectPath)) {
         // NB(xenosoz, 2016): Check for missing sound effects
-        __android_log_print(ANDROID_LOG_DEBUG, "TAG","isitgoing");
         CCLOGERROR("File does not exist for SoundEffect: %s", EffectPath.c_str());
         Bad = true;
     }

@@ -12,7 +12,6 @@
 
 #include "CCAppController.hpp"
 
-
 int RandomInt(int min, int max);
 float RandomFloat(float min, float max);
 
@@ -709,9 +708,8 @@ WordMatrixBlock *WordMatrixBlock::create(string fileName, vector<TEXT_INFO> text
 {
     WordMatrixBlock *wordMatrixBlock = new WordMatrixBlock();
     if(wordMatrixBlock && wordMatrixBlock->initWithFile(fileName))
-    {__android_log_print(ANDROID_LOG_DEBUG,"TAG","hellou");
+    {
         wordMatrixBlock->init(fileName, textInfos);
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellol");
         wordMatrixBlock->_swallowTouch = swallowTouch;
         wordMatrixBlock->autorelease();
 
@@ -741,13 +739,13 @@ void WordMatrixBlock::onExit()
 }
 
 void WordMatrixBlock::init(string fileName, vector<TEXT_INFO> textInfos)
-{ __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellok");
+{
     int cutPoint = (int)fileName.find('.');
     string selectedFile = fileName.substr(0, cutPoint);
     selectedFile += "_selected.png";
 
     if(FileUtils::getInstance()->isFileExist(selectedFile.c_str()))
-    {     __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellom ");
+    {
         _effectImg = Sprite::create(selectedFile);
         _effectImg->setAnchorPoint(Vec2(0.5f, 0.5f));
         _effectImg->setPosition(this->getContentSize()/2);
@@ -761,52 +759,36 @@ void WordMatrixBlock::init(string fileName, vector<TEXT_INFO> textInfos)
     }
 
     //TEXT
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellob %s",_textInfo._word.c_str());
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellog ");
+
     setLabel(textInfos);
 
     //find _01, _02sound...
     bool findContinueSound = false;
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellobhai %s",_textInfo._word.c_str());
   for(int i=1; i<=99; i++){
-   // __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hello %s",__String::createWithFormat("%s_%02d", _textInfo._word.c_str(), i)->getCString());
         if(setSound(__String::createWithFormat("%s_%02d", _textInfo._word.c_str(), i)->getCString()))
        {
-           __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellog%s ",_textInfo._word.c_str());
             findContinueSound = true;        }
        else
         {
-          __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellon");
-           break; }
-
+           break;
+        }
     }
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellob ");
     s.clear();
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "helloc ");
-
     if(!findContinueSound){
-      __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellobahi %s",_textInfo._word.c_str());
         setSound(_textInfo._word.c_str());
     }
-//    if(!setSound(_textInfo._word.c_str()))
-//    {
-//     //   __android_log_print(ANDROID_LOG_DEBUG,"TAG","helloi %s",s1.at(0).c_str());
-//    }
 }
 
 
 
 bool WordMatrixBlock::setSound(const char* fileName)
-{   __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hellos ");
+{
     SoundEffect *wordSound = NULL;
     std::string s1 = "";
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "helloq ");
     s.clear();
-    __android_log_print(ANDROID_LOG_DEBUG, "TAG", "helloa ");
     __String *tt = __String::createWithFormat("games/wordmatrix/sound/%s.m4a", fileName);
     if(FileUtils::getInstance()->isFileExist(tt->getCString()))
     {
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","thel %s",tt->getCString());
         wordSound = new SoundEffect(tt->getCString());
     }
     else
@@ -822,14 +804,9 @@ bool WordMatrixBlock::setSound(const char* fileName)
             if (FileUtils::getInstance()->isFileExist(tt->getCString()))
                 wordSound = new SoundEffect(tt->getCString());
             else {
-                __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hello %s", fileName);
                // s1.push_back(fileName);
                 s1 = fileName;
-
-               // __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hell %s", s1.at(0).c_str());
             }
-
-
 
         }
     }
@@ -838,18 +815,13 @@ bool WordMatrixBlock::setSound(const char* fileName)
     {
         wordSound->preload();
         _wordSounds.push_back(wordSound);
-     //   __android_log_print(ANDROID_LOG_DEBUG, "TAG", "helloboy %s", (s1.at(0)).c_str());
+
         if(_durationMap.count(fileName))
             _soundDurations.push_back(_durationMap[fileName]);
 
         return true;
     }
-
-
-
-
     else {
-        __android_log_print(ANDROID_LOG_DEBUG, "TAG", "hello %s", fileName);
         s.push_back(s1);
         return false;
     }
@@ -886,7 +858,6 @@ void WordMatrixBlock::setLabel(vector<TEXT_INFO> textInfos)
         _wordLabel1->setAnchorPoint(Vec2(1.0f, 0.5f));
 
         TEXT_INFO tempInfo = textInfos.at(1);
-       // __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellop%s",textInfos.at(1).c);
         _wordLabel2 = Label::createWithTTF(tempInfo._word.c_str(), _resourcesInfo._fontName, fontSize);
         _wordLabel2->setHorizontalAlignment(TextHAlignment::LEFT);
         _wordLabel2->setVerticalAlignment(TextVAlignment::CENTER);
@@ -903,7 +874,6 @@ void WordMatrixBlock::setLabel(vector<TEXT_INFO> textInfos)
         _wordLabel1->setPosition(Vec2(fontPos.x+diff, fontPos.y));
 
         _textInfo._word += tempInfo._word;
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellop %s",_textInfo._word.c_str());
     }
 }
 
@@ -912,7 +882,6 @@ void WordMatrixBlock::setShowText(bool enable)
     _wordLabel1->setVisible(enable);
     if(_wordLabel2)     _wordLabel2->setVisible(enable);
 }
-
 void WordMatrixBlock::onOffEffectImg(bool onOff)
 {
     this->setOpacity(!onOff ? 255:0);
@@ -1118,9 +1087,7 @@ void WordMatrixAnswerBlock::playWordSound() {
             _currentSound = NULL;
         }
         _currentSound = _wordSounds.at(_soundIdx++);
-       // if (_currentSound != NULL)
             _currentSound->play();
-
         }
      if( soundCnt2 >= 1)  {
          _speakSound = s.at(_soundIdx++);

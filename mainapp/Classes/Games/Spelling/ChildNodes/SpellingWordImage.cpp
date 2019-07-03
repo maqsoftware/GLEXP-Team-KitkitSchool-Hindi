@@ -15,7 +15,7 @@
 
 BEGIN_NS_SPELLING
 
-string s2;
+string _speakword1;
 namespace {
     Size contentSize() { return Size(1111.f, 820.f); }
 
@@ -39,7 +39,7 @@ bool WordImage::init() {
 }
 
 void WordImage::clearInternals() {
-    s2 = "";
+    _speakword1 = "";
     setContentSize(contentSize());
     setCascadeOpacityEnabled(true);
     SoundForWord = SoundEffect::emptyEffect();
@@ -47,10 +47,7 @@ void WordImage::clearInternals() {
 
     TheProblem.OnValueUpdate = [this](Problem&) {
         refreshChildNodes();
-       //SoundForWord = MainDepot().soundForWord(TheProblem().Word);
-       __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellotrrwe");
-       s2 = TheProblem().Word ;
-       //VoiceMoldManager::shared()->speak(TheProblem().Word.c_str());
+       _speakword1= TheProblem().Word ;
     };
 }
 
@@ -97,11 +94,8 @@ void WordImage::refreshChildNodes() {
 
 void WordImage::playWordSound() {
     if (preventNewSoundEffectWhilePlaying() && IsSoundPlaying) { return; }
-
-   // SoundForWord.stop();
    VoiceMoldManager::shared()->speak(" ");
-   // SoundForWord.play();
-   VoiceMoldManager::shared()->speak(s2);
+   VoiceMoldManager::shared()->speak(_speakword1);
     IsSoundPlaying = true;
 
     auto A = Sequence::create(DelayTime::create(TheProblem().SoundDuration),
