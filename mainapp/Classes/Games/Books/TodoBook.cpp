@@ -114,7 +114,7 @@ void TodoBook::readData(string &filedata)
             {
                 sentence.sentenceAudioFilename = row[1];
                 sentence.startTimingInPage = currentPage.timeGuessedinPage;
-                CCLOG("%d, %f", TodoUtil::stod(row[2]), currentSentence.timeGuessedinSentence);
+                CCLOG("LOG: %d, %f", TodoUtil::stod(row[2]), currentPage.timeGuessedinPage);
             }
 
             currentParagraph.sentences.push_back(sentence);
@@ -129,7 +129,7 @@ void TodoBook::readData(string &filedata)
                 
                 TodoWord word;
                 word.startTimingInSentence = currentSentence.timeGuessedinSentence;
-                CCLOG("%f, %f", TodoUtil::stod(row[1]), currentSentence.timeGuessedinSentence);
+                CCLOG("LOG: %f, %f", TodoUtil::stod(row[1]), currentSentence.timeGuessedinSentence);
                 std::string spoken = "";
                 spoken.append(word.word);
                 spoken.append(" ");
