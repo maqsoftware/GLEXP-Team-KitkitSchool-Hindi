@@ -59,47 +59,141 @@ import java.util.Locale;
  * <p>
  * Functions like show() and hide() have no effect when MediaController
  * is created in an xml layout.
- * 
+ * <p>
  * MediaController will hide and
  * show the buttons according to these rules:
  * <ul>
  * <li> The "previous" and "next" buttons are hidden until setPrevNextListeners()
- *   has been called
+ * has been called
  * <li> The "previous" and "next" buttons are visible but disabled if
- *   setPrevNextListeners() was called with null listeners
+ * setPrevNextListeners() was called with null listeners
  * <li> The "rewind" and "fastforward" buttons are shown unless requested
- *   otherwise by using the MediaController(Context, boolean) constructor
- *   with the boolean set to false
+ * otherwise by using the MediaController(Context, boolean) constructor
+ * with the boolean set to false
  * </ul>
  */
 public class VideoControllerView extends FrameLayout {
     private static final String TAG = "VideoControllerView";
-    
-    private MediaPlayerControl  mPlayer;
-    private Context             mContext;
-    private ViewGroup           mAnchor;
-    private View                mRoot;
-    private ProgressBar         mProgress;
-    private TextView            mEndTime, mCurrentTime;
-    private boolean             mShowing;
-    private boolean             mDragging;
-    private static final int    sDefaultTimeout = 3000;
-    private static final int    FADE_OUT = 1;
-    private static final int    SHOW_PROGRESS = 2;
-    private boolean             mUseFastForward;
-    private boolean             mFromXml;
-    private boolean             mListenersSet;
+    private static final int sDefaultTimeout = 3000;
+    private static final int FADE_OUT = 1;
+    private static final int SHOW_PROGRESS = 2;
+    StringBuilder mFormatBuilder;
+    Formatter mFormatter;
+    private MediaPlayerControl mPlayer;
+    private Context mContext;
+    private ViewGroup mAnchor;
+    private View mRoot;
+    private ProgressBar mProgress;
+    private TextView mEndTime, mCurrentTime;
+    private boolean mShowing;
+    private boolean mDragging;
+    private boolean mUseFastForward;
+    private boolean mFromXml;
+    private boolean mListenersSet;
     private OnClickListener mNextListener, mPrevListener;
-    StringBuilder               mFormatBuilder;
-    Formatter                   mFormatter;
-    private ImageButton         mPauseButton;
-    private ImageButton         mFfwdButton;
-    private ImageButton         mRewButton;
-    private ImageButton         mNextButton;
-    private ImageButton         mPrevButton;
-    private ImageButton         mFullscreenButton;
+    private ImageButton mPauseButton;
+    private ImageButton mFfwdButton;
+    private ImageButton mRewButton;
+    private ImageButton mNextButton;
+    private ImageButton mPrevButton;
+    private ImageButton mFullscreenButton;
     private SeekBar mVolumeSeekBar;
-    private Handler             mHandler = new MessageHandler(this);
+    private Handler mHandler = new MessageHandler(this);
+    private OnClickListener mPauseListener = new OnClickListener() {
+        public void onClick(View v) {
+            doPauseResume();
+            show(sDefaultTimeout);
+        }
+    };
+    private OnClickListener mFullscreenListener = new OnClickListener() {
+        public void onClick(View v) {
+            doToggleFullscreen();
+            show(sDefaultTimeout);
+        }
+    };
+    // There are two scenarios that can trigger the seekbar listener to trigger:
+    //
+    // The first is the user using the touchpad to adjust the posititon of the
+    // seekbar's thumb. In this case onStartTrackingTouch is called followed by
+    // a number of onProgressChanged notifications, concluded by onStopTrackingTouch.
+    // We're setting the field "mDragging" to true for the duration of the dragging
+    // session to avoid jumps in the position in case of ongoing playback.
+    //
+    // The second scenario involves the user operating the scroll ball, in this
+    // case there WON'T BE onStartTrackingTouch/onStopTrackingTouch notifications,
+    // we will simply apply the updated position without suspending regular updates.
+    private OnSeekBarChangeListener mSeekListener = new OnSeekBarChangeListener() {
+        public void onStartTrackingTouch(SeekBar bar) {
+            show(3600000);
+
+            mDragging = true;
+
+            // By removing these pending progress messages we make sure
+            // that a) we won't update the progress while the user adjusts
+            // the seekbar and b) once the user is done dragging the thumb
+            // we will post one of these messages to the queue again and
+            // this ensures that there will be exactly one message queued up.
+            mHandler.removeMessages(SHOW_PROGRESS);
+        }
+
+        public void onProgressChanged(SeekBar bar, int progress, boolean fromuser) {
+            if (mPlayer == null) {
+                return;
+            }
+
+            if (!fromuser) {
+                // We're not interested in programmatically generated changes to
+                // the progress bar's position.
+                return;
+            }
+
+            long duration = mPlayer.getDuration();
+            long newposition = (duration * progress) / 1000L;
+            mPlayer.seekTo((int) newposition);
+            if (mCurrentTime != null)
+                mCurrentTime.setText(stringForTime((int) newposition));
+        }
+
+        public void onStopTrackingTouch(SeekBar bar) {
+            mDragging = false;
+            setProgress();
+            updatePausePlay();
+            show(sDefaultTimeout);
+
+            // Ensure that progress is properly updated in the future,
+            // the call to show() does not guarantee this because it is a
+            // no-op if we are already showing.
+            mHandler.sendEmptyMessage(SHOW_PROGRESS);
+        }
+    };
+    private OnClickListener mRewListener = new OnClickListener() {
+        public void onClick(View v) {
+            if (mPlayer == null) {
+                return;
+            }
+
+            int pos = mPlayer.getCurrentPosition();
+            pos -= 5000; // milliseconds
+            mPlayer.seekTo(pos);
+            setProgress();
+
+            show(sDefaultTimeout);
+        }
+    };
+    private OnClickListener mFfwdListener = new OnClickListener() {
+        public void onClick(View v) {
+            if (mPlayer == null) {
+                return;
+            }
+
+            int pos = mPlayer.getCurrentPosition();
+            pos += 15000; // milliseconds
+            mPlayer.seekTo(pos);
+            setProgress();
+
+            show(sDefaultTimeout);
+        }
+    };
 
     public VideoControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -141,6 +235,7 @@ public class VideoControllerView extends FrameLayout {
     /**
      * Set the view that acts as the anchor for the control view.
      * This can for example be a VideoView, or your Activity's main view.
+     *
      * @param view The view to which to anchor the controller when it is visible.
      */
     public void setAnchorView(ViewGroup view) {
@@ -159,6 +254,7 @@ public class VideoControllerView extends FrameLayout {
     /**
      * Create the view that holds the widgets that control playback.
      * Derived classes can override this to create their own.
+     *
      * @return The controller view.
      * @hide This doesn't work as advertised
      */
@@ -266,8 +362,9 @@ public class VideoControllerView extends FrameLayout {
     /**
      * Show the controller on screen. It will go away
      * automatically after 'timeout' milliseconds of inactivity.
+     *
      * @param timeout The timeout in milliseconds. Use 0 to show
-     * the controller until hide() is called.
+     *                the controller until hide() is called.
      */
     public void show(int timeout) {
         if (!mShowing && mAnchor != null) {
@@ -278,9 +375,9 @@ public class VideoControllerView extends FrameLayout {
             disableUnsupportedButtons();
 
             LayoutParams tlp = new LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.BOTTOM
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    Gravity.BOTTOM
             );
 
             mAnchor.addView(this, tlp);
@@ -327,7 +424,7 @@ public class VideoControllerView extends FrameLayout {
 
         int seconds = totalSeconds % 60;
         int minutes = (totalSeconds / 60) % 60;
-        int hours   = totalSeconds / 3600;
+        int hours = totalSeconds / 3600;
 
         mFormatBuilder.setLength(0);
         if (hours > 0) {
@@ -350,7 +447,7 @@ public class VideoControllerView extends FrameLayout {
                 if (duration > 0) {
                     // use long to avoid overflow
                     long pos = 1000L * position / duration;
-                    mProgress.setProgress( (int) pos);
+                    mProgress.setProgress((int) pos);
                 }
                 int percent = mPlayer.getBufferPercentage();
                 mProgress.setSecondaryProgress(percent * 10);
@@ -390,7 +487,7 @@ public class VideoControllerView extends FrameLayout {
         int keyCode = event.getKeyCode();
         final boolean uniqueDown = event.getRepeatCount() == 0
                 && event.getAction() == KeyEvent.ACTION_DOWN;
-        if (keyCode ==  KeyEvent.KEYCODE_HEADSETHOOK
+        if (keyCode == KeyEvent.KEYCODE_HEADSETHOOK
                 || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE
                 || keyCode == KeyEvent.KEYCODE_SPACE) {
             if (uniqueDown) {
@@ -432,20 +529,6 @@ public class VideoControllerView extends FrameLayout {
         return super.dispatchKeyEvent(event);
     }
 
-    private OnClickListener mPauseListener = new OnClickListener() {
-        public void onClick(View v) {
-            doPauseResume();
-            show(sDefaultTimeout);
-        }
-    };
-
-    private OnClickListener mFullscreenListener = new OnClickListener() {
-        public void onClick(View v) {
-            doToggleFullscreen();
-            show(sDefaultTimeout);
-        }
-    };
-
     public void updatePausePlay() {
         if (mRoot == null || mPauseButton == null || mPlayer == null) {
             return;
@@ -465,8 +548,7 @@ public class VideoControllerView extends FrameLayout {
 
         if (mPlayer.isFullScreen()) {
 //            mFullscreenButton.setImageResource(R.drawable.ic_media_fullscreen_shrink);
-        }
-        else {
+        } else {
 //            mFullscreenButton.setImageResource(R.drawable.ic_media_fullscreen_stretch);
         }
     }
@@ -491,62 +573,6 @@ public class VideoControllerView extends FrameLayout {
 
         mPlayer.toggleFullScreen();
     }
-
-    // There are two scenarios that can trigger the seekbar listener to trigger:
-    //
-    // The first is the user using the touchpad to adjust the posititon of the
-    // seekbar's thumb. In this case onStartTrackingTouch is called followed by
-    // a number of onProgressChanged notifications, concluded by onStopTrackingTouch.
-    // We're setting the field "mDragging" to true for the duration of the dragging
-    // session to avoid jumps in the position in case of ongoing playback.
-    //
-    // The second scenario involves the user operating the scroll ball, in this
-    // case there WON'T BE onStartTrackingTouch/onStopTrackingTouch notifications,
-    // we will simply apply the updated position without suspending regular updates.
-    private OnSeekBarChangeListener mSeekListener = new OnSeekBarChangeListener() {
-        public void onStartTrackingTouch(SeekBar bar) {
-            show(3600000);
-
-            mDragging = true;
-
-            // By removing these pending progress messages we make sure
-            // that a) we won't update the progress while the user adjusts
-            // the seekbar and b) once the user is done dragging the thumb
-            // we will post one of these messages to the queue again and
-            // this ensures that there will be exactly one message queued up.
-            mHandler.removeMessages(SHOW_PROGRESS);
-        }
-
-        public void onProgressChanged(SeekBar bar, int progress, boolean fromuser) {
-            if (mPlayer == null) {
-                return;
-            }
-
-            if (!fromuser) {
-                // We're not interested in programmatically generated changes to
-                // the progress bar's position.
-                return;
-            }
-
-            long duration = mPlayer.getDuration();
-            long newposition = (duration * progress) / 1000L;
-            mPlayer.seekTo( (int) newposition);
-            if (mCurrentTime != null)
-                mCurrentTime.setText(stringForTime( (int) newposition));
-        }
-
-        public void onStopTrackingTouch(SeekBar bar) {
-            mDragging = false;
-            setProgress();
-            updatePausePlay();
-            show(sDefaultTimeout);
-
-            // Ensure that progress is properly updated in the future,
-            // the call to show() does not guarantee this because it is a
-            // no-op if we are already showing.
-            mHandler.sendEmptyMessage(SHOW_PROGRESS);
-        }
-    };
 
     @Override
     public void setEnabled(boolean enabled) {
@@ -584,36 +610,6 @@ public class VideoControllerView extends FrameLayout {
         info.setClassName(VideoControllerView.class.getName());
     }
 
-    private OnClickListener mRewListener = new OnClickListener() {
-        public void onClick(View v) {
-            if (mPlayer == null) {
-                return;
-            }
-
-            int pos = mPlayer.getCurrentPosition();
-            pos -= 5000; // milliseconds
-            mPlayer.seekTo(pos);
-            setProgress();
-
-            show(sDefaultTimeout);
-        }
-    };
-
-    private OnClickListener mFfwdListener = new OnClickListener() {
-        public void onClick(View v) {
-            if (mPlayer == null) {
-                return;
-            }
-
-            int pos = mPlayer.getCurrentPosition();
-            pos += 15000; // milliseconds
-            mPlayer.seekTo(pos);
-            setProgress();
-
-            show(sDefaultTimeout);
-        }
-    };
-
     private void installPrevNextListeners() {
         if (mNextButton != null) {
             mNextButton.setOnClickListener(mNextListener);
@@ -633,7 +629,7 @@ public class VideoControllerView extends FrameLayout {
 
         if (mRoot != null) {
             installPrevNextListeners();
-            
+
             if (mNextButton != null && !mFromXml) {
                 mNextButton.setVisibility(View.VISIBLE);
             }
@@ -648,22 +644,33 @@ public class VideoControllerView extends FrameLayout {
     }
 
     public interface MediaPlayerControl {
-        void    start();
-        void    pause();
-        int     getDuration();
-        int     getCurrentPosition();
-        void    seekTo(int pos);
+        void start();
+
+        void pause();
+
+        int getDuration();
+
+        int getCurrentPosition();
+
+        void seekTo(int pos);
+
         boolean isPlaying();
-        int     getBufferPercentage();
+
+        int getBufferPercentage();
+
         boolean canPause();
+
         boolean canSeekBackward();
+
         boolean canSeekForward();
+
         boolean isFullScreen();
-        void    toggleFullScreen();
+
+        void toggleFullScreen();
     }
-    
+
     private static class MessageHandler extends Handler {
-        private final WeakReference<VideoControllerView> mView; 
+        private final WeakReference<VideoControllerView> mView;
 
         MessageHandler(VideoControllerView view) {
             mView = new WeakReference<VideoControllerView>(view);
@@ -691,7 +698,7 @@ public class VideoControllerView extends FrameLayout {
                         break;
                 }
             } catch (Exception e) {
-                Log.e(TAG,"" + e);
+                Log.e(TAG, "" + e);
             }
         }
     }

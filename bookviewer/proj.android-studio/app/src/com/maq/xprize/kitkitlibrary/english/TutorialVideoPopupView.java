@@ -22,7 +22,7 @@ import java.io.IOException;
  * Created by ingtellect on 9/8/17.
  */
 
-public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHolder.Callback, /*MediaPlayer.OnPreparedListener, */ VideoControllerView.MediaPlayerControl{
+public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHolder.Callback, /*MediaPlayer.OnPreparedListener, */ VideoControllerView.MediaPlayerControl {
     SurfaceView videoSurface;
     MediaPlayer player;
     boolean isPaused;
@@ -36,11 +36,11 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
         init(context);
     }
 
-    public TutorialVideoPopupView(Context context, AttributeSet attrs)
-    {
+    public TutorialVideoPopupView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
+
     public TutorialVideoPopupView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context);
@@ -69,15 +69,12 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
         });
 
 
-
-
         videoSurface.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(controller.isShowing()) {
+                if (controller.isShowing()) {
                     controller.hide();
-                }
-                else {
+                } else {
                     controller.show();
                 }
 
@@ -100,7 +97,6 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
             player.prepare();
 
 
-
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } catch (SecurityException e) {
@@ -121,7 +117,7 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        if (player!=null) {
+        if (player != null) {
             player.setDisplay(holder);
         }
     }
@@ -129,7 +125,7 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
 
-        if (player!=null) {
+        if (player != null) {
 
         }
     }
@@ -185,7 +181,7 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
         isPaused = true;
         currentPosition = player.getCurrentPosition();
         player.pause();
-        ((Activity)getContext()).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        ((Activity) getContext()).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     }
 
@@ -199,8 +195,9 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
         //((Activity)getContext()).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         if (isPaused) {
-            if (currentPosition<0) currentPosition = 0;
-            if (currentPosition>player.getDuration()-10) currentPosition = player.getDuration()-10;
+            if (currentPosition < 0) currentPosition = 0;
+            if (currentPosition > player.getDuration() - 10)
+                currentPosition = player.getDuration() - 10;
             player.seekTo(currentPosition);
             isPaused = false;
         }
@@ -223,7 +220,7 @@ public class TutorialVideoPopupView extends RelativeLayout implements SurfaceHol
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (player!=null) {
+        if (player != null) {
             player.release();
         }
         player = null;
