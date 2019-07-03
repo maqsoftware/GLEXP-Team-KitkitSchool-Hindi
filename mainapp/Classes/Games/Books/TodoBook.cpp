@@ -8,6 +8,7 @@
 
 #include "TodoBook.hpp"
 #include "Utils/TodoUtil.h"
+#include "Managers/VoiceMoldManager.h"
 #include "cocos2d.h"
 #include <fstream>
 //
@@ -112,7 +113,7 @@ void TodoBook::readData(string &filedata)
             else
             {
                 sentence.sentenceAudioFilename = row[1];
-                sentence.startTimingInPage = TodoUtil::stod(row[2]);
+                sentence.startTimingInPage = currentPage.timeGuessedinPage;
             }
             
             currentParagraph.sentences.push_back(sentence);
@@ -126,10 +127,15 @@ void TodoBook::readData(string &filedata)
                 TodoSentence &currentSentence = currentParagraph.sentences.back();
                 
                 TodoWord word;
-                word.startTimingInSentence = TodoUtil::stod(row[1]);
+                word.startTimingInSentence = currentSentence.timeGuessedinSentence;
+                std::string spoken = "";
+                spoken.append(word.word);
+                spoken.append(" ");
+                currentSentence.timeGuessedinSentence += VoiceMoldManager::shared()->guessSpeakDuration(spoken);
                 word.startTimingInPage = currentSentence.startTimingInPage + word.startTimingInSentence;
-                word.endTimingInSentence = TodoUtil::stod(row[2]);
+                word.endTimingInSentence = currentSentence.timeGuessedinSentence;
                 word.endTimingInPage = currentSentence.startTimingInPage + word.endTimingInSentence;
+                currentPage.timeGuessedinPage += currentSentence.timeGuessedinSentence;
                 word.word = row[3];
                 word.wordAudioFilename = row[4];
                 word.wordAudioLength = 0;
