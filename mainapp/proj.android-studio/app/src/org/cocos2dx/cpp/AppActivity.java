@@ -525,6 +525,12 @@ public class AppActivity extends Cocos2dxActivity {
         alm.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, PendingIntent.getActivity(this, 0, new Intent(this, this.getClass()), 0));
     }
 
+    public void firebase_setCurrentScreen(String screenName, String screenClass) {
+        if (screenName.equals("")) screenName = null;
+        if (screenClass.equals("")) screenClass = null;
+        mFirebaseAnalytics.setCurrentScreen(this, screenName, screenClass);
+    }
+
     public static void logFirebaseEvent_playGame(String game, int level, double duration, boolean freechoice, boolean completed) {
         Bundle params = new Bundle();
         params.putString("game", game);

@@ -149,6 +149,20 @@ CCAppController::~CCAppController() {
     
 }
 
+void firebase_setCurrentScreen(string screenName, string screenClass) {
+    JniMethodInfo t;
+    bool getInfo = JniHelper::getMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "firebase_setCurrentScreen", "(Ljava/lang/String;Ljava/lang/String;)V");
+    if (getInfo)
+    {
+        jobject activity = JniHelper::getActivity();
+        jstring jScreenName = t.env->NewStringUTF(screenName.c_str());
+        jstring jScreenClass = t.env->NewStringUTF(screenClass.c_str());
+        t.env->CallVoidMethod(activity, t.methodID, jScreenName, jScreenClass);
+        t.env->DeleteLocalRef(jScreenName);
+        t.env->DeleteLocalRef(jScreenClass);
+    }
+}
+
 bool CCAppController::gameExists(std::string gameName)
 {
     return this->startGame(gameName, 0, "", true);
@@ -877,8 +891,9 @@ bool CCAppController::startGame(std::string gameName, int level, std::string par
 
     //Scene* nextScene;
     std::function<Scene*(void)> creator;
-    
-    
+
+    firebase_setCurrentScreen(_currentGame, "");
+
     if (gameName == "Book") {
         if (checkOnly) return true;
         startBookScene(kBookFolder);
@@ -970,6 +985,7 @@ void CCAppController::handleGameQuit(bool bImmediately)
     if (_currentGame != "") {
         double duration = _playTimer->stop();
         logFirebaseEvent_playGame(_currentGame, _currentLevel, duration, _isFreeChoice, false);
+        firebase_setCurrentScreen("", "");
         _playTimer->start();
         
         if (_currentGame == "__BookView__") {
@@ -993,7 +1009,7 @@ void CCAppController::handleGameQuit(bool bImmediately)
     _currentParam = "";
     _currentLevel = 0;
     _isFreeChoice = false;
-    
+
     if (bImmediately) {
         ((CustomDirector*)Director::getInstance())->popScene();
     } else {
@@ -1018,6 +1034,7 @@ void CCAppController::handleGameComplete(int result)
     
     double duration = _playTimer->stop();
     logFirebaseEvent_playGame(_currentGame, _currentLevel, duration, _isFreeChoice, true);
+    firebase_setCurrentScreen("", "");
     _playTimer->start();
     
     if (_currentGame == "__BookView__") {
