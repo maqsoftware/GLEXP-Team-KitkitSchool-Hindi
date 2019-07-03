@@ -955,7 +955,7 @@ bool CCAppController::startGame(std::string gameName, int level, std::string par
 
 void logFirebaseEvent_playGame(std::string game, int level, double duration, bool freechoice, bool completed) {
     JniMethodInfo t;
-    bool getInfo = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "logFirebaseEvent_playGame", "(Ljava/lang/String;I;D;Z;Z)V");
+    bool getInfo = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "logFirebaseEvent_playGame", "(Ljava/lang/String;IDZZ)V");
     if (getInfo)
     {
         jstring jGame = t.env->NewStringUTF(game.c_str());
