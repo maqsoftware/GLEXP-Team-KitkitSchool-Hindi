@@ -773,7 +773,7 @@ void WordMatrixBlock::init(string fileName, vector<TEXT_INFO> textInfos)
            break;
         }
     }
-    s.clear();
+    _speakWord.clear();
     if(!findContinueSound){
         setSound(_textInfo._word.c_str());
     }
@@ -1085,15 +1085,16 @@ void WordMatrixAnswerBlock::playWordSound() {
             _currentSound = NULL;
         }
         _currentSound = _wordSounds.at(_soundIdx++);
-            _currentSound->play();
-        }
-     if( soundCnt2 >= 1)  {
-         _speakWordSound = _speakWord.at(_soundIdx++);
-         VoiceMoldManager::shared()->speak(_speakWordSound);  //Implementation of tts for word matrix module
+        _currentSound->play();
+    }
+    if (soundCnt2 >= 1) {
+        _speakWordSound = _speakWord.at(_soundIdx++);
+        VoiceMoldManager::shared()->speak(
+                _speakWordSound);  //Implementation of tts for word matrix module
         if (_soundIdx >= soundCnt)
             _soundIdx = 0;
     }
-
+}
 
 #pragma mark -
 #pragma mark Move Block Touch
