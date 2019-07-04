@@ -64,8 +64,10 @@ public class VoiceMold {
             String header = " ";
             text = header + text;
         }
-
-        wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        
+        for(String word : text){
+            wrapper.getTts().speak(word, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
+        }
     }
 
     public void warmup() {
