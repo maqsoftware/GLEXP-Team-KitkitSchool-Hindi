@@ -118,14 +118,9 @@ public class AppActivity extends Cocos2dxActivity {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG, "Permission is granted");
             } else {
-
-                Log.v(TAG, "Permission is revoked");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
-        } else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG, "Permission is granted");
         }
     }
 
@@ -148,15 +143,6 @@ public class AppActivity extends Cocos2dxActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-//        Intent intent = getIntent();
-//
-//        if (intent.hasExtra("book")) {
-//            _launchString = intent.getStringExtra("book");
-//            Log.d("AppActivity", "onCreate has book extra - " + _launchString);
-//        }
-
-
     }
 
     public Cocos2dxGLSurfaceView onCreateView() {
