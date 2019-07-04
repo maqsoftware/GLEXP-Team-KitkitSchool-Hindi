@@ -30,7 +30,7 @@ public class BookApplication extends Application {
         config.diskCacheSize(100 * 1024 * 1024); // 100 MiB
         config.tasksProcessingOrder(QueueProcessingType.LIFO);
 
-        if (BuildConfig.DEBUG == true) {
+        if (BuildConfig.DEBUG) {
             config.writeDebugLogs(); // Remove for release app
         }
 
