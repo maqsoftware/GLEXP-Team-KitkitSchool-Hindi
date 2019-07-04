@@ -147,9 +147,9 @@ void BookPage::update(float delta)
                     bool highlight = wordObj.word == w.word;
                     if(highlight){
                         VoiceMoldManager::shared()->speakNext(readSentence);
-                        highlightWordButton(b, highlight);
                         break;
                     }
+                    highlightWordButton(b, highlight);
                 }
             }
             _timeSentence = 0.0;
