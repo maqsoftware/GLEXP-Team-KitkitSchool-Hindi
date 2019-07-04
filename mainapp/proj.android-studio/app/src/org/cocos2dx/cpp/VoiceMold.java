@@ -80,6 +80,8 @@ public class VoiceMold {
         }
 
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_ADD, null);
+        while (wrapper.getTts().isSpeaking()) {
+        }
     }
 
     public void warmup() {

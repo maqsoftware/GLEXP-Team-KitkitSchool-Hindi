@@ -133,35 +133,32 @@ void BookPage::update(float delta)
 
         if (newReadingSentenceIndex != _readingSentenceIndex)
         {
-            _readingSentenceIndex = newReadingSentenceIndex;
             // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
             VoiceMoldManager::shared()->speak(" ");
             for (auto w : newReadingSentence.words)
             {
                 std::string readSentence = "";
-                readSentence.append(" ");
                 readSentence.append(w.word);
+                VoiceMoldManager::shared()->speakNext(readSentence);
                 for (auto b : _wordButtons)
                 {
                     TodoWord wordObj = _words[b->getTag()];
                     bool highlight = wordObj.word == w.word;
-                    if(highlight){
-                        VoiceMoldManager::shared()->speakNext(readSentence);
-                        break;
-                    }
                     highlightWordButton(b, highlight);
                 }
             }
+
+            _readingSentenceIndex = newReadingSentenceIndex;
             _timeSentence = 0.0;
         }
     }
 
-    // for (auto b : _wordButtons)
-    // {
-    //     TodoWord wordObj = _words[b->getTag()];
-    //     bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
-    //     highlightWordButton(b, highlight, wordObj.word);
-    // }
+    for (auto b : _wordButtons)
+    {
+        TodoWord wordObj = _words[b->getTag()];
+        bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
+        highlightWordButton(b, highlight);
+    }
 }
 
 void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
