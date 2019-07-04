@@ -9,8 +9,8 @@ android {
         targetSdkVersion 28
 
         applicationId "com.maq.xprize.kitkitlauncher.hindi"
-        versionCode 13
-        versionName "3.1.3"
+        versionCode 14
+        versionName "3.1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -83,6 +83,8 @@ dependencies {
 //    compile 'com.jakewharton.timber:timber:4.6.0'
     testCompile 'junit:junit:4.12'
     //    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+//    Used by Gallery app
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile files('libs/commons-net-3.6.jar')
     compile files('libs/commons-io-2.5.jar')
     compile 'org.apmem.tools:layouts:1.10@aar'
