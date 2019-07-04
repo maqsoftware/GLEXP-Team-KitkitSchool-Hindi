@@ -338,19 +338,6 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-
-            if (!Settings.canDrawOverlays(this)) {
-                Toast.makeText(this, "Please give my app this permission!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
-            } else {
-                *//*Util.disableStatusBar(this);*//*
-            }
-        } else {
-            *//*Util.disableStatusBar(this);*//*
-        }*/
-
         loadApps();
 
         final String mainAppPackageName = "com.maq.xprize.kitkitschool.hindi";

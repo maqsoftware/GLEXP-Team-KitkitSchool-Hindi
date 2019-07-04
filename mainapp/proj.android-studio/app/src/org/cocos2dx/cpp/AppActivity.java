@@ -68,9 +68,7 @@ public class AppActivity extends Cocos2dxActivity {
     public static AppActivity _activity;
     public static String _launchString;
     public static KitkitDBHandler _dbHandler;
-
     private static FirebaseAnalytics mFirebaseAnalytics;
-
     private static String TAG = "KitkitSchoolActivity";
     private static final String EXPANSION_FILE_VERSION_KEY_NAME = "0";
 
@@ -167,8 +165,12 @@ public class AppActivity extends Cocos2dxActivity {
     }
 
     public void firebase_setCurrentScreen(String screenName, String screenClass) {
-        if (screenName.equals("")) screenName = null;
-        if (screenClass.equals("")) screenClass = null;
+        if (screenName.equals("")) {
+            screenName = null;
+        }
+        if (screenClass.equals("")) {
+            screenClass = null;
+        }
         mFirebaseAnalytics.setCurrentScreen(this, screenName, screenClass);
     }
 
