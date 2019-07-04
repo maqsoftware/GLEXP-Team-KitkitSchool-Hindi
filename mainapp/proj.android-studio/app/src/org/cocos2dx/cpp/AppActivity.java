@@ -77,7 +77,6 @@ public class AppActivity extends Cocos2dxActivity {
     protected String appLanguage;
     protected static String currentUsername;
     protected static User currentUser;
-    private static String TAG = "KitkitSchoolActivity";
     private static int _videoPlayerIndex = 0;
     private static SpeechRecognition mSpeechRecognition;
     private static PlayAudio mPlayAudio;
@@ -86,7 +85,6 @@ public class AppActivity extends Cocos2dxActivity {
         System.loadLibrary("MyGame");
     }
 
-    protected String appLanguage;
     protected boolean signModeOn;
     private Cocos2dxGLSurfaceView glSurfaceView;
 
@@ -102,80 +100,7 @@ public class AppActivity extends Cocos2dxActivity {
         _launchString = "";
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.setEnableVirtualButton(false);
-        super.onCreate(savedInstanceState);
-        String packageNameDirPath = Environment.getExternalStorageDirectory() + "/Android/data/" + getApplicationContext().getPackageName();
-        File packageNameDir = new File(packageNameDirPath);
-        if (!packageNameDir.exists()) {
-            packageNameDir.mkdir();
-        }
-        // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
-        if (!isTaskRoot()) {
-            // Android launched another instance of the root activity into an existing task
-            //  so just quietly finish and go away, dropping the user back into the activity
-            //  at the top of the stack (ie: the last state of this task)
-            // Don't need to finish it again since it's finished in super.onCreate .
-            return;
-        }
-        // DO OTHER INITIALIZATION BELOW
-        Log.d(TAG,"onCreate");
-        isPermissionGranted();
-        _activity = this;
-        _dbHandler = new KitkitDBHandler(_activity);
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
-        Bundle extras = getIntent().getExtras();
-        if(extras != null) {
-            if(extras.getBoolean("clearAppData", false)) {
-                clearAppData();
-            }
-            if (getIntent().hasExtra("test")) {
-                _launchString = extras.getString("test");
-                Log.d(TAG,"onCreate launch string " + _launchString);
-
-            }
-        }
-
-        // init sign-language value
-        try {
-            Context launcherContext = createPackageContext("com.maq.xprize.kitkitlauncher.hindi",0);
-            SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-            signModeOn = pref.getBoolean("sign_language_mode_on", false);
-            Cocos2dxHelper.setBoolForKey("sign_language_mode_on", signModeOn);
-        }
-        catch (PackageManager.NameNotFoundException ne) {
-            Log.e(TAG, ne.toString());
-        }
-
-        try {
-            Context launcherContext = createPackageContext("com.maq.xprize.kitkitlauncher.hindi",0);
-            SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-            appLanguage = pref.getString("appLanguage", getString(com.maq.kitkitlogger.R.string.defaultLanguage));
-            Cocos2dxHelper.setStringForKey("appLanguage", appLanguage);
-        }
-        catch (PackageManager.NameNotFoundException ne) {
-            Log.e(TAG, ne.toString());
-        }
-
-        try {
-            currentUser = ((KitkitSchoolApplication)getApplication()).getDbHandler().getCurrentUser();
-            currentUsername = currentUser.getUserName();
-        }
-        catch (Exception e) {
-            Log.e(TAG, "error when getting current user. please check launcher is installed.");
-        }
-
-        /*SharedPreferences prefs = getSharedPreferences("किटकिट स्कूल", Context.MODE_PRIVATE);
-        if (isRequiredUnzipExpansionFile(prefs)) {
-            unzipExpansionFile(getExpansionFilePath());
-            prefs.edit().putInt(EXPANSION_FILE_VERSION_KEY_NAME, DownloadExpansionFile.xAPK.mFileVersion).apply();
-        }*/
-    }
-
-    public Cocos2dxGLSurfaceView onCreateView()
-    {
+    public Cocos2dxGLSurfaceView onCreateView() {
         glSurfaceView = new Cocos2dxGLSurfaceView(this);
 
         this.hideSystemUI();
@@ -516,6 +441,7 @@ public class AppActivity extends Cocos2dxActivity {
         isPermissionGranted();
         _activity = this;
         _dbHandler = new KitkitDBHandler(_activity);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -570,17 +496,6 @@ public class AppActivity extends Cocos2dxActivity {
             }
         }
         return false;
-    }
-
-    public Cocos2dxGLSurfaceView onCreateView() {
-        glSurfaceView = new Cocos2dxGLSurfaceView(this);
-
-        this.hideSystemUI();
-
-        // create stencil buffer
-        glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
-
-        return glSurfaceView;
     }
 
     @Override
