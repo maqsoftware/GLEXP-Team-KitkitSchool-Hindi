@@ -135,16 +135,14 @@ void BookPage::update(float delta)
         {
             _readingSentenceIndex = newReadingSentenceIndex;
             // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
-
+            std::string readSentence = "";
             for (auto w : newReadingSentence.words)
             {
-                std::string readSentence = "";
                 readSentence.append(w.word);
                 readSentence.append(" ");
-                VoiceMoldManager::shared()->speak(readSentence);
 
             }
-
+            VoiceMoldManager::shared()->speak(readSentence);
 
             _timeSentence = 0.0;
         }
