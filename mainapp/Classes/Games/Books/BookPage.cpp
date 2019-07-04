@@ -139,13 +139,13 @@ void BookPage::update(float delta)
             {
                 std::string readSentence = "";
                 readSentence.append(w.word);
-                VoiceMoldManager::shared()->speakNext(readSentence);
                 for (auto b : _wordButtons)
                 {
                     TodoWord wordObj = _words[b->getTag()];
                     bool highlight = wordObj.word == w.word;
                     highlightWordButton(b, highlight);
                 }
+                VoiceMoldManager::shared()->speak(readSentence);
             }
 
             _readingSentenceIndex = newReadingSentenceIndex;

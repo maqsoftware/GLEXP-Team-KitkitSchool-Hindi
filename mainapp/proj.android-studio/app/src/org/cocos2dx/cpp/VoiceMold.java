@@ -66,6 +66,8 @@ public class VoiceMold {
         }
 
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        while (wrapper.getTts().isSpeaking()) {
+        }
     }
 
     public void speakNext(String text) {
