@@ -135,6 +135,7 @@ void BookPage::update(float delta)
         {
             _readingSentenceIndex = newReadingSentenceIndex;
             // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
+            VoiceMoldManager::shared()->speak(" ");
             for (auto w : newReadingSentence.words)
             {
                 std::string readSentence = "";
@@ -145,13 +146,13 @@ void BookPage::update(float delta)
                     TodoWord wordObj = _words[b->getTag()];
                     bool highlight = wordObj.word == w.word;
                     if(highlight){
-                        VoiceMoldManager::shared()->speak(readSentence);
+                        VoiceMoldManager::shared()->speakNext(readSentence);
                         highlightWordButton(b, highlight);
                         break;
                     }
                 }
             }
-            // _timeSentence = 0.0;
+            _timeSentence = 0.0;
         }
     }
 
