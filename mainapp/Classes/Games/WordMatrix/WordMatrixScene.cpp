@@ -780,12 +780,11 @@ void WordMatrixBlock::init(string fileName, vector<TEXT_INFO> textInfos)
 }
 
 
-
 bool WordMatrixBlock::setSound(const char* fileName)
 {
     SoundEffect *wordSound = NULL;
-    std::string s1 = "";
-    s.clear();
+    std::string _storeFileName = "";
+    _speakWord.clear();
     __String *tt = __String::createWithFormat("games/wordmatrix/sound/%s.m4a", fileName);
     if(FileUtils::getInstance()->isFileExist(tt->getCString()))
     {
@@ -804,8 +803,7 @@ bool WordMatrixBlock::setSound(const char* fileName)
             if (FileUtils::getInstance()->isFileExist(tt->getCString()))
                 wordSound = new SoundEffect(tt->getCString());
             else {
-               // s1.push_back(fileName);
-                s1 = fileName;
+                _storeFileName = fileName;
             }
 
         }
@@ -822,7 +820,7 @@ bool WordMatrixBlock::setSound(const char* fileName)
         return true;
     }
     else {
-        s.push_back(s1);
+        _speakWord.push_back(_storeFileName);
         return false;
     }
 }
@@ -1080,7 +1078,7 @@ void WordMatrixAnswerBlock::autoMove()
 
 void WordMatrixAnswerBlock::playWordSound() {
     int soundCnt = (int) _wordSounds.size();
-    int soundCnt2 = (int) s.size();
+    int soundCnt2 = (int) _speakWord.size();
     if (soundCnt >= 1) {
         if (_currentSound != NULL) {
             _currentSound->stop();
@@ -1090,9 +1088,8 @@ void WordMatrixAnswerBlock::playWordSound() {
             _currentSound->play();
         }
      if( soundCnt2 >= 1)  {
-         _speakSound = s.at(_soundIdx++);
-         VoiceMoldManager::shared()->speak(_speakSound);
-     }
+         _speakWordSound = _speakWord.at(_soundIdx++);
+         VoiceMoldManager::shared()->speak(_speakWordSound);  //Implementation of tts for word matrix module
         if (_soundIdx >= soundCnt)
             _soundIdx = 0;
     }

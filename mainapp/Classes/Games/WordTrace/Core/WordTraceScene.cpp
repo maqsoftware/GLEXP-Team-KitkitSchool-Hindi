@@ -437,7 +437,7 @@ void WordTraceScene::beginBonusWork() {
     
     Delay += DelayUnit;
     scheduleOnce([this](float) {  // NB(xenosoz, 2016): For sound delay
-       VoiceMoldManager::shared()->speak(TheTraceWork().Text);
+       VoiceMoldManager::shared()->speak(TheTraceWork().Text);   //Implementation of tts for wordtrace module
     }, Delay, "WordTraceScene::beginBonusWork::soundForWord");
 }
 

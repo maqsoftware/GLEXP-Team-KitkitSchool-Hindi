@@ -20,7 +20,7 @@
 #include "Common/Controls/SignLanguageVideoPlayer.hpp"
 
 BEGIN_NS_SPELLING
-string _speakword3;
+
 
 namespace {
     Node* videoNode = nullptr;
@@ -130,13 +130,12 @@ bool SpellingScene::init() {
 
 
 void SpellingScene::clearInternals() {
-    _speakword3=" ";
+    _speakSpellingWord1=" ";
     SoundForWord = SoundEffect::emptyEffect();
 
     TheProblem.OnValueUpdate = [this](Problem&) {
         refreshChildNodes();
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","helloplease%s",TheProblem().Word.c_str());
-        _speakword3=TheProblem().Word;
+        _speakSpellingWord1=TheProblem().Word;
     };
 }
 
@@ -386,7 +385,7 @@ void SpellingScene::openingWordSound() {
 
     Vector<FiniteTimeAction*> Actions;
     Actions.pushBack(CallFunc::create([this] {
-        VoiceMoldManager::shared()->speak(_speakword3); }));
+        VoiceMoldManager::shared()->speak(_speakSpellingWord1); }));
     Actions.pushBack(DelayTime::create(Delay));
     Actions.pushBack(CallFunc::create(Next));
     runAction(Sequence::create(Actions));
@@ -418,7 +417,7 @@ void SpellingScene::closingWordSound() {
     Actions.pushBack(DelayTime::create(.5f));
     Actions.pushBack(CallFunc::create([this] {
         SHOW_SL_VIDEO_IF_ENABLED("common/temp_video_short.mp4");
-       VoiceMoldManager::shared()->speak(_speakword3);
+       VoiceMoldManager::shared()->speak(_speakSpellingWord1);
     }));
     Actions.pushBack(DelayTime::create(Delay));
     Actions.pushBack(CallFunc::create(Next));

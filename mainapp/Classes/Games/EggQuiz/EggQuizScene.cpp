@@ -143,7 +143,7 @@ void EggQuizScene::createSingleDigitNumbersView() {
     questionBox->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
     questionBox->setPosition(_gameNode->getContentSize().width/2,468);
     _gameNode->addChild(questionBox);
-    __android_log_print(ANDROID_LOG_DEBUG,"TAG","helloa%s",_problem.questionOption1.c_str());
+
     createSmallSpeakerView(_problem.questionOption1);
     
     vector<Sprite*> stones;
@@ -186,8 +186,6 @@ void EggQuizScene::createRecognizeNumberView() {
     _gameNode->addChild(questionBox);
     
     auto speaker = Speaker::create(SpeakerSize::Big);
-  speaker->setFileName(soundsNumberPath + _problem.answer);
-    __android_log_print(ANDROID_LOG_DEBUG,"TAG","helloa%s",_problem.questionOption1.c_str());
     speaker->setFileName( _problem.answer);
     speaker->setPosition(questionBox->getContentSize()/2);
     questionBox->addChild(speaker);

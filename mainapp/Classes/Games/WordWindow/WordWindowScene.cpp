@@ -563,7 +563,7 @@ void WordWindowScene::playSoundQuestion(string name)
 		return;
 	}
 
-	VoiceMoldManager::shared()->speak(name);
+	VoiceMoldManager::shared()->speak(name); //Implementation of tts for wordwindow module
 
 	disableSoundButton();
 
@@ -574,7 +574,7 @@ void WordWindowScene::stopSoundQuestion()
 {
 	m_soundDuraton = 0.f;
 	enableSoundButton();
-     VoiceMoldManager::shared()->speak(" ");
+     VoiceMoldManager::shared()->speak(" ");   //To stop tts
 }
 
 void WordWindowScene::loadDurationsheet()

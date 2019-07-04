@@ -30,7 +30,6 @@ using namespace todoschool;
 
 static bool __wmDebug = false;
 const Size panelSize = Size(692, 564);
-string _speakword2;
 namespace {
     SoundEffect soundForLetterName(const string& Letter) {
         return CommonSound().soundForLetterName(Letter);
@@ -494,9 +493,9 @@ void WordMachineScene::showImageCard()
         tb->setPosition(panelSize/2);
         tb->setTag(0);
         target->addChild(tb);
-         _speakword2=" ";
+         _speakMachineWord=" ";
         auto audioPath = resPath + _currentProblem.sound;
-        _speakword2=_currentProblem.sound;
+        _speakMachineWord=_currentProblem.sound;
         target->setPosition(Vec2(panelSize/2) + Vec2(0, panelSize.height));
         auto tbCallFunc = [this, target, alter, audioPath, tb, ab]() {
             tb->addClickEventListener([this, target, alter, audioPath, ab](Ref* btn) {
@@ -512,8 +511,7 @@ void WordMachineScene::showImageCard()
                 
                 target->runAction(Sequence::create(DelayTime::create(0.5),
                                                    CallFunc::create([audioPath](){
-                  //  GameSoundManager::getInstance()->playEffectSound(audioPath);
-                  VoiceMoldManager::shared()->speak(_speakword2);
+                  VoiceMoldManager::shared()->speak(_speakMachineWord);  //Implementation of TTS for this module
                     
                 }),
                                                    DelayTime::create(1.5),

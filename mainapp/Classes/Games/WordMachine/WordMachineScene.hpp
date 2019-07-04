@@ -36,7 +36,7 @@ public:
     
     static Scene* createScene(int levelID);
     virtual bool init(int levelID);
-
+     std::string _speakMachineWord;
     CREATE_FUNC(WordMachineScene);
 
 

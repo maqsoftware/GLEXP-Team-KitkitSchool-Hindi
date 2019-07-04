@@ -104,13 +104,13 @@ void Speaker::setPressed(float delay) {
         nullptr
     );
     sequence->setTag(pressTriggerTag);
-    
+
     Vector<FiniteTimeAction*> actions;
     
     for (auto it : files) {
         actions.pushBack(DelayTime::create(delay));
         actions.pushBack(CallFunc::create([this, it](){
-           VoiceMoldManager::shared()->speak(it);
+           VoiceMoldManager::shared()->speak(it);        //Implementation of TTS for speaker button
         }));
         delay += ProblemBank::getInstance()->getDuration(it)+1;
     }

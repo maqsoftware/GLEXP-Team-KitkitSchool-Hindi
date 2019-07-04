@@ -92,8 +92,8 @@ protected:
     int _soundIdx;
     vector<SoundEffect *> _wordSounds;
     SoundEffect *_currentSound;
-    string _speakSound;
-    vector<std::string> s;
+    string _speakWordSound;
+    vector<std::string> _speakWord;
     vector<float> _soundDurations;
     
     bool _swallowTouch;
