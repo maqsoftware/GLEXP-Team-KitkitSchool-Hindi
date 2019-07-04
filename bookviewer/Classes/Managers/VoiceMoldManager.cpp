@@ -132,6 +132,36 @@ void VoiceMoldManager::speak(std::string text, std::string locale)
     }
 }
 
+void VoiceMoldManager::speakNext(std::string text)
+{
+    JniMethodInfo t;
+    if (JniHelper::getStaticMethodInfo(t,
+                                       "org/cocos2dx/cpp/VoiceMoldManager",
+                                       "staticSpeakNext", "(Ljava/lang/String;)V"))
+    {
+        jstring jText = t.env->NewStringUTF(text.c_str());
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, jText);
+        t.env->DeleteLocalRef(t.classID);
+        t.env->DeleteLocalRef(jText);
+    }
+}
+
+void VoiceMoldManager::speakNext(std::string text, std::string locale)
+{
+    JniMethodInfo t;
+    if (JniHelper::getStaticMethodInfo(t,
+                                       "org/cocos2dx/cpp/VoiceMoldManager",
+                                       "staticSpeakNext", "(Ljava/lang/String;Ljava/lang/String;)V"))
+    {
+        jstring jText = t.env->NewStringUTF(text.c_str());
+        jstring jLocale = t.env->NewStringUTF(locale.c_str());
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, jText, jLocale);
+        t.env->DeleteLocalRef(t.classID);
+        t.env->DeleteLocalRef(jText);
+        t.env->DeleteLocalRef(jLocale);
+    }
+}
+
 float VoiceMoldManager::guessSpeakDuration(std::string text)
 {
     JniMethodInfo t;
