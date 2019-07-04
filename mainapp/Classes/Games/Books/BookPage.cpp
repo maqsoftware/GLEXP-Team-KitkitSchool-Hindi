@@ -158,6 +158,7 @@ void BookPage::highlightWordButton(ui::Button *btn, bool highlight, std::string 
 {
     if (highlight)
     {
+        CCLOG("Hello world, %s", word.c_str());
         VoiceMoldManager::shared()->speak(word);
         btn->resetNormalRender();
         btn->loadTextureNormal("Common/lightblue.png");
