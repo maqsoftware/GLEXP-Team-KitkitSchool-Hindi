@@ -66,6 +66,8 @@ public class VoiceMold {
         }
 
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
+        while (wrapper.getTts().isSpeaking()) {
+        }
     }
 
     public void speakNext(String text) {
@@ -80,6 +82,8 @@ public class VoiceMold {
         }
 
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_ADD, createParamsForSpeak());
+        while (wrapper.getTts().isSpeaking()) {
+        }
     }
 
     public void warmup() {
