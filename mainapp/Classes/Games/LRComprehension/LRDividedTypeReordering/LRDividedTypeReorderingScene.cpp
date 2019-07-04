@@ -75,7 +75,7 @@ void LRDividedTypeReorderingScene::onEnter()
     _gameNode->setPosition(Vec2(getContentSize().width / 2, 0.f));
     addChild(_gameNode);
     
-    string directionContent = LanguageManager::getInstance()->isEnglish() ? "ƒæÅÙæ¥ô¢ ·UUUUô âãè RUUUU× ×ð¢ Ú¹ð¢Ð" : "Yaweke matukio katika mpangilio ulio sahihi."; // Place the events in the correct sequence. // घटनाओं को सही क्रम में रखें।
+    string directionContent = LanguageManager::getInstance()->isEnglish() ? "وقوعات کو صحیح ترتیب میں رکھیں ۔ " : "Yaweke matukio katika mpangilio ulio sahihi."; // Place the events in the correct sequence. // घटनाओं को सही क्रम में रखें।
     _comprehensionScene->drawQuestionTitleWithSoundButton(directionContent, _problem->audio, _gameNode);
     
     drawBlocksByGameType();

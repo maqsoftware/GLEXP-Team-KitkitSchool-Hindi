@@ -57,7 +57,7 @@ public:
     int m_fishCount;
     int m_needCount;
 private:
-    const char* defaultFont = "fonts/chanakya.ttf";
+    const char* defaultFont = "arial";
 
 };
 

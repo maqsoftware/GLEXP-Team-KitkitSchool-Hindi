@@ -155,7 +155,7 @@ private:
     
     ProgressIndicator *_progressBar;
 
-    const char* defaultFont = "fonts/chanakya.ttf";
+    const char* defaultFont = "arial";
 };
 
 #endif /* FishTankScene_h */

@@ -18,7 +18,7 @@ using namespace cocos2d::ui;
 using namespace std;
 namespace WordWindowSceneSpace
 {
-    const char* defaultFont = "fonts/chanakya.ttf";
+    const char* defaultFont = "arial";
     
     const string resourcePath = "wordwindow/";
     

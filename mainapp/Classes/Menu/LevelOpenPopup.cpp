@@ -28,7 +28,7 @@ namespace LevelOpenPopupSpace {
     
     const Size popupSize = Size(1626,1210);
     const string folder = "CoopScene/LevelOpenPopup/";
-    const string hindiFontName = "fonts/chanakya.ttf";
+    const string hindiFontName = "arial";
     const string fontName = "fonts/mukta-bold.ttf";
     
 }

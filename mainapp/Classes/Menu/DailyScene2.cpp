@@ -48,7 +48,7 @@ namespace DailyScene2Space {
     
     const Size viewSize = Size(2560, 1800);
     
-    const string defaultFont = "fonts/chanakya.ttf";
+    const string defaultFont = "arial";
     const string fontName = "fonts/mukta-bold.ttf";
     const string folder = "MainScene/DailyScene/";
     

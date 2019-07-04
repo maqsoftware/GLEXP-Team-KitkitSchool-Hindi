@@ -26,7 +26,7 @@
 
 namespace FishQuizPopupSpace {
     const std::string JNI_CLASS_NAME = "org/cocos2dx/cpp/AppActivity";
-    const string curlyFont = "fonts/chanakya.ttf";
+    const string curlyFont = "arial";
     
     class SwapNode : public ActionInterval {
     public:

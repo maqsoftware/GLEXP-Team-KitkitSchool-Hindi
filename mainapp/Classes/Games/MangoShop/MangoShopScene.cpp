@@ -715,7 +715,7 @@ namespace MangoShop
         }
         
         cursorX += kGap;
-        auto equalSign = TodoUtil::createLabel("=", kFontSize, Size::ZERO, "fonts/chanakya.ttf", Color4B(255, 196, 0, 255 * 1.f));
+        auto equalSign = TodoUtil::createLabel("=", kFontSize, Size::ZERO, "arial", Color4B(255, 196, 0, 255 * 1.f));
         equalSign->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         equalSign->setPosition(cursorX + equalSign->getContentSize().width / 2, numberExpressionRoot->getContentSize().height / 2 - 20.f);
         numberExpressionRoot->addChild(equalSign);

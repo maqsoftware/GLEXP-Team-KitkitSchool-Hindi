@@ -20,7 +20,7 @@
 
 BEGIN_NS_EGGQUIZ;
 
-const string curlyFont = "fonts/chanakya.ttf";
+const string curlyFont = "arial";
 
 EggQuizPopup* EggQuizPopup::create(Node* parent)
 {

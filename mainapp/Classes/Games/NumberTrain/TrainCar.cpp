@@ -134,7 +134,7 @@ void TrainCar::setAnimal(TrainCar::animalType animalType, bool isNumber, bool on
     auto size = getContentSize();
     Vec2 bPos;
     
-    const string fontName = "fonts/chanakya.ttf";
+    const string fontName = "arial";
 
     if (animalType==MOUSE) {
         _animal = Sprite::create("NumberTrain/smallet_largest_mice_normal.png");

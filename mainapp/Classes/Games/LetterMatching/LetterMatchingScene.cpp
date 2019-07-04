@@ -368,7 +368,6 @@ void LetterMatchingScene::bindingEvents(LetterMatchingCard *card)
             
             card->runAction(Sequence::create(DelayTime::create(0.3f),CallFunc::create([=](){
                 card->matchSound.play();
-
                 this->addStarParticle(card);
                 
                 card->setPosition(Vec2::ONE * 9999.0f);

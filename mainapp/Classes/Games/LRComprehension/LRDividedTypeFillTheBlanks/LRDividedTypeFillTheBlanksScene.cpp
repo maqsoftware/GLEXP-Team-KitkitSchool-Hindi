@@ -172,7 +172,7 @@ void LRDividedTypeFillTheBlanksScene::onEnter()
     }
     */
     
-    string directionContent = LanguageManager::getInstance()->isEnglish() ? "çÚQUUUU SÍæÙ ÖÚð¢Ð" : "Jaza nafasi."; // Fill in the blank(s). // रिक्त स्थान भरें|
+    string directionContent = LanguageManager::getInstance()->isEnglish() ? "خالی جاگہ میں بھریں ." : "Jaza nafasi."; // Fill in the blank(s). // रिक्त स्थान भरें|
     _comprehensionScene->drawQuestionTitleWithSoundButton(directionContent, _problemData->textOrSoundPath, _gameNode);
 }
 

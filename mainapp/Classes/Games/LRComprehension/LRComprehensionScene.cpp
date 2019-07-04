@@ -32,7 +32,7 @@ namespace
     const string missEffect = kPrefixPath + "help.m4a";
     const string pageTurnEffect = kPrefixPath + "card_move_right.m4a";
     const string defaultFont = FONT_ANDIKA_BOLD;
-    const string hindiFont = FONT_CHANAKYA;
+    const string hindiFont = "arial";
     const float kGuideViewTweenDuration = 0.3f;
     const float kGuideViewDelayGameClear = 0.3f;
     const Size gameSize = Size(2560, 1800);
@@ -248,14 +248,14 @@ void LRComprehensionScene::showProblem()
     {
         auto text = problemSet[_currentProblem]->script;
         drawGuideView(false, text);
-        drawGuideTitle(LanguageManager::getInstance()->isEnglish() ? "·UUUUãæÙè ·UUUUô âéÙôÐ" : "Sikiliza hadithi."); // Listen to the story. // कहानी को सुनो।
+        drawGuideTitle(LanguageManager::getInstance()->isEnglish() ? "کہانی سنیں ۔" : "Sikiliza hadithi."); // Listen to the story. // कहानी को सुनो।
         _currentProblem++;
     }
     else if (questionType == LRComprehensionType::ReadingOnly)
     {
         auto soundPath = problemSet[_currentProblem]->script;
         drawGuideView(true, soundPath);
-        drawGuideTitle(LanguageManager::getInstance()->isEnglish() ? "·UUUUãæÙè ÂÉ¸ôÐ" : "Soma hadithi."); // कहानी पढ़ो।
+        drawGuideTitle(LanguageManager::getInstance()->isEnglish() ? "کہانی پڑھیں." : "Soma hadithi."); // कहानी पढ़ो।
         _currentProblem++;
     }
     
@@ -381,7 +381,7 @@ void LRComprehensionScene::drawQuestionTitle(string titleText, Node* parentNode,
     _questionHighlight->setPosition(200.f, parentNode->getContentSize().height - 300.f);
     parentNode->addChild(_questionHighlight);
 
-    auto titleLabel = TodoUtil::createLabel(titleText, 60.f, Size::ZERO, FONT_CHANAKYA, Color4B(77, 77, 77, 255));
+    auto titleLabel = TodoUtil::createLabel(titleText, 60.f, Size::ZERO, "arial", Color4B(77, 77, 77, 255));
 
     titleLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     titleLabel->setPosition(leftPadding + addLeftPadding, _questionHighlight->getContentSize().height / 2);

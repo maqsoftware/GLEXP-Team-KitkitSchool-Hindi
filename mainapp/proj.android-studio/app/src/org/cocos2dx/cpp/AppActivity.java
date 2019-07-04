@@ -387,10 +387,10 @@ public class AppActivity extends Cocos2dxActivity {
             editor.putInt(getString(R.string.patchFileVersion), 0);
             editor.commit();
             startSplashScreenActivity();
-        } else if (isExtractionRequired) {
+        } //else if (isExtractionRequired) {
             // If main or patch file is updated, the extraction process needs to be performed again
-            startSplashScreenActivity();
-        }
+            //startSplashScreenActivity();
+        //}
 
         super.setEnableVirtualButton(false);
         super.onCreate(savedInstanceState);

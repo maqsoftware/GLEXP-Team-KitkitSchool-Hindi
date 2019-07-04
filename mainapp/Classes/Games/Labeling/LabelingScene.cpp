@@ -38,7 +38,7 @@ using namespace std;
 namespace LabelingSceneSpace {
 
     
-    const char* defaultFont = "fonts/chanakya.ttf";
+    const char* defaultFont = "arial";
     
     const string resourcePathLabeling = "labeling/";
     

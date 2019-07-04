@@ -86,7 +86,7 @@ namespace ComprehensionTest
             initData();
             
             createFixedResources();
-            string directionContent = LanguageManager::getInstance()->isEnglish() ? "ÁôÇ¸Ùð ·ðUUU çÜ° °·UUUU Úð¹æ ¹è¢¿ð¢Ð" : "Chora mstari baina ya jozi."; // Draw a line to match. // जोड़ने के लिए एक रेखा खींचें।
+            string directionContent = LanguageManager::getInstance()->isEnglish() ? "مشابہ کرنے کے لیے لائن ڈرا کریں ۔" : "Chora mstari baina ya jozi."; // Draw a line to match. // जोड़ने के लिए एक रेखा खींचें।
             _comprehensionScene->drawQuestionTitle(directionContent, _gameNode);
             
             createLeftLayer();

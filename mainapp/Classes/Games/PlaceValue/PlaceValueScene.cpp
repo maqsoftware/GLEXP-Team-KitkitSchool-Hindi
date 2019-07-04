@@ -36,7 +36,7 @@ using namespace std;
 
 namespace PlaceValueSceneSpace
 {
-    const char* defaultFont = "fonts/chanakya.ttf";
+    const char* defaultFont = "arial";
     const char* andikaFont = "fonts/mukta-bold.ttf";
     const char* kitkitNumbersFont = "fonts/kitkitnumbers.ttf";
     

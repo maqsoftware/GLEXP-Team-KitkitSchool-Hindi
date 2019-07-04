@@ -47,7 +47,7 @@ namespace GameSelectSceneSpace {
     const int coopFrontZ = 100;
 
     const string fontName = "fonts/mukta-bold.ttf";
-    const string hindiFontName = "fonts/chanakya.ttf";
+    const string hindiFontName = "arial";
 
 };
 
