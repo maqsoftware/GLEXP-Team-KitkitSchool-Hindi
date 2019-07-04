@@ -28,7 +28,7 @@ public:
     virtual bool init() override;
     virtual void onExit() override;
     virtual void update(float delta) override;
-    void highlightWordButton(ui::Button *btn, bool highlight, std::string word);
+    void highlightWordButton(ui::Button *btn, bool highlight);
     void startReading();
     void stopReading();
     
