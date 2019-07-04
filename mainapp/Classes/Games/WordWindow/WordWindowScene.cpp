@@ -574,8 +574,7 @@ void WordWindowScene::stopSoundQuestion()
 {
 	m_soundDuraton = 0.f;
 	enableSoundButton();
-
-	GameSoundManager::getInstance()->stopBGM();
+     VoiceMoldManager::shared()->speak(" ");
 }
 
 void WordWindowScene::loadDurationsheet()
