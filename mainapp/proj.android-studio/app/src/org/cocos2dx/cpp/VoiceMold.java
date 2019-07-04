@@ -66,6 +66,7 @@ public class VoiceMold {
         }
 
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        wrapper.getTts().speak("Yello!", TextToSpeech.QUEUE_FLUSH, null);
     }
 
     public void warmup() {
