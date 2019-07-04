@@ -133,32 +133,36 @@ void BookPage::update(float delta)
 
         if (newReadingSentenceIndex != _readingSentenceIndex)
         {
+            _readingSentenceIndex = newReadingSentenceIndex;
             // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
-            VoiceMoldManager::shared()->speak(" ");
             for (auto w : newReadingSentence.words)
             {
-                std::string readSentence = "";
-                readSentence.append(w.word);
-                for (auto b : _wordButtons)
-                {
+                for (auto b : _wordButtons) {
                     TodoWord wordObj = _words[b->getTag()];
                     bool highlight = wordObj.word == w.word;
+                    if (highlight) {
+                        CCLOG("It works");
+                    }
                     highlightWordButton(b, highlight);
                 }
-                VoiceMoldManager::shared()->speak(readSentence);
+                VoiceMoldManager::shared()->speak(w.word);
             }
-
-            _readingSentenceIndex = newReadingSentenceIndex;
+//            for (auto b : _wordButtons) {
+//                TodoWord wordObj = _words[b->getTag()];
+//                bool highlight = false;
+//                highlightWordButton(b, highlight);
+//                CCLOG("end");
+//            }
             _timeSentence = 0.0;
         }
     }
 
-    // for (auto b : _wordButtons)
-    // {
-    //     TodoWord wordObj = _words[b->getTag()];
-    //     bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
-    //     highlightWordButton(b, highlight);
-    // }
+//    for (auto b : _wordButtons)
+//    {
+//        TodoWord wordObj = _words[b->getTag()];
+//        bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
+//        highlightWordButton(b, highlight);
+//    }
 }
 
 void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
