@@ -36,9 +36,9 @@ SoundEffect::SoundEffect(const std::string& EffectPath)
     , Bad(false)
 {
     if (!EffectPath.empty() && !fileExist(EffectPath)) {
-       // NB(xenosoz, 2016): Check for missing sound effects
+        // NB(xenosoz, 2016): Check for missing sound effects
         CCLOGERROR("File does not exist for SoundEffect: %s", EffectPath.c_str());
-       Bad = true;
+        Bad = true;
     }
 }
 
