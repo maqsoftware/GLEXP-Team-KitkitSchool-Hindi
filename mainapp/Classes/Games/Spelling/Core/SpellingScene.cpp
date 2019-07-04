@@ -21,7 +21,6 @@
 
 BEGIN_NS_SPELLING
 
-
 namespace {
     Node* videoNode = nullptr;
     
@@ -125,6 +124,7 @@ bool SpellingScene::init() {
     
     clearInternals();
     refreshChildNodes();
+
     return true;
 };
 

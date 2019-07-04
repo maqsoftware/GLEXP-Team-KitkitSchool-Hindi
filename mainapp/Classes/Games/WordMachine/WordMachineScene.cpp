@@ -30,6 +30,7 @@ using namespace todoschool;
 
 static bool __wmDebug = false;
 const Size panelSize = Size(692, 564);
+
 namespace {
     SoundEffect soundForLetterName(const string& Letter) {
         return CommonSound().soundForLetterName(Letter);
