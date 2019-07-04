@@ -139,17 +139,22 @@ void BookPage::update(float delta)
             std::string readSentence = "";
             for (auto w : newReadingSentence.words)
             {
-                VoiceMoldManager::shared()->speak(w.word);
-                for (auto b : _wordButtons)
-                {
-                    auto wordObj = _words[b->getTag()];
-                    bool highlight = (wordObj.word == w.word);
-                    highlightWordButton(b, highlight);
-                }
+                readSentence.append(w.word);
+                readSentence.append(" ");
+                VoiceMoldManager::shared()->speak(w.word)
             }
+
+
             _timeSentence = 0.0;
         }
-    }   
+    }
+
+    for (auto b : _wordButtons)
+    {
+        auto wordObj = _words[b->getTag()];
+        bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
+        highlightWordButton(b, highlight);
+    }
 }
 
 void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
