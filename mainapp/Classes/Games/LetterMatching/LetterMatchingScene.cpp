@@ -253,13 +253,9 @@ void LetterMatchingScene::initCardList() {
         //   for some reason. I'll just follow that legacy in this time. We need a hero.
         SoundEffect sound;
         sound = sound || SoundEffect(pieceInfo.matchSound);
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellofirst %s ",pieceInfo.matchSound.c_str());
         sound = sound || SoundEffect("NumberMatching/Sound/" + pieceInfo.matchSound);
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellosecond %s",pieceInfo.matchSound.c_str());
         sound = sound || SoundEffect("NumberMatching/Images/Letter/" + pieceInfo.matchSound);
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellothird %s",pieceInfo.matchSound.c_str());
         sound = sound || SoundEffect("NumberMatching/Sound/star.wav");
-        __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellofourth");
       //  if(sound=SoundEffect(""))
 
         sound.preload();
@@ -372,24 +368,8 @@ void LetterMatchingScene::bindingEvents(LetterMatchingCard *card)
             card->runAction(Sequence::create(DelayTime::create(0.3f), EaseExponentialIn::create(FadeOut::create(0.3f)), nullptr));
             
             card->runAction(Sequence::create(DelayTime::create(0.3f),CallFunc::create([=](){
-              // card->matchSound.play();
-              __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellosiva");
-                string s = card->matchSound.effectPath().c_str();
-                __android_log_print(ANDROID_LOG_DEBUG,"TAG","hellohh%s",s.c_str());
-               int pos =0,last=0;
-                // Find position of ':' using find()
-                 pos = s.find("d/");
-                 last = s.find(".");
-               //  cout<<"hell1:" ;
+              card->matchSound.play();
 
-                // Copy substring after pos
-                string sub = s.substr(pos + 1,last-pos-1);
-                string sub1=sub.substr(1,3);
-//                __android_log_print(ANDROID_LOG_DEBUG, "TAG","%s",sub1.c_str());
-                if(sub1=="eng")
-                    VoiceMoldManager::shared()->speak(sub.substr(5,1));  //VoiceMoldManager::shared()->speak(sub.substr(4,1));
-                else
-                VoiceMoldManager::shared()->speak(sub);
 
                 this->addStarParticle(card);
                 
