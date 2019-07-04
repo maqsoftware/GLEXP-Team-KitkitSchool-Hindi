@@ -135,16 +135,15 @@ void BookPage::update(float delta)
         {
             _readingSentenceIndex = newReadingSentenceIndex;
             // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
+            std::string readSentence = "";
             for (auto w : newReadingSentence.words)
             {
-                for (auto b : _wordButtons)
-                {
-                    auto wordObj = _words[b->getTag()];
-                    bool speak = wordObj.word == w.word;
-                    playWordSound(b, w.word, 0);
-                }
-            }
+                readSentence.append(w.word);
+                readSentence.append(" ");
 
+            }
+            VoiceMoldManager::shared()->speak(readSentence);
+            VoiceMoldManager::shared()->speak("Valar Morghulis");
             _timeSentence = 0.0;
         }
     }
