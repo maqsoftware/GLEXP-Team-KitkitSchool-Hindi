@@ -121,43 +121,44 @@ void BookPage::update(float delta)
             }
         }
 
-        /*
-        for (int i=_readingSentence+1; i<page->paragraphs[0].sentences.size(); i++) {
-            auto sentence= page->paragraphs[0].sentences[i];
-            if (sentence.startTimingInPage<=_timePage) {
+        // /*
+        // for (int i=_readingSentence+1; i<page->paragraphs[0].sentences.size(); i++) {
+        //     auto sentence= page->paragraphs[0].sentences[i];
+        //     if (sentence.startTimingInPage<=_timePage) {
                 
-                newReadingSentence = i;
-            }
-        }
-         */
+        //         newReadingSentence = i;
+        //     }
+        // }
+        //  */
 
-        if (newReadingSentenceIndex != _readingSentenceIndex)
-        {
-            _readingSentenceIndex = newReadingSentenceIndex;
-            // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
-            std::string readSentence = "";
-            for (auto w : newReadingSentence.words)
-            {
-                readSentence.append(" ");
-                readSentence.append(w.word);
-                VoiceMoldManager::shared()->speak(readSentence);
-            }
-            _timeSentence = 0.0;
-        }
+        // if (newReadingSentenceIndex != _readingSentenceIndex)
+        // {
+        //     _readingSentenceIndex = newReadingSentenceIndex;
+        //     // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
+        //     std::string readSentence = "";
+        //     for (auto w : newReadingSentence.words)
+        //     {
+        //         readSentence.append(" ");
+        //         readSentence.append(w.word);
+        //         VoiceMoldManager::shared()->speak(readSentence);
+        //     }
+        //     _timeSentence = 0.0;
+        // }
     }
 
     for (auto b : _wordButtons)
     {
-        auto wordObj = _words[b->getTag()];
+        TodoWord wordObj = _words[b->getTag()];
         bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
-        highlightWordButton(b, highlight);
+        highlightWordButton(b, highlight, wordObj.word);
     }
 }
 
-void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
+void BookPage::highlightWordButton(ui::Button *btn, bool highlight, std::string word)
 {
     if (highlight)
     {
+        VoiceMoldManager::shared()->speak(word);
         btn->resetNormalRender();
         btn->loadTextureNormal("Common/lightblue.png");
         btn->setTitleColor(Color3B::BLACK);
