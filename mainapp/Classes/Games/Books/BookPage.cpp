@@ -203,7 +203,7 @@ void BookPage::stopReading()
 
     for (auto b : _wordButtons)
     {
-        highlightWordButton(b, false, "");
+        highlightWordButton(b, false);
     }
 }
 
