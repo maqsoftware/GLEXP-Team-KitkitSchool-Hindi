@@ -153,12 +153,12 @@ void BookPage::update(float delta)
         }
     }
 
-    for (auto b : _wordButtons)
-    {
-        TodoWord wordObj = _words[b->getTag()];
-        bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
-        highlightWordButton(b, highlight);
-    }
+    // for (auto b : _wordButtons)
+    // {
+    //     TodoWord wordObj = _words[b->getTag()];
+    //     bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
+    //     highlightWordButton(b, highlight);
+    // }
 }
 
 void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
