@@ -65,7 +65,7 @@ public class VoiceMold {
             text = header + text;
         }
 
-        wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
+        wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     public void warmup() {

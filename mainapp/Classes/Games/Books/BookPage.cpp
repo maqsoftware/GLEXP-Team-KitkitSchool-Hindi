@@ -138,10 +138,10 @@ void BookPage::update(float delta)
             std::string readSentence = "";
             for (auto w : newReadingSentence.words)
             {
-                readSentence.append(" ... ");
+                readSentence.append(" ");
                 readSentence.append(w.word);
+                VoiceMoldManager::shared()->speak(readSentence);
             }
-            VoiceMoldManager::shared()->speak(readSentence);
             _timeSentence = 0.0;
         }
     }
