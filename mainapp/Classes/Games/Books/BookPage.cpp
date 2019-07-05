@@ -140,8 +140,9 @@ void BookPage::update(float delta)
             {
                 readSentence.append(" ");
                 readSentence.append(w.word);
-                VoiceMoldManager::shared()->speak(readSentence);
             }
+            VoiceMoldManager::shared()->speak(readSentence);
+            
             _timeSentence = 0.0;
         }
     }
