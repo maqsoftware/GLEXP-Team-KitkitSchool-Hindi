@@ -42,6 +42,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.maq.kitkitProvider.Fish;
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
@@ -68,9 +69,13 @@ public class AppActivity extends Cocos2dxActivity {
     public static AppActivity _activity;
     public static String _launchString;
     public static KitkitDBHandler _dbHandler;
+    private static FirebaseAnalytics mFirebaseAnalytics;
+    private static String TAG = "KitkitSchoolActivity";
+    private static final String EXPANSION_FILE_VERSION_KEY_NAME = "0";
+
+    protected String appLanguage;
     protected static String currentUsername;
     protected static User currentUser;
-    private static String TAG = "KitkitSchoolActivity";
     private static int _videoPlayerIndex = 0;
     private static SpeechRecognition mSpeechRecognition;
     private static PlayAudio mPlayAudio;
@@ -79,7 +84,6 @@ public class AppActivity extends Cocos2dxActivity {
         System.loadLibrary("MyGame");
     }
 
-    protected String appLanguage;
     protected boolean signModeOn;
     private Cocos2dxGLSurfaceView glSurfaceView;
 
@@ -93,6 +97,17 @@ public class AppActivity extends Cocos2dxActivity {
 
     public static void clearLaunchString() {
         _launchString = "";
+    }
+
+    public Cocos2dxGLSurfaceView onCreateView() {
+        glSurfaceView = new Cocos2dxGLSurfaceView(this);
+
+        this.hideSystemUI();
+
+        // create stencil buffer
+        glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+
+        return glSurfaceView;
     }
 
     public static void sendToBack() {
@@ -148,6 +163,28 @@ public class AppActivity extends Cocos2dxActivity {
         }
 
         return "";
+    }
+
+    // Set the parameter "current_screen" in the logged events
+    public void firebase_setCurrentScreen(String screenName, String screenClass) {
+        if (screenName.equals("")) {
+            screenName = null;
+        }
+        if (screenClass.equals("")) {
+            screenClass = null;
+        }
+        mFirebaseAnalytics.setCurrentScreen(this, screenName, screenClass);
+    }
+
+    // Log the event "playGame" after a game has been played
+    public static void logFirebaseEvent_playGame(String game, int level, double duration, boolean freechoice, boolean completed) {
+        Bundle params = new Bundle();
+        params.putString("game", game);
+        params.putInt("level", level);
+        params.putDouble("duration", duration);
+        params.putBoolean("freechoice", freechoice);
+        params.putBoolean("completed", completed);
+        mFirebaseAnalytics.logEvent("playGame", params);
     }
 
     public static void updateStars(int numStars) {
@@ -409,6 +446,7 @@ public class AppActivity extends Cocos2dxActivity {
         isPermissionGranted();
         _activity = this;
         _dbHandler = new KitkitDBHandler(_activity);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -463,17 +501,6 @@ public class AppActivity extends Cocos2dxActivity {
             }
         }
         return false;
-    }
-
-    public Cocos2dxGLSurfaceView onCreateView() {
-        glSurfaceView = new Cocos2dxGLSurfaceView(this);
-
-        this.hideSystemUI();
-
-        // create stencil buffer
-        glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
-
-        return glSurfaceView;
     }
 
     @Override
