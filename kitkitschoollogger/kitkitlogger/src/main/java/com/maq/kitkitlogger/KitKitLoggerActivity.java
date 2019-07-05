@@ -65,11 +65,8 @@ public class KitKitLoggerActivity extends Activity {
     @Override
     protected void attachBaseContext(Context newBase) {
         try {
-            //Context launcherContext = newBase.createPackageContext("todoschoollauncher.enuma.com.todoschoollauncher",0);
-//            Changed the package of Gallery app to "org.cocos2dx.cpp.kitkitlauncher.hindi"
             Context launcherContext = newBase.createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
             SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-            //appLanguage = pref.getString("appLanguage", newBase.getString(R.string.defaultLanguage));
             appLanguage = pref.getString("appLanguage", "en-US");
 
             String[] splitLang = appLanguage.split("-");
