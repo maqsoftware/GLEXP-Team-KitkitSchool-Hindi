@@ -39,7 +39,7 @@ namespace NumberMatching
     
     string nextButtonTitle() {
         if (LanguageManager::getInstance()->isSwahili()) { return "Inayofuata"; }
-        return "فارورڈ"; // आगे
+        return "¥æ»ð"; // आगे
     }
 }
 using namespace NumberMatching;
@@ -106,7 +106,7 @@ bool NumberMatchingScene::init()
     _nextButton->loadTextures("NumberMatching/Images/matchgame_next_inactivated.png", "NumberMatching/Images/matchgame_next_activated.png");
     _nextButton->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     _nextButton->setPosition(Vec2(winSize.width - _nextButton->getContentSize().width - 40, _nextButton->getContentSize().height + 30));
-    _nextButton->setTitleFontName("arial");
+    _nextButton->setTitleFontName("fonts/chanakya.ttf");
     _nextButton->setTitleFontSize(80.f);
     _nextButton->setTitleColor(normalColor);
     _nextButton->setTitleText(nextButtonTitle());

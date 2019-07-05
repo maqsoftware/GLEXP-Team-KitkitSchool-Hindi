@@ -42,7 +42,7 @@ namespace LetterMatching
 
     string nextButtonTitle() {
         if (LanguageManager::getInstance()->isSwahili()) { return "Inayofuata"; }
-        return "فارورڈ"; // आगे
+        return "¥æ»ð"; // आगे
     }
 }
 using namespace LetterMatching;
@@ -108,8 +108,7 @@ bool LetterMatchingScene::init()
     _nextButton->loadTextures("NumberMatching/Images/matchgame_next_inactivated.png", "NumberMatching/Images/matchgame_next_activated.png");
     _nextButton->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     _nextButton->setPosition(Vec2(winSize.width - _nextButton->getContentSize().width - 40, _nextButton->getContentSize().height + 30));
-    _nextButton->setTitleFontName("arial");
-    __android_log_print(ANDROID_LOG_DEBUG,"TAG","button name :: %s", (_nextButton->getTitleText()).c_str());
+    _nextButton->setTitleFontName("fonts/chanakya.ttf");
     _nextButton->setTitleFontSize(80.f);
     _nextButton->setTitleColor(normalColor);
     _nextButton->setTitleText(nextButtonTitle());

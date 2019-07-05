@@ -373,7 +373,7 @@ bool MainScene::init()
         
         {
             _resetBtn = ui::Button::create("MainScene/for-manager_button_normal.png","MainScene/for-manager_button_touch.png");
-            auto l = TodoUtil::createLabel("ری سیٹ کریں", 50, Size::ZERO, "arial", Color4B(0, 0, 0, 255)); // रीसेट
+            auto l = TodoUtil::createLabel("ÚèâðÅ", 50, Size::ZERO, "fonts/chanakya.ttf", Color4B(0, 0, 0, 255)); // रीसेट
             l->setPosition(_resetBtn->getContentSize()/2 + Size(0, 10));
             _resetBtn->addChild(l);
 

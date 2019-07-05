@@ -42,8 +42,8 @@ namespace DailySceneSpace {
     
     const Size viewSize = Size(2560, 1800);
     
-    const string defaultFont = "arial";
-    const string hindiFont = "arial";
+    const string defaultFont = "fonts/mukta-bold.ttf";
+    const string hindiFont = "fonts/chanakya.ttf";
     const string folder = "MainScene/DailyScene/";
     
     const Color4B whiteColor = Color4B(255, 252, 236, 255);
