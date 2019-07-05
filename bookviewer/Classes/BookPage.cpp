@@ -152,11 +152,14 @@ void BookPage::update(float delta)
                     b->resetNormalRender();
                     b->loadTextureNormal("Common/lightblue.png");
                     b->setTitleColor(Color3B::BLACK);
-                    VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
+                    if (b->getTag() > 0)
+                    {
+                        VoiceMoldManager::shared()->speak(_words[b->getTag() - 1].word);
+                    }
                 }
-                if (buttonIndex == -1)
+                else
                 {
-                    VoiceMoldManager::shared()->playSilence();
+                    VoiceMoldManager::shared()->speak(_words[_words.size() - 1].word);
                     _wordButtons[_words.size() - 1]->resetNormalRender();
                     _wordButtons[_words.size() - 1]->loadTextureNormal("Common/transparent.png");
                     _wordButtons[_words.size() - 1]->setTitleColor(textColor);
