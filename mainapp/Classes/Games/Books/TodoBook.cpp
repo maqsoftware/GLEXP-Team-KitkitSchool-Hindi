@@ -8,6 +8,7 @@
 
 #include "TodoBook.hpp"
 #include "Utils/TodoUtil.h"
+#include "Managers/VoiceMoldManager.h"
 #include "cocos2d.h"
 #include <fstream>
 //
@@ -114,7 +115,7 @@ void TodoBook::readData(string &filedata)
                 sentence.sentenceAudioFilename = row[1];
                 sentence.startTimingInPage = TodoUtil::stod(row[2]);
             }
-            
+
             currentParagraph.sentences.push_back(sentence);
         }
         else if (type == "word")

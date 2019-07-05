@@ -65,7 +65,7 @@ public class VoiceMold {
             text = header + text;
         }
 
-        wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
     }
 
     public void warmup() {
@@ -105,16 +105,13 @@ public class VoiceMold {
             if (0 == wrapper.getTts().synthesizeToFile(text, createParamsForSynth(), filename)) {
                 wrapper.waitForComplete(SYNTH_UTTERANCE_ID);
 
+                Long ms;
                 MediaMetadataRetriever mm = new MediaMetadataRetriever();
                 mm.setDataSource(filename);
-                
-                String duration = mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
-                Log.v("time", duration);
-                float dur = Float.parseFloat(duration);
-                String seconds = String.valueOf((dur % 60000) / 1000);
-                Log.v("seconds", seconds);
-                String minutes = String.valueOf(dur / 60000);
-                return dur / 1000;
+                ms = Long.parseLong(mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+                (new File(filename)).delete();
+
+                return ms.floatValue() / 1000.f;
             }
             else {
                 Log.e("voice-engine-a", "synthesizeToFile failed");
