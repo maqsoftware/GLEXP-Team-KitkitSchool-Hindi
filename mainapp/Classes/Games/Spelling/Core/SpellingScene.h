@@ -46,7 +46,7 @@ public:
     SpellingScene();
 
     bool init() override;
-    std::string _speakSpellingWord1; // variable for opening and closing word sound in tts
+    std::string _spellingWordSound; // variable for opening and closing word sound in tts
     
 private:
     void clearInternals();

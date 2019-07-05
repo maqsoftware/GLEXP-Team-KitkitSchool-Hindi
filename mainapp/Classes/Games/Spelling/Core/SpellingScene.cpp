@@ -130,12 +130,12 @@ bool SpellingScene::init() {
 
 
 void SpellingScene::clearInternals() {
-    _speakSpellingWord1=" ";
+    _spellingWordSound=" ";
     SoundForWord = SoundEffect::emptyEffect();
 
     TheProblem.OnValueUpdate = [this](Problem&) {
         refreshChildNodes();
-        _speakSpellingWord1=TheProblem().Word;
+        _spellingWordSound=TheProblem().Word;
     };
 }
 
@@ -385,7 +385,7 @@ void SpellingScene::openingWordSound() {
 
     Vector<FiniteTimeAction*> Actions;
     Actions.pushBack(CallFunc::create([this] {
-        VoiceMoldManager::shared()->speak(_speakSpellingWord1); }));
+        VoiceMoldManager::shared()->speak(_spellingWordSound); }));
     Actions.pushBack(DelayTime::create(Delay));
     Actions.pushBack(CallFunc::create(Next));
     runAction(Sequence::create(Actions));
@@ -417,7 +417,7 @@ void SpellingScene::closingWordSound() {
     Actions.pushBack(DelayTime::create(.5f));
     Actions.pushBack(CallFunc::create([this] {
         SHOW_SL_VIDEO_IF_ENABLED("common/temp_video_short.mp4");
-       VoiceMoldManager::shared()->speak(_speakSpellingWord1);
+       VoiceMoldManager::shared()->speak(_spellingWordSound);
     }));
     Actions.pushBack(DelayTime::create(Delay));
     Actions.pushBack(CallFunc::create(Next));
