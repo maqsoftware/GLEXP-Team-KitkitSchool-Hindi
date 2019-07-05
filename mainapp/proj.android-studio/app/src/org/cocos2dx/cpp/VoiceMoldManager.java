@@ -67,18 +67,18 @@ public class VoiceMoldManager
         speak(text, defaultLocale);
     }
 
-    public void speakNext(String text) {
-        speakNext(text, defaultLocale);
-    }
-
     public void speak(String text, String locale) {
         VoiceMold mold = moldForLocale(locale);
         mold.speak(text);
     }
 
-    public void speakNext(String text, String locale) {
+    public void playSilence() {
+        playSilence(defaultLocale);
+    }
+
+    public void playSilence(String locale) {
         VoiceMold mold = moldForLocale(locale);
-        mold.speakNext(text);
+        mold.playSilence();
     }
 
     public float guessSpeakDuration(String text) {
@@ -122,9 +122,9 @@ public class VoiceMoldManager
         shared().speak(text, locale);
     }
 
-    public static void staticSpeakNext(String text) { shared().speakNext(text); }
-    public static void staticSpeakNext(String text, String locale) {
-        shared().speakNext(text, locale);
+    public static void staticPlaySilence() { shared().playSilence(); }
+    public static void staticPlaySilence(String locale) {
+        shared().playSilence(locale);
     }
 
     public static float staticGuessSpeakDuration(String text) { return shared().guessSpeakDuration(text); }

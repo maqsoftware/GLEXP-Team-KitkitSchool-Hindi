@@ -79,7 +79,7 @@ void BookPage::onExit()
 {
     Node::onExit();
 }
-
+int buttonIndex = 0;
 void BookPage::update(float delta)
 {
     if (_pauseReading)
@@ -133,23 +133,37 @@ void BookPage::update(float delta)
 
         if (newReadingSentenceIndex != _readingSentenceIndex)
         {
-            _readingSentenceIndex = newReadingSentenceIndex;
+            if(buttonIndex == _words.size()) {
+                _readingSentenceIndex = newReadingSentenceIndex;
+                buttonIndex = -1;
+            }
             for (auto b : _wordButtons)
             {
-                highlightWordButton(b, true);
-                VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
-                CCLOG("MyLog: %s is spoken", _words[b->getTag()].word.c_str());
-//                highlightWordButton(b, false);
+                if(buttonIndex > b->getTag()){
+                    b->resetNormalRender();
+                    b->loadTextureNormal("Common/transparent.png");
+                    b->setTitleColor(textColor);
+                    continue;
+                }
+                if(buttonIndex >= 0) {
+                    b->resetNormalRender();
+                    b->loadTextureNormal("Common/lightblue.png");
+                    b->setTitleColor(Color3B::BLACK);
+                    VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
+
+                }
+                if(buttonIndex == -1){
+                    VoiceMoldManager::shared()->playSilence();
+                    _wordButtons[_words.size() - 1]->resetNormalRender();
+                    _wordButtons[_words.size() - 1]->loadTextureNormal("Common/transparent.png");
+                    _wordButtons[_words.size() - 1]->setTitleColor(textColor);
+                }
+                buttonIndex++;
+                break;
             }
             _timeSentence = 0.0;
         }
     }
-//    for (auto b : _wordButtons)
-//    {
-//        TodoWord wordObj = _words[b->getTag()];
-//        bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
-//        highlightWordButton(b, highlight);
-//    }
 }
 
 void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
@@ -159,14 +173,12 @@ void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
         btn->resetNormalRender();
         btn->loadTextureNormal("Common/lightblue.png");
         btn->setTitleColor(Color3B::BLACK);
-        CCLOG("MyLog: %s is highlighted", _words[btn->getTag()].word.c_str());
     }
     else
     {
         btn->resetNormalRender();
         btn->loadTextureNormal("Common/transparent.png");
         btn->setTitleColor(textColor);
-        CCLOG("MyLog: %s is unhighlighted", _words[btn->getTag()].word.c_str());
     }
 }
 
@@ -1224,7 +1236,7 @@ void BookPage::hideLeftHalf(bool animate)
     }
 }
 
-void BookPage::playWordSound(ui::Button *button, string word, float length)
+void BookPage::playWordSound(ui::Button *button)
 {
     if (_isReading)
     {
@@ -1234,9 +1246,8 @@ void BookPage::playWordSound(ui::Button *button, string word, float length)
         SHOW_SL_VIDEO_IF_ENABLED("common/temp_video_short.mp4");
 
         _pauseReading = true;
-        _pauseLength = length;
     }
-    VoiceMoldManager::shared()->speak(word);
+    VoiceMoldManager::shared()->speak(_words[button->getTag()].word);
 }
 
 Node *BookPage::createTextViewOneLine(Size size, float fontSize)
@@ -1270,7 +1281,7 @@ Node *BookPage::createTextViewOneLine(Size size, float fontSize)
             auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
             VoiceMoldManager::shared()->speak(word.word);
             wordButton->addClickEventListener([this, word, wordAudioPath, wordButton](Ref *) {
-                this->playWordSound(wordButton, word.word, word.wordAudioLength);
+                this->playWordSound(wordButton);
             });
         }
 
@@ -1331,9 +1342,9 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
         return wordButton;
     };
 
-    auto addAudioHandler = [&](Button *button, string word, float length) {
-        button->addClickEventListener([this, word, button, length](Ref *) {
-            playWordSound(button, word, length);
+    auto addAudioHandler = [&](Button *button) {
+        button->addClickEventListener([this, button](Ref *) {
+            playWordSound(button);
         });
     };
 
@@ -1380,7 +1391,7 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
                     if (_withAudio)
                     {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
+                        addAudioHandler(wordButton);
                         _wordButtons.push_back(wordButton);
                     }
                 }
@@ -1481,7 +1492,7 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
                     if (_withAudio)
                     {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
+                        addAudioHandler(wordButton);
 
                         _wordButtons.push_back(wordButton);
                     }

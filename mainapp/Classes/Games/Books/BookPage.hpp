@@ -57,7 +57,7 @@ protected:
     bool isCreditPage() { return _page->creditPage; }
     bool isTitlePage() { return _isTitle; }
 
-    void playWordSound(ui::Button *button, string path, float length);
+    void playWordSound(ui::Button *button);
     Node* createTextViewOneLine(Size size, float fontSize);
     Node* createTextViewMultiLine(Size size, float fontSize);
     

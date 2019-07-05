@@ -65,24 +65,18 @@ public class VoiceMold {
             text = header + text;
         }
 
-        wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
         while (wrapper.getTts().isSpeaking()) {
-            Log.i("Info","MyLog: Speaking ");
         }
     }
 
-    public void speakNext(String text) {
+    public void playSilence() {
         if (wrapper == null) {
             Log.d("Warn", "SpeechWrapper wrapper is null in VoiceMold::speak().");
             return;
         }
 
-        if (!wrapper.isGood()) {
-            String header = " ";
-            text = header + text;
-        }
-
-        wrapper.getTts().speak(text, TextToSpeech.QUEUE_ADD, null);
+        wrapper.getTts().playSilence(300, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
         while (wrapper.getTts().isSpeaking()) {
         }
     }
