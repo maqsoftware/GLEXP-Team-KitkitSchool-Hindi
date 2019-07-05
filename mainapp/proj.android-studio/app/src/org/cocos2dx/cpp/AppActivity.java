@@ -164,6 +164,7 @@ public class AppActivity extends Cocos2dxActivity {
         return "";
     }
 
+    // Set the parameter "current_screen" in the logged events
     public void firebase_setCurrentScreen(String screenName, String screenClass) {
         if (screenName.equals("")) {
             screenName = null;
@@ -174,6 +175,7 @@ public class AppActivity extends Cocos2dxActivity {
         mFirebaseAnalytics.setCurrentScreen(this, screenName, screenClass);
     }
 
+    // Log the event "playGame" after a game has been played
     public static void logFirebaseEvent_playGame(String game, int level, double duration, boolean freechoice, boolean completed) {
         Bundle params = new Bundle();
         params.putString("game", game);
