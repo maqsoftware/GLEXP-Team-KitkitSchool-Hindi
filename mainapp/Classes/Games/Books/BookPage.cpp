@@ -134,29 +134,16 @@ void BookPage::update(float delta)
         if (newReadingSentenceIndex != _readingSentenceIndex)
         {
             _readingSentenceIndex = newReadingSentenceIndex;
-            // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
-            for (auto w : newReadingSentence.words)
+            for (auto b : _wordButtons)
             {
-                for (auto b : _wordButtons) {
-                    TodoWord wordObj = _words[b->getTag()];
-                    bool highlight = wordObj.word == w.word;
-                    if (highlight) {
-                        CCLOG("It works");
-                    }
-                    highlightWordButton(b, highlight);
-                }
-                VoiceMoldManager::shared()->speak(w.word);
+                highlightWordButton(b, true);
+                VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
+                CCLOG("MyLog: %s is spoken", _words[b->getTag()].word.c_str());
+//                highlightWordButton(b, false);
             }
-//            for (auto b : _wordButtons) {
-//                TodoWord wordObj = _words[b->getTag()];
-//                bool highlight = false;
-//                highlightWordButton(b, highlight);
-//                CCLOG("end");
-//            }
             _timeSentence = 0.0;
         }
     }
-
 //    for (auto b : _wordButtons)
 //    {
 //        TodoWord wordObj = _words[b->getTag()];
@@ -172,12 +159,14 @@ void BookPage::highlightWordButton(ui::Button *btn, bool highlight)
         btn->resetNormalRender();
         btn->loadTextureNormal("Common/lightblue.png");
         btn->setTitleColor(Color3B::BLACK);
+        CCLOG("MyLog: %s is highlighted", _words[btn->getTag()].word.c_str());
     }
     else
     {
         btn->resetNormalRender();
         btn->loadTextureNormal("Common/transparent.png");
         btn->setTitleColor(textColor);
+        CCLOG("MyLog: %s is unhighlighted", _words[btn->getTag()].word.c_str());
     }
 }
 
@@ -1237,7 +1226,6 @@ void BookPage::hideLeftHalf(bool animate)
 
 void BookPage::playWordSound(ui::Button *button, string word, float length)
 {
-    VoiceMoldManager::shared()->speak(word);
     if (_isReading)
     {
 
@@ -1248,6 +1236,7 @@ void BookPage::playWordSound(ui::Button *button, string word, float length)
         _pauseReading = true;
         _pauseLength = length;
     }
+    VoiceMoldManager::shared()->speak(word);
 }
 
 Node *BookPage::createTextViewOneLine(Size size, float fontSize)

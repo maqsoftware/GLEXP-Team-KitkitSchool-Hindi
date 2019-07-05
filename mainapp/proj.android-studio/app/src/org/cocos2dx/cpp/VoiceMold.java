@@ -67,6 +67,7 @@ public class VoiceMold {
 
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, null);
         while (wrapper.getTts().isSpeaking()) {
+            Log.i("Info","MyLog: Speaking ");
         }
     }
 
