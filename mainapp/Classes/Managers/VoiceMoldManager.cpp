@@ -28,10 +28,10 @@ std::string VoiceMoldManager::getDefaultLocale(std::string locale)
 
         t.env->DeleteLocalRef(t.classID);
         t.env->DeleteLocalRef(jLocale);
-        
+
         return locale;
     }
-    
+
     return "";
 }
 
@@ -173,10 +173,10 @@ float VoiceMoldManager::guessSpeakDuration(std::string text)
         float rv = t.env->CallStaticFloatMethod(t.classID, t.methodID, jText);
         t.env->DeleteLocalRef(t.classID);
         t.env->DeleteLocalRef(jText);
-        
+
         return rv;
     }
-    
+
     return std::numeric_limits<float>::quiet_NaN();
 }
 
@@ -193,21 +193,21 @@ float VoiceMoldManager::guessSpeakDuration(std::string text, std::string locale)
         t.env->DeleteLocalRef(t.classID);
         t.env->DeleteLocalRef(jText);
         t.env->DeleteLocalRef(jLocale);
-        
+
         return rv;
     }
-    
+
     return std::numeric_limits<float>::quiet_NaN();
 }
 
-VoiceMoldManager* VoiceMoldManager::shared()
+VoiceMoldManager *VoiceMoldManager::shared()
 {
-    static VoiceMoldManager* _shared = nullptr;
-    if (!_shared) {
+    static VoiceMoldManager *_shared = nullptr;
+    if (!_shared)
+    {
         _shared = new VoiceMoldManager();
     }
     return _shared;
-
 }
 
 #endif

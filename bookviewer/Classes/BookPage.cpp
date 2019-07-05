@@ -8,7 +8,6 @@
 
 #include "BookPage.hpp"
 
-#include "Managers/GameSoundManager.h"
 #include "Utils/TodoUtil.h"
 #include "Common/Controls/SignLanguageVideoPlayer.hpp"
 #include "Managers/VoiceMoldManager.h"
@@ -80,7 +79,7 @@ void BookPage::onExit()
 {
     Node::onExit();
 }
-
+int buttonIndex = 0;
 void BookPage::update(float delta)
 {
     if (_pauseReading)
@@ -91,9 +90,6 @@ void BookPage::update(float delta)
         {
             _pauseLength = 0;
             _pauseReading = false;
-
-            // GameSoundManager::getInstance()->resumeEffect(_readingAudioID);
-            GameSoundManager::getInstance()->resumeBGM();
         }
         else
         {
@@ -137,31 +133,39 @@ void BookPage::update(float delta)
 
         if (newReadingSentenceIndex != _readingSentenceIndex)
         {
-            _readingSentenceIndex = newReadingSentenceIndex;
-            // auto sentence= page->paragraphs[0].sentences[_readingSentenceIndex];
-
-            GameSoundManager::getInstance()->stopAllEffects();
-            std::string readSentence = "";
-            for (auto w : newReadingSentence.words)
+            if (buttonIndex == _words.size())
             {
-                readSentence.append(w.word);
-                readSentence.append(" ");
+                _readingSentenceIndex = newReadingSentenceIndex;
+                buttonIndex = -1;
             }
-            VoiceMoldManager::shared()->speak(readSentence);
-            // auto audioPath = _book->filePrefix+_book->pagePrefix+sentence.sentenceAudioFilename;
-            // auto audioPath = _book->filePrefix + "page/"+newReadingSentence.sentenceAudioFilename;
-            // _readingAudioID = GameSoundManager::getInstance()->playEffectSound(audioPath);
-            // GameSoundManager::getInstance()->playBGM(audioPath);
-
+            for (auto b : _wordButtons)
+            {
+                if (buttonIndex > b->getTag())
+                {
+                    b->resetNormalRender();
+                    b->loadTextureNormal("Common/transparent.png");
+                    b->setTitleColor(textColor);
+                    continue;
+                }
+                if (buttonIndex >= 0)
+                {
+                    b->resetNormalRender();
+                    b->loadTextureNormal("Common/lightblue.png");
+                    b->setTitleColor(Color3B::BLACK);
+                    VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
+                }
+                if (buttonIndex == -1)
+                {
+                    VoiceMoldManager::shared()->playSilence();
+                    _wordButtons[_words.size() - 1]->resetNormalRender();
+                    _wordButtons[_words.size() - 1]->loadTextureNormal("Common/transparent.png");
+                    _wordButtons[_words.size() - 1]->setTitleColor(textColor);
+                }
+                buttonIndex++;
+                break;
+            }
             _timeSentence = 0.0;
         }
-    }
-
-    for (auto b : _wordButtons)
-    {
-        auto wordObj = _words[b->getTag()];
-        bool highlight = wordObj.startTimingInPage <= _timePage && _timePage <= wordObj.endTimingInPage;
-        highlightWordButton(b, highlight);
     }
 }
 
@@ -202,9 +206,6 @@ void BookPage::stopReading()
         _isReading = false;
         unscheduleUpdate();
     }
-
-    GameSoundManager::getInstance()->stopAllEffects();
-    GameSoundManager::getInstance()->stopBGM();
 
     for (auto b : _wordButtons)
     {
@@ -487,14 +488,12 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
         _imageView->addChild(image);
     }
 
-    GameSoundManager::getInstance()->stopAllEffects();
     if (audioPath.length() > 0)
     {
         auto titleAudioPath = audioPath;
 
         scheduleOnce([title](float) { // Sound delay
             VoiceMoldManager::shared()->speak(title);
-            // GameSoundManager::getInstance()->playBGM(titleAudioPath);
         },
                      delay, "titleAudio");
 
@@ -793,8 +792,6 @@ void BookPage::setPage(TodoBook *book, TodoPage *page, TDBookLayout layout, bool
         image->setPosition(viewSize / 2);
         _imageView->addChild(image);
     }
-
-    GameSoundManager::getInstance()->stopAllEffects();
 
     _wordButtons.clear();
 
@@ -1242,13 +1239,8 @@ void BookPage::hideLeftHalf(bool animate)
     }
 }
 
-void BookPage::playWordSound(ui::Button *button, string word, float length)
+void BookPage::playWordSound(ui::Button *button)
 {
-    // GameSoundManager::getInstance()->pauseEffect(_readingAudioID);
-    GameSoundManager::getInstance()->pauseBGM();
-
-    // GameSoundManager::getInstance()->playEffectSound(path);
-    VoiceMoldManager::shared()->speak(word);
     if (_isReading)
     {
 
@@ -1257,8 +1249,8 @@ void BookPage::playWordSound(ui::Button *button, string word, float length)
         SHOW_SL_VIDEO_IF_ENABLED("common/temp_video_short.mp4");
 
         _pauseReading = true;
-        _pauseLength = length;
     }
+    VoiceMoldManager::shared()->speak(_words[button->getTag()].word);
 }
 
 Node *BookPage::createTextViewOneLine(Size size, float fontSize)
@@ -1291,9 +1283,8 @@ Node *BookPage::createTextViewOneLine(Size size, float fontSize)
         {
             auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
             VoiceMoldManager::shared()->speak(word.word);
-            // GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
             wordButton->addClickEventListener([this, word, wordAudioPath, wordButton](Ref *) {
-                this->playWordSound(wordButton, word.word, word.wordAudioLength);
+                this->playWordSound(wordButton);
             });
         }
 
@@ -1354,10 +1345,9 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
         return wordButton;
     };
 
-    auto addAudioHandler = [&](Button *button, string word, float length) {
-        // GameSoundManager::getInstance()->preloadEffect(path);
-        button->addClickEventListener([this, word, button, length](Ref *) {
-            playWordSound(button, word, length);
+    auto addAudioHandler = [&](Button *button) {
+        button->addClickEventListener([this, button](Ref *) {
+            playWordSound(button);
         });
     };
 
@@ -1404,7 +1394,7 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
                     if (_withAudio)
                     {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
+                        addAudioHandler(wordButton);
                         _wordButtons.push_back(wordButton);
                     }
                 }
@@ -1505,8 +1495,7 @@ Node *BookPage::createTextViewMultiLine(Size size, float fontSize)
                     if (_withAudio)
                     {
                         auto wordAudioPath = _book->getWordAudioPath(word.wordAudioFilename);
-                        // GameSoundManager::getInstance()->preloadEffect(wordAudioPath);
-                        addAudioHandler(wordButton, word.word, word.wordAudioLength);
+                        addAudioHandler(wordButton);
 
                         _wordButtons.push_back(wordButton);
                     }

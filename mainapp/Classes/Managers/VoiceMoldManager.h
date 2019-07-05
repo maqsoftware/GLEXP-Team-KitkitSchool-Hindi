@@ -6,7 +6,6 @@
 
 #include <string>
 
-
 class VoiceMoldManager
 {
 public:
@@ -33,8 +32,8 @@ public:
     float guessSpeakDuration(std::string text, std::string locale);
 
 public:
-    static VoiceMoldManager* shared();
-    
+    static VoiceMoldManager *shared();
+
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
 private:
     std::string _internalLocaleForMock;

@@ -133,26 +133,29 @@ void BookPage::update(float delta)
 
         if (newReadingSentenceIndex != _readingSentenceIndex)
         {
-            if(buttonIndex == _words.size()) {
+            if (buttonIndex == _words.size())
+            {
                 _readingSentenceIndex = newReadingSentenceIndex;
                 buttonIndex = -1;
             }
             for (auto b : _wordButtons)
             {
-                if(buttonIndex > b->getTag()){
+                if (buttonIndex > b->getTag())
+                {
                     b->resetNormalRender();
                     b->loadTextureNormal("Common/transparent.png");
                     b->setTitleColor(textColor);
                     continue;
                 }
-                if(buttonIndex >= 0) {
+                if (buttonIndex >= 0)
+                {
                     b->resetNormalRender();
                     b->loadTextureNormal("Common/lightblue.png");
                     b->setTitleColor(Color3B::BLACK);
                     VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
-
                 }
-                if(buttonIndex == -1){
+                if (buttonIndex == -1)
+                {
                     VoiceMoldManager::shared()->playSilence();
                     _wordButtons[_words.size() - 1]->resetNormalRender();
                     _wordButtons[_words.size() - 1]->loadTextureNormal("Common/transparent.png");
