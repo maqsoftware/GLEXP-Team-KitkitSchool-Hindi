@@ -81,7 +81,7 @@ BigLabel* MainDepot::createBonusTextLabel(const std::string& Text) const {
 }
 
 cocos2d::Label* MainDepot::createNextLabel() const {
-    Label* It = Label::createWithTTF(LanguageManager::getInstance()->isEnglish() ? "اگلا" : "Inayofuata", "arial", 300.f); // next // आगे
+    Label* It = Label::createWithSystemFont(LanguageManager::getInstance()->isEnglish() ? "اگلا" : "Inayofuata", "arial", 300.f); // next // आगे
     It->setColor(Color3B(255, 249, 237));
     It->setOpacity(GLubyte(255 * .90f));
     

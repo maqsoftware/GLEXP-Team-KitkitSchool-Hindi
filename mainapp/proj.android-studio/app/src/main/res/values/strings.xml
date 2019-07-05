@@ -1,4 +1,4 @@
 <resources>
-    <string name="content_extraction" translatable="false">यह प्रक्रिया केवल एक बार की जाएगी। इसमें १० मिनट तक का समय लग सकता है।</string>
+    <string name="content_extraction" translatable="false">یہ عمل صرف ایک بار کیا جائے گا. یہ 10 منٹ تک لگ سکتا ہے.</string>
     <string name="content_extraction_english" translatable="false">This process will be done only once. It can take up to 10 minutes.</string>
 </resources>
