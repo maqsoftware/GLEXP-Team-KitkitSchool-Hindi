@@ -142,16 +142,12 @@ void BookPage::update(float delta)
             {
                 if (buttonIndex > b->getTag())
                 {
-                    b->resetNormalRender();
-                    b->loadTextureNormal("Common/transparent.png");
-                    b->setTitleColor(textColor);
+                    highlightWordButton(b, false);
                     continue;
                 }
                 if (buttonIndex >= 0)
                 {
-                    b->resetNormalRender();
-                    b->loadTextureNormal("Common/lightblue.png");
-                    b->setTitleColor(Color3B::BLACK);
+                    highlightWordButton(b, true);
                     if (b->getTag() > 0)
                     {
                         VoiceMoldManager::shared()->speak(_words[b->getTag() - 1].word);
@@ -160,9 +156,7 @@ void BookPage::update(float delta)
                 else
                 {
                     VoiceMoldManager::shared()->speak(_words[_words.size() - 1].word);
-                    _wordButtons[_words.size() - 1]->resetNormalRender();
-                    _wordButtons[_words.size() - 1]->loadTextureNormal("Common/transparent.png");
-                    _wordButtons[_words.size() - 1]->setTitleColor(textColor);
+                    highlightWordButton(_wordButtons[_wordButtons.size() - 1], false);
                 }
                 buttonIndex++;
                 break;
