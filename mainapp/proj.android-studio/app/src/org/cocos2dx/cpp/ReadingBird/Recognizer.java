@@ -134,7 +134,6 @@ public class Recognizer {
 
                 result = true;
             } catch (Exception e) {
-                Log.e("myLog", "" + e);
                 result = false;
             }
         }
@@ -155,13 +154,6 @@ public class Recognizer {
             return false;
         } else {
             mbStop = true;
-//            try {
-//                this.recognizerThread.interrupt();
-//                this.recognizerThread.join();
-//            } catch (InterruptedException var2) {
-//                Thread.currentThread().interrupt();
-//            }
-
             this.recognizerThread = null;
             return true;
         }
@@ -169,12 +161,6 @@ public class Recognizer {
 
     public boolean stop() {
         boolean result = this.stopRecognizerThread();
-//        if(result) {
-//            Log.i("Stop recognition");
-//            Hypothesis hypothesis = this.decoder.hyp();
-//            this.mainHandler.post(new MySpeechRecognizer.ResultEvent(hypothesis, true, 0));
-//        }
-
         return result;
     }
 
@@ -334,7 +320,7 @@ public class Recognizer {
                 Recognizer.this.decoder.startUtt();
                 int processCount = 0;
 
-                while (mbStop == false) {
+                while (!mbStop) {
                     if (mBuffers.size() > 0) {
                         short[] buffer = popBuffer();
                         int volume = popVolume();
@@ -353,7 +339,7 @@ public class Recognizer {
                 Recognizer.this.decoder.endUtt();
                 Log.i("process count : " + processCount + ", remain process : " + mBuffers.size());
 
-                if (mbRecognition == true && mbCheckVolume == false) {
+                if (mbRecognition && !mbCheckVolume) {
                     Hypothesis hypothesis = Recognizer.this.decoder.hyp();
                     Recognizer.this.mainHandler.post(new Recognizer.ResultEvent(hypothesis, true, 0));
 
@@ -423,7 +409,7 @@ public class Recognizer {
 
 
                         if (nread > 0) {
-                            if (mbPause == true) {
+                            if (mbPause) {
                                 Log.i("Recognizer mbPause");
                                 continue;
                             }
@@ -445,7 +431,7 @@ public class Recognizer {
                                 }
                             }
 
-                            if (mbCheckVolume == true) {
+                            if (mbCheckVolume) {
                                 Log.i("Recognizer record " + maxIndex + ", value : " + maxValue + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * maxIndex) + "Hz");
                                 Log.i("-> Recognizer record " + 0 + ", value : " + Math.abs(toTransform[0]) + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * 0) + "Hz");
                                 if (mTriggerVolume <= volume && Math.abs(toTransform[0]) < 10) {
@@ -454,25 +440,25 @@ public class Recognizer {
 
                             }
 
-                            if (mbCheckVolume == false) {
+                            if (!mbCheckVolume) {
                                 Log.i("~~~ Recognizer record " + maxIndex + ", value : " + maxValue + ", " + ((SAMPLE_RATE / 2.0f / Recognizer.this.bufferSize) * maxIndex) + "Hz");
                                 Recognizer.this.mainHandler.post(Recognizer.this.new ResultEvent(null, false, volume));
                             }
 
-                            if (Recognizer.this.mPCMFilePath != null && mbCheckVolume == false) {
+                            if (Recognizer.this.mPCMFilePath != null && !mbCheckVolume) {
                                 arrBuffers.add(buffer.clone());
                                 arrVolume.add(volume);
                                 mRecognitionThread.addData(buffer.clone(), volume);
                             }
                         }
                     }
-                    while (Recognizer.this.mbStop == false);
+                    while (!Recognizer.this.mbStop);
 
                     Recognizer.this.recorder.stop();
                     Recognizer.this.mainHandler.removeCallbacksAndMessages(null);
                     mRecognitionThread.setStop();
 
-                    if (Recognizer.this.mPCMFilePath != null && mbCheckVolume == false && arrBuffers.size() > 0) {
+                    if (Recognizer.this.mPCMFilePath != null && !mbCheckVolume && arrBuffers.size() > 0) {
                         ArrayList<short[]> writeBuffers = new ArrayList<>();
                         for (int i = 0; i < arrBuffers.size(); ++i) {
                             writeBuffers.add((arrBuffers.get(i)));
@@ -510,7 +496,7 @@ public class Recognizer {
                 } catch (Exception e) {
                     if (Recognizer.this.mPCMFilePath != null) {
                         File file = new File(Recognizer.this.mPCMFilePath);
-                        if (file.exists() == true) {
+                        if (file.exists()) {
                             file.delete();
                         }
                     }
