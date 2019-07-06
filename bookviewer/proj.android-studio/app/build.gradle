@@ -10,8 +10,8 @@ android {
         applicationId "com.maq.xprize.booktest"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 4
-        versionName "3.0.1"
+        versionCode 5
+        versionName "3.2.0"
 
         externalNativeBuild {
             ndkBuild {
