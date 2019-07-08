@@ -20,8 +20,7 @@ public class KitkitSchoolApplication extends Application {
     AudioManager audioManager;
 
     @Override
-    public void onCreate ()
-    {
+    public void onCreate() {
         super.onCreate();
         logger = new KitKitLogger(getPackageName(), getApplicationContext());
 
@@ -30,12 +29,10 @@ public class KitkitSchoolApplication extends Application {
         dbHandler = new KitkitDBHandler(getApplicationContext());
 
         // Setup handler for uncaught exceptions.
-        Thread.setDefaultUncaughtExceptionHandler (new Thread.UncaughtExceptionHandler()
-        {
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
-            public void uncaughtException (Thread thread, Throwable e)
-            {
-                handleUncaughtException (thread, e);
+            public void uncaughtException(Thread thread, Throwable e) {
+                handleUncaughtException(thread, e);
             }
         });
 
@@ -46,8 +43,7 @@ public class KitkitSchoolApplication extends Application {
         }
     }
 
-    public void handleUncaughtException (Thread thread, Throwable e)
-    {
+    public void handleUncaughtException(Thread thread, Throwable e) {
         e.printStackTrace(); // not all Android versions will print the stack trace automatically
 
         logger.extractLogToFile();
@@ -58,5 +54,8 @@ public class KitkitSchoolApplication extends Application {
     public KitKitLogger getLogger() {
         return logger;
     }
-    public KitkitDBHandler getDbHandler() {return dbHandler;}
+
+    public KitkitDBHandler getDbHandler() {
+        return dbHandler;
+    }
 }
