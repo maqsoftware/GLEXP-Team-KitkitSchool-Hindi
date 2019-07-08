@@ -1,6 +1,8 @@
 package org.cocos2dx.cpp;
 
 import android.app.Application;
+import android.content.Context;
+import android.media.AudioManager;
 
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitlogger.KitKitLogger;
@@ -14,6 +16,8 @@ public class KitkitSchoolApplication extends Application {
     private KitKitLogger logger;
 
     private KitkitDBHandler dbHandler;
+
+    AudioManager audioManager;
 
     @Override
     public void onCreate ()
@@ -34,6 +38,12 @@ public class KitkitSchoolApplication extends Application {
                 handleUncaughtException (thread, e);
             }
         });
+
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);                     //maximum value of stream media.
+        if (audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) < maxVolume / 2) {                  //check if the audio is less than 50%
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, maxVolume / 2, 0);     //set the audio to 50% when app start.
+        }
     }
 
     public void handleUncaughtException (Thread thread, Throwable e)
