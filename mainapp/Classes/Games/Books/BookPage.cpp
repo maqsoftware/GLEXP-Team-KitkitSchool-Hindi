@@ -167,10 +167,20 @@ void BookPage::update(float delta)
 
         for (auto b : _wordButtons)
         {
-            if(tag >= 0){
-              b1->setTag(tag);  
+            if (b->getTag() == b1->getTag()){
+                highlightWordButton(b, true);
             }
-            highlightWordButton(b, b->getTag() == b1->getTag());
+            else{
+                if(tag >= 0){
+                    CCLOG("myLog: %d", tag);
+                    if (tag == b->getTag())
+                    {
+                        VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
+                        CCLOG("myLog: %s", _words[b->getTag()].word.c_str());
+                    }
+                }
+                highlightWordButton(b, b->getTag() == tag);
+            }
         }
         tag = -1;
     }
@@ -1251,9 +1261,11 @@ void BookPage::playWordSound(ui::Button *button)
     tag = button->getTag();
     if (_isReading)
     {
+        button->resetNormalRender();
+        button->loadTextureNormal("Common/lightblue.png");
+        SHOW_SL_VIDEO_IF_ENABLED("common/temp_video_short.mp4");
         _pauseReading = true;
     }
-    VoiceMoldManager::shared()->speak(_words[button->getTag()].word);
 }
 
 Node *BookPage::createTextViewOneLine(Size size, float fontSize)
