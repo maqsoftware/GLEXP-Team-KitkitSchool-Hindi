@@ -172,11 +172,9 @@ void BookPage::update(float delta)
             }
             else{
                 if(tag >= 0){
-                    CCLOG("myLog: %d", tag);
                     if (tag == b->getTag())
                     {
                         VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
-                        CCLOG("myLog: %s", _words[b->getTag()].word.c_str());
                     }
                 }
                 highlightWordButton(b, b->getTag() == tag);
