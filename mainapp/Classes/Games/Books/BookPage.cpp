@@ -167,11 +167,14 @@ void BookPage::update(float delta)
 
         for (auto b : _wordButtons)
         {
-            if (b->getTag() == b1->getTag()){
+            if (b->getTag() == b1->getTag())
+            {
                 highlightWordButton(b, true);
             }
-            else{
-                if(tag >= 0){
+            else
+            {
+                if (tag >= 0)
+                {
                     if (tag == b->getTag())
                     {
                         VoiceMoldManager::shared()->speak(_words[b->getTag()].word);
