@@ -52,7 +52,7 @@ public class VideoPlayerActivity extends KitKitLoggerActivity implements Surface
         mInstallAppButton.setVisibility(View.VISIBLE);
 
         MAIN_APP_PACKAGE_NAME = "com.maq.xprize.kitkitschool.hindi";
-        LIBRARY_PACKAGE_NAME = "com.maq.xprize.kitkitlibrary.english";
+        LIBRARY_PACKAGE_NAME = "com.maq.xprize.booktest";
         WRITING_BOARD_PACKAGE_NAME = "org.cocos2dx.cpp.writingboard";
 
         Bundle bundle = getIntent().getExtras();

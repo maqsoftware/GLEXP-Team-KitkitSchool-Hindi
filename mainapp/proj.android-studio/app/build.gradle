@@ -11,8 +11,8 @@ android {
         applicationId "com.maq.xprize.kitkitschool.hindi"
         minSdkVersion PROP_MIN_SDK_VERSION
         targetSdkVersion PROP_TARGET_SDK_VERSION
-        versionCode 17
-        versionName "3.2.0"
+        versionCode 18
+        versionName "3.2.1"
 
         lintOptions {
             abortOnError false
@@ -144,6 +144,7 @@ dependencies {
 //    swahiliCompile project(path: ':kitkitlogger', configuration: 'swahiliRelease')
     compile 'com.android.support.constraint:constraint-layout:1.1.3'
 //    Used by Launcher
+
     compile 'com.android.support:appcompat-v7:28.0.0'
     compile 'com.android.support:design:28.0.0'
 //    Used by Gallery app
