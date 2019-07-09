@@ -17,7 +17,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.drawingcoloring.utility.Misc;
 import org.cocos2dx.cpp.drawingcoloring.utility.Util;

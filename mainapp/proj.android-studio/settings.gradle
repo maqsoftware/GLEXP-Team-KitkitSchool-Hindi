@@ -1,9 +1,9 @@
 include ':libcocos2dx', ':pocketsphinx-aar', ':models'
 project(':libcocos2dx').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/libcocos2dx')
-include ':KitkitSchool'
-project(':KitkitSchool').projectDir = new File(settingsDir, 'app')
-include ':kitkitlogger'
-project(':kitkitlogger').projectDir = new File('../../kitkitschoollogger/kitkitlogger/')
+include ':PehlaSchool'
+project(':PehlaSchool').projectDir = new File(settingsDir, 'app')
+include ':pehlaschoollogger'
+project(':pehlaschoollogger').projectDir = new File('../../kitkitschoollogger/kitkitlogger/')
 include ':play_licensing'
 include ':downloader_library'
 include ':zip_file'

@@ -46,7 +46,7 @@ import com.maq.kitkitProvider.Fish;
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
 import com.maq.kitkitlogger.KitKitLogger;
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.ReadingBird.PlayAudio;
 import org.cocos2dx.cpp.ReadingBird.SpeechRecognition;
@@ -60,21 +60,17 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
-import kitkitschool.DownloadExpansionFile;
-
-import static kitkitschool.DownloadExpansionFile.xAPKS;
+import static org.cocos2dx.cpp.DownloadExpansionFile.xAPKS;
 
 public class AppActivity extends Cocos2dxActivity {
+    private static final String EXPANSION_FILE_VERSION_KEY_NAME = "0";
     public static AppActivity _activity;
     public static String _launchString;
     public static KitkitDBHandler _dbHandler;
-    private static FirebaseAnalytics mFirebaseAnalytics;
-    private static String TAG = "KitkitSchoolActivity";
-    private static final String EXPANSION_FILE_VERSION_KEY_NAME = "0";
-
-    protected String appLanguage;
     protected static String currentUsername;
     protected static User currentUser;
+    private static FirebaseAnalytics mFirebaseAnalytics;
+    private static String TAG = "KitkitSchoolActivity";
     private static int _videoPlayerIndex = 0;
     private static SpeechRecognition mSpeechRecognition;
     private static PlayAudio mPlayAudio;
@@ -83,6 +79,7 @@ public class AppActivity extends Cocos2dxActivity {
         System.loadLibrary("MyGame");
     }
 
+    protected String appLanguage;
     protected boolean signModeOn;
     private Cocos2dxGLSurfaceView glSurfaceView;
 
@@ -98,17 +95,6 @@ public class AppActivity extends Cocos2dxActivity {
         _launchString = "";
     }
 
-    public Cocos2dxGLSurfaceView onCreateView() {
-        glSurfaceView = new Cocos2dxGLSurfaceView(this);
-
-        this.hideSystemUI();
-
-        // create stencil buffer
-        glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
-
-        return glSurfaceView;
-    }
-
     public static void sendToBack() {
         _activity.runOnUiThread(new Runnable() {
             @Override
@@ -119,7 +105,7 @@ public class AppActivity extends Cocos2dxActivity {
                         try {
 //                            Calling Kitkit Launcher MainActivity
                             _activity.moveTaskToBack(true);
-                            Intent startLauncher = new Intent(_activity, org.cocos2dx.cpp.kitkitlauncher.hindi.MainActivity.class);
+                            Intent startLauncher = new Intent(_activity, org.cocos2dx.cpp.pehlalauncher.MainActivity.class);
                             _activity.startActivity(startLauncher);
                         } catch (Exception e) {
                             Process.killProcess(Process.myPid());
@@ -163,17 +149,6 @@ public class AppActivity extends Cocos2dxActivity {
         }
 
         return "";
-    }
-
-    // Set the parameter "current_screen" in the logged events
-    public void firebase_setCurrentScreen(String screenName, String screenClass) {
-        if (screenName.equals("")) {
-            screenName = null;
-        }
-        if (screenClass.equals("")) {
-            screenClass = null;
-        }
-        mFirebaseAnalytics.setCurrentScreen(this, screenName, screenClass);
     }
 
     // Log the event "playGame" after a game has been played
@@ -252,10 +227,10 @@ public class AppActivity extends Cocos2dxActivity {
     }
 
     public static String getResourceUri(String filename) {
-        File fileCheck = new File(Environment.getExternalStorageDirectory() + File.separator + "Library" + File.separator + "cache.txt");
+        File fileCheck = new File(Environment.getExternalStorageDirectory() + File.separator + "Android/data/com.maq.pehlaschool.library/files");
         if (fileCheck.exists()) {
-            String appLanguage = Cocos2dxHelper.getStringForKey("appLanguage", "sw-tz").toLowerCase();
-            String pathExternalRaw = Environment.getExternalStorageDirectory() + File.separator + "Library" + File.separator + appLanguage + File.separator + "res" + File.separator + "raw";
+            String appLanguage = Cocos2dxHelper.getStringForKey("appLanguage", "en-us").toLowerCase();
+            String pathExternalRaw = Environment.getExternalStorageDirectory() + File.separator + "Android/data/com.maq.pehlaschool.library/files" + File.separator + appLanguage + File.separator + "res" + File.separator + "raw";
 
             File resourceFile = new File(pathExternalRaw + File.separator + filename + ".mp4");
             Log.i(TAG, "resourcePath : " + resourceFile.getAbsolutePath() + ", exists : " + resourceFile.exists());
@@ -264,7 +239,7 @@ public class AppActivity extends Cocos2dxActivity {
             }
         } else {
             try {
-                String packageName = "library.todoschool.enuma.com.todoschoollibrary";
+                String packageName = "com.maq.pehlaschool.library";
 
                 Context libraryContext = _activity.createPackageContext(packageName, 0);
                 int rId = libraryContext.getResources().getIdentifier(filename, "raw", libraryContext.getPackageName());
@@ -388,6 +363,28 @@ public class AppActivity extends Cocos2dxActivity {
             return _dbHandler.deleteFish(id);
         }
         return false;
+    }
+
+    public Cocos2dxGLSurfaceView onCreateView() {
+        glSurfaceView = new Cocos2dxGLSurfaceView(this);
+
+        this.hideSystemUI();
+
+        // create stencil buffer
+        glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+
+        return glSurfaceView;
+    }
+
+    // Set the parameter "current_screen" in the logged events
+    public void firebase_setCurrentScreen(String screenName, String screenClass) {
+        if (screenName.equals("")) {
+            screenName = null;
+        }
+        if (screenClass.equals("")) {
+            screenClass = null;
+        }
+        mFirebaseAnalytics.setCurrentScreen(this, screenName, screenClass);
     }
 
     public void isPermissionGranted() {

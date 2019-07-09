@@ -20,8 +20,8 @@ import java.util.List;
 
 
 public class VoiceMold {
-    private static final String SPEAK_UTTERANCE_ID = "com.enuma.voice_engine_a.speak";
-    private static final String SYNTH_UTTERANCE_ID = "com.enuma.voice_engine_a.synth";
+    private static final String SPEAK_UTTERANCE_ID = "com.maq.voice_engine_a.speak";
+    private static final String SYNTH_UTTERANCE_ID = "com.maq.voice_engine_a.synth";
 
     public TextToSpeechWrapper wrapper;
     public String locale;

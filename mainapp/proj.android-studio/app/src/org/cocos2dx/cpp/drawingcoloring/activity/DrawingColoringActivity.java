@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.drawingcoloring.activity.base.BaseActivity;
 import org.cocos2dx.cpp.drawingcoloring.core.Const;

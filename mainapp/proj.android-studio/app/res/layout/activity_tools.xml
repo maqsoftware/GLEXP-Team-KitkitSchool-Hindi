@@ -30,43 +30,43 @@
                 android:layout_gravity="fill_horizontal"
                 android:orientation="horizontal">
 
-                <org.cocos2dx.cpp.kitkitlauncher.hindi.ToolsAppView
+                <org.cocos2dx.cpp.pehlalauncher.ToolsAppView
                     android:id="@+id/app_drum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/tools_padding" />
 
-                <org.cocos2dx.cpp.kitkitlauncher.hindi.ToolsAppView
+                <org.cocos2dx.cpp.pehlalauncher.ToolsAppView
                     android:id="@+id/app_marimba"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/tools_padding" />
 
-                <org.cocos2dx.cpp.kitkitlauncher.hindi.ToolsAppView
+                <org.cocos2dx.cpp.pehlalauncher.ToolsAppView
                     android:id="@+id/app_blackboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/tools_padding" />
 
-                <org.cocos2dx.cpp.kitkitlauncher.hindi.ToolsAppView
+                <org.cocos2dx.cpp.pehlalauncher.ToolsAppView
                     android:id="@+id/app_drawing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/tools_padding" />
 
-                <org.cocos2dx.cpp.kitkitlauncher.hindi.ToolsAppView
+                <org.cocos2dx.cpp.pehlalauncher.ToolsAppView
                     android:id="@+id/app_coloring"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/tools_padding" />
 
-                <org.cocos2dx.cpp.kitkitlauncher.hindi.ToolsAppView
+                <org.cocos2dx.cpp.pehlalauncher.ToolsAppView
                     android:id="@+id/app_album"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/tools_padding" />
 
-                <org.cocos2dx.cpp.kitkitlauncher.hindi.ToolsAppView
+                <org.cocos2dx.cpp.pehlalauncher.ToolsAppView
                     android:id="@+id/app_writing_board"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

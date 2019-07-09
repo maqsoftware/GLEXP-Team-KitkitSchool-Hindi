@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.writingboard.core.Const;
 import org.cocos2dx.cpp.writingboard.util.EffectSound;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#2B2E33"
     android:orientation="vertical"
-    tools:context="org.cocos2dx.cpp.kitkitlauncher.hindi.MainActivity">
+    tools:context="org.cocos2dx.cpp.pehlalauncher.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

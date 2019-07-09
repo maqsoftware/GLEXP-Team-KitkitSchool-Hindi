@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.cocos2dx.cpp.kitkitlauncher.hindi.activity.GalleryActivity">
+    tools:context="org.cocos2dx.cpp.pehlalauncher.activity.GalleryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,9 +35,9 @@
 
     </LinearLayout>
 
-    <org.cocos2dx.cpp.kitkitlauncher.hindi.view.ProgressView
+    <org.cocos2dx.cpp.pehlalauncher.view.ProgressView
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"></org.cocos2dx.cpp.kitkitlauncher.hindi.view.ProgressView>
+        android:visibility="gone"></org.cocos2dx.cpp.pehlalauncher.view.ProgressView>
 </FrameLayout>

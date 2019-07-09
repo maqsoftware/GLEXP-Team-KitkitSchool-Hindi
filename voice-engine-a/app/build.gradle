@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "com.enuma.voice_engine_a"
+        applicationId "com.maq.voice_engine_a"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1

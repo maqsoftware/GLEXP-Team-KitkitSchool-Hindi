@@ -18,17 +18,16 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.vending.expansion.downloader.Helpers;
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.zip.ZipFile;
 
-import kitkitschool.DownloadExpansionFile;
 import utils.Zip;
 
-import static com.maq.xprize.kitkitschool.hindi.R.layout.activity_splash_screen;
-import static kitkitschool.DownloadExpansionFile.xAPKS;
+import static com.maq.pehlaschool.R.layout.activity_splash_screen;
+import static org.cocos2dx.cpp.DownloadExpansionFile.xAPKS;
 
 public class SplashScreenActivity extends Activity {
 
