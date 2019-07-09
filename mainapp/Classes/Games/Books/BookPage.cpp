@@ -79,7 +79,9 @@ void BookPage::onExit()
 {
     Node::onExit();
 }
+
 int buttonIndex = 0;
+int tag = -1;
 void BookPage::update(float delta)
 {
     if (_pauseReading)
@@ -130,7 +132,8 @@ void BookPage::update(float delta)
             }
         }
          */
-
+        auto b1 = ui::Button::create();
+        b1->setTag(-1);
         if (newReadingSentenceIndex != _readingSentenceIndex)
         {
             if (buttonIndex == _words.size())
@@ -142,12 +145,11 @@ void BookPage::update(float delta)
             {
                 if (buttonIndex > b->getTag())
                 {
-                    highlightWordButton(b, false);
                     continue;
                 }
                 if (buttonIndex >= 0)
                 {
-                    highlightWordButton(b, true);
+                    b1 = b;
                     if (b->getTag() > 0)
                     {
                         VoiceMoldManager::shared()->speak(_words[b->getTag() - 1].word);
@@ -156,13 +158,21 @@ void BookPage::update(float delta)
                 else
                 {
                     VoiceMoldManager::shared()->speak(_words[_words.size() - 1].word);
-                    highlightWordButton(_wordButtons[_wordButtons.size() - 1], false);
+                    _timeSentence = 0.0;
                 }
                 buttonIndex++;
                 break;
             }
-            _timeSentence = 0.0;
         }
+
+        for (auto b : _wordButtons)
+        {
+            if(tag >= 0){
+              b1->setTag(tag);  
+            }
+            highlightWordButton(b, b->getTag() == b1->getTag());
+        }
+        tag = -1;
     }
 }
 
@@ -1238,13 +1248,9 @@ void BookPage::hideLeftHalf(bool animate)
 
 void BookPage::playWordSound(ui::Button *button)
 {
+    tag = button->getTag();
     if (_isReading)
     {
-
-        button->resetNormalRender();
-        button->loadTextureNormal("Common/lightblue.png");
-        SHOW_SL_VIDEO_IF_ENABLED("common/temp_video_short.mp4");
-
         _pauseReading = true;
     }
     VoiceMoldManager::shared()->speak(_words[button->getTag()].word);
@@ -1263,7 +1269,6 @@ Node *BookPage::createTextViewOneLine(Size size, float fontSize)
     {
         auto word = _words[i];
         auto wordButton = Button::create();
-
         wordButton->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         wordButton->setTag(i);
         wordButton->setTitleFontSize(pageFontSize);

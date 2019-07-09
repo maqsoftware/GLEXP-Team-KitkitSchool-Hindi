@@ -118,7 +118,7 @@ public class VoiceMold {
 
                 MediaMetadataRetriever mm = new MediaMetadataRetriever();
                 mm.setDataSource(filename);
-                ms = Long.parseLong(mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+                Long ms = Long.parseLong(mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
                 (new File(filename)).delete();
 
                 return ms.floatValue() / 1000.f;
