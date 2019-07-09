@@ -68,17 +68,6 @@ public class VoiceMold {
         }
     }
 
-    public void playSilence() {
-        if (wrapper == null) {
-            Log.d("Warn", "SpeechWrapper wrapper is null in VoiceMold::speak().");
-            return;
-        }
-
-        wrapper.getTts().playSilence(300, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
-        while (wrapper.getTts().isSpeaking()) {
-        }
-    }
-
     public void warmup() {
         if (wrapper == null) {
             Log.d("Warn", "SpeechWrapper wrapper is null in VoiceMold::speak().");
@@ -116,9 +105,10 @@ public class VoiceMold {
             if (0 == wrapper.getTts().synthesizeToFile(text, createParamsForSynth(), filename)) {
                 wrapper.waitForComplete(SYNTH_UTTERANCE_ID);
 
+                Long ms;
                 MediaMetadataRetriever mm = new MediaMetadataRetriever();
                 mm.setDataSource(filename);
-                Long ms = Long.parseLong(mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+                ms = Long.parseLong(mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
                 (new File(filename)).delete();
 
                 return ms.floatValue() / 1000.f;

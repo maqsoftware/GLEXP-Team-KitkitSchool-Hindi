@@ -70,17 +70,6 @@ public class VoiceMold {
         }
     }
 
-    public void playSilence() {
-        if (wrapper == null) {
-            Log.d("Warn", "SpeechWrapper wrapper is null in VoiceMold::speak().");
-            return;
-        }
-
-        wrapper.getTts().playSilence(300, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
-        while (wrapper.getTts().isSpeaking()) {
-        }
-    }
-
     public void warmup() {
         if (wrapper == null) {
             Log.d("Warn", "SpeechWrapper wrapper is null in VoiceMold::speak().");

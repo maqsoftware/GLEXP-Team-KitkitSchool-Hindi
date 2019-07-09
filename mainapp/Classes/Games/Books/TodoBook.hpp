@@ -48,7 +48,6 @@ class TodoSentence
 public:
     string sentenceAudioFilename;
     double startTimingInPage;
-    float timeGuessedinSentence = 0;
     vector<TodoWord> words;
 };
 
@@ -69,7 +68,6 @@ public:
     bool wordwrap;
     bool creditPage;
     bool lastPage;
-    float timeGuessedinPage = 0;
     float fontSize;
     
 };
