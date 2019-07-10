@@ -1,6 +1,6 @@
 //
 //  LRComprehensionHeader.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 8/25/18.
 //

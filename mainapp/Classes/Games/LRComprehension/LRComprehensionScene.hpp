@@ -1,6 +1,6 @@
 //
 //  LRComprehensionScene.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 07/08/2018.
 //

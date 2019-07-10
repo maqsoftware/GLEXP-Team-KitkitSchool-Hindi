@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.maq.kitkitProvider.User;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -143,7 +143,7 @@ public class Util {
     }
 
     public static void displayUserName(Activity activity, TextView tvUserName) {
-        User user = ((KitkitSchoolApplication) activity.getApplication()).getDbHandler().getCurrentUser();
+        User user = ((PehlaSchoolApplication) activity.getApplication()).getDbHandler().getCurrentUser();
 
         String name = "";
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -151,7 +151,7 @@ public class Util {
         String tabletNumber = prefs.getString("TABLET_NUMBER", "");
 
         if ("user0".equalsIgnoreCase(user.getUserName())) {
-            int userCount = ((KitkitSchoolApplication) activity.getApplication()).getDbHandler().numUserSeenLauncherTutorial();
+            int userCount = ((PehlaSchoolApplication) activity.getApplication()).getDbHandler().numUserSeenLauncherTutorial();
             if (userCount >= 2 || (userCount == 1 && user.isFinishLauncherTutorial() == false)) {
                 name = user.getUserName();
             }
@@ -193,7 +193,7 @@ public class Util {
                 InputStream in = new FileInputStream(file_url);
                 OutputStream out = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + DATABASE_NAME);
 
-                byte buf[] = new byte[4096];
+                byte[] buf = new byte[4096];
                 int len;
                 while ((len = in.read(buf)) > 0) out.write(buf, 0, len);
 

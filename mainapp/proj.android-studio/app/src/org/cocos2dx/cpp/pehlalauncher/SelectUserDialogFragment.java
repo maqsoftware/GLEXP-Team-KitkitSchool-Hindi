@@ -16,7 +16,7 @@ import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.KitkitProvider;
 import com.maq.pehlaschool.R;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 /**
  * Created by loiceandia on 03/01/2018.
@@ -57,7 +57,7 @@ public class SelectUserDialogFragment extends DialogFragment implements LoaderMa
                     public void onClick(DialogInterface dialog, int which) {
                         Cursor cursor = (Cursor) mAdapter.getItem(which);
                         String userName = cursor.getString(cursor.getColumnIndex(KitkitDBHandler.COLUMN_USERNAME));
-                        ((KitkitSchoolApplication) getActivity().getApplication()).getDbHandler().setCurrentUser(userName);
+                        ((PehlaSchoolApplication) getActivity().getApplication()).getDbHandler().setCurrentUser(userName);
                         if (userBundle != null && userBundle.equals("ABOUT")) {
                             ((AboutActivity) getActivity()).onResume();
                         } else {

@@ -1,6 +1,6 @@
 //
 //  WalkIn.cpp on Jul 12, 2016.
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Copyright (c) 2016 Enuma, Inc. All rights reserved.
 //  See LICENSE.md for more details.

@@ -1,6 +1,6 @@
 //
 //  WordMachineScene.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by timewalker on 7/1/16.
 //

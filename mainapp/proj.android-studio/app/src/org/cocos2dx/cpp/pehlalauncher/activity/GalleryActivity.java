@@ -135,7 +135,7 @@ public class GalleryActivity extends BaseActivity {
                 if (mUser != null) {
                     userFolder = new File(dcimFolder.getAbsolutePath() + File.separator + mUser.getUserName());
                 } else {
-                    userFolder = new File(dcimFolder.getAbsolutePath() + File.separator + "KitkitSchoolScreenshots" + File.separator);
+                    userFolder = new File(dcimFolder.getAbsolutePath() + File.separator + "PehlaSchoolScreenshots" + File.separator);
                 }
 
                 Log.i("dcimFolder.lastModified() : " + dcimFolder.lastModified());

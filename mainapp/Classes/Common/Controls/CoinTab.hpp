@@ -1,6 +1,6 @@
 //
 //  CoinTab.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 9/18/17.
 //

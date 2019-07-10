@@ -15,7 +15,7 @@ import java.util.UUID;
  * Created by ingtellect on 7/24/17.
  */
 
-public class KitkitSchoolApplication extends Application {
+public class PehlaSchoolApplication extends Application {
     private Thread.UncaughtExceptionHandler defaultExceptionHandler;
     private KitKitLogger logger;
 

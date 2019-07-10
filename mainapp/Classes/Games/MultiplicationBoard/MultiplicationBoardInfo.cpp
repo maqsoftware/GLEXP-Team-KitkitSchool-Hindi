@@ -1,6 +1,6 @@
 //
 //  MultiplicationBoardInfo.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by harunom on 7/22/18.
 //

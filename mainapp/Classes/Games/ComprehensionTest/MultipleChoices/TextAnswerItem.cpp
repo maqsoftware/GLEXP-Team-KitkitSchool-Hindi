@@ -1,6 +1,6 @@
 //
 //  TextAnswerItem.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by timewalker on 27/12/2016.
 //

@@ -1,6 +1,6 @@
 //
 //  SoundCard.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by JungJaehun on 05/09/2017.
 //

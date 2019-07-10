@@ -1,6 +1,6 @@
 //
 //  EggQuizScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Jaehun Jung on 29/08/2018.
 //

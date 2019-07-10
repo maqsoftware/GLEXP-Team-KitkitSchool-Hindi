@@ -1,6 +1,6 @@
 //
 //  CompletePopup.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 6/29/16.
 //

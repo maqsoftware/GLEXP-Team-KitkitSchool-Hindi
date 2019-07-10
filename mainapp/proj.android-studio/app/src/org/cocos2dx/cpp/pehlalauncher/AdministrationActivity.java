@@ -15,7 +15,7 @@ import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 
 /**
@@ -66,7 +66,7 @@ public class AdministrationActivity extends KitKitLoggerActivity {
             }
         });
 
-        Switch reviewModeSwitch = (Switch) findViewById(R.id.reviewModeSwitch);
+        Switch reviewModeSwitch = findViewById(R.id.reviewModeSwitch);
         reviewModeSwitch.setChecked(getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS).getBoolean("review_mode_on", false));
         reviewModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -77,7 +77,7 @@ public class AdministrationActivity extends KitKitLoggerActivity {
             }
         });
 
-        Switch signLanguageSwitch = (Switch) findViewById(R.id.signLanguageSwitch);
+        Switch signLanguageSwitch = findViewById(R.id.signLanguageSwitch);
         signLanguageSwitch.setChecked(getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS).getBoolean("sign_language_mode_on", false));
         signLanguageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -116,7 +116,7 @@ public class AdministrationActivity extends KitKitLoggerActivity {
     @Override
     public void onResume() {
         super.onResume();
-        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
         logger.tagScreen("AdministrationActivity");
         displayCurrentUser();
 

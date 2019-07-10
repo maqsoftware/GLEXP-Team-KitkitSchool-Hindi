@@ -1,6 +1,6 @@
 //
 //  LRDividedTypeReorderingScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 14/08/2018.
 //

@@ -1,6 +1,6 @@
 //
 //  GameVideoScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Sungwoo Kang on 9/6/17.
 //
@@ -163,7 +163,7 @@ std::string GameVideoScene::getVideoFile(std::string filename)
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
     
-    path = FileUtils::getInstance()->getWritablePath() + "KitkitSchool";
+    path = FileUtils::getInstance()->getWritablePath() + "PehlaSchool";
     
     if (FileUtils::getInstance()->isFileExist(path+"/library_resource_path.txt")) {
         path = FileUtils::getInstance()->getStringFromFile(path+"/library_resource_path.txt");

@@ -1,6 +1,6 @@
 //
 //  LRDividedTypeFillTheBlanksHeader.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 23/08/2018.
 //

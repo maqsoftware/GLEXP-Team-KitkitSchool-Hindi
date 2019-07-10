@@ -1,6 +1,6 @@
 //
 //  ImageBlock.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 20/12/2016.
 //

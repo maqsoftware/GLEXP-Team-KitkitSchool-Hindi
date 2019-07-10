@@ -1,6 +1,6 @@
 //
 //  GameVideoPlayer.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Sungwoo Kang on 9/6/17.
 //

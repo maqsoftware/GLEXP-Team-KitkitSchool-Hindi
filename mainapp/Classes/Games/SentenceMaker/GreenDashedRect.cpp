@@ -1,6 +1,6 @@
 //
 //  GreenDashedRect.cpp
-//  KitkitSchool-mobile
+//  PehlaSchool-mobile
 //
 //  Created by JungJaehun on 13/02/2018.
 //

@@ -37,7 +37,7 @@ import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -417,7 +417,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     @Override
     public void onResume() {
         super.onResume();
-        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
         logger.tagScreen("MainActivity");
 
         refreshUI();
@@ -470,7 +470,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     }
 
     private void refreshUI() {
-        User currentUser = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+        User currentUser = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
 
         ImageButton libraryButton = findViewById(R.id.button_library);
         ImageButton toolsButton = findViewById(R.id.button_tool);
@@ -674,7 +674,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             SelectNumberDialog selectNumberDialog = new SelectNumberDialog(this, SelectNumberDialog.MODE.USER_NO, new SelectNumberDialog.Callback() {
                 @Override
                 public void onSelectedNumber(int number) {
-                    KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+                    KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
                     User user = dbHandler.findUser("user" + number);
                     if (user != null) {
                         dbHandler.setCurrentUser(user);

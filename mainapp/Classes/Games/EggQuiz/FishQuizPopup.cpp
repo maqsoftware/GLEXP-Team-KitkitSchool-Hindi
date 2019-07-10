@@ -1,6 +1,6 @@
 //
 //  FishQuizPopup.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by YongSoo Hong on 9/3/18.
 //
@@ -361,7 +361,7 @@ void FishQuizPopup::loadFishDataFromDB() {
     auto strFishes = JniHelper::callStaticStringMethod(JNI_CLASS_NAME, "getFishes");
 #else
     string strFishes = "[]";
-    string path = FileUtils::getInstance()->getWritablePath() + "KitkitSchool";
+    string path = FileUtils::getInstance()->getWritablePath() + "PehlaSchool";
     if (FileUtils::getInstance()->isFileExist(path+"/fish_sample.txt")) {
         strFishes = FileUtils::getInstance()->getStringFromFile(path+"/fish_sample.txt");
     }

@@ -1,6 +1,6 @@
 //
 //  ThirtyPuzzleScene.cpp
-//  KitkitSchool-mobile
+//  PehlaSchool-mobile
 //
 //  Created by JungJaehun on 07/02/2018.
 //

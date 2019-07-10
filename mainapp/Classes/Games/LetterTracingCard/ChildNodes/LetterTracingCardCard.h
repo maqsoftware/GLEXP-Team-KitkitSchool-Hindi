@@ -1,6 +1,6 @@
 //
 //  Card.h
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 9/5/17.
 //

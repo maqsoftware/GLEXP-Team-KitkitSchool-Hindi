@@ -1,6 +1,6 @@
 //
 //  BlankSlot.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 3/9/18.
 //

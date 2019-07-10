@@ -1,6 +1,6 @@
 //
 //  SignLanguageVideoPlayer.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 5/11/18.
 //

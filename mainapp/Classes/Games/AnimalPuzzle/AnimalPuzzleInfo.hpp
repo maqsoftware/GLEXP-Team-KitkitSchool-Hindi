@@ -1,6 +1,6 @@
 //
 //  AnimalPuzzleInfo.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 7/14/18.
 //

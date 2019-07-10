@@ -1,6 +1,6 @@
 //
 //  ProblemBank.cpp
-//  KitkitSchool-mobile
+//  PehlaSchool-mobile
 //
 //  Created by JungJaehun on 09/03/2018.
 //

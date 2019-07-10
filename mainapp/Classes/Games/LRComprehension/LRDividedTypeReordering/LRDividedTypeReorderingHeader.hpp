@@ -1,6 +1,6 @@
 //
 //  LRDividedTypeReorderingHeader.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 8/19/18.
 //

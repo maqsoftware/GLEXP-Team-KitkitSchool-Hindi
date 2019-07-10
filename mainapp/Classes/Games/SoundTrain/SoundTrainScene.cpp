@@ -1,6 +1,6 @@
 //
 //  SoundTrainScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by JungJaehun on 30/08/2017.
 //

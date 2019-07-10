@@ -1,6 +1,6 @@
 //
 //  CoopScene2.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 3/25/18.
 //

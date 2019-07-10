@@ -1,6 +1,6 @@
 //
 //  PatternTrainHeader.h
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by JungJaehun on 08/09/2017.
 //

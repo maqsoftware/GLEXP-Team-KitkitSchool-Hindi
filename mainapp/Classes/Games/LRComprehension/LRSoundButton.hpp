@@ -1,6 +1,6 @@
 //
 //  LRSoundButton.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 21/09/2018.
 //

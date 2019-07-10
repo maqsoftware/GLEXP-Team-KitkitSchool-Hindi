@@ -1,6 +1,6 @@
 //
 //  SoundTrainProblemBank.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by JungJaehun on 29/08/2017.
 //

@@ -37,7 +37,7 @@ import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -135,10 +135,10 @@ public class SettingActivity extends KitKitLoggerActivity {
         cntx = this.getBaseContext();
         ftpclient = new FtpClient();
 
-        EditText ftpAddressEditText = (EditText) findViewById(R.id.ftp_address);
-        EditText ftpUsernameEditText = (EditText) findViewById(R.id.ftp_username);
-        EditText ftpPasswordEditText = (EditText) findViewById(R.id.ftp_password);
-        EditText ftpPortEditText = (EditText) findViewById(R.id.ftp_port);
+        EditText ftpAddressEditText = findViewById(R.id.ftp_address);
+        EditText ftpUsernameEditText = findViewById(R.id.ftp_username);
+        EditText ftpPasswordEditText = findViewById(R.id.ftp_password);
+        EditText ftpPortEditText = findViewById(R.id.ftp_port);
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         ftpAddressEditText.setText(prefs.getString("host", ""));
@@ -146,10 +146,10 @@ public class SettingActivity extends KitKitLoggerActivity {
         ftpPasswordEditText.setText(prefs.getString("password", ""));
         ftpPortEditText.setText(prefs.getString("port", ""));
 
-        mLibrarySwitch = (Switch) findViewById(R.id.librarySwitch);
-        mToolsSwitch = (Switch) findViewById(R.id.toolsSwitch);
+        mLibrarySwitch = findViewById(R.id.librarySwitch);
+        mToolsSwitch = findViewById(R.id.toolsSwitch);
 
-        mTvTabletNumber = (TextView) findViewById(R.id.tv_tablet_number);
+        mTvTabletNumber = findViewById(R.id.tv_tablet_number);
 
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
             mLibrarySwitch.setSwitchTextAppearance(this, R.style.SwitchTextAppearance);
@@ -282,7 +282,7 @@ public class SettingActivity extends KitKitLoggerActivity {
     @Override
     public void onResume() {
         super.onResume();
-        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
         logger.tagScreen("SettingActivity");
 
         connectToWifi();
@@ -303,18 +303,15 @@ public class SettingActivity extends KitKitLoggerActivity {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnected()) {
-            return true;
-        }
-        return false;
+        return netInfo != null && netInfo.isConnected();
     }
 
     private void connectToFTPAddress() {
 
-        EditText ftpAddressEditText = (EditText) findViewById(R.id.ftp_address);
-        EditText ftpUsernameEditText = (EditText) findViewById(R.id.ftp_username);
-        EditText ftpPasswordEditText = (EditText) findViewById(R.id.ftp_password);
-        EditText ftpPortEditText = (EditText) findViewById(R.id.ftp_port);
+        EditText ftpAddressEditText = findViewById(R.id.ftp_address);
+        EditText ftpUsernameEditText = findViewById(R.id.ftp_username);
+        EditText ftpPasswordEditText = findViewById(R.id.ftp_password);
+        EditText ftpPortEditText = findViewById(R.id.ftp_port);
 
         final String host = ftpAddressEditText.getText().toString().isEmpty() ? "192.168.0.1".trim() : ftpAddressEditText.getText().toString().trim();
         final String username = ftpUsernameEditText.getText().toString().isEmpty() ? "anonymous" : ftpUsernameEditText.getText().toString().trim();
@@ -498,7 +495,7 @@ public class SettingActivity extends KitKitLoggerActivity {
         SelectNumberDialog selectNumberDialog = new SelectNumberDialog(this, SelectNumberDialog.MODE.USER_NO, new SelectNumberDialog.Callback() {
             @Override
             public void onSelectedNumber(int number) {
-                KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+                KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
                 User user = dbHandler.findUser("user" + number);
                 if (user != null) {
                     dbHandler.setCurrentUser(user);
@@ -517,8 +514,8 @@ public class SettingActivity extends KitKitLoggerActivity {
     public void refreshUI() {
         Util.displayUserName(this, (TextView) findViewById(R.id.textView_currentUsername));
 
-        final User user = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
-        TextView textViewNumcoin = (TextView) findViewById(R.id.textView_numCoin);
+        final User user = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+        TextView textViewNumcoin = findViewById(R.id.textView_numCoin);
         textViewNumcoin.setText(String.format("%d", user.getNumStars()));
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -539,7 +536,7 @@ public class SettingActivity extends KitKitLoggerActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 user.setOpenLibrary(isChecked);
-                ((KitkitSchoolApplication) getApplication()).getDbHandler().updateUser(user);
+                ((PehlaSchoolApplication) getApplication()).getDbHandler().updateUser(user);
             }
         });
 
@@ -548,13 +545,13 @@ public class SettingActivity extends KitKitLoggerActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 user.setOpenTools(isChecked);
-                ((KitkitSchoolApplication) getApplication()).getDbHandler().updateUser(user);
+                ((PehlaSchoolApplication) getApplication()).getDbHandler().updateUser(user);
             }
         });
     }
 
     public void onClickUnlockAll(View v) {
-        KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+        KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
         User user = dbHandler.getCurrentUser();
         user.setFinishTutorial(true);
 //        user.setUnlockDrum(true);
@@ -567,7 +564,7 @@ public class SettingActivity extends KitKitLoggerActivity {
     }
 
     public void onClickAddHundredStars(View v) {
-        KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+        KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
         User user = dbHandler.getCurrentUser();
         user.setNumStars(user.getNumStars() + 100);
         dbHandler.updateUser(user);
@@ -575,7 +572,7 @@ public class SettingActivity extends KitKitLoggerActivity {
     }
 
     public void onClickAddThousandStars(View v) {
-        KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+        KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
         User user = dbHandler.getCurrentUser();
         user.setNumStars(user.getNumStars() + 1000);
         dbHandler.updateUser(user);

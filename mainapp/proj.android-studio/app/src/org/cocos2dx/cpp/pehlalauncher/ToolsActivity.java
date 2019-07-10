@@ -1,6 +1,5 @@
 package org.cocos2dx.cpp.pehlalauncher;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.Typeface;
@@ -25,7 +24,7 @@ import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.drum.activity.DrumActivity;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 /**
  * Created by ingtellect on 1/3/17.
@@ -82,7 +81,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 
         isAnimating = false;
 
-        currentUser = ((KitkitSchoolApplication) getApplication()).getCurrentUser();
+        currentUser = ((PehlaSchoolApplication) getApplication()).getCurrentUser();
 
 
         ToolsAppView drum = findViewById(R.id.app_drum);
@@ -103,7 +102,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 //                    Calling Drum's main activity
                         Intent intent = new Intent(ToolsActivity.this, DrumActivity.class);
                         startActivity(intent);
-                        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+                        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_drum", "", 0);
                     } catch (Exception e) {
                         Log.e("ToolsActivity", "Drum Intent Error:" + e);
@@ -134,7 +133,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 //                    Calling Marimba's main activity
                         Intent intent = new Intent(ToolsActivity.this, org.cocos2dx.cpp.marimba.activity.MainActivity.class);
                         startActivity(intent);
-                        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+                        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_marimba", "", 0);
                     } catch (Exception e) {
                         Log.e("ToolsActivity", "Marimba Intent Error:" + e);
@@ -164,7 +163,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 //                    Calling Black Board's main activity
                         Intent intent = new Intent(ToolsActivity.this, org.cocos2dx.cpp.blackboard.activity.MainActivity.class);
                         startActivity(intent);
-                        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+                        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_blackboard", "", 0);
                     } catch (Exception e) {
                         Log.e("ToolsActivity", "Black Board Intent Error:" + e);
@@ -194,7 +193,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 //                    Calling Drawing's main activity
                         Intent intent = new Intent(ToolsActivity.this, org.cocos2dx.cpp.drawingcoloring.activity.DrawingActivity.class);
                         startActivity(intent);
-                        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+                        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_drawing", "", 0);
                     } catch (Exception e) {
                         Log.e("ToolsActivity", "Drawing Intent Error:" + e);
@@ -225,7 +224,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 //                    Calling Coloring's main activity
                         Intent intent = new Intent(ToolsActivity.this, org.cocos2dx.cpp.drawingcoloring.activity.ColoringActivity.class);
                         startActivity(intent);
-                        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+                        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_coloring", "", 0);
                     } catch (Exception e) {
                         Log.e("ToolsActivity", "Coloring Intent Error:" + e);
@@ -251,7 +250,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 //                  Calling Gallery's main activity
                         Intent intent = new Intent(ToolsActivity.this, org.cocos2dx.cpp.pehlalauncher.activity.GalleryActivity.class);
                         startActivity(intent);
-                        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+                        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_album", "", 0);
                     } catch (Exception e) {
                         Log.e("ToolsActivity", "Gallery Intent Error:" + e);
@@ -277,7 +276,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
 //                    Calling Writing Board's main activity
                         Intent intent = new Intent(ToolsActivity.this, org.cocos2dx.cpp.writingboard.activity.MainActivity.class);
                         startActivity(intent);
-                        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+                        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
                         logger.logEvent("ToolsActivity", "start_writing_board", "", 0);
                     } catch (Exception e) {
                         Log.e("ToolsActivity", "Writing Board Intent Error:" + e);
@@ -307,7 +306,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
     @Override
     public void onResume() {
         super.onResume();
-        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
         logger.tagScreen("ToolsActivity");
 
         refreshLock();
@@ -333,7 +332,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
     }
 
     public void refreshLock() {
-        currentUser = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+        currentUser = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
 
         TextView textViewNumCoin = findViewById(R.id.textView_numCoin);
         textViewNumCoin.setText(String.format("%d", currentUser.getNumStars()));
@@ -437,7 +436,7 @@ public class ToolsActivity extends KitKitLoggerActivity {
                         currentUser.setNumStars(stars - appView.getNumCoin());
                         TextView textViewCoinNum = findViewById(R.id.textView_numCoin);
                         textViewCoinNum.setText(String.format("%d", (stars - appView.getNumCoin())));
-                        KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+                        KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
                         dbHandler.updateUser(currentUser);
 
                         refreshLock();
@@ -454,11 +453,11 @@ public class ToolsActivity extends KitKitLoggerActivity {
     }
 
     private boolean gotoVideoPlayerForWritingBoard() {
-        User user = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+        User user = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
 
         if (user != null && user.isFinishWritingBoardTutorial() == false) {
             user.setFinishWritingBoardTutorial(true);
-            ((KitkitSchoolApplication) getApplication()).getDbHandler().updateUser(user);
+            ((PehlaSchoolApplication) getApplication()).getDbHandler().updateUser(user);
 
             Intent i = new Intent(ToolsActivity.this, VideoPlayerActivity.class);
             i.putExtra("video", "writing_board");

@@ -70,7 +70,7 @@ public class AppActivity extends Cocos2dxActivity {
     protected static String currentUsername;
     protected static User currentUser;
     private static FirebaseAnalytics mFirebaseAnalytics;
-    private static String TAG = "KitkitSchoolActivity";
+    private static String TAG = "PehlaSchoolActivity";
     private static int _videoPlayerIndex = 0;
     private static SpeechRecognition mSpeechRecognition;
     private static PlayAudio mPlayAudio;
@@ -133,7 +133,7 @@ public class AppActivity extends Cocos2dxActivity {
 
     public static void logEvent(String eventString) {
         Log.d(TAG, "logEvent");
-        KitKitLogger logger = ((KitkitSchoolApplication) _activity.getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) _activity.getApplication()).getLogger();
         logger.logEvent(eventString);
     }
 
@@ -165,7 +165,7 @@ public class AppActivity extends Cocos2dxActivity {
     public static void updateStars(int numStars) {
 
         try {
-            KitkitDBHandler dbHandler = ((KitkitSchoolApplication) _activity.getApplication()).getDbHandler();
+            KitkitDBHandler dbHandler = ((PehlaSchoolApplication) _activity.getApplication()).getDbHandler();
             User user = dbHandler.getCurrentUser();
 
             user.setNumStars(numStars);
@@ -180,7 +180,7 @@ public class AppActivity extends Cocos2dxActivity {
 
     public static int getStars() {
         try {
-            KitkitDBHandler dbHandler = ((KitkitSchoolApplication) _activity.getApplication()).getDbHandler();
+            KitkitDBHandler dbHandler = ((PehlaSchoolApplication) _activity.getApplication()).getDbHandler();
             User user = dbHandler.getCurrentUser();
 
             return user.getNumStars();
@@ -204,7 +204,7 @@ public class AppActivity extends Cocos2dxActivity {
     public static void finishTutorial() {
 
         try {
-            KitkitDBHandler dbHandler = ((KitkitSchoolApplication) _activity.getApplication()).getDbHandler();
+            KitkitDBHandler dbHandler = ((PehlaSchoolApplication) _activity.getApplication()).getDbHandler();
             User user = dbHandler.getCurrentUser();
             user.setFinishTutorial(true);
             dbHandler.updateUser(user);
@@ -217,7 +217,7 @@ public class AppActivity extends Cocos2dxActivity {
 
     public static void setUnlockFishBowl(boolean isUnlock) {
         try {
-            KitkitDBHandler dbHandler = ((KitkitSchoolApplication) _activity.getApplication()).getDbHandler();
+            KitkitDBHandler dbHandler = ((PehlaSchoolApplication) _activity.getApplication()).getDbHandler();
             User user = dbHandler.getCurrentUser();
             user.setUnlockFishBowl(isUnlock);
             dbHandler.updateUser(user);
@@ -476,7 +476,7 @@ public class AppActivity extends Cocos2dxActivity {
         }
 
         try {
-            currentUser = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+            currentUser = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
             currentUsername = currentUser.getUserName();
         } catch (Exception e) {
             Log.e(TAG, "error when getting current user. please check launcher is installed.");
@@ -569,7 +569,7 @@ public class AppActivity extends Cocos2dxActivity {
 
         // user
         try {
-            currentUser = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+            currentUser = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
 
             if (!currentUsername.equals(currentUser.getUserName())) {
                 restartApp();

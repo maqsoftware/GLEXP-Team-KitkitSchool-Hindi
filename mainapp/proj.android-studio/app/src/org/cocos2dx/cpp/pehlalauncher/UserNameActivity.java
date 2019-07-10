@@ -13,7 +13,7 @@ import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 import java.util.ArrayList;
 
@@ -37,11 +37,11 @@ public class UserNameActivity extends KitKitLoggerActivity {
                     }
 
                 {
-                    User user = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+                    User user = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
                     RenameUserDialog registerUserDialog = new RenameUserDialog(UserNameActivity.this, user, new RenameUserDialog.Callback() {
                         @Override
                         public void onSubmit(String name) {
-                            KitkitDBHandler kitkitDBHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+                            KitkitDBHandler kitkitDBHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
                             User user = kitkitDBHandler.getCurrentUser();
                             if (user != null) {
                                 user.setDisplayName(name);
@@ -58,7 +58,7 @@ public class UserNameActivity extends KitKitLoggerActivity {
                     SelectNumberDialog selectNumberDialog = new SelectNumberDialog(UserNameActivity.this, SelectNumberDialog.MODE.USER_NO, new SelectNumberDialog.Callback() {
                         @Override
                         public void onSelectedNumber(int number) {
-                            KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+                            KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
                             User user = dbHandler.findUser("user" + number);
                             if (user != null) {
                                 dbHandler.setCurrentUser(user);
@@ -72,7 +72,7 @@ public class UserNameActivity extends KitKitLoggerActivity {
                 }
                 break;
                 case R.id.vUserNameList: {
-                    KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+                    KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
                     ArrayList<User> users = dbHandler.getUserList();
                     UserNameListDialog userNameListDialog = new UserNameListDialog(UserNameActivity.this, users);
                     userNameListDialog.show();
@@ -123,8 +123,8 @@ public class UserNameActivity extends KitKitLoggerActivity {
             }
         });
 
-        mTvUserNo = (TextView) findViewById(R.id.tvUserNo);
-        mTvUserName = (TextView) findViewById(R.id.tvUserName);
+        mTvUserNo = findViewById(R.id.tvUserNo);
+        mTvUserName = findViewById(R.id.tvUserName);
         mTvUserName.setOnClickListener(mOnClickListener);
 
         mVRename = findViewById(R.id.vRename);
@@ -153,7 +153,7 @@ public class UserNameActivity extends KitKitLoggerActivity {
     @Override
     public void onResume() {
         super.onResume();
-        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
         logger.tagScreen("UserNameActivity");
 
         refreshUI();
@@ -166,7 +166,7 @@ public class UserNameActivity extends KitKitLoggerActivity {
     public void refreshUI() {
         Util.displayUserName(this, (TextView) findViewById(R.id.textView_currentUsername));
 
-        User user = ((KitkitSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
+        User user = ((PehlaSchoolApplication) getApplication()).getDbHandler().getCurrentUser();
         mTvUserNo.setText(getString(R.string.user_no) + " " + user.getUserName().replace("user", ""));
         String displayName = user.getDisplayName();
         if (displayName == null || displayName.isEmpty()) {

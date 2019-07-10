@@ -1,6 +1,6 @@
 //
 //  LRTitlePageView.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 12/10/2018.
 //

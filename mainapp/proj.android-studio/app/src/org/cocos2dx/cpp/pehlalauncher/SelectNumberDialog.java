@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.maq.pehlaschool.R;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 public class SelectNumberDialog extends Dialog {
     private final int MAX_TABLET_COUNT = 200;
@@ -34,7 +34,7 @@ public class SelectNumberDialog extends Dialog {
 
         if (mMode == MODE.USER_NO) {
             Activity activity = (Activity) context;
-            mCount = ((KitkitSchoolApplication) activity.getApplication()).getDbHandler().numUser();
+            mCount = ((PehlaSchoolApplication) activity.getApplication()).getDbHandler().numUser();
 
         } else {
             mCount = MAX_TABLET_COUNT;
@@ -50,12 +50,12 @@ public class SelectNumberDialog extends Dialog {
         Util.setScale(((Activity) context), findViewById(R.id.root));
 
         if (mMode == MODE.TABLET_NUM) {
-            TextView tvTitle = (TextView) findViewById(R.id.tv_title);
+            TextView tvTitle = findViewById(R.id.tv_title);
             tvTitle.setText(mContext.getString(R.string.select_tablet_no));
             tvTitle.setBackgroundColor(0xff23cce6);
         }
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 5));
         mRecyclerView.setAdapter(new RecyclerAdapter());
 
@@ -126,7 +126,7 @@ public class SelectNumberDialog extends Dialog {
 
             public ViewHolder(View itemView) {
                 super(itemView);
-                mTvNumber = (TextView) itemView.findViewById(R.id.tv_number);
+                mTvNumber = itemView.findViewById(R.id.tv_number);
             }
         }
     }

@@ -1,6 +1,6 @@
 //
 //  GreenDottedRect.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 1/6/17.
 //

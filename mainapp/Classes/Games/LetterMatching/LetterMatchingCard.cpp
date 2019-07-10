@@ -1,6 +1,6 @@
 //
 //  WordMatchingCard.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by timewalker on 6/30/16.
 //

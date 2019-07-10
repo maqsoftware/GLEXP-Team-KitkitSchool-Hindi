@@ -1,6 +1,6 @@
 //
 //  CacheManager.cpp
-//  KitkitSchool-mobile
+//  PehlaSchool-mobile
 //
 //  Created by JungJaehun on 16/05/2018.
 //

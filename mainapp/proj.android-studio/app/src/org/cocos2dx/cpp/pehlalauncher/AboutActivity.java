@@ -17,7 +17,7 @@ import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 
 /**
@@ -69,13 +69,13 @@ public class AboutActivity extends KitKitLoggerActivity implements PasswordDialo
         });
 
 
-        TextView versionTextView = (TextView) findViewById(R.id.version_textView);
+        TextView versionTextView = findViewById(R.id.version_textView);
         final PackageManager pm = getApplicationContext().getPackageManager();
 
-        final String kitkitSchoolPackageName = "com.maq.pehlaschool";
+        final String pehlaSchoolPackageName = "com.maq.pehlaschool";
         try {
-            PackageInfo kitkitPInfo = pm.getPackageInfo(kitkitSchoolPackageName, 0);
-            ApplicationInfo kitkitAInfo = pm.getApplicationInfo(kitkitSchoolPackageName, 0);
+            PackageInfo kitkitPInfo = pm.getPackageInfo(pehlaSchoolPackageName, 0);
+            ApplicationInfo kitkitAInfo = pm.getApplicationInfo(pehlaSchoolPackageName, 0);
 
             String appName = (String) (kitkitAInfo != null ? pm.getApplicationLabel(kitkitAInfo) : "");
             String versionName = kitkitPInfo.versionName;
@@ -105,7 +105,7 @@ public class AboutActivity extends KitKitLoggerActivity implements PasswordDialo
         SelectNumberDialog selectNumberDialog = new SelectNumberDialog(this, SelectNumberDialog.MODE.USER_NO, new SelectNumberDialog.Callback() {
             @Override
             public void onSelectedNumber(int number) {
-                KitkitDBHandler dbHandler = ((KitkitSchoolApplication) getApplication()).getDbHandler();
+                KitkitDBHandler dbHandler = ((PehlaSchoolApplication) getApplication()).getDbHandler();
                 User user = dbHandler.findUser("user" + number);
                 if (user != null) {
                     dbHandler.setCurrentUser(user);
@@ -156,7 +156,7 @@ public class AboutActivity extends KitKitLoggerActivity implements PasswordDialo
     @Override
     public void onResume() {
         super.onResume();
-        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
         logger.tagScreen("AboutActivity");
         displayCurrentUser();
 

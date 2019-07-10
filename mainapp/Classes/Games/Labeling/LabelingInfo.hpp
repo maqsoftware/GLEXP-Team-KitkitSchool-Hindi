@@ -1,6 +1,6 @@
 //
 //  LabelingInfo.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Seungbum Son on 9/5/18.
 //

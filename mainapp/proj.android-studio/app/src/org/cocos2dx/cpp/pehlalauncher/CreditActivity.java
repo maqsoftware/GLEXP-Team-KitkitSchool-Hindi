@@ -9,7 +9,7 @@ import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
-import org.cocos2dx.cpp.KitkitSchoolApplication;
+import org.cocos2dx.cpp.PehlaSchoolApplication;
 
 /**
  * Created by ingtellect on 1/11/17.
@@ -66,7 +66,7 @@ public class CreditActivity extends KitKitLoggerActivity {
     @Override
     public void onResume() {
         super.onResume();
-        KitKitLogger logger = ((KitkitSchoolApplication) getApplication()).getLogger();
+        KitKitLogger logger = ((PehlaSchoolApplication) getApplication()).getLogger();
         logger.tagScreen("CreditActivity");
 
         if (Util.mBlockingView != null) {

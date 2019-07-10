@@ -1,6 +1,6 @@
 //
 //  TextObject.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by timewalker on 06/12/2016.
 //
