@@ -30,7 +30,7 @@ typedef enum eMoveBlockType_{
 }eMoveBlockType;
 
 typedef struct WORD_MATRIX_DATA_{
-    int _quesionNo;
+    int _questionNo;
     vector<string> _verticalWords;
     vector<string> _horizontalWords;
 }WORD_MATRIX_DATA;

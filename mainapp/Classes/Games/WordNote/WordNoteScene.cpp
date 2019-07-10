@@ -183,15 +183,29 @@ void WordNoteScene::onEnterTransitionDidFinish() {
 
 float WordNoteScene::speech(string input) {
     if (LanguageManager::getInstance()->isEnglish()) {
-       if (!_ttsAlert && CC_TARGET_PLATFORM == CC_PLATFORM_MAC) {
+        if (!_ttsAlert && CC_TARGET_PLATFORM == CC_PLATFORM_MAC) 
+        {
             _ttsAlert = true;
             NativeAlert::show("TTS engine is not supported in mac version", "", "OK");
-      } else {
-            VoiceMoldManager::shared()->speak(input);
-      }
+        } 
+      
+        else 
+        {
+            if(input == "dr")
+            {
+                VoiceMoldManager::shared()->speak("d r");
+            }
+            else
+            {
+                VoiceMoldManager::shared()->speak(input);
+            }
+        }
       return 0.5f;
-    } else
-   VoiceMoldManager::shared()->speak(input);
+    }
+    else
+    {
+        VoiceMoldManager::shared()->speak(input);
+    }
     
 }
 
