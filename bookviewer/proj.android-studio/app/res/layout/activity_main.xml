@@ -48,7 +48,8 @@
             android:text="@string/tab_book" />
 
     </android.support.design.widget.TabLayout>
-    <com.maq.xprize.kitkitlibrary.english.CustomViewPager
+
+    <com.maq.pehlaschool.library.CustomViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

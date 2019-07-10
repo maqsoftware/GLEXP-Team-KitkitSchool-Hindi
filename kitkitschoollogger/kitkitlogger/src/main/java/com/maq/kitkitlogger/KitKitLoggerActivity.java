@@ -65,7 +65,7 @@ public class KitKitLoggerActivity extends Activity {
     @Override
     protected void attachBaseContext(Context newBase) {
         try {
-            Context launcherContext = newBase.createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
+            Context launcherContext = newBase.createPackageContext("com.maq.pehlaschool", 0);
             SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
             appLanguage = pref.getString("appLanguage", "en-US");
 
@@ -107,7 +107,7 @@ public class KitKitLoggerActivity extends Activity {
         try {
             //Context context = createPackageContext("todoschoollauncher.enuma.com.todoschoollauncher",0);
 //            Changed the package of Gallery app to "org.cocos2dx.cpp.kitkitlauncher.hindi"
-            Context context = createPackageContext("com.maq.xprize.kitkitschool.hindi", 0);
+            Context context = createPackageContext("com.maq.pehlaschool", 0);
             //this seems working but Context.MODE_MULTI_PROCESS is deprecated since SDK 23. If it has problem, need to change to ContentProvider for sharing data.
             SharedPreferences pref = context.getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
             //String sharedLang = pref.getString("appLanguage", getString(R.string.defaultLanguage));

@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.maq.xprize.booktest.R;
+import com.maq.pehlaschool.library.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
