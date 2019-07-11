@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.drawingcoloring.activity.DrawingColoringActivity;
 import org.cocos2dx.cpp.drawingcoloring.utility.Util;

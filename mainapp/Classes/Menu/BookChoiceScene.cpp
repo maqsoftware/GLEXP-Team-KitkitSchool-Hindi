@@ -1,6 +1,6 @@
 //
 //  BookChoiceScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 11/3/16.
 //

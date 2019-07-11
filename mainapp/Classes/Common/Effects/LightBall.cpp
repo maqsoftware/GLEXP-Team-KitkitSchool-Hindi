@@ -1,6 +1,6 @@
 //
 //  LightBall.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 9/10/17.
 //

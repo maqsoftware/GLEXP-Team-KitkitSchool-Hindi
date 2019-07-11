@@ -1,7 +1,6 @@
 #include "AppDelegate.h"
 #include "MainScene.h"
 #include <string>
-#include "SimpleAudioEngine.h"
 #include "Common/Controls/TodoLoadingScene.hpp"
 #include "Managers/LanguageManager.hpp"
 #include "Utils/TodoUtil.h"
@@ -69,7 +68,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string devicePath = "/storage/emulated/0/Android/data/com.maq.xprize.kitkitschool.hindi/files/";
+    std::string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files/";
     FileUtils::getInstance()->setDefaultResourceRootPath(devicePath);
 
 #endif

@@ -1,6 +1,6 @@
 //
 //  WordNoteScene.hpp
-//  KitkitSchool-mobile
+//  PehlaSchool-mobile
 //
 //  Created by JungJaehun on 21/02/2018.
 //

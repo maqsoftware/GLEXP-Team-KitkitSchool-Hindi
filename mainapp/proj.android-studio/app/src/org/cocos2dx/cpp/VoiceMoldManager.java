@@ -48,7 +48,7 @@ public class VoiceMoldManager
         }
 
         Intent intent = new Intent();
-        intent.setAction("com.enuma.voice_engine_a.installer.CALL_BY_KITKIT_SCHOOL");
+        intent.setAction("com.maq.voice_engine_a.installer.CALL_BY_MAQ_SOFTWARE");
 
         Context context = AppActivity.instance();
         context.startActivity(intent);

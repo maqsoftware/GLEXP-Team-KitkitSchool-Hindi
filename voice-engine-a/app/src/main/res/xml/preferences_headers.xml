@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
-    <header android:fragment="com.enuma.voice_engine_a.GeneralSettingsFragment"
+    <header android:fragment="com.maq.voice_engine_a.GeneralSettingsFragment"
         android:title="@string/general_settings"
     />
 </preference-headers>

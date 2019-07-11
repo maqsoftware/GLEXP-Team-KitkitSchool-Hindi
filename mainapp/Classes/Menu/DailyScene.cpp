@@ -1,6 +1,6 @@
 //
 //  DailyScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 09/10/17.
 //

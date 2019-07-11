@@ -1,6 +1,6 @@
 //
 //  EggQuizPopup.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 1/10/17.
 //

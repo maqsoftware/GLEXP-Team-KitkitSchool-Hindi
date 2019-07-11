@@ -1,6 +1,6 @@
 //
 //  MultipleChoiceHeader.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 13/08/2018.
 //

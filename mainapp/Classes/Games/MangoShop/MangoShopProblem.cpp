@@ -1,6 +1,6 @@
 //
 //  Problem.cpp
-//  KitkitSchool-mobile
+//  PehlaSchool-mobile
 //
 //  Created by HyeonGyu Yu on 3/14/18.
 //

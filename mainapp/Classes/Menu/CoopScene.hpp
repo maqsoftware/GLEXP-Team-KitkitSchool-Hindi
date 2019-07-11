@@ -1,6 +1,6 @@
 //
 //  CoopScene.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by YongSoo Hong on 8/16/18
 //

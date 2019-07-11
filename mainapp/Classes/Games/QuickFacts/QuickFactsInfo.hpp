@@ -1,6 +1,6 @@
 //
 //  QuickFactsInfo.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Eunil Park on 18/08/18.
 //

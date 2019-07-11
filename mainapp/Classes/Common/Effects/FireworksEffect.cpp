@@ -1,6 +1,6 @@
 //
 //  FireworksEffect.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 9/7/17.
 //

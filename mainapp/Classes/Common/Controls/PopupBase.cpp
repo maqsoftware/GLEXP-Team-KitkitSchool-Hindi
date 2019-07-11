@@ -1,6 +1,6 @@
 //
 //  PopupBase.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Sungwoo Kang on 11/1/16.
 //

@@ -1,6 +1,6 @@
 //
 //  CCAppController.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 11/1/16.
 //

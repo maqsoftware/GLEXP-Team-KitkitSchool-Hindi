@@ -1,6 +1,6 @@
 //
 //  AnswerPadSingle.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 6/26/16.
 //

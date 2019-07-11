@@ -1,6 +1,6 @@
 //
 //  WordNoteHeader.h
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by JungJaehun on 21/02/2018.
 //

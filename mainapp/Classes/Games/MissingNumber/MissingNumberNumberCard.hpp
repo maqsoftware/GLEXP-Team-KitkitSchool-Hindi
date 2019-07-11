@@ -1,6 +1,6 @@
 //
 //  NumberCard.hpp
-//  KitkitSchool-mobile
+//  PehlaSchool-mobile
 //
 //  Created by YongSoo Hong on 03/29/18
 //

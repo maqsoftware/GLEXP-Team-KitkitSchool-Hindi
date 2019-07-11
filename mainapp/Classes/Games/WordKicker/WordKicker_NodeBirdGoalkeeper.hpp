@@ -1,6 +1,6 @@
 //
 //  WordKicker_NodeBirdGoalkeeper.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by MilliSoftGames on 8/25/18.
 //

@@ -1,6 +1,6 @@
 //
 //  Mango.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 3/7/18.
 //

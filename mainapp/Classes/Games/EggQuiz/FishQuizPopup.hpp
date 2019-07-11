@@ -1,6 +1,6 @@
 //
 //  EggQuizPopup.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by YongSoo Hong on 9/3/17.
 //

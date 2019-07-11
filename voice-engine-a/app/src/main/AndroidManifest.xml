@@ -15,7 +15,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.enuma.voice_engine_a">
+    package="com.maq.voice_engine_a">
 
     <uses-sdk android:minSdkVersion="19"
         android:targetSdkVersion="19" />
@@ -62,7 +62,7 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
             <intent-filter>
-                <action android:name="com.enuma.voice_engine_a.installer.CALL_BY_KITKIT_SCHOOL" />
+                <action android:name="com.maq.voice_engine_a.installer.CALL_BY_MAQ_SOFTWARE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

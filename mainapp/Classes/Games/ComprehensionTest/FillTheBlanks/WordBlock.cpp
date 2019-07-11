@@ -1,6 +1,6 @@
 //
 //  WordBlock.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 12/18/16.
 //

@@ -1,6 +1,6 @@
 //
 //  WordKickerInfo.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by MilliSoftGames on 8/14/18.
 //

@@ -1,6 +1,6 @@
 //
 //  PlaceValueInfo.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by harunom on 8/31/18.
 //

@@ -1,6 +1,6 @@
 //
 //  UserManager.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Seokkwon Lee on 11/4/16.
 //

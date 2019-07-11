@@ -1,6 +1,6 @@
 //
 //  Subtitle.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Jaehun Jung on 18/09/2018.
 //

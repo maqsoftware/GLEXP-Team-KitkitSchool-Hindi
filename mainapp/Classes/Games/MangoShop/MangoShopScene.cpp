@@ -1,6 +1,6 @@
 //
 //  MangoShopScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 3/6/18.
 //

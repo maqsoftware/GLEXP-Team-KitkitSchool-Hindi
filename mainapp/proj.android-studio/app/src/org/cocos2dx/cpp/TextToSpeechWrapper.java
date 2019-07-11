@@ -41,7 +41,7 @@ public class TextToSpeechWrapper {
     public static final String MOCK_TTS_ENGINE = "com.android.cts.stub";
     //public static final String FREE_TO_USE_TTS_ENGINE = "com.svox.pico";
     //public static final String FREE_TO_USE_TTS_ENGINE = "com.example.android.ttsengine";
-    public static final String FREE_TO_USE_TTS_ENGINE = "com.enuma.voice_engine_a";
+    public static final String FREE_TO_USE_TTS_ENGINE = "com.maq.voice_engine_a";
     private static final String LOG_TAG = "TextToSpeechServiceTest";
     /**
      * maximum time to wait for tts to be initialized

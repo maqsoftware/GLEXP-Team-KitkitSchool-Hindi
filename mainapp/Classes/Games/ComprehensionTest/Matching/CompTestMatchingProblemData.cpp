@@ -1,6 +1,6 @@
 //
 //  ProblemData.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by timewalker on 09/12/2016.
 //

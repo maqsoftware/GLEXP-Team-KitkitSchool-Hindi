@@ -1,6 +1,6 @@
 //
 //  LanguageManager.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Sungwoo Kang on 6/30/16.
 //
@@ -48,7 +48,7 @@ void LanguageManager::init()
 
     }
     if (_supportedLocales.size() == 0) {
-        CCLOGERROR("No curriculumdata.tsv is found for any language. check %s/KitkitSchool/location.txt, which is curretnly refers to %s",
+        CCLOGERROR("No curriculumdata.tsv is found for any language. check %s/PehlaSchool/location.txt, which is curretnly refers to %s",
                    FileUtils::getInstance()->getWritablePath().c_str(),
                    FileUtils::getInstance()->getDefaultResourceRootPath().c_str());
         exit(1);

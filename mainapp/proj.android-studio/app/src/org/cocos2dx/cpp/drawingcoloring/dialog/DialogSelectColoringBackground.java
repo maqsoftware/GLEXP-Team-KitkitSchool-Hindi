@@ -14,7 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.drawingcoloring.core.Const;
 import org.cocos2dx.cpp.drawingcoloring.utility.Util;

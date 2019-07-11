@@ -14,4 +14,4 @@
      limitations under the License.
 -->
 <tts-engine xmlns:android="http://schemas.android.com/apk/res/android"
-  android:settingsActivity="com.enuma.voice_engine_a.VoiceEngineSettings" />
+  android:settingsActivity="com.maq.voice_engine_a.VoiceEngineSettings" />

@@ -24,8 +24,8 @@ import com.google.android.vending.expansion.downloader.Helpers;
 import com.google.android.vending.expansion.downloader.IDownloaderClient;
 import com.google.android.vending.expansion.downloader.IDownloaderService;
 import com.google.android.vending.expansion.downloader.IStub;
-import com.maq.xprize.booktest.R;
-import com.maq.xprize.kitkitlibrary.english.MainActivity;
+import com.maq.pehlaschool.library.MainActivity;
+import com.maq.pehlaschool.library.R;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public class DownloadExpansionFile extends Activity implements IDownloaderClient
     public static final XAPKFile[] xAPKS = {
             new XAPKFile(
                     true, // true signifies a main file
-                    5, // the version of the APK that the file was uploaded against
+                    1, // the version of the APK that the file was uploaded against
                     1569810587L // the length of the file in bytes
             )
     };

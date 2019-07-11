@@ -1,6 +1,6 @@
 //
 //  CustomDirector.h
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 6/28/16.
 //

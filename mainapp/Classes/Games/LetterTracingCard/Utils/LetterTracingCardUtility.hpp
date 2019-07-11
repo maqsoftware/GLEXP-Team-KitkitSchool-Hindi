@@ -1,6 +1,6 @@
 //
 //  LetterTracingCardUtility.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 9/15/17.
 //

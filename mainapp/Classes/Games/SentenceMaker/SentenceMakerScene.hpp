@@ -1,6 +1,6 @@
 //
 //  SentenceMakerScene.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by timewalker on 30/12/2016.
 //

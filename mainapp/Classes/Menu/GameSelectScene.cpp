@@ -1,6 +1,6 @@
 //
 //  GameSelectScene.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 09/12/17.
 //

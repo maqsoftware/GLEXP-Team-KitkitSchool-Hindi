@@ -1,6 +1,6 @@
 //
 //  TutorialVideoPlayer.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by Gunho Lee on 12/20/16.
 //

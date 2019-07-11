@@ -70,9 +70,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("KitkitSchool", cocos2d::Rect(0, 0, desktopSize.width, desktopSize.height));
+        glview = GLViewImpl::createWithRect("PehlaSchool", cocos2d::Rect(0, 0, desktopSize.width, desktopSize.height));
 #else
-        glview = GLViewImpl::create("KitkitSchool");
+        glview = GLViewImpl::create("PehlaSchool");
 #endif
         director->setOpenGLView(glview);
     }
@@ -91,7 +91,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
     
-    string path = FileUtils::getInstance()->getWritablePath() + "KitkitSchool";
+    string path = FileUtils::getInstance()->getWritablePath() + "PehlaSchool";
     
     if (FileUtils::getInstance()->isFileExist(path+"/location.txt")) {
         path = FileUtils::getInstance()->getStringFromFile(path+"/location.txt");
@@ -107,8 +107,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    string devicePath = "/storage/emulated/0/KitkitSchool/";
-    string devicePath = "/storage/emulated/0/Android/data/com.maq.xprize.kitkitschool.hindi/files/"; // can be changed to any other resource location
+//    string devicePath = "/storage/emulated/0/PehlaSchool/";
+    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files/"; // can be changed to any other resource location
     /*if (FileUtils::getInstance()->isFileExist(devicePath + "cache.txt")) {
         FileUtils::getInstance()->setDefaultResourceRootPath(devicePath);
     }*/

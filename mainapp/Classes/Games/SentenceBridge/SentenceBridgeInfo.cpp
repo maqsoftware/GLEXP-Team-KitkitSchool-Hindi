@@ -1,6 +1,6 @@
 //
 //  SentenceBridgeInfo.cpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by MilliSoftGames on 7/26/18.
 //

@@ -20,8 +20,8 @@ import java.util.List;
 
 
 public class VoiceMold {
-    private static final String SPEAK_UTTERANCE_ID = "com.enuma.voice_engine_a.speak";
-    private static final String SYNTH_UTTERANCE_ID = "com.enuma.voice_engine_a.synth";
+    private static final String SPEAK_UTTERANCE_ID = "com.maq.voice_engine_a.speak";
+    private static final String SYNTH_UTTERANCE_ID = "com.maq.voice_engine_a.synth";
 
     public TextToSpeechWrapper wrapper;
     public String locale;
@@ -73,8 +73,8 @@ public class VoiceMold {
         }
 
         String text = "";
-        wrapper.getTts().setPitch(0.80f);
-        wrapper.getTts().setSpeechRate(0.75f);
+        wrapper.getTts().setPitch(1.0f);
+        wrapper.getTts().setSpeechRate(0.55f);
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
     }
 

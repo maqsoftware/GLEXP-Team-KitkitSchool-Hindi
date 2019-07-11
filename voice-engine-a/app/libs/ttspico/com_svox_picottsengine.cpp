@@ -70,7 +70,7 @@ using namespace android;
 //const char * PICO_SYSTEM_LINGWARE_PATH      = "/system/tts/lang_pico/";
 const char * PICO_SYSTEM_LINGWARE_PATH      = "/system/tts/lang_pico/WE_WILL_IGNORE_THIS_PATH/";
 //const char * PICO_LINGWARE_PATH             = "/sdcard/svox/";
-const char * PICO_LINGWARE_PATH             = "/storage/emulated/0/Android/data/com.enuma.voice_engine_a/files/";
+const char * PICO_LINGWARE_PATH             = "/storage/emulated/0/Android/data/com.maq.voice_engine_a/files/";
 const char * PICO_VOICE_NAME                = "PicoVoice";
 const char * PICO_SPEED_OPEN_TAG            = "<speed level='%d'>";
 const char * PICO_SPEED_CLOSE_TAG           = "</speed>";

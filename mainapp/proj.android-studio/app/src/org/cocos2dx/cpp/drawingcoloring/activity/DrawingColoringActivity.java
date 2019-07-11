@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 
 import com.maq.kitkitProvider.KitkitDBHandler;
 import com.maq.kitkitProvider.User;
-import com.maq.xprize.kitkitschool.hindi.R;
+import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.drawingcoloring.activity.base.BaseActivity;
 import org.cocos2dx.cpp.drawingcoloring.core.Const;
@@ -332,16 +332,16 @@ public class DrawingColoringActivity extends BaseActivity {
 
         findViewById(R.id.v_back).setOnClickListener(mOnClickListener);
 
-        mVChangeBg = (ImageView) findViewById(R.id.v_bg);
+        mVChangeBg = findViewById(R.id.v_bg);
         mVChangeBg.setOnClickListener(mOnClickListener);
 
         mVSave = findViewById(R.id.v_save);
         mVSave.setOnClickListener(mOnClickListener);
 
-        mLayoutDrawing = (ViewGroup) findViewById(R.id.layout_drawing);
-        mVDrawingColoring = (ViewDrawingColoring) findViewById(R.id.v_drawing_coloring);
+        mLayoutDrawing = findViewById(R.id.layout_drawing);
+        mVDrawingColoring = findViewById(R.id.v_drawing_coloring);
         mVDrawingColoring.setCallback(mViewDrawingCoCallback);
-        mIvColoring = (ImageView) findViewById(R.id.iv_coloring);
+        mIvColoring = findViewById(R.id.iv_coloring);
 
         Bitmap bitmapPen = BitmapFactory.decodeResource(getResources(), R.drawable.drawingpad_crayon_1_white);
 
@@ -402,7 +402,7 @@ public class DrawingColoringActivity extends BaseActivity {
         Bitmap bitmapPenSelected = BitmapFactory.decodeResource(getResources(), (mbSmallLCD ? R.drawable.drawingpad_crayon_0_highlight_s : R.drawable.drawingpad_crayon_0_highlight));
         int marginTop = (int) getResources().getDimension(mbSmallLCD ? R.dimen.pen_normal_margin_top_s : R.dimen.pen_normal_margin_top);
 
-        LinearLayout layoutPen = (LinearLayout) findViewById(R.id.layout_pen);
+        LinearLayout layoutPen = findViewById(R.id.layout_pen);
 
         for (int i = 0; i < TOTAL_PEN_COLOR_COUNT; ++i) {
             mVPens[i] = new ViewPen(this);
@@ -417,7 +417,7 @@ public class DrawingColoringActivity extends BaseActivity {
             layoutPen.addView(mVPens[i], params);
         }
 
-        LinearLayout layoutSelectedPenEffect = (LinearLayout) findViewById(R.id.layout_select_pen_effect);
+        LinearLayout layoutSelectedPenEffect = findViewById(R.id.layout_select_pen_effect);
         for (int i = 0; i < TOTAL_PEN_COLOR_COUNT; ++i) {
             mVSelectedPensEffect[i] = new ViewPen(this);
             mVSelectedPensEffect[i].setPenImage(-1, bitmapPenSelected);
@@ -430,7 +430,7 @@ public class DrawingColoringActivity extends BaseActivity {
             layoutSelectedPenEffect.addView(mVSelectedPensEffect[i], params);
         }
 
-        mIvSaveEffect = (ImageView) findViewById(R.id.iv_save_effect);
+        mIvSaveEffect = findViewById(R.id.iv_save_effect);
 
         mScale = Util.setScale(mThisActivity, findViewById(R.id.layout_root), false);
     }
@@ -499,7 +499,7 @@ public class DrawingColoringActivity extends BaseActivity {
         mUser = mKitkitDBHandler.getCurrentUser();
 
         if (mUser == null) {
-            mSavePath = Const.SAVE_PATH + File.separator + "KitkitSchoolScreenshots" + File.separator;
+            mSavePath = Const.SAVE_PATH + File.separator + "PehlaSchoolScreenshots" + File.separator;
 
         } else {
             mSavePath = Const.SAVE_PATH + File.separator + mUser.getUserName() + File.separator;

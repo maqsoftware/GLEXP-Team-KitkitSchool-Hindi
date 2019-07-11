@@ -1,6 +1,6 @@
 //
 //  BookWithQuiz.hpp
-//  KitkitSchool
+//  PehlaSchool
 //
 //  Created by HyeonGyu Yu on 24/07/2018.
 //
