@@ -195,7 +195,7 @@ void WordMatrixScene::loadStageData(int *sheetNum)
         {
             int workSheetNo = TodoUtil::stoi(row[2]);
             WORD_MATRIX_DATA stageInfo;
-            stageInfo._questionNo = TodoUtil::stoi(row[3]);
+            stageInfo._quesionNo = TodoUtil::stoi(row[3]);
             stageInfo._verticalWords = TodoUtil::split(row[4], ',');
             stageInfo._horizontalWords = TodoUtil::split(row[5], ',');
 
@@ -1089,70 +1089,8 @@ void WordMatrixAnswerBlock::playWordSound() {
     }
     if (soundCnt2 >= 1) {
         _speakWordSound = _speakWord.at(_soundIdx++);
-        if(_speakWordSound.compare("ham", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("hæm");
-        }
-        else if (_speakWordSound.compare("rut", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("rʌt");
-        }
-        else if (_speakWordSound.compare("sip", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("sɪp");
-        }
-        else if (_speakWordSound.compare("nag", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("næɡ");
-        }
-        else if (_speakWordSound.compare("dip", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("dɪp");
-        }
-        else if (_speakWordSound.compare("tot", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("tɒt");
-        }
-        else if (_speakWordSound.compare("tot", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("tɒt");
-        }
-        else if (_speakWordSound.compare("nin", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("nɪn");
-        }
-        else if (_speakWordSound.compare("lut", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("lʌt");
-        }
-        else if (_speakWordSound.compare("mape", 4) == 0)
-        {
-            VoiceMoldManager::shared()->speak("meɪp");
-        }
-        else if (_speakWordSound.compare("fin", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("fɪn");
-        }
-        else if (_speakWordSound.compare("tope", 4) == 0)
-        {
-            VoiceMoldManager::shared()->speak("lʌt");
-        }
-        else if (_speakWordSound.compare("dop", 3) == 0)
-        {
-            VoiceMoldManager::shared()->speak("dɒp");
-        }
-        else if (_speakWordSound.compare("shet", 4) == 0)
-        {
-            VoiceMoldManager::shared()->speak("shuht");
-        }
-        else if (_speakWordSound.compare("bole", 4) == 0)
-        {
-            VoiceMoldManager::shared()->speak("bəʊl");
-        }
-        else
-        {
-            VoiceMoldManager::shared()->speak(_speakWordSound); //Implementation of tts for word matrix module
-        }
+        VoiceMoldManager::shared()->speak(
+                _speakWordSound);  //Implementation of tts for word matrix module
         if (_soundIdx >= soundCnt)
             _soundIdx = 0;
     }
