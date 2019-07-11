@@ -106,7 +106,7 @@
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/launcher_kitkitschool_logo_phase03" />
+                    android:src="@drawable/launcher_pehlaschool_logo" />
             </LinearLayout>
 
             <LinearLayout
