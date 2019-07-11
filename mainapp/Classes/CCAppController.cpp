@@ -893,7 +893,7 @@ bool CCAppController::startGame(std::string gameName, int level, std::string par
     //Scene* nextScene;
     std::function<Scene*(void)> creator;
 
-    firebase_setCurrentScreen(_currentGame, "");
+    firebase_setCurrentScreen(_currentGame, _currentGame);
 
     if (gameName == "Book") {
         if (checkOnly) return true;
