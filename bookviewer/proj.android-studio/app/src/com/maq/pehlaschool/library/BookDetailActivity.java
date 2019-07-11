@@ -1,10 +1,9 @@
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.os.Bundle;
 import android.view.View;
 
 import com.maq.kitkitlogger.KitKitLoggerActivity;
-import com.maq.xprize.booktest.R;
 
 /**
  * Created by ingtellect on 12/23/16.

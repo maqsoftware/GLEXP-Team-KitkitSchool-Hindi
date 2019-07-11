@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.maq.xprize.booktest"
-    android:installLocation="auto">
+    package="com.maq.pehlaschool.library"
+    android:installLocation="internalOnly"
+    android:versionCode="1"
+    android:versionName="3.3.0">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -41,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.maq.xprize.kitkitlibrary.english.SplashScreenActivity"
+            android:name="com.maq.pehlaschool.library.SplashScreenActivity"
             android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.maq.xprize.kitkitlibrary.english.SelectActivity"
+            android:name="com.maq.pehlaschool.library.SelectActivity"
             android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,10 +61,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.maq.xprize.kitkitlibrary.english.MainActivity"
+            android:name="com.maq.pehlaschool.library.MainActivity"
             android:screenOrientation="sensorLandscape" />
         <activity
-            android:name="com.maq.xprize.kitkitlibrary.english.VideoPlayerActivity"
+            android:name="com.maq.pehlaschool.library.VideoPlayerActivity"
             android:screenOrientation="sensorLandscape" />
     </application>
 

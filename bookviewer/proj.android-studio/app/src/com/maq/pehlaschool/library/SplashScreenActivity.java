@@ -1,4 +1,4 @@
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.Manifest;
 import android.content.Intent;
@@ -20,7 +20,6 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.vending.expansion.downloader.Helpers;
-import com.maq.xprize.booktest.R;
 
 import java.io.File;
 import java.io.IOException;

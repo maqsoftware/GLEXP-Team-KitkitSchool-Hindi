@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.content.Context;
 import android.os.Handler;
@@ -35,8 +35,6 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
-import com.maq.xprize.booktest.R;
 
 import java.lang.ref.WeakReference;
 import java.util.Formatter;

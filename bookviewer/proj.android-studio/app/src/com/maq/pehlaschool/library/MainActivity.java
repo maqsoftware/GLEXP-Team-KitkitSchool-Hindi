@@ -1,4 +1,4 @@
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -14,7 +14,6 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,11 +29,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
-import com.maq.xprize.booktest.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.cocos2dx.cpp.BookApplication;
@@ -167,7 +164,7 @@ public class MainActivity extends KitKitLoggerActivity {
     private boolean isSignLanguageMode() {
         boolean result = false;
         try {
-            Context context = createPackageContext("com.maq.xprize.kitkitlauncher", 0);
+            Context context = createPackageContext("com.maq.pehlaschool", 0);
             //this seems working but Context.MODE_MULTI_PROCESS is deprecated since SDK 23. If it has problem, need to change to ContentProvider for sharing data.
             SharedPreferences pref = context.getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
             result = pref.getBoolean("sign_language_mode_on", false);
@@ -677,23 +674,12 @@ public class MainActivity extends KitKitLoggerActivity {
                 public void onClick(View v) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.setComponent(new ComponentName("com.maq.xprize.booktest", "org.cocos2dx.cpp.AppActivity"));
+                        intent.setComponent(new ComponentName("com.maq.pehlaschool.library", "org.cocos2dx.cpp.AppActivity"));
 
                         intent.putExtra("book", item.foldername);
                         Log.d("booktest", item.foldername);
                         mActivity.startActivity(intent);
-                    } catch (Exception e) {
-                        Log.d("MainActivity", "Line 732 " + e.getMessage());
-                        // Display a toast before redirecting user to Google Play Store
-                        Toast.makeText(v.getContext(), "You need Book Viewer app to read books", Toast.LENGTH_LONG).show();
-                        (new Handler())
-                                .postDelayed(
-                                        new Runnable() {
-                                            public void run() {
-                                                // Redirect user to Google Play Store to download Book Viewer app
-                                                mActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.maq.xprize.booktest")));
-                                            }
-                                        }, 3500);
+                    } catch (Exception ignore) {
                     }
 
                     try {

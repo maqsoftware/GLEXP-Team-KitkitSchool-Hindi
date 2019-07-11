@@ -1,7 +1,7 @@
 include ':libcocos2dx'
 project(':libcocos2dx').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/libcocos2dx')
-include ':KitkitBookViewer'
-project(':KitkitBookViewer').projectDir = new File(settingsDir, 'app')
+include ':PehlaSchoolLibrary'
+project(':PehlaSchoolLibrary').projectDir = new File(settingsDir, 'app')
 include ':kitkitlogger'
 project(':kitkitlogger').projectDir = new File('../../kitkitschoollogger/kitkitlogger/')
 include ':play_licensing'

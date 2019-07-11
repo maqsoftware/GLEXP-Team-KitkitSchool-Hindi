@@ -1,4 +1,4 @@
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -32,7 +32,6 @@ import android.widget.TextView;
 
 import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
-import com.maq.xprize.booktest.R;
 
 import org.cocos2dx.cpp.BookApplication;
 

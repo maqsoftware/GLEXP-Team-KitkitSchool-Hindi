@@ -1,4 +1,4 @@
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.app.Activity;
 import android.os.Build;

@@ -1,4 +1,4 @@
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-
-import com.maq.xprize.booktest.R;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.maq.xprize.kitkitlibrary.english;
+package com.maq.pehlaschool.library;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -17,7 +17,6 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import com.maq.kitkitlogger.KitKitLoggerActivity;
-import com.maq.xprize.booktest.R;
 
 import kitkitschool.DownloadExpansionFile;
 
