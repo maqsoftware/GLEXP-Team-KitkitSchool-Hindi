@@ -68,7 +68,6 @@ public:
     bool wordwrap;
     bool creditPage;
     bool lastPage;
-    
     float fontSize;
     
 };

@@ -114,7 +114,7 @@ void TodoBook::readData(string &filedata)
                 sentence.sentenceAudioFilename = row[1];
                 sentence.startTimingInPage = TodoUtil::stod(row[2]);
             }
-            
+
             currentParagraph.sentences.push_back(sentence);
         }
         else if (type == "word")

@@ -1,10 +1,15 @@
 /**
  * VoiceMold.java -- Wrap[TextToSpeechWrapper] (=tts-wrapper-wrapper).
- * <p>
+ *
  * NB(xenosoz, 2018): Date created: 26 Feb, 2018
  */
 
 package org.cocos2dx.cpp;
+
+import java.io.File;
+import java.lang.String;
+import java.util.HashMap;
+import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,14 +19,10 @@ import android.media.MediaMetadataRetriever;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-
 
 public class VoiceMold {
-    private static final String SPEAK_UTTERANCE_ID = "com.maq.voice_engine_a.speak";
-    private static final String SYNTH_UTTERANCE_ID = "com.maq.voice_engine_a.synth";
+    private static final String SPEAK_UTTERANCE_ID = "com.enuma.voice_engine_a.speak";
+    private static final String SYNTH_UTTERANCE_ID = "com.enuma.voice_engine_a.synth";
 
     public TextToSpeechWrapper wrapper;
     public String locale;
@@ -43,7 +44,8 @@ public class VoiceMold {
             for (ResolveInfo info : list) {
                 Log.d("Info", info.toString());
             }
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e) {
             Log.d("Error", e.toString());
         }
     }
@@ -75,8 +77,8 @@ public class VoiceMold {
         }
 
         String text = "";
-        wrapper.getTts().setPitch(1.0f);
-        wrapper.getTts().setSpeechRate(0.55f);
+        wrapper.getTts().setPitch(0.80f);
+        wrapper.getTts().setSpeechRate(0.75f);
         wrapper.getTts().speak(text, TextToSpeech.QUEUE_FLUSH, createParamsForSpeak());
     }
 
@@ -105,17 +107,22 @@ public class VoiceMold {
             if (0 == wrapper.getTts().synthesizeToFile(text, createParamsForSynth(), filename)) {
                 wrapper.waitForComplete(SYNTH_UTTERANCE_ID);
 
-                Long ms;
                 MediaMetadataRetriever mm = new MediaMetadataRetriever();
                 mm.setDataSource(filename);
-                ms = Long.parseLong(mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
-                (new File(filename)).delete();
-
-                return ms.floatValue() / 1000.f;
-            } else {
+                
+                String duration = mm.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+                Log.v("time", duration);
+                float dur = Float.parseFloat(duration);
+                String seconds = String.valueOf((dur % 60000) / 1000);
+                Log.v("seconds", seconds);
+                String minutes = String.valueOf(dur / 60000);
+                return dur / 1000;
+            }
+            else {
                 Log.e("voice-engine-a", "synthesizeToFile failed");
             }
-        } catch (Exception e) {  // XXX
+        }
+        catch (Exception e) {  // XXX
             Log.e("voice-engine-a", e.toString());
         }
 
