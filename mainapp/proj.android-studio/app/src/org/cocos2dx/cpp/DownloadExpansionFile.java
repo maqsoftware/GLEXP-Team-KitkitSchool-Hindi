@@ -46,7 +46,7 @@ public class DownloadExpansionFile extends Activity implements IDownloaderClient
             new XAPKFile(
                     true, // true signifies a main file
                     1, // the version of the APK that the file was uploaded
-                    1276359596L // the length of the file in bytes
+                    1380171622L // the length of the file in bytes
             )
     };
     private static final String LOG_TAG = "LVLDownloader";

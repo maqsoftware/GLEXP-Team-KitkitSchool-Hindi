@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Library: पहला स्कूल - Pehla School</string>
     <string name="description">Media Controls</string>
-    <string name="tab_video">वीडियो\nVIDEOS</string>
-    <string name="tab_book">किताबें\nBOOKS</string>
+    <string name="tab_video">VIDEOS\nवीडियो</string>
+    <string name="tab_book">BOOKS\nकिताबें</string>
     <string name="button_next">Next</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_more">More</string>
