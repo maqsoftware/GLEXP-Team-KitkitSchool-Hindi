@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/help_button_description"
             android:onClick="showTutorialVideo"
             android:src="@drawable/library_button_help"
             android:visibility="gone" />
@@ -35,8 +37,8 @@
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.98"
         android:layout_gravity="center"
+        android:layout_weight="0.98"
         android:background="@drawable/library_image_background"
         android:gravity="center"
         android:orientation="horizontal">
@@ -56,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
+                    android:contentDescription="@string/video_button_shadow_description"
                     android:padding="0dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/library_button_shadow" />
@@ -67,20 +70,23 @@
                     android:layout_marginBottom="10dp"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
+                    android:contentDescription="@string/video_button_description"
                     android:onClick="onClickVideo"
                     android:padding="0dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/library_button_video" />
             </FrameLayout>
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/video_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/tab_video"
+                android:textAlignment="center"
                 android:textColor="#6b6b6b"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:autoSizeTextType="uniform" />
 
         </LinearLayout>
 
@@ -99,6 +105,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
+                    android:contentDescription="@string/books_button_shadow_description"
                     android:padding="0dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/library_button_shadow" />
@@ -110,20 +117,23 @@
                     android:layout_marginBottom="10dp"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
+                    android:contentDescription="@string/books_button_description"
                     android:onClick="onClickBook"
                     android:padding="0dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/library_button_book" />
             </FrameLayout>
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/book_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/tab_book"
+                android:textAlignment="center"
                 android:textColor="#6b6b6b"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:autoSizeTextType="uniform" />
 
         </LinearLayout>
     </LinearLayout>
