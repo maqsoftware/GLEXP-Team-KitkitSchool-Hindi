@@ -38,7 +38,7 @@ public class SelectActivity extends KitKitLoggerActivity {
         // render text based on the calling application
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            if (extras.getString("buildName").equalsIgnoreCase("hindi")) {
+            if (extras.getString("locale").equalsIgnoreCase("urdu")) {
                 isUrduText = true;
             }
         }
