@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.maq.kitkitlogger.KitKitLoggerActivity;
 
@@ -27,11 +28,20 @@ import static kitkitschool.DownloadExpansionFile.xAPKS;
  */
 
 public class SelectActivity extends KitKitLoggerActivity {
+    public static boolean isUrduText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPref = getSharedPreferences("ExpansionFile", MODE_PRIVATE);
         int defaultFileVersion = 0;
+
+        // render text based on the calling application
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            if (extras.getString("buildName").equalsIgnoreCase("hindi")) {
+                isUrduText = true;
+            }
+        }
 
         // Retrieve the stored values of main and patch file version
         int storedMainFileVersion = sharedPref.getInt(getString(R.string.mainFileVersion), defaultFileVersion);
@@ -57,6 +67,14 @@ public class SelectActivity extends KitKitLoggerActivity {
         Util.hideSystemUI(this);
 
         setContentView(R.layout.activity_select);
+        if (isUrduText) {
+            TextView titleName = findViewById(R.id.toolbar_title);
+            TextView videoTabName = (TextView) findViewById(R.id.video_textView);
+            TextView booksTabName = (TextView) findViewById(R.id.book_textView);
+            titleName.setText(getResources().getString(R.string.app_name_urdu));
+            videoTabName.setText(getResources().getString(R.string.tab_video_urdu));
+            booksTabName.setText(getResources().getString(R.string.tab_book_urdu));
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.library_icon_back);

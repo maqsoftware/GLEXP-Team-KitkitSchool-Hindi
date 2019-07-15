@@ -48,6 +48,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.maq.pehlaschool.library.SelectActivity.isUrduText;
+
 
 /**
  * Created by ingtellect on 11/18/16.
@@ -113,6 +115,16 @@ public class MainActivity extends KitKitLoggerActivity {
 
         checkExternalData();
         setContentView(R.layout.activity_main);
+
+        // if urdu intent set the toolbar and the title name
+        if (isUrduText) {
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            TextView titleName = (TextView) toolbar.findViewById(R.id.toolbar_title_text);
+            titleName.setText(getResources().getString(R.string.app_name_urdu));
+            TabLayout libraryTab = findViewById(R.id.tabLayout);
+            libraryTab.getTabAt(0).setText(getResources().getString(R.string.tab_video_urdu));
+            libraryTab.getTabAt(1).setText(getResources().getString(R.string.tab_book_urdu));
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.library_icon_back);

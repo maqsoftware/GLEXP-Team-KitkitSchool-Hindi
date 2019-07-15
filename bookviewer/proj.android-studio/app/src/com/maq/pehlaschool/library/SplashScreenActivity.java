@@ -17,6 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.vending.expansion.downloader.Helpers;
@@ -28,6 +30,7 @@ import java.util.zip.ZipFile;
 import kitkitschool.DownloadExpansionFile;
 import utils.Zip;
 
+import static com.maq.pehlaschool.library.SelectActivity.isUrduText;
 import static kitkitschool.DownloadExpansionFile.xAPKS;
 
 
@@ -55,6 +58,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
         setContentView(R.layout.activity_splash_screen);
+
+        // if urdu intent update the splash screen image and the extraction text
+        if (isUrduText) {
+            TextView splashScreenText = (TextView) findViewById(R.id.oneTimeExtractionMessage);
+            ImageView splashScreenImage = (ImageView) findViewById(R.id.imageView);
+            splashScreenImage.setImageResource(R.drawable.splash_screen_background_urdu);
+            splashScreenText.setText(getResources().getString(R.string.content_extraction_urdu));
+        }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted
