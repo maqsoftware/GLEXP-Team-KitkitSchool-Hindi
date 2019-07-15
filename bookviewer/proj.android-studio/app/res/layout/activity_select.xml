@@ -40,13 +40,16 @@
         android:layout_gravity="center"
         android:layout_weight="0.98"
         android:background="@drawable/library_image_background"
+        android:baselineAligned="false"
         android:gravity="center"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="67dp"
+            android:layout_margin="8dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
             android:orientation="vertical">
 
             <FrameLayout
@@ -56,6 +59,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/video_button_shadow_description"
@@ -67,6 +71,7 @@
                     android:id="@+id/button_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="10dp"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
@@ -93,7 +98,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="67dp"
+            android:layout_margin="8dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
             android:orientation="vertical">
 
             <FrameLayout
@@ -103,6 +110,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/books_button_shadow_description"
@@ -114,6 +122,7 @@
                     android:id="@+id/button_book"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="10dp"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
