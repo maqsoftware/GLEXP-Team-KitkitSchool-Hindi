@@ -36,11 +36,19 @@ public class SelectActivity extends KitKitLoggerActivity {
         int defaultFileVersion = 0;
 
         // render text based on the calling application
-        Bundle extras = getIntent().getExtras();
+        Intent libraryIntent = getIntent();
+        Bundle extras = libraryIntent.getExtras();
         if (extras != null) {
-            if (extras.getString("locale").equalsIgnoreCase("urdu")) {
-                isUrduText = true;
+            String intentValue = extras.getString("locale");
+            if (intentValue != null) {
+                if (intentValue.equalsIgnoreCase("urdu")) {
+                    isUrduText = true;
+                    libraryIntent.removeExtra("locale");
+                    setIntent(libraryIntent);
+                }
             }
+        } else {
+            isUrduText = false;
         }
 
         // Retrieve the stored values of main and patch file version

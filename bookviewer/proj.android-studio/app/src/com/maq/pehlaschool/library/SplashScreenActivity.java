@@ -119,6 +119,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     /* function to call the main application after extraction */
     public void toCallApplication() {
         intent = new Intent(SplashScreenActivity.this, SelectActivity.class);
+        // send an empty value so that the locale value is not updated
+        intent.putExtra("locale", "");
         startActivity(intent);
         finish();
     }

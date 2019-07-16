@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Library: Pehla School</string>
     <string name="app_name_hindi" translatable="false">Library: पहला स्कूल - Pehla School</string>
-    <string name="app_name_urdu" translatable="false">Library: پہلا اسکول - Pehla School</string>
+    <string name="app_name_urdu" translatable="false">Library: Pehla School - پہلا اسکول </string>
     <string name="description">Media Controls</string>
     <string name="tab_video" translatable="false">VIDEOS\nवीडियो</string>
     <string name="tab_book" translatable="false">BOOKS\nकिताबें</string>
