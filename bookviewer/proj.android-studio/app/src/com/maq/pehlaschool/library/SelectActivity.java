@@ -40,14 +40,15 @@ public class SelectActivity extends KitKitLoggerActivity {
         Bundle extras = libraryIntent.getExtras();
         if (extras != null) {
             String intentValue = extras.getString("locale");
-            if (intentValue != null) {
-                if (intentValue.equalsIgnoreCase("urdu")) {
-                    isUrduText = true;
-                    libraryIntent.removeExtra("locale");
-                    setIntent(libraryIntent);
-                }
+            if (intentValue != null && intentValue.equalsIgnoreCase("urdu")) {
+                isUrduText = true;
+                // clear the library intent by removing the extended data from the intent
+                // this is done to get the latest extended data of the intent
+                libraryIntent.removeExtra("locale");
+                setIntent(libraryIntent);
             }
         } else {
+            // set the default value of the variable on successive calls
             isUrduText = false;
         }
 
