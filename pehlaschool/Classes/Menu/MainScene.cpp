@@ -552,7 +552,8 @@ void MainScene::onEnter()
         const float appearDelay = 2.2;
         
         //auto eng = LanguageManager::getInstance()->isEnglish();
-        auto logoPath = LanguageManager::getInstance()->findLocalizedResource("System/logo_phase03.png");
+        std::string logoName = "system/logo_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".png";
+        auto logoPath = LanguageManager::getInstance()->findLocalizedResource(logoName);
         auto logo = Sprite::create(logoPath);
         logo->setPosition(designSize/2);
         _rootNode->addChild(logo);

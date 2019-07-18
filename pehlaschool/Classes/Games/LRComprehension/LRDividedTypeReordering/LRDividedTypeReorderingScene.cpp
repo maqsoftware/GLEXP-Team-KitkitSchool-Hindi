@@ -74,8 +74,21 @@ void LRDividedTypeReorderingScene::onEnter()
     _gameNode->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
     _gameNode->setPosition(Vec2(getContentSize().width / 2, 0.f));
     addChild(_gameNode);
-    
-    string directionContent = LanguageManager::getInstance()->isEnglish() ? "ƒæÅÙæ¥ô¢ ·UUUUô âãè RUUUU× ×ð¢ Ú¹ð¢Ð" : "Yaweke matukio katika mpangilio ulio sahihi."; // Place the events in the correct sequence. // घटनाओं को सही क्रम में रखें।
+
+    std::string directionContent;
+    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        directionContent = "Place the events in the correct sequence.";
+    } else if (langCode == "hi") {
+        directionContent = "घटनाओं को सही क्रम में रखें।";
+    } else if (langCode == "ur") {
+        directionContent = "واقعات کو صحیح ترتیب دیں۔";
+    } else if (langCode == "bn") {
+        directionContent = "";
+    } else if (langCode == "sw") {
+        directionContent = "Yaweke matukio katika mpangilio ulio sahihi.";
+    }
+
     _comprehensionScene->drawQuestionTitleWithSoundButton(directionContent, _problem->audio, _gameNode);
     
     drawBlocksByGameType();

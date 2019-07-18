@@ -247,15 +247,41 @@ void LRComprehensionScene::showProblem()
     if (questionType == LRComprehensionType::ListeningOnly)
     {
         auto text = problemSet[_currentProblem]->script;
+        std::string displayText;
+        string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+        if (langCode == "en") {
+            displayText = "Listen to the story.";
+        } else if (langCode == "hi") {
+            displayText = "कहानी को सुनो।";
+        } else if (langCode == "ur") {
+            displayText = "کہانی سنیں ۔";
+        } else if (langCode == "bn") {
+            displayText = "";
+        } else if (langCode == "sw") {
+            displayText = "Sikiliza hadithi.";
+        }
         drawGuideView(false, text);
-        drawGuideTitle(LanguageManager::getInstance()->isEnglish() ? "·UUUUãæÙè ·UUUUô âéÙôÐ" : "Sikiliza hadithi."); // Listen to the story. // कहानी को सुनो।
+        drawGuideTitle(displayText);
         _currentProblem++;
     }
     else if (questionType == LRComprehensionType::ReadingOnly)
     {
         auto soundPath = problemSet[_currentProblem]->script;
+        std::string displayText;
+        string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+        if (langCode == "en") {
+            displayText = "Read the story.";
+        } else if (langCode == "hi") {
+            displayText = "कहानी पढ़ें।";
+        } else if (langCode == "ur") {
+            displayText = "کہانی پڑھیں.";
+        } else if (langCode == "bn") {
+            displayText = "";
+        } else if (langCode == "sw") {
+            displayText = "Soma hadithi.";
+        }
         drawGuideView(true, soundPath);
-        drawGuideTitle(LanguageManager::getInstance()->isEnglish() ? "·UUUUãæÙè ÂÉ¸ôÐ" : "Soma hadithi."); // कहानी पढ़ो।
+        drawGuideTitle(displayText);
         _currentProblem++;
     }
     

@@ -122,9 +122,19 @@ bool TodoLoadingScene::init(std::function<Scene*(void)> &creator, float loadingT
     addChild(loadingImage);
     
     Size imageSize = loadingImage->getContentSize();
-    
-    std::string loadingText = LanguageManager::getInstance()->isEnglish() ? "ÂýÌèÿææ ·UUUUÚð¢..." : "Tafadhali subiri...";
-    
+    std::string loadingText;
+    std::string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        loadingText = "How many?";
+    } else if (langCode == "hi") {
+        loadingText = "कितने हैं?";
+    } else if (langCode == "ur") {
+        loadingText = "";
+    } else if (langCode == "bn") {
+        loadingText = "";
+    } else if (langCode == "sw") {
+        loadingText = "Ngapi?";
+    }
     Label *loadingLabel = Label::createWithTTF(loadingText, "fonts/chanakya.ttf", 150);
     loadingLabel->setTextColor(Color4B(255, 240, 222, 255));
     loadingLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);

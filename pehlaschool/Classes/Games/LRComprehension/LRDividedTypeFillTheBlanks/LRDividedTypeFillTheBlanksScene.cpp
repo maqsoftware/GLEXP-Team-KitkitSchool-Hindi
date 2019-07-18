@@ -171,8 +171,21 @@ void LRDividedTypeFillTheBlanksScene::onEnter()
         }
     }
     */
-    
-    string directionContent = LanguageManager::getInstance()->isEnglish() ? "çÚQUUUU SÍæÙ ÖÚð¢Ð" : "Jaza nafasi."; // Fill in the blank(s). // रिक्त स्थान भरें|
+
+    std::string directionContent;
+    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        directionContent = "Fill in the blank(s).";
+    } else if (langCode == "hi") {
+        directionContent = "रिक्त स्थान भरें|";
+    } else if (langCode == "ur") {
+        directionContent = "خانہ پری کریں";
+    } else if (langCode == "bn") {
+        directionContent = "";
+    } else if (langCode == "sw") {
+        directionContent = "Jaza nafasi.";
+    }
+
     _comprehensionScene->drawQuestionTitleWithSoundButton(directionContent, _problemData->textOrSoundPath, _gameNode);
 }
 

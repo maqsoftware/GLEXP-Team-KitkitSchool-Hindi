@@ -14,6 +14,7 @@
 #include "Common/Controls/TodoSchoolBackButton.hpp"
 #include "Common/Controls/CompletePopup.hpp"
 #include "CCAppController.hpp"
+#include "../../../cocos2d/cocos/platform/CCFileUtils.h"
 
 using namespace cocos2d::ui;
 using namespace std;
@@ -474,7 +475,7 @@ void WordWindowScene::resetPuzzle()
 
 void WordWindowScene::loadData(int level)
 {
-	string P = "games/"+ resourcePath + "wordwindow_level.tsv";
+	string P = "games/"+ resourcePath + "wordwindow_level_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".tsv";
 	string S = cocos2d::FileUtils::getInstance()->getStringFromFile(P);
 	auto data = TodoUtil::readTSV(S);
 	auto Lang = LanguageManager::getInstance()->getCurrentLanguageTag();

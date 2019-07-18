@@ -149,7 +149,20 @@ void CompTraceScene::refreshChildNodes() {
     _guide->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
     _guide->setPosition(Vec2(160, 284 + kGuideCorrectionY));
     TheGameNode->addChild(_guide);
-    string directionContent = LanguageManager::getInstance()->isEnglish() ? "àæyÎ Åþðâ ·UUUUÚð¢Ð" : "Fuatilia neno."; // शब्द ट्रेस करें। // Trace the word.
+
+    std::string directionContent;
+    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        directionContent = "Trace the word.";
+    } else if (langCode == "hi") {
+        directionContent = "शब्द ट्रेस करें।";
+    } else if (langCode == "ur") {
+        directionContent = "لفظ کو ٹریس کریں.";
+    } else if (langCode == "bn") {
+        directionContent = "";
+    } else if (langCode == "sw") {
+        directionContent = "Fuatilia neno.";
+    }
     _comprehensionScene->drawQuestionTitle(directionContent, TheGameNode);
 
     TheTraceField = ([&] {

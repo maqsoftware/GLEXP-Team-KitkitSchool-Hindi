@@ -60,9 +60,21 @@ void LRAllInOneTypeQuestionScene::onEnter()
     layer->setGuideView(_questionType, _guideTextOrSoundPath);
     layer->setQuestionAnswers(_questionText, _questionSoundPath, _answers);
     _gameNode->addChild(layer);
-    
-    string directionContent = LanguageManager::getInstance()->isEnglish() ? "âãè ©}æÚ ·UUUæ ¿ØÙ ·UUUUÚð¢Ð" : "Chagua jibu sahihi."; // Select the correct answer. // सही उत्तर का चयन करें।
-    
+
+    std::string directionContent;
+    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        directionContent = "Select the correct answer.";
+    } else if (langCode == "hi") {
+        directionContent = "सही उत्तर का चयन करें।";
+    } else if (langCode == "ur") {
+        directionContent = "صحیح جواب چنیں-";
+    } else if (langCode == "bn") {
+        directionContent = "";
+    } else if (langCode == "sw") {
+        directionContent = "Chagua jibu sahihi.";
+    }
+
     if (_questionText.find("Choose:") != std::string::npos)
     {
         directionContent = "ÂæÆ âð ç×ÜæÙ ·UUUUÚÙð ·ðUUU çÜ° ç¿˜æ ·UUUæ ¿ØÙ ·UUUUÚð¢"; // Select the picture to match the text // पाठ से मिलान करने के लिए चित्र का चयन करें

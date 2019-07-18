@@ -11,6 +11,7 @@
 #include "Menu/WelcomeVideoScene.hpp"
 #include "CCAppController.hpp"
 #include "Managers/VoiceMoldManager.h"
+#include "Managers/LanguageManager.hpp"
 #include "Common/Controls/TouchEventLogger.h"
 #include "Common/Controls/TodoLoadingScene.hpp"
 #include "Managers/GameSoundManager.h"
@@ -48,8 +49,9 @@ bool SplashScene::init()
     }
     
     auto visibleSize = Director::getInstance()->getVisibleSize();
-    
-    auto sprite = Sprite::create("System/enuma.png");
+
+    std::string spriteName = "system/pehlaschool_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".png";
+    auto sprite = Sprite::create(spriteName);
     auto spriteSize = sprite->getContentSize();
     auto scale = MAX(visibleSize.width/spriteSize.width, visibleSize.height/spriteSize.height);
     sprite->setScale(scale);

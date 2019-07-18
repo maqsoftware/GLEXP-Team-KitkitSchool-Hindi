@@ -92,22 +92,22 @@ android {
         }
     }
     productFlavors {
-        general {
+        english {
+            applicationIdSuffix ".english"
+        }
+        hindi {
 
         }
-        noresource {
-
+        urdu {
+            applicationIdSuffix ".urdu"
         }
-        /*english {
-
+        bengali {
+            applicationIdSuffix ".bengali"
         }
-        swahili {
-
-        }*/
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (project.hasProperty("RELEASE_STORE_FILE")) {
                 signingConfig signingConfigs.release

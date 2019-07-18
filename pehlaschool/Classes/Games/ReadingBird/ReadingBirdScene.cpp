@@ -499,7 +499,7 @@ void ReadingBirdScene::changeMainState(MAIN_STATE state)
             
             GameSoundManager::getInstance()->playEffectSound("Main/Common/Sounds/Effect/SFX_Button.m4a");
             
-            CHARACTER1_STATE next = ((mIsBeforePronunciation == true) ? CHARACTER1_STATE::induceHappy : CHARACTER1_STATE::induceIdle);
+            CHARACTER1_STATE next = ((mIsBeforePronunciation) ? CHARACTER1_STATE::induceHappy : CHARACTER1_STATE::induceIdle);
             
             this->changeCharacter1State(next, [&]() {
                 this->changeCharacter2State(CHARACTER2_STATE::urgeCharacter);
@@ -510,7 +510,7 @@ void ReadingBirdScene::changeMainState(MAIN_STATE state)
                     auto locale = languageManager->convertLocaleTypeToCode(languageManager->getCurrentLocaleType());
 
                     JniHelper::callStaticVoidMethod(JNI_CLASS_NAME, "onPauseListeningAndRecognition");
-                    JniHelper::callStaticVoidMethod(JNI_CLASS_NAME, "playAudio", "localized/" + locale + "/" + ROOT_RESOURCE_PATH + "/effect/readaloud.m4a");
+                    JniHelper::callStaticVoidMethod(JNI_CLASS_NAME, "playAudio", "localized/" + ROOT_RESOURCE_PATH + "/effect/readaloud.m4a");
                 });
 #else
                 this->changeCharacter1State(CHARACTER1_STATE::look, [&](){
@@ -531,12 +531,12 @@ void ReadingBirdScene::changeMainState(MAIN_STATE state)
     }
     else if (state == MAIN_STATE::stop_record)
     {
-        if (isScheduled(schedule_selector(ReadingBirdScene::onStopRecord)) == true)
+        if (isScheduled(schedule_selector(ReadingBirdScene::onStopRecord)))
         {
             unschedule(schedule_selector(ReadingBirdScene::onStopRecord));
         }
         
-        if (isScheduled(schedule_selector(ReadingBirdScene::onStopRecordVolume)) == true)
+        if (isScheduled(schedule_selector(ReadingBirdScene::onStopRecordVolume)))
         {
             unschedule(schedule_selector(ReadingBirdScene::onStopRecordVolume));
         }
@@ -578,7 +578,7 @@ void ReadingBirdScene::changeMainState(MAIN_STATE state)
         changeCharacter1State(CHARACTER1_STATE::look, [&](){
             
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-            if (mbSdcardData == true)
+            if (mbSdcardData)
             {
                 JniHelper::callStaticVoidMethod(JNI_CLASS_NAME, "playAudio", SDCARD_ROOT_ANDROID + "/" + ROOT_RESOURCE_PATH + "/sound/" + mData[mCurrentProblemID - 1].mSound);
             }
@@ -658,7 +658,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
     }
     else if (state == CHARACTER1_STATE::suggest)
     {
-        if (mbShortCurrentText == true)
+        if (mbShortCurrentText)
         {
             frames = getAnimationInFile("suggest_A%04d.png", 1, 27);
             setCharacter1Sprite(frames.front());
@@ -683,7 +683,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
     {
         if (state == CHARACTER1_STATE::induceIdle)
         {
-            if (mbShortCurrentText == true)
+            if (mbShortCurrentText)
             {
                 frames = getAnimationInFile("induceldle_A%04d.png", 1, 18);
             }
@@ -694,7 +694,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
         }
         else
         {
-            if (mbShortCurrentText == true)
+            if (mbShortCurrentText)
             {
                 frames = getAnimationInFile("induceHappy_A%04d.png", 1, 18);
             }
@@ -735,7 +735,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
         }
         else
         {
-            if (mbShortCurrentText == true)
+            if (mbShortCurrentText)
             {
                 frames = getAnimationInFile("look_A%04d.png", 10, 15);
             }
@@ -757,7 +757,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
     }
     else if (state == CHARACTER1_STATE::stopLook)
     {
-        if (mbShortCurrentText == true)
+        if (mbShortCurrentText)
         {
             frames = getAnimationInFile("stopLook_A%04d.png", 1, 15);
         }
@@ -777,7 +777,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
     }
     else if (state == CHARACTER1_STATE::listen)
     {
-        if (mbShortCurrentText == true)
+        if (mbShortCurrentText)
         {
             frames = getAnimationInFile("listen_A%04d.png", 1, 20);
         }
@@ -792,7 +792,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
     }
     else if (state == CHARACTER1_STATE::stopListen)
     {
-        if (mbShortCurrentText == true)
+        if (mbShortCurrentText)
         {
             frames = getAnimationInFile("stopListen_A%04d.png", 1, 17);
         }
@@ -812,7 +812,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
     }
     else if (state == CHARACTER1_STATE::speakHappy)
     {
-        if (mbShortCurrentText == true)
+        if (mbShortCurrentText)
         {
             frames = getAnimationInFile("induceldle_A%04d.png", 1, 1);
         }
@@ -830,7 +830,7 @@ void ReadingBirdScene::changeCharacter1State(CHARACTER1_STATE state, std::functi
     }
     else if (state == CHARACTER1_STATE::speakUnhappy)
     {
-        if (mbShortCurrentText == true)
+        if (mbShortCurrentText)
         {
             frames = getAnimationInFile("speakUnhappy1_A%04d.png", 1, 1);
         }
@@ -941,7 +941,7 @@ void ReadingBirdScene::processStopLook()
 #endif
 
         this->changeCharacter2State(CHARACTER2_STATE::none);
-        CHARACTER1_STATE next2 = ((mIsBeforePronunciation == true) ? CHARACTER1_STATE::induceHappy : CHARACTER1_STATE::induceIdle);
+        CHARACTER1_STATE next2 = ((mIsBeforePronunciation) ? CHARACTER1_STATE::induceHappy : CHARACTER1_STATE::induceIdle);
         this->changeCharacter1State(next2, [=]() {
             
             this->changeMainState(MAIN_STATE::listen_original);
@@ -989,7 +989,7 @@ void ReadingBirdScene::checkVolume(int volume)
     }
     else
     {
-        if (isScheduled(schedule_selector(ReadingBirdScene::onStopRecordVolume)) == false)
+        if (!isScheduled(schedule_selector(ReadingBirdScene::onStopRecordVolume)))
         {
             scheduleOnce(schedule_selector(ReadingBirdScene::onStopRecordVolume), RECORD_VOLUME_TIMEOUT_SEC);
         }
@@ -1028,7 +1028,7 @@ void ReadingBirdScene::setSdcardData(bool bSdcardData)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     mbSdcardData = bSdcardData;
     CCLOG("setSdcardData : %d", (int)mbSdcardData);
-    if (mbSdcardData == true)
+    if (mbSdcardData)
     {
         SDCARD_ROOT_ANDROID = JniHelper::callStaticStringMethod(JNI_CLASS_NAME, "getExternalStorageDirectory");
     }
@@ -1066,9 +1066,9 @@ void ReadingBirdScene::changeTalkingAnimation(int volume, bool recursive)
             if (volume <= SILENT_VOLUME)
             {
                 mIsSilent = true;
-                if (mCharacter1SpeakType != SPEAK_TYPE::silent && recursive == true)
+                if (mCharacter1SpeakType != SPEAK_TYPE::silent && recursive)
                 {
-                    if (mbShortCurrentText == true)
+                    if (mbShortCurrentText)
                     {
                         if (mCharacter1State == CHARACTER1_STATE::speakHappy)
                         {
@@ -1101,13 +1101,13 @@ void ReadingBirdScene::changeTalkingAnimation(int volume, bool recursive)
             else
             {
                 mIsSilent = false;
-                if (mCharacter1SpeakType == SPEAK_TYPE::silent || recursive == true)
+                if (mCharacter1SpeakType == SPEAK_TYPE::silent || recursive)
                 {
                     mCharacter1SpeakType = (SPEAK_TYPE)cocos2d::RandomHelper::random_int(1, 3);
                     
                     if (mCharacter1State == CHARACTER1_STATE::speakHappy)
                     {
-                        if (mbShortCurrentText == true)
+                        if (mbShortCurrentText)
                         {
                             if (mCharacter1SpeakType == SPEAK_TYPE::type_1)
                             {
@@ -1140,7 +1140,7 @@ void ReadingBirdScene::changeTalkingAnimation(int volume, bool recursive)
                     }
                     else
                     {
-                        if (mbShortCurrentText == true)
+                        if (mbShortCurrentText)
                         {
                             if (mCharacter1SpeakType == SPEAK_TYPE::type_1)
                             {
@@ -1178,7 +1178,7 @@ void ReadingBirdScene::changeTalkingAnimation(int volume, bool recursive)
                     setCharacter1Sprite(frames.front());
                     
                     mCharacter1->runAction(Sequence::create(Animate::create(animation), CallFunc::create([=] {
-                        if (mIsSilent == false)
+                        if (!mIsSilent)
                         {
                             changeTalkingAnimation(TRIGGER_VOLUME, true);
                         }
@@ -1199,7 +1199,7 @@ void ReadingBirdScene::changeTalkingAnimation(int volume, bool recursive)
             if (volume <= SILENT_VOLUME)
             {
                 mIsSilent = true;
-                if (mCharacter2SpeakType != SPEAK_TYPE::silent && recursive == true)
+                if (mCharacter2SpeakType != SPEAK_TYPE::silent && recursive)
                 {
                     frames = getAnimationInFile("urgeCharacter%04d.png", 30, 30);
                     animation = Animation::createWithSpriteFrames(frames, 1.0f/ANIMATION_FPS);
@@ -1212,7 +1212,7 @@ void ReadingBirdScene::changeTalkingAnimation(int volume, bool recursive)
             else
             {
                 mIsSilent = false;
-                if (mCharacter2SpeakType == SPEAK_TYPE::silent || recursive == true)
+                if (mCharacter2SpeakType == SPEAK_TYPE::silent || recursive)
                 {
                     frames = getAnimationInFile("urgeCharacter%04d.png", 31, 96);
                     mCharacter2SpeakType = SPEAK_TYPE::type_1;
@@ -1222,7 +1222,7 @@ void ReadingBirdScene::changeTalkingAnimation(int volume, bool recursive)
                     setCharacter2Sprite(frames.front());
                     
                     mCharacter2->runAction(Sequence::create(Animate::create(animation), CallFunc::create([=] {
-                        if (mIsSilent == false)
+                        if (!mIsSilent)
                         {
                             changeTalkingAnimation(TRIGGER_VOLUME, true);
                         }
@@ -1308,7 +1308,7 @@ vector<int> ReadingBirdScene::levelIDsFor(bool isSdCard, string sdcardPath)
 {
     vector<int> result;
     string p;
-    if (isSdCard == true)
+    if (!isSdCard)
     {
         p = sdcardPath + "/Games/" + ASSET_PREFIX + "/ReadingBird_Levels.tsv";
     }
