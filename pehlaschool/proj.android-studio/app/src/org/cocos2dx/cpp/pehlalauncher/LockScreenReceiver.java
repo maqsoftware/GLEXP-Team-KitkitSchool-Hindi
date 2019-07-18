@@ -19,7 +19,7 @@ public class LockScreenReceiver extends BroadcastReceiver {
 
         String action = intent.getAction();
 
-        //If the screen was just turned on or it just booted up, start your Lock Activity
+        //If the screen was just turned on or it just booted up, start your Lock activity
         if (action.equals(Intent.ACTION_SCREEN_OFF) || action.equals(Intent.ACTION_BOOT_COMPLETED)) {
             Log.d("LockScreenReceiver", "Start intent");
 //            Intent i = new Intent(context, LockScreenActivity.class);

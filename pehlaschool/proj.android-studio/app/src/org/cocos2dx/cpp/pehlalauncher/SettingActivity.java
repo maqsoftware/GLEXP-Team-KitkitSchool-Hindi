@@ -224,6 +224,7 @@ public class SettingActivity extends KitKitLoggerActivity {
             Intent i = new Intent(Intent.ACTION_MAIN);
             i.setComponent(new ComponentName("com.maq.pehlaschool", "org.cocos2dx.cpp.SplashScreenActivity"));
             i.putExtra("clearAppData", true);
+            i.putExtra("appModule", "learningModule");
             startActivity(i);
 
         } catch (Exception e) {

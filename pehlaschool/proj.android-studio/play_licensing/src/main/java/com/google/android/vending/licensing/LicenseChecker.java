@@ -319,7 +319,7 @@ public class LicenseChecker implements ServiceConnection {
      * open connections can be cleaned up.
      * <p>
      * Failure to call this method can result in a crash under certain
-     * circumstances, such as during screen rotation if an Activity requests the
+     * circumstances, such as during screen rotation if an activity requests the
      * license check or when the user exits the application.
      */
     public synchronized void onDestroy() {

@@ -24,7 +24,7 @@ import android.widget.ImageView;
 
 /**
  * <pre>
- * Activity 종료시 해당 남아있는 View 에 관련한 resource 를 자동으로 해제 해주는 class
+ * activity 종료시 해당 남아있는 View 에 관련한 resource 를 자동으로 해제 해주는 class
  * </pre>
  *
  * @author Yong-Soo Hong

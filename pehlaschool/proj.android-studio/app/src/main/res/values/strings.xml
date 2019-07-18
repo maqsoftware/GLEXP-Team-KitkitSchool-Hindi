@@ -70,4 +70,24 @@
     <string name="mainFileVersion" translatable="false">mainFileVersion</string>
     <string name="patchFileVersion" translatable="false">patchFileVersion</string>
 
+    <string name="app_name_library" translatable="false">Library: पहला स्कूल - Pehla School</string>
+    <string name="app_name_hindi" translatable="false">Library: पहला स्कूल - Pehla School</string>
+    <string name="app_name_urdu" translatable="false">Library: Pehla School - پہلا اسکول </string>
+    <string name="description" translatable="false">Media Controls</string>
+    <string name="tab_video" translatable="false">VIDEOS\nवीडियो</string>
+    <string name="tab_book" translatable="false">BOOKS\nकिताबें</string>
+    <string name="tab_video_urdu" translatable="false">VIDEOS\nویڈیوز</string>
+    <string name="tab_book_urdu" translatable="false">BOOKS\nکتابیں</string>
+    <string name="button_next" translatable="false">Next</string>
+    <string name="button_cancel" translatable="false">Cancel</string>
+    <string name="button_more" translatable="false">More</string>
+    <string name="button_less" translatable="false">Less</string>
+    <string name="title_activity_splash_screen" translatable="false">SplashScreenActivity</string>
+    <string name="content_extraction_hindi" translatable="false">यह प्रक्रिया केवल एक बार की जाएगी। इसमें १० मिनट तक का समय लग सकता है।</string>
+    <string name="content_extraction_urdu" translatable="false">یہ عمل صرف ایک بار کیا جائے گا. اس میں 10 منٹ تک لگ سکتا ہے.</string>
+    <string name="help_button_description" translatable="false">Help button</string>
+    <string name="video_button_shadow_description" translatable="false">Video button shadow</string>
+    <string name="video_button_description" translatable="false">Video button</string>
+    <string name="books_button_shadow_description" translatable="false">Books button shadow</string>
+    <string name="books_button_description" translatable="false">Books button</string>
 </resources>

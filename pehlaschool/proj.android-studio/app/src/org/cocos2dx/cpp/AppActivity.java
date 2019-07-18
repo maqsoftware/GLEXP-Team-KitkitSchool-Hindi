@@ -227,10 +227,10 @@ public class AppActivity extends Cocos2dxActivity {
     }
 
     public static String getResourceUri(String filename) {
-        File fileCheck = new File(Environment.getExternalStorageDirectory() + File.separator + "Android/data/com.maq.pehlaschool.library/files");
+        File fileCheck = new File(Environment.getExternalStorageDirectory() + File.separator + "Android/data/com.maq.pehlaschool/files");
         if (fileCheck.exists()) {
             String appLanguage = Cocos2dxHelper.getStringForKey("appLanguage", "en-us").toLowerCase();
-            String pathExternalRaw = Environment.getExternalStorageDirectory() + File.separator + "Android/data/com.maq.pehlaschool.library/files" + File.separator + appLanguage + File.separator + "res" + File.separator + "raw";
+            String pathExternalRaw = Environment.getExternalStorageDirectory() + File.separator + "Android/data/com.maq.pehlaschool/files" + File.separator + appLanguage + File.separator + "res" + File.separator + "raw";
 
             File resourceFile = new File(pathExternalRaw + File.separator + filename + ".mp4");
             Log.i(TAG, "resourcePath : " + resourceFile.getAbsolutePath() + ", exists : " + resourceFile.exists());
@@ -239,7 +239,7 @@ public class AppActivity extends Cocos2dxActivity {
             }
         } else {
             try {
-                String packageName = "com.maq.pehlaschool.library";
+                String packageName = "com.maq.pehlaschool";
 
                 Context libraryContext = _activity.createPackageContext(packageName, 0);
                 int rId = libraryContext.getResources().getIdentifier(filename, "raw", libraryContext.getPackageName());
@@ -485,6 +485,7 @@ public class AppActivity extends Cocos2dxActivity {
 
     private void startSplashScreenActivity() {
         Intent intent = new Intent(AppActivity.this, SplashScreenActivity.class);
+        intent.putExtra("appModule", "learningModule");
         startActivity(intent);
         finish();
     }

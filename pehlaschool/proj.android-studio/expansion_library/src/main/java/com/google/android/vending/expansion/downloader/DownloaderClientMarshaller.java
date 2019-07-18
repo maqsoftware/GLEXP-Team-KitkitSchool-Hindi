@@ -239,7 +239,7 @@ public class DownloaderClientMarshaller {
      * connection, even if Market delivers all of the files.
      * 
      * @param context Your application Context.
-     * @param notificationClient A PendingIntent to start the Activity in your application
+     * @param notificationClient A PendingIntent to start the activity in your application
      * that shows the download progress and which will also start the application when download
      * completes.
      * @param serviceClass the class of your {@link imp.DownloaderService} implementation

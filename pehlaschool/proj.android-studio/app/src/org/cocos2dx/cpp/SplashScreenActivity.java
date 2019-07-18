@@ -42,6 +42,7 @@ public class SplashScreenActivity extends Activity {
     int storedMainFileVersion;
     int storedPatchFileVersion;
     boolean isExtractionRequired = false;
+    public static boolean isLearningModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,32 @@ public class SplashScreenActivity extends Activity {
         int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
         setContentView(activity_splash_screen);
+
+        // render text based on the calling application
+        Intent appIntent = getIntent();
+        Bundle extras = appIntent.getExtras();
+        if (extras != null) {
+            boolean removeExtra;
+            String intentValue = extras.getString("appModule");
+            if (intentValue != null && intentValue.equalsIgnoreCase("learningModule")) {
+                isLearningModule = true;
+                removeExtra = true;
+            } else if (intentValue != null && intentValue.equalsIgnoreCase("libraryModule")){
+                isLearningModule = false;
+                removeExtra = true;
+            } else {
+                removeExtra = false;
+            }
+            if (removeExtra) {
+                // clear the intent by removing the extended data from the intent
+                // this is done to get the latest extended data of the intent
+                appIntent.removeExtra("appModule");
+                setIntent(appIntent);
+            }
+        } else {
+            // set the default value of the variable on successive calls
+            isLearningModule = false;
+        }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -65,7 +92,6 @@ public class SplashScreenActivity extends Activity {
             isExtractionRequired = isExpansionExtractionRequired(storedMainFileVersion, storedPatchFileVersion);
             // If main or patch file is updated, the extraction process needs to be performed again
             if (isExtractionRequired) {
-                System.out.println("Splash onCreate: isExtractionRequired = " + isExtractionRequired);
                 new DownloadFile().execute(null, null, null);
             }
         }
@@ -106,13 +132,20 @@ public class SplashScreenActivity extends Activity {
     }
 
     /* function to call the main application after extraction */
-    public void toCallApplication() {
-        mainActivityIntent = new Intent(this, AppActivity.class);
-        startActivity(mainActivityIntent);
-        finish();
+    public void toCallApplication(boolean isLearningModule) {
+        if (isLearningModule) {
+            mainActivityIntent = new Intent(this, AppActivity.class);
+            startActivity(mainActivityIntent);
+            finish();
+        } else {
+            mainActivityIntent = new Intent(this, org.cocos2dx.cpp.library.activity.SelectActivity.class);
+            startActivity(mainActivityIntent);
+            finish();
+        }
+
     }
 
-    public void unzipFile() {
+    public void unzipFile(boolean isLearningModule) {
         int totalZipSize = getTotalExpansionFileSize();
         try {
             for (DownloadExpansionFile.XAPKFile xf : xAPKS) {
@@ -129,7 +162,7 @@ public class SplashScreenActivity extends Activity {
                     zipHandler.close();
                 }
             }
-            toCallApplication();
+            toCallApplication(isLearningModule);
         } catch (IOException e) {
             System.out.println("Could not extract assets");
             System.out.println("Stack trace:" + e);
@@ -175,7 +208,7 @@ public class SplashScreenActivity extends Activity {
         @Override
         protected String doInBackground(String... sUrl) {
             if (isStorageSpaceAvailable()) {
-                unzipFile();
+                unzipFile(isLearningModule);
             } else {
                 SplashScreenActivity.this.runOnUiThread(new Runnable() {
                     public void run() {

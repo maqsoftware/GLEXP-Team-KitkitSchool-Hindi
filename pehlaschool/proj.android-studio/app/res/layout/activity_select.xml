@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name_hindi"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/btn_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/help_button_description"
+            android:onClick="showTutorialVideo"
+            android:src="@drawable/library_button_help"
+            android:visibility="gone" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.98"
+        android:background="@drawable/library_image_background"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/video_button_shadow_description"
+                    android:padding="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/library_button_shadow" />
+
+                <ImageButton
+                    android:id="@+id/button_video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/video_button_description"
+                    android:onClick="onClickVideo"
+                    android:padding="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/library_button_video" />
+            </FrameLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/video_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/tab_video"
+                android:textAlignment="center"
+                android:textColor="#6b6b6b"
+                android:textSize="30sp"
+                app:autoSizeTextType="uniform" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/books_button_shadow_description"
+                    android:padding="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/library_button_shadow" />
+
+                <ImageButton
+                    android:id="@+id/button_book"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/books_button_description"
+                    android:onClick="onClickBook"
+                    android:padding="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/library_button_book" />
+            </FrameLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/book_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/tab_book"
+                android:textAlignment="center"
+                android:textColor="#6b6b6b"
+                android:textSize="30sp"
+                app:autoSizeTextType="uniform" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

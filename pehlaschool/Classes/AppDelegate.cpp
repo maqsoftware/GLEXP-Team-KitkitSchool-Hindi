@@ -1,4 +1,3 @@
-
 #include "AppDelegate.h"
 #include "SplashScene.hpp"
 #include "Managers/LogManager.hpp"
@@ -9,6 +8,11 @@
 #include "Menu/MainScene.hpp"
 #include "Menu/WelcomeVideoScene.hpp"
 #include "CCAppController.hpp"
+#include "MainScene.h"
+#include <string>
+#include "Common/Controls/TodoLoadingScene.hpp"
+#include "Managers/LanguageManager.hpp"
+#include "Utils/TodoUtil.h"
 
 // #define USE_AUDIO_ENGINE 1
 #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -21,7 +25,9 @@
 #include "audio/include/AudioEngine.h"
 using namespace cocos2d::experimental;
 #elif USE_SIMPLE_AUDIO_ENGINE
+
 #include "audio/include/SimpleAudioEngine.h"
+
 using namespace CocosDenshion;
 #endif
 
@@ -29,17 +35,16 @@ USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(2560, 1800);
 //static cocos2d::Size desktopSize = cocos2d::Size(640, 450);
-static cocos2d::Size desktopSize = cocos2d::Size(2560, 1800)/2; // pixel-c
+static cocos2d::Size desktopSize = cocos2d::Size(2560, 1800) / 2; // pixel-c
 //static cocos2d::Size desktopSize = cocos2d::Size(1920, 1080)/2; // 16:9
+static cocos2d::Size macResolutionSize = cocos2d::Size(1024, 720);
 
-Scene* findMainScene();
+Scene *findMainScene();
 
-AppDelegate::AppDelegate()
-{
+AppDelegate::AppDelegate() {
 }
 
-AppDelegate::~AppDelegate() 
-{
+AppDelegate::~AppDelegate() {
 #if USE_AUDIO_ENGINE
     AudioEngine::end();
 #elif USE_SIMPLE_AUDIO_ENGINE
@@ -49,8 +54,7 @@ AppDelegate::~AppDelegate()
 
 // if you want a different context, modify the value of glContextAttrs
 // it will affect all platforms
-void AppDelegate::initGLContextAttrs()
-{
+void AppDelegate::initGLContextAttrs() {
     // set OpenGL context attributes: red,green,blue,alpha,depth,stencil
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
 
@@ -59,8 +63,7 @@ void AppDelegate::initGLContextAttrs()
 
 // if you want to use the package manager to install more packages,  
 // don't modify or remove this function
-static int register_all_packages()
-{
+static int register_all_packages() {
     return 0; //flag for packages manager
 }
 
@@ -68,7 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-    if(!glview) {
+    if (!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
         glview = GLViewImpl::createWithRect("PehlaSchool", cocos2d::Rect(0, 0, desktopSize.width, desktopSize.height));
 #else
@@ -84,13 +87,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0f / 60);
 
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::FIXED_HEIGHT);
+    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height,
+                                    ResolutionPolicy::FIXED_HEIGHT);
 
 
     register_all_packages();
-    
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-    
+
     string path = FileUtils::getInstance()->getWritablePath() + "PehlaSchool";
     
     if (FileUtils::getInstance()->isFileExist(path+"/location.txt")) {
@@ -103,33 +107,25 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    FileUtils::getInstance()->addSearchPath(path);
 //    FileUtils::getInstance()->addSearchPath(path+"/Games");
 //
-    
-#endif
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    string devicePath = "/storage/emulated/0/PehlaSchool/";
-    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files/"; // can be changed to any other resource location
-    /*if (FileUtils::getInstance()->isFileExist(devicePath + "cache.txt")) {
-        FileUtils::getInstance()->setDefaultResourceRootPath(devicePath);
-    }*/
-    FileUtils::getInstance()->setDefaultResourceRootPath(devicePath);
 
 #endif
-    
-    // search path will be set in LanguageManager
-    
-    //FileUtils::getInstance()->addSearchPath("res");
-    //FileUtils::getInstance()->addSearchPath("Games");
-    
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files/"; // can be changed to any other resource location
+    if (FileUtils::getInstance()->isDirectoryExist(devicePath)) {
+        FileUtils::getInstance()->setDefaultResourceRootPath(devicePath);
+    }
+#endif
+
     CCAppController::sharedAppController();
-    
+
     // shortcut
     //{ CCAppController::sharedAppController()->startGame("EggQuizLiteracy", 0, "PostTest_N"); return true; }
-    
+
     auto scene = SplashScene::createScene();
     scene->setName("SplashScene");
     director->runWithScene(TouchEventLogger::wrapScene(scene));
-    
+
     /* log test
      LogManager::getInstance()->logEvent("key", "v1");
      LogManager::getInstance()->logEvent("key", "v2");
@@ -146,11 +142,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
      LogManager::getInstance()->logEvent("volumeTest", "abcdefghijklmnopqrstuvwxyz");
      }
      */
-    
-    
-    
-    CacheManager::getInstance()->loadBirdCache([this](){
-        Director::getInstance()->replaceScene(TouchEventLogger::wrapScene(MainScene::createScene()));
+
+
+
+    CacheManager::getInstance()->loadBirdCache([this]() {
+        Director::getInstance()->replaceScene(
+                TouchEventLogger::wrapScene(MainScene::createScene()));
     });
     return true;
 }
@@ -177,54 +174,48 @@ void AppDelegate::applicationWillEnterForeground() {
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     SimpleAudioEngine::getInstance()->resumeAllEffects();
 #endif
-    
+
     UserManager::getInstance()->refreshUsername();
     //Director::getInstance()->getOpenGLView()->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::FIXED_HEIGHT);
-    
+
     // if you use SimpleAudioEngine, it must resume here
     //CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     CCLOG("applicationWillEnterForeground");
     auto test = SplashScene::getLaunchString();
-    CCLOG("applicationWillEnterForeground : %s",test.c_str());
-    if (test.length()>0) {
+    CCLOG("applicationWillEnterForeground : %s", test.c_str());
+    if (test.length() > 0) {
         auto scene = SplashScene::createScene();
-        
+
         Director::getInstance()->replaceScene(scene);
-        
+
     }
-    
-    Scene * mainScene = findMainScene();
+
+    Scene *mainScene = findMainScene();
     if (mainScene != nullptr) {
         mainScene->resume();
     }
 }
 
-Scene* findMainScene()
-{
-    Scene* result = nullptr;
+Scene *findMainScene() {
+    Scene *result = nullptr;
     const int MAIN_SCENE_ID = 250;
     auto director = Director::getInstance();
-    Scene* scene = nullptr;
-    if (director != nullptr)
-    {
+    Scene *scene = nullptr;
+    if (director != nullptr) {
         scene = director->getRunningScene();
-        if (scene != nullptr)
-        {
-            result = (Scene*)(scene->getChildByTag(MAIN_SCENE_ID));
-            if (result == nullptr)
-            {
+        if (scene != nullptr) {
+            result = (Scene *) (scene->getChildByTag(MAIN_SCENE_ID));
+            if (result == nullptr) {
                 Vector<Node *> children = scene->getChildren();
-                for (Node * child : children)
-                {
-                    result = (Scene*)(child->getChildByTag(MAIN_SCENE_ID));
-                    if (result != nullptr)
-                    {
+                for (Node *child : children) {
+                    result = (Scene *) (child->getChildByTag(MAIN_SCENE_ID));
+                    if (result != nullptr) {
                         break;
                     }
                 }
             }
         }
     }
-    
+
     return result;
 }

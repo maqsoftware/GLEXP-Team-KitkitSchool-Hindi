@@ -1,10 +1,8 @@
 package org.cocos2dx.cpp.pehlalauncher;
 
-import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -12,8 +10,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
@@ -23,18 +19,13 @@ import com.maq.pehlaschool.R;
  */
 
 public class VideoPlayerActivity extends KitKitLoggerActivity implements SurfaceHolder.Callback {
-    private static String MAIN_APP_PACKAGE_NAME = null;
-    private static String LIBRARY_PACKAGE_NAME = null;
-    private static String WRITING_BOARD_PACKAGE_NAME = null;
     public String video = "";
     ImageButton mVideoCloseButton;
-    TextView mInstallAppButton;
     private MediaPlayer mMediaPlayer;
     private SurfaceView mVideoView;
     private int mCurrentPosition;
     private boolean mbPause;
     private String mVideoFileName;
-    private String packageName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +37,8 @@ public class VideoPlayerActivity extends KitKitLoggerActivity implements Surface
 
         mVideoView = findViewById(R.id.videoSurface);
         mVideoCloseButton = findViewById(R.id.videoCloseButton);
-        mInstallAppButton = findViewById(R.id.installAppButton);
 
         mVideoCloseButton.setVisibility(View.VISIBLE);
-        mInstallAppButton.setVisibility(View.VISIBLE);
-
-        MAIN_APP_PACKAGE_NAME = "com.maq.pehlaschool";
-        LIBRARY_PACKAGE_NAME = "com.maq.pehlaschool.library";
-        WRITING_BOARD_PACKAGE_NAME = "org.cocos2dx.cpp.writingboard";
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -65,7 +50,6 @@ public class VideoPlayerActivity extends KitKitLoggerActivity implements Surface
             @Override
             public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
                 mVideoCloseButton.setVisibility(View.INVISIBLE);
-                mInstallAppButton.setVisibility(View.INVISIBLE);
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return false;
@@ -78,23 +62,11 @@ public class VideoPlayerActivity extends KitKitLoggerActivity implements Surface
         mVideoView.getHolder().addCallback(this);
 
         if (video.equals("writing_board")) {
-            if (appLanguage != null && appLanguage.equals("sw-TZ")) {
-                mVideoFileName = "tutorial_writingboard_sw.mp4";
-            } else {
+            if (appLanguage == null || !appLanguage.equals("sw-TZ")) {
                 mVideoFileName = "tutorial_writingboard_en.mp4";
             }
-            packageName = WRITING_BOARD_PACKAGE_NAME;
-        } else if (video.equals("main_app_demo_video")) {
-            mVideoFileName = "main_app_demo.mp4";
-            packageName = MAIN_APP_PACKAGE_NAME;
-        } else if (video.equals("library_app_demo")) {
-            mVideoFileName = "library_app_demo.mp4";
-            packageName = LIBRARY_PACKAGE_NAME;
         } else {
-            if (appLanguage != null && appLanguage.equals("sw-TZ")) {
-                mVideoFileName = "sw_vdo_tut_welcome.m4v";
-
-            } else {
+            if (appLanguage == null || !appLanguage.equals("sw-TZ")) {
                 mVideoFileName = "en_vdo_tut_welcome.m4v";
             }
         }
@@ -105,35 +77,10 @@ public class VideoPlayerActivity extends KitKitLoggerActivity implements Surface
         mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                if (video.equals("main_app_demo_video") || video.equals("library_app_demo")) {
-                    try {
-// Stop the video playback
-                        mVideoCloseButton.setVisibility(View.INVISIBLE);
-                        mInstallAppButton.setVisibility(View.INVISIBLE);
-                        finish();
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-// Redirect the user to an app on Google Play Store
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
-                    } catch (android.content.ActivityNotFoundException anfe) {
-                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
+                if (video.equals("writing_board")) {
                     finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 }
-            }
-        });
-
-        mInstallAppButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-// Stop the video playback
-                mVideoCloseButton.setVisibility(View.INVISIBLE);
-                mInstallAppButton.setVisibility(View.INVISIBLE);
-                finish();
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-// Redirect the user to an app on Google Play Store
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
             }
         });
 
@@ -141,7 +88,6 @@ public class VideoPlayerActivity extends KitKitLoggerActivity implements Surface
             @Override
             public void onClick(View v) {
                 mVideoCloseButton.setVisibility(View.INVISIBLE);
-                mInstallAppButton.setVisibility(View.INVISIBLE);
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

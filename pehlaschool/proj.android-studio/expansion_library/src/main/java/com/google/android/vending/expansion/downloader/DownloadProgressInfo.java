@@ -23,7 +23,7 @@ import android.os.Parcelable;
 /**
  * This class contains progress information about the active download(s).
  *
- * When you build the Activity that initiates a download and tracks the
+ * When you build the activity that initiates a download and tracks the
  * progress by implementing the {@link IDownloaderClient} interface, you'll
  * receive a DownloadProgressInfo object in each call to the {@link
  * IDownloaderClient#onDownloadProgress} method. This allows you to update

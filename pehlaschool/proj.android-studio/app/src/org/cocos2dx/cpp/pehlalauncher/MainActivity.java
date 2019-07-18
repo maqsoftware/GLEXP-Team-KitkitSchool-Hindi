@@ -347,7 +347,6 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             }
         });
 
-        final String libraryAppPackageName = "com.maq.pehlaschool.library";
         ImageButton libraryButton = findViewById(R.id.button_library);
 
         libraryButton.setOnClickListener(new View.OnClickListener() {
@@ -355,15 +354,10 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
             public void onClick(View view) {
                 if (view.isEnabled()) {
                     try {
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.setComponent(new ComponentName(libraryAppPackageName, "com.maq.pehlaschool.library.SelectActivity"));
-                        startActivity(i);
+                        Intent libraryApp = new Intent(MainActivity.this, org.cocos2dx.cpp.library.activity.SelectActivity.class);
+                        startActivity(libraryApp);
                     } catch (Exception e) {
-                        Intent i = new Intent(MainActivity.this, VideoPlayerActivity.class);
-                        i.putExtra("video", "library_app_demo");
-                        startActivity(i);
-                        Toast.makeText(MainActivity.this, "Click the install button to download this Library app", Toast.LENGTH_LONG).show();
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        e.printStackTrace();
                     }
                 }
             }

@@ -175,7 +175,7 @@ std::string GameVideoScene::getVideoFile(std::string filename)
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 //    string devicePath = "/sdcard/Library";
-    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool.library/files";
+    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files";
     if (FileUtils::getInstance()->isFileExist(devicePath + "/cache.txt")) {
         path = devicePath;
         path = path + "/" + currentLocale + "/res/raw/" + filename + ".mp4";

@@ -40,4 +40,8 @@
     <color name="bg_color_4">#ffdc14</color>
     <color name="bg_color_5">#373737</color>
 
+    <color name="colorPrimaryLibrary">#1D9DE2</color>
+    <color name="colorPrimaryDarkLibrary">#303F9F</color>
+    <color name="colorAccentLibrary">#1D9DE2</color>
+
 </resources>
