@@ -178,7 +178,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/xprize_about_image_enuma" />
+                    android:src="@drawable/about_image_maqsoftware" />
 
                 <TextView
                     android:layout_width="wrap_content"

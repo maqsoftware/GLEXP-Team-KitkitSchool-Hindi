@@ -1,13 +1,13 @@
 <resources>
     <string name="content_extraction" translatable="false">यह प्रक्रिया केवल एक बार की जाएगी। इसमें १० मिनट तक का समय लग सकता है।</string>
     <string name="content_extraction_english" translatable="false">This process will be done only once. It can take up to 10 minutes.</string>
-    <string name="tools_activity_title">More apps</string>
+    <string name="tools_activity_title">Tools</string>
     <string name="user_default_id">user0</string>
     <string name="launcher_title">पहला स्कूल - Pehla School</string>
     <string name="btn_setting">Settings</string>
     <string name="btn_credit">Credit</string>
     <string name="about_activity_title">About</string>
-    <string name="enuma_info">Enuma, Inc.\nhttp://enuma.com\nxpsupport@enuma.com</string>
+    <string name="enuma_info">MAQ Software\nhttps://maqsoftware.com/contact\neducation@maqsoftware.com</string>
     <string name="password">Password</string>
     <string name="cancel">Cancel</string>
     <string name="go_setting">Go to Android Settings</string>
