@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
+import static org.cocos2dx.cpp.pehlalauncher.MainActivity.PACKAGE_NAME;
+
 /**
  * Created by yshong on 2018. 4. 13..
  */
@@ -51,7 +53,7 @@ public class VideoPlayerActivity extends KitKitLoggerActivity implements Surface
         mVideoCloseButton.setVisibility(View.VISIBLE);
         mInstallAppButton.setVisibility(View.VISIBLE);
 
-        MAIN_APP_PACKAGE_NAME = "com.maq.pehlaschool";
+        MAIN_APP_PACKAGE_NAME = PACKAGE_NAME;
         LIBRARY_PACKAGE_NAME = "com.maq.pehlaschool.library";
         WRITING_BOARD_PACKAGE_NAME = "org.cocos2dx.cpp.writingboard";
 

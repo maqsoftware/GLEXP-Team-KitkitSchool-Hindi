@@ -65,6 +65,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     public static final String TEMP_ZIP_FOLDER_NAME = "TEMP";
     public static final String UPLOAD_TIME_RECORD_FILE = "upload_time.txt";
     public static final String PATH_IMAGE_LOG_WRITING_BOARD = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "writingboard" + File.separator + "log_image" + File.separator;
+    public static String PACKAGE_NAME;
     public static MainActivity _activity;
     public static String TAG = "MainActivity";
     private static Thread logUploader = null;
@@ -327,6 +328,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         _activity = this;
+        PACKAGE_NAME = getPackageName();
         setContentView(R.layout.activity_main);
         Util.hideSystemUI(this);
         cntx = getBaseContext();

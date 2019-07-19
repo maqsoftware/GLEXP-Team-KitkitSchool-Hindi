@@ -45,6 +45,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.cocos2dx.cpp.pehlalauncher.MainActivity.PACKAGE_NAME;
+
 /**
  * Created by ingtellect on 8/7/17.
  */
@@ -222,7 +224,7 @@ public class SettingActivity extends KitKitLoggerActivity {
     public void onClickClearAppdata(View v) {
         try {
             Intent i = new Intent(Intent.ACTION_MAIN);
-            i.setComponent(new ComponentName("com.maq.pehlaschool", "org.cocos2dx.cpp.SplashScreenActivity"));
+            i.setComponent(new ComponentName(PACKAGE_NAME, "org.cocos2dx.cpp.SplashScreenActivity"));
             i.putExtra("clearAppData", true);
             startActivity(i);
 

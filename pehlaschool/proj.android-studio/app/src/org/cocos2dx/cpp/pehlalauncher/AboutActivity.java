@@ -19,6 +19,8 @@ import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.PehlaSchoolApplication;
 
+import static org.cocos2dx.cpp.pehlalauncher.MainActivity.PACKAGE_NAME;
+
 
 /**
  * Created by ingtellect on 1/10/17.
@@ -72,7 +74,7 @@ public class AboutActivity extends KitKitLoggerActivity implements PasswordDialo
         TextView versionTextView = findViewById(R.id.version_textView);
         final PackageManager pm = getApplicationContext().getPackageManager();
 
-        final String pehlaSchoolPackageName = "com.maq.pehlaschool";
+        final String pehlaSchoolPackageName = PACKAGE_NAME;
         try {
             PackageInfo kitkitPInfo = pm.getPackageInfo(pehlaSchoolPackageName, 0);
             ApplicationInfo kitkitAInfo = pm.getApplicationInfo(pehlaSchoolPackageName, 0);

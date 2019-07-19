@@ -1,9 +1,10 @@
 <resources>
-    <string name="content_extraction" translatable="false">यह प्रक्रिया केवल एक बार की जाएगी। इसमें १० मिनट तक का समय लग सकता है।</string>
-    <string name="content_extraction_english" translatable="false">This process will be done only once. It can take up to 10 minutes.</string>
+	<string name="app_name"> پہلا اسکول - Pehla School</string>
+    <string name="content_extraction" translatable="false">یہ عمل صرف ایک بار کیا جائے گا. اس میں 10 منٹ تک لگ سکتا ہے.</string>
+    <string name="content_extraction_english" translatable="false">This is a one time process. It may take up to 10 minutes.</string>
     <string name="tools_activity_title">More apps</string>
     <string name="user_default_id">user0</string>
-    <string name="launcher_title">पहला स्कूल - Pehla School</string>
+    <string name="launcher_title">پہلا اسکول - Pehla School</string>
     <string name="btn_setting">Settings</string>
     <string name="btn_credit">Credit</string>
     <string name="about_activity_title">About</string>
@@ -13,10 +14,10 @@
     <string name="go_setting">Go to Android Settings</string>
     <string name="enter_password">Enter password</string>
     <string name="wrong_password">Wrong password</string>
-    <string name="start">\tStart\nशुरू करो</string>
+    <string name="start">\tStart\nشروع کرو</string>
     <string name="install">Install</string>
-    <string name="library">Library\nपुस्तकालय</string>
-    <string name="tools">Tools\nउपकरण</string>
+    <string name="library">Library\nلائبریری</string>
+    <string name="tools">Tools\nدرسی آلات</string>
     <string name="btn_upload">Upload logs</string>
     <string name="btn_clear_appdata">Clear app data</string>
     <string name="setting_activity_title">Settings</string>
@@ -41,14 +42,15 @@
     <string name="enter">ENTER</string>
     <string name="number">number</string>
     <string name="defaultLanguage">en-US</string>
-    <string name="drums">Drums\nढोल</string>
-    <string name="marimba">Xylophone\nमरिम्बा</string>
-    <string name="drawing">Drawing\nचित्रकारी</string>
-    <string name="coloring">Coloring\nरंग भरे</string>
-    <string name="camera">Camera\nकैमरा</string>
-    <string name="album">Album\nएल्बम</string>
-    <string name="blackboard">Black Board\nश्यामपट्ट</string>
-    <string name="writing_board">Writing Board\nबोर्ड लेखन</string>
+    <string name="drums">Drums\nڈرم</string>
+    <string name="marimba">Xylophone\nژاءِلوفون</string>
+    <string name="drawing">Drawing\nڈرائنگ</string>
+    <string name="coloring">Coloring\nرنگ بھریں</string>
+    <string name="camera">Camera\nکیمرے</string>
+    <string name="album">Album\nالبم</string>
+    <string name="blackboard">Black Board\nتختہ سیاہ</string>
+    <string name="fish_bowl">Sea World\nسمندر ورلڈ</string>
+    <string name="writing_board">Writing Board\nتحریری بورڈ</string>
 
     <string name="select_user_no">Select user number</string>
     <string name="select_tablet_no">Select tablet number</string>

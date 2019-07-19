@@ -17,6 +17,8 @@ import android.util.Log;
 
 import java.util.Locale;
 
+import static android.provider.ContactsContract.Directory.PACKAGE_NAME;
+
 /**
  * Created by ingtellect on 8/9/17.
  */
@@ -65,7 +67,7 @@ public class KitKitLoggerActivity extends Activity {
     @Override
     protected void attachBaseContext(Context newBase) {
         try {
-            Context launcherContext = newBase.createPackageContext("com.maq.pehlaschool", 0);
+            Context launcherContext = newBase.createPackageContext(PACKAGE_NAME, 0);
             SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
             appLanguage = pref.getString("appLanguage", "en-US");
 
@@ -106,7 +108,7 @@ public class KitKitLoggerActivity extends Activity {
         Log.d(TAG, "onResume");
         try {
 //            Changed the package of Gallery app to "org.cocos2dx.cpp.pehlalauncher"
-            Context context = createPackageContext("com.maq.pehlaschool", 0);
+            Context context = createPackageContext(PACKAGE_NAME, 0);
             //this seems working but Context.MODE_MULTI_PROCESS is deprecated since SDK 23. If it has problem, need to change to ContentProvider for sharing data.
             SharedPreferences pref = context.getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
             //String sharedLang = pref.getString("appLanguage", getString(R.string.defaultLanguage));

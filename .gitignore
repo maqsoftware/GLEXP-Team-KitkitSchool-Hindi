@@ -67,9 +67,6 @@ captures/
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 
-# Google Services (e.g. APIs or Firebase)
-# google-services.json
-
 # Freeline
 freeline.py
 freeline/
@@ -112,7 +109,4 @@ mainapp/Resources/*
 !mainapp/Resources/readme.txt
 
 maqpublisher.keystore
-
-# google-services
-mainapp/proj.android-studio/app/google-services.json
-launcher/app/google-services.json
+google-services.json

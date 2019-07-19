@@ -92,18 +92,12 @@ android {
         }
     }
     productFlavors {
-        general {
+        hindi {
 
         }
-        noresource {
-
+        urdu {
+            applicationIdSuffix ".urdu"
         }
-        /*english {
-
-        }
-        swahili {
-
-        }*/
     }
     buildTypes {
         release {
