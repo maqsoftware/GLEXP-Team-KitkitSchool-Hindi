@@ -69,7 +69,7 @@ public class KitKitLoggerActivity extends Activity {
         try {
             Context launcherContext = newBase.createPackageContext(PACKAGE_NAME, 0);
             SharedPreferences pref = launcherContext.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-            appLanguage = pref.getString("appLanguage", "en-US");
+            appLanguage = pref.getString("appLanguage", getString(R.string.defaultLanguage));
 
             String[] splitLang = appLanguage.split("-");
             String lang = splitLang[0];
@@ -112,7 +112,7 @@ public class KitKitLoggerActivity extends Activity {
             //this seems working but Context.MODE_MULTI_PROCESS is deprecated since SDK 23. If it has problem, need to change to ContentProvider for sharing data.
             SharedPreferences pref = context.getSharedPreferences("sharedPref", Context.MODE_MULTI_PROCESS);
             //String sharedLang = pref.getString("appLanguage", getString(R.string.defaultLanguage));
-            String sharedLang = pref.getString("appLanguage", "en-US");
+            String sharedLang = pref.getString("appLanguage", getString(R.string.defaultLanguage));
             if (appLanguage != null && !appLanguage.equals(sharedLang)) {
                 restartApp();
             }

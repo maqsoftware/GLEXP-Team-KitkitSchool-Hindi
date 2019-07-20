@@ -27,15 +27,15 @@
 //
 
 class LanguageManager {
-    
-    
+
     static LanguageManager* _instance;
 public:
     enum LocaleType {
         sw_TZ = 0,
         en_US,
-        en_KE,
-        en_GB,
+        hi_IN,
+        ur_IN,
+        bn_IN,
         LocaleType_MAX
     };
 
@@ -61,8 +61,8 @@ public:
     
     std::string findLocalizedResource(std::string path);
     
-    bool isEnglish() { return getCurrentLanguageCode()=="en"; }
-    bool isSwahili() { return getCurrentLanguageCode()=="sw"; }
+    bool isEnglish() { return true; }
+    bool isSwahili() { return false; }
     
     std::vector<std::string> getLocalizationMapKeys();
     bool isSignLanguageMode();
@@ -72,11 +72,14 @@ private:
 
     
     std::vector<std::string> _localizedResourcePaths;
+
     std::vector<LocaleType> _supportedLocales;
     
     
     std::map<std::string, std::string> _localizationMap;
     std::map<std::string, std::string> _localizationMapEnglish;
+    std::map<std::string, std::string> _localizationMapHindi;
+    std::map<std::string, std::string> _localizationMapUrdu;
     std::map<std::string, std::string> _localizationMapSwahili;
     
     void initLocalizationMap();

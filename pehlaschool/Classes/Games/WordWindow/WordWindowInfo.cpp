@@ -1,11 +1,12 @@
 ﻿#include "WordWindowInfo.h"
 #include "Utils/TodoUtil.h"
+#include "Managers/LanguageManager.hpp"
 
 std::vector<std::string> WordWindowInfo::enumerateLevelIDs()
 {
     vector<std::string> ddLevels;
 
-	string P = "Games/wordwindow/wordwindow_level.tsv";
+	string P = "Games/wordwindow/wordwindow_level_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".tsv";
 	string S = FileUtils::getInstance()->getStringFromFile(P);
 	auto data = TodoUtil::readTSV(S);
 

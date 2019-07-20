@@ -36,19 +36,18 @@ void LanguageManager::init()
     auto localeCode = UserDefault::getInstance()->getStringForKey("LocaleCode", defaultLang);
 
     auto localeType = convertLocaleCodeToType(localeCode);
-    if (localeType>=LocaleType_MAX) localeType = sw_TZ;
-
+    if (localeType>=LocaleType_MAX) localeType = en_US;
 
     _supportedLocales.clear();
     for (int i=0; i<LocaleType_MAX; i++) {
         LocaleType l = (LocaleType)i;
         auto lc = convertLocaleTypeToCode(l);
-        auto lp = "Localized/"+lc+"/CurriculumData.tsv";
+        auto lp = "Localized/CurriculumData_" + lc.substr(0, 2) + ".tsv";
         if (FileUtils::getInstance()->isFileExist(lp)) _supportedLocales.push_back(l);
 
     }
     if (_supportedLocales.size() == 0) {
-        CCLOGERROR("No curriculumdata.tsv is found for any language. check %s/PehlaSchool/location.txt, which is curretnly refers to %s",
+        CCLOGERROR("No curriculumdata.tsv is found for any language. check %sPehlaSchool/location.txt, which is currently refers to %s",
                    FileUtils::getInstance()->getWritablePath().c_str(),
                    FileUtils::getInstance()->getDefaultResourceRootPath().c_str());
         exit(1);
@@ -57,15 +56,9 @@ void LanguageManager::init()
             localeType = _supportedLocales.front();
     }
 
-
-
     setCurrentLocale(localeType);
 
-
     initLocalizationMap();
-
-
-
 }
 
 LanguageManager::LocaleType LanguageManager::convertLocaleCodeToType(std::string localeCode)
@@ -74,12 +67,16 @@ LanguageManager::LocaleType LanguageManager::convertLocaleCodeToType(std::string
     auto lang = localeCode.substr(0, 2);
     auto region = localeCode.substr(3, 2);
 
-    if (lang=="en") {
-        if (region=="US") return en_US;
-        if (region=="KE") return en_KE;
-        if (region=="GB") return en_GB;
-    } else if (lang=="sw") {
-        if (region=="TZ") return sw_TZ;
+    if (lang == "en" and region == "US") {
+        return en_US;
+    } else if (lang == "hi" and region == "IN") {
+        return hi_IN;
+    } else if (lang == "ur" and region == "IN") {
+        return ur_IN;
+    } else if (lang == "bn" and region == "IN") {
+        return bn_IN;
+    } else if (lang == "sw" and region == "TZ") {
+        return sw_TZ;
     }
 
     return LocaleType_MAX;
@@ -89,13 +86,14 @@ std::string LanguageManager::convertLocaleTypeToCode(LanguageManager::LocaleType
 {
     switch (localeType) {
         case en_US: return "en-US"; break;
-        case en_GB: return "en-GB"; break;
-        case en_KE: return "en-KE"; break;
+        case hi_IN: return "hi-IN"; break;
+        case ur_IN: return "ur-IN"; break;
+        case bn_IN: return "bn-IN"; break;
         case sw_TZ: return "sw-TZ"; break;
         default: break;
     }
 
-    return "sw-TZ";
+    return "en-US";
 
 }
 
@@ -113,33 +111,14 @@ void LanguageManager::setCurrentLocale(LocaleType type)
         UserDefault::getInstance()->flush();
     }
 
-    _localizedResourcePaths.clear();
-    switch (_currentLocale) {
-        default:
-            CCLOGERROR("No proper language is found in %s", __PRETTY_FUNCTION__);
-            // fall through
-        case sw_TZ: _localizedResourcePaths = { "sw-tz" }; break;
-        case en_US: _localizedResourcePaths = { "en-us" }; break;
-        case en_GB: _localizedResourcePaths = { "en-gb", "en-us" }; break;
-        case en_KE: _localizedResourcePaths = { "en-ke", "en-us" }; break;
-
-    }
-
-
     std::vector<std::string> paths = {};
 
-    for (auto p : _localizedResourcePaths) {
-        auto localizedPath = "localized/"+p;
-        paths.push_back(localizedPath);
-        paths.push_back(localizedPath+"/games");
-    }
+    paths.push_back("localized/games");
+    paths.push_back("localized");
     paths.push_back("games");
     paths.push_back("main");
 
-
     FileUtils::getInstance()->setSearchPaths(paths);
-
-
 }
 
 LanguageManager::LocaleType LanguageManager::getCurrentLocaleType()
@@ -186,11 +165,6 @@ std::string LanguageManager::soundPathForWordFile(std::string& wordFile)
 {
     std::string folder;
 
-//    switch (_langType) {
-//        case ENGLISH: folder = "Common/Sounds/Pam.en_US/"; break;
-//        case SWAHILI: folder = "Common/Sounds/Imma.sw_TZ/"; break;
-//    }
-
     std::string path = findLocalizedResource("LetterVoice/"+wordFile);
     if (path!="") return path;
     path = findLocalizedResource("WordVoice/"+wordFile);
@@ -207,6 +181,9 @@ std::string LanguageManager::getLocalizedString(std::string str)
 
     switch (_currentLocale) {
         case en_US: localized = _localizationMapEnglish[str]; break;
+        case hi_IN: localized = _localizationMapEnglish[str]; break;
+        case ur_IN: localized = _localizationMapEnglish[str]; break;
+        case bn_IN: localized = _localizationMapEnglish[str]; break;
         case sw_TZ: localized = _localizationMapSwahili[str]; break;
     }
 
@@ -222,15 +199,6 @@ std::string LanguageManager::findLocalizedResource(std::string path)
     // handled by Cocos...
 
     return path;
-
-//    
-//    for (auto p : _localizedResourcePaths) {
-//        auto localizedPath = "Localized/"+p+"/"+path;
-//        if (FileUtils::getInstance()->isFileExist(localizedPath)) return localizedPath;
-//    }
-//
-//
-//    return "";
 }
 
 void LanguageManager::initLocalizationMap()

@@ -83,7 +83,19 @@ namespace ComprehensionTest
             _gameNode->setPosition(Vec2(getContentSize().width / 2, 0.f));
             addChild(_gameNode);
             
-            string directionContent = LanguageManager::getInstance()->isEnglish() ? "©‹ãð¢ RUUUU× ×ð¢ Ú¹ð¢Ð" : "Pangilia hadithi."; // Place them in order. // उन्हें क्रम में रखें।
+            string directionContent;
+            string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+            if (langCode == "en") {
+                directionContent = "Place them in order.";
+            } else if (langCode == "hi") {
+                directionContent = "उन्हें क्रम में रखें।";
+            } else if (langCode == "ur") {
+                directionContent = "ان کو ترتیب میں رکھیں.";
+            } else if (langCode == "bn") {
+                directionContent = "";
+            } else if (langCode == "sw") {
+                directionContent = "Pangilia hadithi.";
+            }
             _comprehensionScene->drawQuestionTitle(directionContent, _gameNode);
             
             drawBlocksByGameType();

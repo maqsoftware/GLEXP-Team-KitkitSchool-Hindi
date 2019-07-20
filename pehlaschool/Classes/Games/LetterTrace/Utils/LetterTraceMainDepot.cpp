@@ -64,7 +64,19 @@ Node* MainDepot::createGameNode() const {
 }
  
 Label* MainDepot::createNextLabel() const {
-    string titleString = LanguageManager::getInstance()->isEnglish() ? "¥æ»ð" : "Inayofuata"; // next // आगे
+    string titleString;
+    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        titleString = "Next";
+    } else if (langCode == "hi") {
+        titleString = "अगला";
+    } else if (langCode == "ur") {
+        titleString = "آگے بڑھیں";
+    } else if (langCode == "bn") {
+        titleString = "";
+    } else if (langCode == "sw") {
+        titleString = "Inayofuata";
+    }
     Label* It = Label::createWithTTF(titleString, "fonts/chanakya.ttf", 300.f);
     It->setColor(Color3B(105, 68, 31));
 

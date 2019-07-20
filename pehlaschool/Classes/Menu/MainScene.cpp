@@ -550,9 +550,8 @@ void MainScene::onEnter()
         SoundEffect::coopClickEffect().preload();
         
         const float appearDelay = 2.2;
-        
-        //auto eng = LanguageManager::getInstance()->isEnglish();
-        auto logoPath = LanguageManager::getInstance()->findLocalizedResource("System/logo_phase03.png");
+
+        auto logoPath = LanguageManager::getInstance()->findLocalizedResource("System/logo_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".png");
         auto logo = Sprite::create(logoPath);
         logo->setPosition(designSize/2);
         _rootNode->addChild(logo);

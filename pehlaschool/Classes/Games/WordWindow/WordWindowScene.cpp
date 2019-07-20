@@ -474,7 +474,7 @@ void WordWindowScene::resetPuzzle()
 
 void WordWindowScene::loadData(int level)
 {
-	string P = "games/"+ resourcePath + "wordwindow_level.tsv";
+	string P = "games/"+ resourcePath + "wordwindow_level_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".tsv";
 	string S = cocos2d::FileUtils::getInstance()->getStringFromFile(P);
 	auto data = TodoUtil::readTSV(S);
 	auto Lang = LanguageManager::getInstance()->getCurrentLanguageTag();

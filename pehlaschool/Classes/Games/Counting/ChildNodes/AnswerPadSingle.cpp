@@ -41,9 +41,21 @@ bool AnswerPadSingle::init()
     setContentSize(answerPadSize);
     setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
     addChild(answerPadBg);
-    
-    
-    _questionLabel = Label::createWithSystemFont(LanguageManager::getInstance()->isEnglish() ?  "ç·UUUUÌÙð ãð?" : "Ngapi?", hindiFont, 100); // कितने हे?
+
+    std::string displayText;
+    std::string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        displayText = "How many?";
+    } else if (langCode == "hi") {
+         displayText = "कितने हैं?";
+    } else if (langCode == "ur") {
+         displayText = "";
+    } else if (langCode == "bn") {
+         displayText = "";
+    } else if (langCode == "sw") {
+         displayText = "Ngapi?";
+    }
+    _questionLabel = Label::createWithSystemFont(displayText, hindiFont, 100);
     _questionLabel->setTextColor(Color4B(242, 245, 240, 255));
     _questionLabel->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     _questionLabel->setPosition(Vec2(150, answerPadSize.height-129));

@@ -82,8 +82,7 @@ void CurriculumManager::loadData()
     string P = LanguageManager::getInstance()->findLocalizedResource(resourceName);
     string S = FileUtils::getInstance()->getStringFromFile(P);
     */
-    
-    string dataSheet = "curriculumdata.tsv";
+    string dataSheet = "curriculumdata_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".tsv";
     string dataSheetSL = "curriculumdata_sl.tsv";
     string resourceName = LanguageManager::getInstance()->isSignLanguageMode() ? dataSheetSL : dataSheet;
     string resourcePath = LanguageManager::getInstance()->findLocalizedResource(resourceName);

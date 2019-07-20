@@ -7,6 +7,7 @@
 
 #include "ProblemBank.hpp"
 #include "Managers/UserManager.hpp"
+#include "Managers/LanguageManager.hpp"
 
 #include "3rdParty/CCNativeAlert.h"
 
@@ -66,8 +67,8 @@ vector<EggQuizTemplateStruct> ProblemBank::loadProblemData(string course, string
     srand((unsigned int)time(NULL));
     
     transform(level.begin(), level.end(), level.begin(), ::tolower);
-    
-    string rawString = FileUtils::getInstance()->getStringFromFile(tsvPath+"eggquiz"+course+"_levels.tsv");
+
+    string rawString = FileUtils::getInstance()->getStringFromFile(tsvPath+"eggquiz"+course+"_levels_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".tsv");
     auto data = TodoUtil::readTSV(rawString);
     
     map<int, EggQuizTemplateStruct> types;

@@ -14,9 +14,20 @@
 
 namespace CompletePopupNS {
     std::string labelText() {
-        if (LanguageManager::getInstance()->isSwahili())
+        std::string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+        if (langCode == "en") {
+            return "Great!";
+        } else if (langCode == "hi") {
+            return "बहुत अच्छे!";
+        } else if (langCode == "ur") {
+            return "بہت اچھا";
+        } else if (langCode == "bn") {
+            return "";
+        } else if (langCode == "sw") {
             return "Vizuri!";
-        return "ÕãéÌ ¥‘Àð!";
+        }
+
+        return "Great!";
     }
 }  // namespace CompetePopupNS
 using namespace CompletePopupNS;

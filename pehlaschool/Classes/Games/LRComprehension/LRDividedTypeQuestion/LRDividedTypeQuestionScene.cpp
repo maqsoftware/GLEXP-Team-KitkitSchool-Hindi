@@ -74,7 +74,19 @@ void LRDividedTypeQuestionScene::onEnter()
             break;
     }
     
-    string directionContent = LanguageManager::getInstance()->isEnglish() ? "âãè ©}æÚ ·UUUæ ¿ØÙ ·UUUUÚð¢Ð" : "Chagua jibu sahihi."; // Select the correct answer. // सही उत्तर का चयन करें।
+    string directionContent;
+    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    if (langCode == "en") {
+        directionContent = "Select the correct answer.";
+    } else if (langCode == "hi") {
+        directionContent = "सही उत्तर का चयन करें।";
+    } else if (langCode == "ur") {
+        directionContent = "صحیح جواب چنیں۔";
+    } else if (langCode == "bn") {
+        directionContent = "";
+    } else if (langCode == "sw") {
+        directionContent = "Chagua jibu sahihi.";
+    }
     
     if (_questionText.find("Choose:") != std::string::npos)
     {
