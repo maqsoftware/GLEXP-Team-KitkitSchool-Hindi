@@ -166,7 +166,7 @@ namespace ComprehensionTest
             
 //            _comprehensionScene->drawQuestionTitle(_problemData->questionText, _gameNode);
             std::string directionContent;
-            string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+            string langCode = LanguageManager::getInstance()->customLanguageCode;
             if (langCode == "en") {
                 directionContent = "Fill in the blank(s).";
             } else if (langCode == "hi") {

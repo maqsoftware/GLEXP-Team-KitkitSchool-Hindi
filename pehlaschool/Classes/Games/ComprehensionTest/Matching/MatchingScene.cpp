@@ -87,7 +87,7 @@ namespace ComprehensionTest
             
             createFixedResources();
             string directionContent;
-            string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+            string langCode = LanguageManager::getInstance()->customLanguageCode;
             if (langCode == "en") {
                 directionContent = "Draw a line to match.";
             } else if (langCode == "hi") {

@@ -84,7 +84,7 @@ namespace ComprehensionTest
             addChild(_gameNode);
             
             string directionContent;
-            string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+            string langCode = LanguageManager::getInstance()->customLanguageCode;
             if (langCode == "en") {
                 directionContent = "Place them in order.";
             } else if (langCode == "hi") {

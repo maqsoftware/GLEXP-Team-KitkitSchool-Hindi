@@ -150,7 +150,7 @@ void CompTraceScene::refreshChildNodes() {
     _guide->setPosition(Vec2(160, 284 + kGuideCorrectionY));
     TheGameNode->addChild(_guide);
     std::string directionContent;
-    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         directionContent = "Trace the word.";
     } else if (langCode == "hi") {

@@ -124,7 +124,7 @@ bool TodoLoadingScene::init(std::function<Scene*(void)> &creator, float loadingT
     Size imageSize = loadingImage->getContentSize();
     
     std::string loadingText;
-    std::string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    std::string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         loadingText = "How many?";
     } else if (langCode == "hi") {

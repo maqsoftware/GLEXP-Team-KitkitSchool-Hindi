@@ -30,6 +30,7 @@ class LanguageManager {
 
     static LanguageManager* _instance;
 public:
+    std::string customLanguageCode = "hi"; // en hi ur bn sw
     enum LocaleType {
         sw_TZ = 0,
         en_US,
@@ -80,6 +81,7 @@ private:
     std::map<std::string, std::string> _localizationMapEnglish;
     std::map<std::string, std::string> _localizationMapHindi;
     std::map<std::string, std::string> _localizationMapUrdu;
+    std::map<std::string, std::string> _localizationMapBengali;
     std::map<std::string, std::string> _localizationMapSwahili;
     
     void initLocalizationMap();

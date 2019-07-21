@@ -14,7 +14,7 @@
 
 namespace CompletePopupNS {
     std::string labelText() {
-        std::string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+        std::string langCode = LanguageManager::getInstance()->customLanguageCode;
         if (langCode == "en") {
             return "Great!";
         } else if (langCode == "hi") {

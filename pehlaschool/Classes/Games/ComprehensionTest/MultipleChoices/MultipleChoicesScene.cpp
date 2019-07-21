@@ -121,7 +121,7 @@ namespace ComprehensionTest
             }
             
             string directionContent;
-            string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+            string langCode = LanguageManager::getInstance()->customLanguageCode;
             if (langCode == "en") {
                 directionContent = "Select the correct answer.";
             } else if (langCode == "hi") {

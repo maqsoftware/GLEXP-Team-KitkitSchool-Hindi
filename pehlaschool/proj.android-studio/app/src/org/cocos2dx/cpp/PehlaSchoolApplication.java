@@ -31,7 +31,7 @@ public class PehlaSchoolApplication extends Application {
 
         dbHandler = new KitkitDBHandler(getApplicationContext());
         SharedPreferences preferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-        String lang = getString(R.string.defaultLanguage);
+        String lang = "en-US";
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("appLanguage", lang);
         editor.apply();

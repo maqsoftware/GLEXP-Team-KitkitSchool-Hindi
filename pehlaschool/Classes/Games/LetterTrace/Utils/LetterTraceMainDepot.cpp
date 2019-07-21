@@ -65,7 +65,7 @@ Node* MainDepot::createGameNode() const {
  
 Label* MainDepot::createNextLabel() const {
     string titleString;
-    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         titleString = "Next";
     } else if (langCode == "hi") {

@@ -248,7 +248,7 @@ void LRComprehensionScene::showProblem()
     {
         auto text = problemSet[_currentProblem]->script;
         string displayText;
-        string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+        string langCode = LanguageManager::getInstance()->customLanguageCode;
         if (langCode == "en") {
             displayText = "Listen to the story.";
         } else if (langCode == "hi") {
@@ -268,7 +268,7 @@ void LRComprehensionScene::showProblem()
     {
         auto soundPath = problemSet[_currentProblem]->script;
         std::string displayText;
-        string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+        string langCode = LanguageManager::getInstance()->customLanguageCode;
         if (langCode == "en") {
             displayText = "Read the story.";
         } else if (langCode == "hi") {

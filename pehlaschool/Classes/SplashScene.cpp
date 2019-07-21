@@ -49,8 +49,7 @@ bool SplashScene::init()
     }
     
     auto visibleSize = Director::getInstance()->getVisibleSize();
-
-    auto sprite = Sprite::create("System/pehlaschool_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".png");
+    auto sprite = Sprite::create("System/pehlaschool_" + LanguageManager::getInstance()->customLanguageCode + ".png");
     auto spriteSize = sprite->getContentSize();
     auto scale = MAX(visibleSize.width/spriteSize.width, visibleSize.height/spriteSize.height);
     sprite->setScale(scale);

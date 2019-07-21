@@ -68,7 +68,7 @@ vector<EggQuizTemplateStruct> ProblemBank::loadProblemData(string course, string
     
     transform(level.begin(), level.end(), level.begin(), ::tolower);
 
-    string rawString = FileUtils::getInstance()->getStringFromFile(tsvPath+"eggquiz"+course+"_levels_" + LanguageManager::getInstance()->getCurrentLanguageCode() + ".tsv");
+    string rawString = FileUtils::getInstance()->getStringFromFile(tsvPath+"eggquiz"+course+"_levels_" + LanguageManager::getInstance()->customLanguageCode + ".tsv");
     auto data = TodoUtil::readTSV(rawString);
     
     map<int, EggQuizTemplateStruct> types;

@@ -41,7 +41,7 @@ namespace LetterMatching
     const char* SOLVE_EFFECT_SOUND = "Common/Sounds/Effect/UI_Star_Collected.m4a";
 
     string nextButtonTitle() {
-        std::string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+        std::string langCode = LanguageManager::getInstance()->customLanguageCode;
         if (langCode == "en") {
             return "Next";
         } else if (langCode == "hi") {

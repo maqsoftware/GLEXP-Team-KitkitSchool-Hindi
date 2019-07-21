@@ -82,7 +82,7 @@ BigLabel* MainDepot::createBonusTextLabel(const std::string& Text) const {
 
 cocos2d::Label* MainDepot::createNextLabel() const {
     string displayText;
-    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         displayText = "Next";
     } else if (langCode == "hi") {

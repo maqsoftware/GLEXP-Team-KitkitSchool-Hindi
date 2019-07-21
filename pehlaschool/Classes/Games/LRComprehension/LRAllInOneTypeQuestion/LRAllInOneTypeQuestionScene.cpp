@@ -62,7 +62,7 @@ void LRAllInOneTypeQuestionScene::onEnter()
     _gameNode->addChild(layer);
     
     string directionContent;
-    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         directionContent = "Select the correct answer.";
     } else if (langCode == "hi") {

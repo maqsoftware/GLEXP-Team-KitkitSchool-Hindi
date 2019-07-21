@@ -173,7 +173,7 @@ void LRDividedTypeFillTheBlanksScene::onEnter()
     */
     
     string directionContent;
-    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         directionContent = "Fill in the blank(s).";
     } else if (langCode == "hi") {

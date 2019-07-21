@@ -76,7 +76,7 @@ void LRDividedTypeReorderingScene::onEnter()
     addChild(_gameNode);
     
     string directionContent;
-    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         directionContent = "Place the events in the correct sequence.";
     } else if (langCode == "hi") {

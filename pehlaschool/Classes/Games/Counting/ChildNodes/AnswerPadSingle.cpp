@@ -43,7 +43,7 @@ bool AnswerPadSingle::init()
     addChild(answerPadBg);
 
     std::string displayText;
-    std::string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    std::string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         displayText = "How many?";
     } else if (langCode == "hi") {

@@ -49,7 +49,7 @@ bool AnswerPadMulti::init()
     addChild(_answerPadBg);
 
     string displayText;
-    string langCode = LanguageManager::getInstance()->getCurrentLanguageCode();
+    string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
         displayText = "How many?";
     } else if (langCode == "hi") {
