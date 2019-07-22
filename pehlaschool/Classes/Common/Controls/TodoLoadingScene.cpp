@@ -130,7 +130,7 @@ bool TodoLoadingScene::init(std::function<Scene*(void)> &creator, float loadingT
     } else if (langCode == "hi") {
         loadingText = "कितने हैं?";
     } else if (langCode == "ur") {
-        loadingText = "";
+        loadingText = "کتنے ہیں؟";
     } else if (langCode == "bn") {
         loadingText = "";
     } else if (langCode == "sw") {

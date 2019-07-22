@@ -55,7 +55,7 @@ bool AnswerPadMulti::init()
     } else if (langCode == "hi") {
         displayText = "कितने हैं?";
     } else if (langCode == "ur") {
-        displayText = "";
+        displayText = "کتنے ہیں؟";
     } else if (langCode == "bn") {
         displayText = "";
     } else if (langCode == "sw") {
