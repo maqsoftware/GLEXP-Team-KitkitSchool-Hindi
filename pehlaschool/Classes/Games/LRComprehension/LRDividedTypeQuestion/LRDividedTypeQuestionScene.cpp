@@ -90,7 +90,17 @@ void LRDividedTypeQuestionScene::onEnter()
     
     if (_questionText.find("Choose:") != std::string::npos)
     {
-        directionContent = "ÂæÆ âð ç×ÜæÙ ·UUUUÚÙð ·ðUUU çÜ° ç¿˜æ ·UUUæ ¿ØÙ ·UUUUÚð¢"; // Select the picture to match the text // पाठ से मिलान करने के लिए चित्र का चयन करें
+        if (langCode == "en") {
+            directionContent = "Select the picture to match the text.";
+        } else if (langCode == "hi") {
+            directionContent = "पाठ से मिलान करने के लिए चित्र का चयन करें।";
+        } else if (langCode == "ur") {
+            directionContent = "متن سے ملنے کے لئے تصویر کا انتخاب کریں.";
+        } else if (langCode == "bn") {
+            directionContent = "";
+        } else if (langCode == "sw") {
+            directionContent = "Chagua picha ili kuendana na maandishi.";
+        }
         TodoUtil::replaceAll(_questionText, "Choose:", "");
         _questionText = TodoUtil::trim(_questionText);
     }

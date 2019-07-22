@@ -67,15 +67,15 @@ Label* MainDepot::createNextLabel() const {
     string titleString;
     string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
-        titleString = "Next";
+        titleString = "Choose one.";
     } else if (langCode == "hi") {
-        titleString = "अगला";
+        titleString = "किसी एक को चुने।";
     } else if (langCode == "ur") {
-        titleString = "آگے بڑھیں";
+        titleString = "ایک کا انتخاب کریں.";
     } else if (langCode == "bn") {
         titleString = "";
     } else if (langCode == "sw") {
-        titleString = "Inayofuata";
+        titleString = "Chagua moja.";
     }
     Label* It = Label::createWithTTF(titleString, "fonts/chanakya.ttf", 300.f);
     It->setColor(Color3B(105, 68, 31));
