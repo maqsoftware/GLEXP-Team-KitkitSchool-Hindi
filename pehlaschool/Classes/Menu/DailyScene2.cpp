@@ -1139,7 +1139,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
     gquiz1.insert(pair<string, vector<string>>("WordWindow", {"वर्ड विंडो", "Word Window", ""}));
 
     string langCode = LanguageManager::getInstance()->customLanguageCode;
-    int valueCode = 1; // Position of text in vector
+    unsigned valueCode = 1; // Position of text in vector
     string locale = "hi-IN"; // Locale to be used for TTS
     if (langCode == "hi" || langCode == "ur") {
         valueCode = 0;
@@ -1150,7 +1150,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
         locale = "bn-IN";
     }
 
-    VoiceMoldManager::shared()->speak(gquiz1.at(gameName).at(static_cast<unsigned long>(valueCode)), locale);
+    VoiceMoldManager::shared()->speak(gquiz1.at(gameName).at(valueCode), locale);
 
 
     Size popupSize = Size(1540, 1404);
