@@ -21,7 +21,7 @@ namespace {
     Rect textRegion() { return Rect(140.f, 11.f, 453.f, 146.f); }
 
     string fontFace() { return StarFallDepot().defaultFontFace(); }
-    float fontSize() { return 100.f; }
+    float fontSize() { return 75.f; }
 
     Color3B regularColor() { return Color3B(74, 70, 67); }
     Color3B disabledColor() { return Color3B(148, 100, 63); }
@@ -84,7 +84,7 @@ void ActiveTextNode::refreshChildNodes() {
     }
     
     ActiveTextLabel = ([&] {
-        Label* It = Label::createWithTTF(ActiveText(), fontFace(), fontSize());
+        Label* It = Label::createWithSystemFont(ActiveText(), fontFace(), fontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         It->setPosition(Point(textRegion().getMidX(),
                               textRegion().getMidY()));
@@ -95,7 +95,7 @@ void ActiveTextNode::refreshChildNodes() {
     }());
     
     BadTextLabel = ([&] {
-        Label* It = Label::createWithTTF(BadText(), fontFace(), fontSize());
+        Label* It = Label::createWithSystemFont(BadText(), fontFace(), fontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         It->setPosition(Point(textRegion().getMidX(),
                               textRegion().getMidY()));

@@ -24,7 +24,7 @@ std::string MainDepot::assetPrefix() const {
 }
 
 std::string MainDepot::defaultFont() const {
-    return "fonts/mukta-bold.ttf";
+    return "arial";
 }
 
 Size MainDepot::windowSize() const {

@@ -36,8 +36,7 @@ using namespace std;
 
 namespace PlaceValueSceneSpace
 {
-    const char* defaultFont = "fonts/chanakya.ttf";
-    const char* andikaFont = "fonts/mukta-bold.ttf";
+    const char* arialFont = "arial";
     const char* kitkitNumbersFont = "fonts/kitkitnumbers.ttf";
     
     const string resourcePath = "PlaceValue/";
@@ -256,9 +255,9 @@ void PlaceValueScene::createBoard(int index)
     _tank10Count = (_suggestNo % 100) / 10;
     _tank1Count = ((_suggestNo % 100) % 10) / 1;
     
-    auto tank100_title_text = (LanguageManager::getInstance()->isEnglish() ? "Hundreds" : "Mamia");
-    auto tank10_title_text = (LanguageManager::getInstance()->isEnglish() ? "Tens" : "Makumi");
-    auto tank1_title_text = (LanguageManager::getInstance()->isEnglish() ? "Ones" : "Mamoja");
+    auto tank100_title_text = "Hundreds";
+    auto tank10_title_text = "Tens";
+    auto tank1_title_text = "Ones";
 
     //공용파티클 미리로딩
     _tank100Particle = createShiningParticle(Vec2(140, 80), 50);
@@ -312,7 +311,7 @@ void PlaceValueScene::createBoard(int index)
     tank100->setName("tank100");
     _gameNode->addChild(tank100, 90);
     
-    auto tank100_title = Label::createWithTTF(tank100_title_text, andikaFont, 50);
+    auto tank100_title = Label::createWithSystemFont(tank100_title_text, arialFont, 35);
     tank100_title->setColor(Color3B(26, 26, 26));
     tank100_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     tank100_title->setPosition(Vec2(tank100->getPosition().x, gameSize.height - 491 + 30));
@@ -370,7 +369,7 @@ void PlaceValueScene::createBoard(int index)
     tank10->setName("tank10");
     _gameNode->addChild(tank10, 90);
 
-    auto tank10_title = Label::createWithTTF(tank10_title_text, andikaFont, 50);
+    auto tank10_title = Label::createWithSystemFont(tank10_title_text, arialFont, 35);
     tank10_title->setColor(Color3B(26, 26, 26));
     tank10_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     tank10_title->setPosition(Vec2(tank10->getPosition().x, gameSize.height - 491 + 30));
@@ -420,7 +419,7 @@ void PlaceValueScene::createBoard(int index)
     tank1->setName("tank1");
     _gameNode->addChild(tank1, 90);
     
-    auto tank1_title = Label::createWithTTF(tank1_title_text, andikaFont, 50);
+    auto tank1_title = Label::createWithSystemFont(tank1_title_text, arialFont, 35);
     tank1_title->setColor(Color3B(26, 26, 26));
     tank1_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     tank1_title->setPosition(Vec2(tank1->getPosition().x, gameSize.height - 491 + 30));
@@ -533,7 +532,7 @@ void PlaceValueScene::createBoard(int index)
     nextTank100->setName("nextTank100");
     _gameNode->addChild(nextTank100, 90);
     
-    auto nextTank100_title = Label::createWithTTF(tank100_title_text, andikaFont, 50);
+    auto nextTank100_title = Label::createWithSystemFont(tank100_title_text, arialFont, 35);
     nextTank100_title->setColor(Color3B(26, 26, 26));
     nextTank100_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     nextTank100_title->setPosition(Vec2(nextTank100->getPosition().x, gameSize.height - 491 + 30));
@@ -553,7 +552,7 @@ void PlaceValueScene::createBoard(int index)
     nextTank10->setName("nextTank10");
     _gameNode->addChild(nextTank10, 90);
 
-    auto nextTank10_title = Label::createWithTTF(tank10_title_text, andikaFont, 50);
+    auto nextTank10_title = Label::createWithSystemFont(tank10_title_text, arialFont, 35);
     nextTank10_title->setColor(Color3B(26, 26, 26));
     nextTank10_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     nextTank10_title->setPosition(Vec2(nextTank10->getPosition().x, gameSize.height - 491 + 30));
@@ -573,7 +572,7 @@ void PlaceValueScene::createBoard(int index)
     nextTank1->setName("nextTank1");
     _gameNode->addChild(nextTank1, 90);
 
-    auto nextTank1_title = Label::createWithTTF(tank1_title_text, andikaFont, 50);
+    auto nextTank1_title = Label::createWithSystemFont(tank1_title_text, arialFont, 35);
     nextTank1_title->setColor(Color3B(26, 26, 26));
     nextTank1_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     nextTank1_title->setPosition(Vec2(nextTank1->getPosition().x, gameSize.height - 491 + 30));
@@ -1333,7 +1332,7 @@ WaterDropLandPiece *PlaceValueScene::createWaterDropLandPiece(int count)
         indicationBG->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
         piece->addChild(indicationBG);
         
-        auto indicationText = Label::createWithTTF("+100", andikaFont, 75);
+        auto indicationText = Label::createWithSystemFont("+100", arialFont, 50);
         indicationText->setColor(Color3B(255, 197, 61));
         indicationText->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         indicationText->setPosition(Vec2(indicationBG->getContentSize().width/2, indicationBG->getContentSize().height/2));
@@ -1354,7 +1353,7 @@ WaterDropLandPiece *PlaceValueScene::createWaterDropLandPiece(int count)
         indicationBG->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
         piece->addChild(indicationBG);
         
-        auto indicationText = Label::createWithTTF("+10", andikaFont, 75);
+        auto indicationText = Label::createWithSystemFont("+10", arialFont, 50);
         indicationText->setColor(Color3B(194, 255, 61));
         indicationText->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         indicationText->setPosition(Vec2(indicationBG->getContentSize().width/2, indicationBG->getContentSize().height/2));
@@ -1375,7 +1374,7 @@ WaterDropLandPiece *PlaceValueScene::createWaterDropLandPiece(int count)
         indicationBG->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
         piece->addChild(indicationBG);
         
-        auto indicationText = Label::createWithTTF("+1", andikaFont, 75);
+        auto indicationText = Label::createWithSystemFont("+1", arialFont, 50);
         indicationText->setColor(Color3B(200, 61, 255));
         indicationText->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         indicationText->setPosition(Vec2(indicationBG->getContentSize().width/2, indicationBG->getContentSize().height/2));
@@ -1682,7 +1681,7 @@ WaterDropTankPiece *PlaceValueScene::createWaterDropTankPiece(int count)
         indicationBG->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
         piece->addChild(indicationBG);
         
-        auto indicationText = Label::createWithTTF("-100", andikaFont, 75);
+        auto indicationText = Label::createWithSystemFont("-100", arialFont, 50);
         indicationText->setName("text");
         indicationText->setColor(Color3B(255, 61, 116));
         indicationText->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -1704,7 +1703,7 @@ WaterDropTankPiece *PlaceValueScene::createWaterDropTankPiece(int count)
         indicationBG->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
         piece->addChild(indicationBG);
         
-        auto indicationText = Label::createWithTTF("-10", andikaFont, 75);
+        auto indicationText = Label::createWithSystemFont("-10", arialFont, 50);
         indicationText->setName("text");
         indicationText->setColor(Color3B(255, 61, 116));
         indicationText->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -1726,7 +1725,7 @@ WaterDropTankPiece *PlaceValueScene::createWaterDropTankPiece(int count)
         indicationBG->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
         piece->addChild(indicationBG);
         
-        auto indicationText = Label::createWithTTF("-1", andikaFont, 75);
+        auto indicationText = Label::createWithSystemFont("-1", arialFont, 50);
         indicationText->setName("text");
         indicationText->setColor(Color3B(255, 61, 116));
         indicationText->setAnchorPoint(Vec2::ANCHOR_MIDDLE);

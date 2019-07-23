@@ -32,7 +32,6 @@ namespace
     const string missEffect = kPrefixPath + "help.m4a";
     const string pageTurnEffect = kPrefixPath + "card_move_right.m4a";
     const string defaultFont = FONT_ANDIKA_BOLD;
-    const string hindiFont = FONT_CHANAKYA;
     const float kGuideViewTweenDuration = 0.3f;
     const float kGuideViewDelayGameClear = 0.3f;
     const Size gameSize = Size(2560, 1800);
@@ -407,7 +406,7 @@ void LRComprehensionScene::drawQuestionTitle(string titleText, Node* parentNode,
     _questionHighlight->setPosition(200.f, parentNode->getContentSize().height - 300.f);
     parentNode->addChild(_questionHighlight);
 
-    auto titleLabel = TodoUtil::createLabel(titleText, 60.f, Size::ZERO, FONT_CHANAKYA, Color4B(77, 77, 77, 255));
+    auto titleLabel = TodoUtil::createLabel(titleText, 50.f, Size::ZERO, FONT_ARIAL, Color4B(77, 77, 77, 255));
 
     titleLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     titleLabel->setPosition(leftPadding + addLeftPadding, _questionHighlight->getContentSize().height / 2);
@@ -444,7 +443,7 @@ void LRComprehensionScene::drawGuideTitle(string titleText)
     _guideHighlight->setPosition(200.f, this->getContentSize().height - 300.f);
     guideHighlightWrapper->addChild(_guideHighlight);
     
-    auto titleLabel = TodoUtil::createLabel(titleText, 60.f, Size::ZERO, hindiFont, Color4B(77, 77, 77, 255));
+    auto titleLabel = TodoUtil::createLabel(titleText, 50.f, Size::ZERO, FONT_ARIAL, Color4B(77, 77, 77, 255));
     titleLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     titleLabel->setPosition(leftPadding - 100.f, _guideHighlight->getContentSize().height / 2);
     _guideHighlight->addChild(titleLabel);

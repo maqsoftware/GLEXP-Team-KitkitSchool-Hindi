@@ -47,7 +47,7 @@ namespace GameSelectSceneSpace {
     const int coopFrontZ = 100;
 
     const string fontName = "fonts/mukta-bold.ttf";
-    const string hindiFontName = "fonts/chanakya.ttf";
+    const string arialFont = "arial";
 
 };
 
@@ -898,8 +898,8 @@ void GameSelectScene::onEnter() {
             string delim = "$#$";
             string labelHindi = labelName.substr(0, labelName.find(delim));
 
-            auto panelLabelHindi = TodoUtil::createLabel(labelHindi, 100, Size::ZERO, hindiFontName,
-                                                         Color4B(255, 240, 184, 255));
+            auto panelLabelHindi = Label::createWithSystemFont(labelHindi, arialFont, 60);
+            panelLabelHindi->setTextColor(Color4B(255, 240, 184, 255));
             panelLabelHindi->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
             panelLabelHindi->setPosition(panel->getContentSize() / 2 - Size(0, 25));
             panel->addChild(panelLabelHindi);

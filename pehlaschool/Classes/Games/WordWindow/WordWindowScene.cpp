@@ -19,7 +19,7 @@ using namespace cocos2d::ui;
 using namespace std;
 namespace WordWindowSceneSpace
 {
-    const char* defaultFont = "fonts/chanakya.ttf";
+    const char* arialFont = "arial";
     
     const string resourcePath = "wordwindow/";
     
@@ -30,7 +30,7 @@ namespace WordWindowSceneSpace
     SoundEffect solveEffect() { return SoundEffect("Common/Sounds/Effect/SFX_Counting_Win.m4a"); }
 
     
-    const string fontName = "fonts/mukta-bold.ttf";
+    const string fontName = "arial";
 	const string boldFontName = "fonts/andikanewbasic-b.ttf";
     const bool gameDebug = false;    
 }
@@ -3060,7 +3060,7 @@ void WordWindowScene::createQuestion()
 		}
 	}
 
-	m_pLabelQuestion = TodoUtil::createLabelMultilineToFit(newText, 80.f, Size(1424.f, 800.f), defaultFont, Color4B::WHITE, TextHAlignment::LEFT, TextVAlignment::CENTER);
+	m_pLabelQuestion = TodoUtil::createLabelMultilineToFit(newText, 80.f, Size(1424.f, 800.f), arialFont, Color4B::WHITE, TextHAlignment::LEFT, TextVAlignment::CENTER);
 	m_pLabelQuestion->setPosition(Vec2(749.f + (1424.f / 2.f), 901.f + (336.f / 2.f)));
 	_gameNode->addChild(m_pLabelQuestion);
 }
@@ -3105,7 +3105,7 @@ void WordWindowScene::createExamples()
 		m_pLabelExampleTop[i] = pLabelTop;
 
 		// 하단 문구
-		int fontSize = 80;
+		int fontSize = 60;
 		getAutoFontSize(m_curLevelStruct.m_exampleWord[i], fontName, Size(400.f, 100.f), false, fontSize);
 		Label* pLabelBottom = TodoUtil::createLabel(m_curLevelStruct.m_exampleWord[i], fontSize, Size(400.f, 100.f), fontName, Color4B(64, 39, 22, 255), TextHAlignment::CENTER, TextVAlignment::CENTER);
 		pLabelBottom->setPosition(Vec2(580.f / 2.f, 104.f + (100.f / 2.f)));
@@ -3931,7 +3931,7 @@ void WordWindowScene::getAutoFontSize(const std::string& strText, const std::str
 		return;
 	}
 
-	Label* pLabel = Label::createWithTTF(strText, fontName, fontSize);
+	Label* pLabel = Label::createWithSystemFont(strText, fontName, fontSize);
 	pLabel->setLineBreakWithoutSpace(isLineBreakWithoutSpace);
 	float fontWidth = pLabel->getBoundingBox().getMaxX() - pLabel->getBoundingBox().getMinX();
 	float fontHeight = pLabel->getBoundingBox().getMaxY() - pLabel->getBoundingBox().getMinY();

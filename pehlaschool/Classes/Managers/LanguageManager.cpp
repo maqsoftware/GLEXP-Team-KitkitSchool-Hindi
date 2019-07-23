@@ -177,14 +177,17 @@ std::string LanguageManager::getLocalizedString(std::string str)
     std::string localized;
 
     // todo July 21, 2019: change the map suffix to correct language once the translations are in place
-    switch (_currentLocale) {
-        case en_US: localized = _localizationMapEnglish[str]; break;
-        case hi_IN: localized = _localizationMapEnglish[str]; break;
-        case ur_IN: localized = _localizationMapEnglish[str]; break;
-        case bn_IN: localized = _localizationMapEnglish[str]; break;
-        case sw_TZ: localized = _localizationMapSwahili[str]; break;
+    if (customLanguageCode == "en") {
+        localized = _localizationMapEnglish[str];
+    } else if (customLanguageCode == "hi") {
+        localized = _localizationMapHindi[str];
+    } else if (customLanguageCode == "ur") {
+        localized = _localizationMapEnglish[str];
+    } else if (customLanguageCode == "bn") {
+        localized = _localizationMapEnglish[str];
+    } else if (customLanguageCode == "sw") {
+        localized = _localizationMapSwahili[str];
     }
-
     if (localized.empty()) return str;
 
     return localized;
@@ -201,482 +204,483 @@ std::string LanguageManager::findLocalizedResource(std::string path)
 
 void LanguageManager::initLocalizationMap()
 {
-    string delm =  "$#$";
-    _localizationMapEnglish["Stop the test"] = "ÅðSÅ Õ‹Î ·UUUUçÚ°"; // टेस्ट बन्द करिए
-    _localizationMapEnglish["Go back to test"] = "ÅðSÅ ÂÚ ÕæÂâ Áæ§Øð"; // टेस्ट पर बापस जाइये
+    _localizationMapEnglish["Stop the test"] = "Stop the test";
+    _localizationMapHindi["Stop the test"] = "टेस्ट बन्द करिए";
+    _localizationMapEnglish["Go back to test"] = "Go back to test";
+    _localizationMapHindi["Go back to test"] = "टेस्ट पर बापस जाइये";
 
-    _localizationMapEnglish["Great!"] = "ÕãéÌ ¥‘Àð!"; // बहुत अच्छे
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Great!"] = "Great!";
+    _localizationMapHindi["Great!"] = "बहुत अच्छे!";
+    // _localizationMapUrdu["Great!"] = "";
+    // _localizationMapBengali["Great!"] = "";
     _localizationMapSwahili["Great!"] = "Vizuri!";
 
-    _localizationMapEnglish["Are you ready for"] = "€UØæ Ìé× ÌñØæÚU ãô"; // क्या तुम तैयार हो
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Are you ready for"] = "Are you ready for"; //
+    _localizationMapHindi["Are you ready for"] = "क्या तुम तैयार हो";
+    // _localizationMapUrdu["Are you ready for"] = "";
+    // _localizationMapBengali["Are you ready for"] = "";
     _localizationMapSwahili["Are you ready for"] = "Je, uko tayari kwa";
 
-    _localizationMapEnglish["Prove it!"] = "âæçÕÌ ·¤ÚUô!"; // साबित करो!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Prove it!"] = "Prove it!";
+    _localizationMapHindi["Prove it!"] = "साबित करो!";
+    // _localizationMapUrdu["Prove it!"] = "";
+    // _localizationMapBengali["Prove it!"] = "";
     _localizationMapSwahili["Prove it!"] = "Thibitisha!";
 
-    _localizationMapEnglish["Try and get 8 questions correct!"] = "·UUUUôçàæàæ ·UUUUÚô ¥æñÚ ¥æÆ ÂýàæÙô ·UUUæ âãè ÁÕæÕ ÎèçÁØð"; // कोशिश करो और आठ प्रशनो का सही जबाब दीजिये
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Try and get 8 questions correct!"] = "Try and get 8 questions correct!";
+    _localizationMapHindi["Try and get 8 questions correct!"] = "कोशिश करो और आठ प्रशनो का सही जबाब दीजिये!";
+    // _localizationMapUrdu["Try and get 8 questions correct!"] = "";
+    // _localizationMapBengali["Try and get 8 questions correct!"] = "";
     _localizationMapSwahili["Try and get 8 questions correct!"] = "Jaribu na toa majibu sahihi manane!";
 
-    _localizationMapEnglish["Challenge"] = "¿éÙõÌè ãñ"; // चुनौती है
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Challenge"] = "Challenge";
+    _localizationMapHindi["Challenge"] = "चुनौती";
+    // _localizationMapUrdu["Challenge"] = "";
+    // _localizationMapBengali["Challenge"] = "";
     _localizationMapSwahili["Challenge"] = "Jaribu";
 
-    _localizationMapEnglish["Congratulations!"] = "ÕÏæ§ü ãô!"; // बधाई हो!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Congratulations!"] = "Congratulations!";
+    _localizationMapHindi["Congratulations!"] = "बधाई हो!";
+    // _localizationMapUrdu["Congratulations!"] = "";
+    // _localizationMapBengali["Congratulations!"] = "";
     _localizationMapSwahili["Congratulations!"] = "Hongera!";
 
-    _localizationMapEnglish["You passed!"] = "Ìé× Âæâ ãô »Øð"; // तुम पास हो गये
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["You passed!"] = "You passed!";
+    _localizationMapHindi["You passed!"] = "तुम पास हो गये!";
+    // _localizationMapUrdu["You passed!"] = "";
+    // _localizationMapBengali["You passed!"] = "";
     _localizationMapSwahili["You passed!"] = "Umefaulu!";
 
-    _localizationMapEnglish["You failed"] = "Ìé× ¥âÈ¤Ü ÚUãð"; // तुम असफल रहे
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["You failed"] = "You failed";
+    _localizationMapHindi["You failed"] = "तुम असफल रहे";
+    // _localizationMapUrdu["You failed"] = "";
+    // _localizationMapBengali["You failed"] = "";
     _localizationMapSwahili["You failed"] = "Umeshindwa";
 
-    _localizationMapEnglish["Practice more and try again later."] = "¥çÏ·UUUU ¥zØæâ ·UUUUÚð¢ ¥æñÚ ÕæÎ ×ð¢ çÈUUUUÚ âð ÂýØæâ ·UUUUÚð¢Ð"; // अधिक अभ्यास करें और बाद में फिर से प्रयास करें।
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Practice more and try again later."] = "Practice more and try again later.";
+    _localizationMapHindi["Practice more and try again later."] = "अधिक अभ्यास करें और बाद में फिर से प्रयास करें।";
+    // _localizationMapUrdu["Practice more and try again later."] = "";
+    // _localizationMapBengali["Practice more and try again later."] = "";
     _localizationMapSwahili["Practice more and try again later."] = "Fanya mazoezi zaidi na rudi baadae.";
 
-    _localizationMapEnglish["Success!"] = "âÈ¤ÜÌæ!"; // सफलता!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Success!"] = "Success!";
+    _localizationMapHindi["Success!"] = "सफलता!";
+    // _localizationMapUrdu["Success!"] = "";
+    // _localizationMapBengali["Success!"] = "";
     _localizationMapSwahili["Success!"] = "Mafanikio!";
 
-    _localizationMapEnglish["You are not ready."] =  "Ìé× ÌñØæÚ Ùãè¢ ãôÐ"; // तुम तैयार नहीं हो।
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["You are not ready."] =  "You are not ready.";
+    _localizationMapHindi["You are not ready."] = "तुम तैयार नहीं हो।";
+    // _localizationMapUrdu["You are not ready."] = "";
+    // _localizationMapBengali["You are not ready."] = "";
     _localizationMapSwahili["You are not ready."] = "Hauko tayari.";
 
-    _localizationMapEnglish["You need more practice."] = "¥æÂ·UUUUô ¥æñÚ ¥zØæâ ·UUUè ¥æßàØ·UUUUÌæ ãñÐ"; // आपको और अभ्यास की आवश्यकता है।
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["You need more practice."] = "You need more practice.";
+    _localizationMapHindi["You need more practice."] = "आपको और अभ्यास की आवश्यकता है।";
+    // _localizationMapUrdu["You need more practice."] = "";
+    // _localizationMapBengali["You need more practice."] = "";
     _localizationMapSwahili["You need more practice."] = "Unahitaji mazoezi zaidi.";
 
-    _localizationMapEnglish["Welcome!"] = "Sßæ»Ì ãñ!"; // स्वागत है!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Welcome!"] = "Welcome!";
+    _localizationMapHindi[""] = "स्वागत है!";
+    // _localizationMapUrdu["Welcome!"] = "";
+    // _localizationMapBengali["Welcome!"] = "";
     _localizationMapSwahili["Welcome!"] = "Karibu!";
 
-    _localizationMapEnglish["Start"] = "àæéLUUUU ·UUUUÚô"; // शुरु करो
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Start"] = "Start";
+    _localizationMapHindi["Start"] = "शुरु करो";
+    // _localizationMapUrdu["Start"] = "";
+    // _localizationMapBengali["Start"] = "";
     _localizationMapSwahili["Start"] = "Anza";
 
-    _localizationMapEnglish["Next"] = "ÂèÀð"; // आगे
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Next"] = "Next";
+    _localizationMapHindi["Next"] = "अगला";
+    // _localizationMapUrdu["Next"] = "";
+    // _localizationMapBengali["Next"] = "";
     _localizationMapSwahili["Next"] = "Nenda mbele";
 
-    _localizationMapEnglish["Back"] = "ÂèÀð"; // पीछे
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Back"] = "Back";
+    _localizationMapHindi["Back"] = "पिछला";
+    // _localizationMapUrdu["Back"] = "";
+    // _localizationMapBengali["Back"] = "";
     _localizationMapSwahili["Back"] = "Rudi nyuma";
 
-    _localizationMapEnglish["OK"] = "¥ô·Ô¤"; // ओके
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["OK"] = "OK";
+    _localizationMapHindi["OK"] = "ओके";
+    // _localizationMapUrdu["OK"] = "";
+    // _localizationMapBengali["OK"] = "";
     _localizationMapSwahili["OK"] = "OK";
 
-    _localizationMapEnglish["Error"] = "»ÜÌè"; // गलती
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Error"] = "Error";
+    _localizationMapHindi["Error"] = "त्रुटि";
+    // _localizationMapUrdu["Error"] = "";
+    // _localizationMapBengali["Error"] = "";
     _localizationMapSwahili["Error"] = "Hitilafu";
 
-    _localizationMapEnglish["Enter"] = "çÜ¹Ùæ ÂýæÚ{Ö ·UUUUÚð¢"; // लिखना प्रारम्भ करें
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Enter"] = "Start writing";
+    _localizationMapHindi["Enter"] = "लिखना प्रारम्भ करें";
+    // _localizationMapUrdu["Enter"] = "";
+    // _localizationMapBengali["Enter"] = "";
     _localizationMapSwahili["Enter"] = "Chomeka";
 
-    _localizationMapEnglish["Clear"] = "âæÈ¤ ·¤ÚUð"; // साफ करे
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Clear"] = "Clear it";
+    _localizationMapHindi["Clear"] = "साफ करे";
+    // _localizationMapUrdu["Clear"] = "";
+    // _localizationMapBengali["Clear"] = "";
     _localizationMapSwahili["Clear"] = "Futa";
 
-    _localizationMapEnglish["English"] = "¥´»ýðÁ¸è"; // अंग्रेज़ी
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["English"] = "English";
+    _localizationMapHindi["English"] = "अंग्रेज़ी";
+    // _localizationMapUrdu["English"] = "";
+    // _localizationMapBengali["English"] = "";
     _localizationMapSwahili["English"] = "Kiswahili";
 
-    _localizationMapEnglish["Math"] = "»ç‡æÌ"; // गणित
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Math"] = "Math";
+    _localizationMapHindi["Math"] = "गणित";
+    // _localizationMapUrdu["Math"] = "";
+    // _localizationMapBengali["Math"] = "";
     _localizationMapSwahili["Math"] = "Hesabu";
 
-    _localizationMapEnglish["TutorialTrace"] = "Üæ§Ù ¹è¿ð¢" + delm + "Line Tracing"; // लाइन खीचें
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["TutorialTrace"] = "Line Tracing";
+    _localizationMapHindi["TutorialTrace"] = "लाइन खीचें";
+    // _localizationMapUrdu["TutorialTrace"] = "";
+    // _localizationMapBengali["TutorialTrace"] = "";
     _localizationMapSwahili["TutorialTrace"] = "Kufuatisha Mstari";
 
-    _localizationMapEnglish["FindTheMatch"] = "ÁôÇ¸è ¹ôçÁØð" + delm + "Find The Match"; // जोड़ी खोजिये
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["FindTheMatch"] = "Find The Match";
+    _localizationMapHindi[""] = "जोड़ी खोजिये";
+    // _localizationMapUrdu["FindTheMatch"] = "";
+    // _localizationMapBengali["FindTheMatch"] = "";
     _localizationMapSwahili["FindTheMatch"] = "Tafuta Sare";
 
-    _localizationMapEnglish["NumberMatching"] = "â¢wØæ ç×ÜæÙæ" + delm + "Number Matching"; // संख्या मिलाना
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["NumberMatching"] = "Number Matching";
+    _localizationMapHindi["NumberMatching"] = "संख्या मिलाना";
+    // _localizationMapUrdu["NumberMatching"] = "";
+    // _localizationMapBengali["NumberMatching"] = "";
     _localizationMapSwahili["NumberMatching"] = "Kufananisha Nambari";
 
-    _localizationMapEnglish["Tapping"] = "ÕÕÜ ÂæòÂ" + delm + "Bubble Pop"; // बबल पॉप
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Tapping"] = "Bubble Pop";
+    _localizationMapHindi["Tapping"] = "बबल पॉप";
+    // _localizationMapUrdu["Tapping"] = "";
+    // _localizationMapBengali["Tapping"] = "";
     _localizationMapSwahili["Tapping"] = "Pasua Povu la Sabuni";
 
-    _localizationMapEnglish["LetterMatching"] = "¥ÿæÚ ç×ÜæÙæ" + delm + "Letter Matching"; // अक्षर मिलाना
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["LetterMatching"] = "Letter Matching";
+    _localizationMapHindi["LetterMatching"] = "अक्षर मिलाना";
+    // _localizationMapUrdu["LetterMatching"] = "";
+    // _localizationMapBengali["LetterMatching"] = "";
     _localizationMapSwahili["LetterMatching"] = "Kufananisha Kusoma na Kuandika";
 
-    _localizationMapEnglish["AnimalPuzzle"] = "Âàæé¥ô¢ ·UUUè ÂãðÜè" + delm + "Animal Puzzle"; // पशुओं की पहेली
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["AnimalPuzzle"] = "Animal Puzzle";
+    _localizationMapHindi["AnimalPuzzle"] = "पशुओं की पहेली";
+    // _localizationMapUrdu["AnimalPuzzle"] = "";
+    // _localizationMapBengali["AnimalPuzzle"] = "";
     _localizationMapSwahili["AnimalPuzzle"] = "Fumbo la Picha";
 
-    _localizationMapEnglish["PatternTrain"] = "ÂñÅÙü ÅþñÙ" + delm + "Pattern Train"; // पैटर्न ट्रैन
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["PatternTrain"] = "Pattern Train";
+    _localizationMapHindi["PatternTrain"] = "पैटर्न ट्रैन";
+    // _localizationMapUrdu["PatternTrain"] = "";
+    // _localizationMapBengali["PatternTrain"] = "";
     _localizationMapSwahili["PatternTrain"] = "Reli ya Garimoshi";
 
-    _localizationMapEnglish["Video"] = "ßèçÇØô"; // वीडियो
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Video"] = "Video";
+    _localizationMapHindi["Video"] = "वीडियो";
+    // _localizationMapUrdu["Video"] = "";
+    // _localizationMapBengali["Video"] = "";
     _localizationMapSwahili["Video"] = "Video";
 
-    _localizationMapEnglish["Counting"] = "ç»ÙÌè" + delm + "Counting"; // गिनती
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Counting"] = "Counting";
+    _localizationMapHindi["Counting"] = "गिनती";
+    // _localizationMapUrdu["Counting"] = "";
+    // _localizationMapBengali["Counting"] = "";
     _localizationMapSwahili["Counting"] = "Kuhesabu";
 
-    _localizationMapEnglish["EquationMaker"] = "â×è·¤ÚU‡æ ÕÙæÙð ßæÜæ" + delm + "Equation Maker"; // समीकरण बनाने वाला
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["EquationMaker"] = "Equation Maker";
+    _localizationMapHindi["EquationMaker"] = "समीकरण बनाने वाला";
+    // _localizationMapUrdu["EquationMaker"] = "";
+    // _localizationMapBengali["EquationMaker"] = "";
     _localizationMapSwahili["EquationMaker"] = "Kiumba Mlinganyo";
 
-    _localizationMapEnglish["NumberTrain"] = "â¢wØæ ÅþðÙ" + delm + "Number Train"; // संख्या ट्रेन
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["NumberTrain"] = "Number Train";
+    _localizationMapHindi["NumberTrain"] = "संख्या ट्रेन";
+    // _localizationMapUrdu["NumberTrain"] = "";
+    // _localizationMapBengali["NumberTrain"] = "";
     _localizationMapSwahili["NumberTrain"] = "Nambari ya Garimoshi";
 
-    _localizationMapEnglish["AlphabetPuzzle"] = "ß‡æü×æÜæ ·UUUè ÂãðÜè" + delm + "Alphabet Puzzle"; // वर्णमाला की पहेली
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["AlphabetPuzzle"] = "Alphabet Puzzle";
+    _localizationMapHindi["AlphabetPuzzle"] = "वर्णमाला की पहेली";
+    // _localizationMapUrdu["AlphabetPuzzle"] = "";
+    // _localizationMapBengali["AlphabetPuzzle"] = "";
     _localizationMapSwahili["AlphabetPuzzle"] = "Fumbo la Alfabeti";
 
-    _localizationMapEnglish["Book"] = "ç·¤ÌæÕ"; // किताब
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Book"] = "Book";
+    _localizationMapHindi["Book"] = "किताब";
+    // _localizationMapUrdu["Book"] = "";
+    // _localizationMapBengali["Book"] = "";
     _localizationMapSwahili["Book"] = "Kitabu";
 
-    _localizationMapEnglish["Comprehension"] = "â×Ûæ ÕêÛæ" + delm + "Comprehension"; // समझ बूझ
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Comprehension"] = "Comprehension";
+    _localizationMapHindi["Comprehension"] = "समझ बूझ";
+    // _localizationMapUrdu["Comprehension"] = "";
+    // _localizationMapBengali["Comprehension"] = "";
     _localizationMapSwahili["Comprehension"] = "Maswali ya Ufahamu";
 
-    _localizationMapEnglish["DoubleDigit"] = "Îô ¥¢·UUUUô ·UUUè »ç‡æÌ" + delm + "Double Digit Math"; // दो अंको की गणित
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["DoubleDigit"] = "Double Digit Math";
+    _localizationMapHindi["DoubleDigit"] = "दो अंको की गणित";
+    // _localizationMapUrdu["DoubleDigit"] = "";
+    // _localizationMapBengali["DoubleDigit"] = "";
     _localizationMapSwahili["DoubleDigit"] = "Hisabati ya Tarakimu Mbili";
 
-    _localizationMapEnglish["FishTank"] = "×ÀÜè ƒæÚU" + delm + "Fish Tank"; // मछली घर
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["FishTank"] = "Fish Tank";
+    _localizationMapHindi["FishTank"] = "मछली घर";
+    // _localizationMapUrdu["FishTank"] = "";
+    // _localizationMapBengali["FishTank"] = "";
     _localizationMapSwahili["FishTank"] = "Tangi ya Samaki";
 
-    _localizationMapEnglish["HundredPuzzle"] = "100 ÂãðÜè" + delm + "100 Puzzle"; // 100 पहेली
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["HundredPuzzle"] = "100 Puzzle";
+    _localizationMapHindi["HundredPuzzle"] = "100 पहेली";
+    // _localizationMapUrdu["HundredPuzzle"] = "";
+    // _localizationMapBengali["HundredPuzzle"] = "";
     _localizationMapSwahili["HundredPuzzle"] = "Fumbo la Nambari 100";
 
-    _localizationMapEnglish["LetterTrace"] = "¥ÿæÚ ÕÙæ°¢" + delm + "Letter Trace"; // अक्षर बनाएं
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["LetterTrace"] = "Letter Trace";
+    _localizationMapHindi["LetterTrace"] = "अक्षर बनाएं";
+    // _localizationMapUrdu["LetterTrace"] = "";
+    // _localizationMapBengali["LetterTrace"] = "";
     _localizationMapSwahili["LetterTrace"] = "Kufuatisha Herufi";
 
-    _localizationMapEnglish["MovingInsects"] = "·UUUèÇ¸ð ·UUUè  ç»ÙÌè" + delm + "Bug Math"; // कीड़े की गिनती
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["MovingInsects"] = "Bug Math";
+    _localizationMapHindi["MovingInsects"] = "कीड़े की गिनती";
+    // _localizationMapUrdu["MovingInsects"] = "";
+    // _localizationMapBengali["MovingInsects"] = "";
     _localizationMapSwahili["MovingInsects"] = "Mchezo wa Mdudu";
 
-    _localizationMapEnglish["SentenceMaker"] = "ßævØ ÕÙæÙð ßæÜæ" + delm + "Sentence Maker"; // वाक्य बनाने वाला
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["SentenceMaker"] = "Sentence Maker";
+    _localizationMapHindi["SentenceMaker"] = "वाक्य बनाने वाला";
+    // _localizationMapUrdu["SentenceMaker"] = "";
+    // _localizationMapBengali["SentenceMaker"] = "";
     _localizationMapSwahili["SentenceMaker"] = "Kiumba Sentensi";
 
-    _localizationMapEnglish["ShapeMatching"] = "¥æ·¤æÚU ç×ÜæÙæ" + delm + "Shape Matching"; // आकार मिलाना
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["ShapeMatching"] = "Shape Matching";
+    _localizationMapHindi["ShapeMatching"] = "आकार मिलाना";
+    // _localizationMapUrdu["ShapeMatching"] = "";
+    // _localizationMapBengali["ShapeMatching"] = "";
     _localizationMapSwahili["ShapeMatching"] = "Kufananisha Maumbo";
 
-    _localizationMapEnglish["SoundTrain"] = "ŠßçÙ ÅþðÙ" + delm + "Sound Train"; // ध्वनि ट्रेन
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["SoundTrain"] = "Sound Train";
+    _localizationMapHindi["SoundTrain"] = "ध्वनि ट्रेन";
+    // _localizationMapUrdu["SoundTrain"] = "";
+    // _localizationMapBengali["SoundTrain"] = "";
     _localizationMapSwahili["SoundTrain"] = "Sauti ya Garimoshi";
 
-    _localizationMapEnglish["Spelling"] = "ßÌüÙè" + delm + "Spelling"; // वर्तनी
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Spelling"] = "Spelling";
+    _localizationMapHindi["Spelling"] = "वर्तनी";
+    // _localizationMapUrdu["Spelling"] = "";
+    // _localizationMapBengali["Spelling"] = "";
     _localizationMapSwahili["Spelling"] = "Matamshi";
 
-    _localizationMapEnglish["WordTracing"] = "àæyÎ ¥ÙéÚð¹‡æ" + delm + "Word Tracing"; // शब्द अनुरेखण
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["WordTracing"] = "Word Tracing";
+    _localizationMapHindi["WordTracing"] = "शब्द अनुरेखण";
+    // _localizationMapUrdu["WordTracing"] = "";
+    // _localizationMapBengali["WordTracing"] = "";
     _localizationMapSwahili["WordTracing"] = "Kufuatisha Maneno";
 
-    _localizationMapEnglish["NumberTracing"] = "â¢wØæ ¥ÙéÚð¹‡æ" + delm + "Number Tracing"; // संख्या अनुरेखण
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["NumberTracing"] = "Number Tracing";
+    _localizationMapHindi["NumberTracing"] = "संख्या अनुरेखण";
+    // _localizationMapUrdu["NumberTracing"] = "";
+    // _localizationMapBengali["NumberTracing"] = "";
     _localizationMapSwahili["NumberTracing"] = "Jifunze Mpaka 10";
 
-    _localizationMapEnglish["StarFall"] = "Åæ§çÂ¢»" + delm + "Typing"; // टाइपिंग
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["StarFall"] = "Typing";
+    _localizationMapHindi["StarFall"] = "टाइपिंग";
+    // _localizationMapUrdu["StarFall"] = "";
+    // _localizationMapBengali["StarFall"] = "";
     _localizationMapSwahili["StarFall"] = "Kuchapa";
 
-    _localizationMapEnglish["WordMachine"] = "àæyÎô¢ ·UUUè ×àæèÙ" + delm + "Word Machine"; // शब्दों की मशीन
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["WordMachine"] = "Word Machine";
+    _localizationMapHindi["WordMachine"] = "शब्दों की मशीन";
+    // _localizationMapUrdu["WordMachine"] = "";
+    // _localizationMapBengali["WordMachine"] = "";
     _localizationMapSwahili["WordMachine"] = "Mashine ya Maneno";
 
-    _localizationMapEnglish["NumberTracingExt"] = "â¢wØæ ¥ÙéÚð¹‡æ" + delm + "Number Tracing"; // संख्या अनुरेखण
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["NumberTracingExt"] = "Number Tracing";
+    _localizationMapHindi["NumberTracingExt"] = "संख्या अनुरेखण";
+    // _localizationMapUrdu["NumberTracingExt"] = "";
+    // _localizationMapBengali["NumberTracingExt"] = "";
     _localizationMapSwahili["NumberTracingExt"] = "Kufuatisha Nambari";
 
-    _localizationMapEnglish["LetterTracingCard"] = "¥ÿæÚ Åþðçâ¢» ·UUUæÇü" + delm + "Letter Tracing Card"; // अक्षर ट्रेसिंग कार्ड
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["LetterTracingCard"] = "Letter Tracing Card";
+    _localizationMapHindi["LetterTracingCard"] = "अक्षर ट्रेसिंग कार्ड";
+    // _localizationMapUrdu["LetterTracingCard"] = "";
+    // _localizationMapBengali["LetterTracingCard"] = "";
     _localizationMapSwahili["LetterTracingCard"] = "Fuatisha Mara 3";
 
-    _localizationMapEnglish["NumberPuzzle"] = "â¢wØæØô¢ ·UUUè ÂãðçÜØæ¡" + delm + "Number Blocks"; // संख्यायों की पहेलियाँ
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["NumberPuzzle"] = "Number Blocks";
+    _localizationMapHindi["NumberPuzzle"] = "संख्यायों की पहेलियाँ";
+    // _localizationMapUrdu["NumberPuzzle"] = "";
+    // _localizationMapBengali["NumberPuzzle"] = "";
     _localizationMapSwahili["NumberPuzzle"] = "Fumbo la Nambari";
 
-    _localizationMapEnglish["Arrange the numbers in order from smallest to largest"] = "ÀôÅè âð Üð·UUUUÚ ÕÇ¸è ¥¢·UUUU ·ðUUU RUUUU× ×ð¢ â¢wØæ¥ô¢ ·UUUè RUUUU×Õh ·UUUUÚð¢Ð"; // छोटी से लेकर बड़ी अंक के क्रम में संख्याओं की क्रमबद्ध करें|
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Arrange the numbers in order from smallest to largest"] = "Arrange the numbers in order from smallest to largest.";
+    _localizationMapHindi["Arrange the numbers in order from smallest to largest"] = "छोटी से लेकर बड़ी अंक के क्रम में संख्याओं की क्रमबद्ध करें।";
+    // _localizationMapUrdu["Arrange the numbers in order from smallest to largest"] = "";
+    // _localizationMapBengali["Arrange the numbers in order from smallest to largest"] = "";
     _localizationMapSwahili["Arrange the numbers in order from smallest to largest"] = "panga kwa mpangilio kutoka ndogo zaidi kwenda kubwa zaidi";
 
-    _localizationMapEnglish["Largest number"] = "âÕâð ÕÇ¸è â¢wØæ"; // सबसे बड़ी संख्या
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Largest number"] = "Largest number";
+    _localizationMapHindi["Largest number"] = "सबसे बड़ी संख्या";
+    // _localizationMapUrdu["Largest number"] = "";
+    // _localizationMapBengali["Largest number"] = "";
     _localizationMapSwahili["Largest number"] = "Namba ipi ndiyo kubwa zaidi?";
 
-    _localizationMapEnglish["BirdPhonics"] = "Âÿæè ·UUUè ŠßçÙ" + delm + "Bird Phonics"; // पक्षी की ध्वनि
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["BirdPhonics"] = "Bird Phonics";
+    _localizationMapHindi["BirdPhonics"] = "पक्षी की ध्वनि";
+    // _localizationMapUrdu["BirdPhonics"] = "";
+    // _localizationMapBengali["BirdPhonics"] = "";
     _localizationMapSwahili["BirdPhonics"] = "Sauti Ndege";
 
-    _localizationMapEnglish["FeedingTime"] = "ç¹ÜæÙð ·UUUæ â×Ø" + delm + "Feeding Time"; // खिलाने का समय
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["FeedingTime"] = "Feeding Time";
+    _localizationMapHindi["FeedingTime"] = "खिलाने का समय";
+    // _localizationMapUrdu["FeedingTime"] = "";
+    // _localizationMapBengali["FeedingTime"] = "";
     _localizationMapSwahili["FeedingTime"] = "Wakati wa kula";
 
-    _localizationMapEnglish["LineMatching"] = "Úð¹æ ç×ÜæÙ" + delm + "Line Matching"; // रेखा मिलान
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["LineMatching"] = "Line Matching";
+    _localizationMapHindi["LineMatching"] = "रेखा मिलान";
+    // _localizationMapUrdu["LineMatching"] = "";
+    // _localizationMapBengali["LineMatching"] = "";
     _localizationMapSwahili["LineMatching"] = "Linganisha mistari";
 
-    _localizationMapEnglish["MangoShop"] = "¥æ× ·UUUè Îé·UUUæÙ" + delm + "Mango Shop"; // आम की दुकान
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["MangoShop"] = "Mango Shop";
+    _localizationMapHindi["MangoShop"] = "आम की दुकान";
+    // _localizationMapUrdu["MangoShop"] = "";
+    // _localizationMapBengali["MangoShop"] = "";
     _localizationMapSwahili["MangoShop"] = "Duka la embe";
 
-    _localizationMapEnglish["MissingNumber"] = "¥ÙéÂçSÍÌ â¢wØæ" + delm + "Missing Number"; // अनुपस्थित संख्या
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["MissingNumber"] = "Missing Number";
+    _localizationMapHindi["MissingNumber"] = "अनुपस्थित संख्या";
+    // _localizationMapUrdu["MissingNumber"] = "";
+    // _localizationMapBengali["MissingNumber"] = "";
     _localizationMapSwahili["MissingNumber"] = "Namba iliyopotea";
 
-    _localizationMapEnglish["ReadingBird"] = "ÂÉ¸Ùð ßæÜæ Âÿæè" + delm + "Reading Bird"; // पढ़ने वाला पक्षी
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["ReadingBird"] = "Reading Bird";
+    _localizationMapHindi["ReadingBird"] = "पढ़ने वाला पक्षी";
+    // _localizationMapUrdu["ReadingBird"] = "";
+    // _localizationMapBengali["ReadingBird"] = "";
     _localizationMapSwahili["ReadingBird"] = "Ndege anayesoma";
 
-    _localizationMapEnglish["WhatIsThis"] = "Øã vØæ ãñ?" + delm + "What Is This?"; // यह क्या है?
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["WhatIsThis"] = "What Is This?";
+    _localizationMapHindi["WhatIsThis"] = "यह क्या है?";
+    // _localizationMapUrdu["WhatIsThis"] = "";
+    // _localizationMapBengali["WhatIsThis"] = "";
     _localizationMapSwahili["WhatIsThis"] = "Hii ni nini?";
 
-    _localizationMapEnglish["ThirtyPuzzle"] = "30 ÂãðÜè" + delm + "30 Puzzle"; // 30 पहेली
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["ThirtyPuzzle"] = "30 Puzzle";
+    _localizationMapHindi["ThirtyPuzzle"] = "30 पहेली";
+    // _localizationMapUrdu["ThirtyPuzzle"] = "";
+    // _localizationMapBengali["ThirtyPuzzle"] = "";
     _localizationMapSwahili["ThirtyPuzzle"] = "Panga Namba";
 
-    _localizationMapEnglish["WordNote"] = "àæyÎ ÙôÅ" + delm + "Word Note"; // शब्द नोट
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["WordNote"] = "Word Note";
+    _localizationMapHindi["WordNote"] = "शब्द नोट";
+    // _localizationMapUrdu["WordNote"] = "";
+    // _localizationMapBengali["WordNote"] = "";
     _localizationMapSwahili["WordNote"] = "Tunga neno";
 
-    _localizationMapEnglish["QuickFacts"] = "ÌéÚ‹Ì Ì‰Ø" + delm + "Quick Facts"; // ततुरन्त तथ्य
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["QuickFacts"] = "Quick Facts";
+    _localizationMapHindi["QuickFacts"] = "तुरन्त तथ्य";
+    // _localizationMapUrdu["QuickFacts"] = "";
+    // _localizationMapBengali["QuickFacts"] = "";
     _localizationMapSwahili["QuickFacts"] = "Ukweli wa Uhakika";
 
-    _localizationMapEnglish["MultiplicationBoard"] = "»é‡ææ Â^" + delm + "Multiplication Lamp"; // गुणा पट्ट
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["MultiplicationBoard"] = "Multiplication Lamp";
+    _localizationMapHindi["MultiplicationBoard"] = "गुणा पट्ट";
+    // _localizationMapUrdu["MultiplicationBoard"] = "";
+    // _localizationMapBengali["MultiplicationBoard"] = "";
     _localizationMapSwahili["MultiplicationBoard"] = "Taa ya Kuzidishia";
 
-    _localizationMapEnglish["WordMatrix"] = "àæyÎ ¥æÃØêã" + delm + "Word Matrix"; // शब्द आव्यूह
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["WordMatrix"] = "Word Matrix";
+    _localizationMapHindi["WordMatrix"] = "शब्द आव्यूह";
+    // _localizationMapUrdu["WordMatrix"] = "";
+    // _localizationMapBengali["WordMatrix"] = "";
     _localizationMapSwahili["WordMatrix"] = "Chanzo cha Neno";
 
-    _localizationMapEnglish["SentenceBridge"] = "ßævØô¢ ·UUUæ ÂéÜ" + delm + "Sentence Bridge"; // वाक्यों का पुल
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["SentenceBridge"] = "Sentence Bridge";
+    _localizationMapHindi["SentenceBridge"] = "वाक्यों का पुल";
+    // _localizationMapUrdu["SentenceBridge"] = "";
+    // _localizationMapBengali["SentenceBridge"] = "";
     _localizationMapSwahili["SentenceBridge"] = "Daraja la Sentensi";
 
-    _localizationMapEnglish["WordWindow"] = "ßÇü çß¢Çô" + delm + "Word Window"; // वर्ड विंडो
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["WordWindow"] = "Word Window";
+    _localizationMapHindi["WordWindow"] = "वर्ड विंडो";
+    // _localizationMapUrdu["WordWindow"] = "";
+    // _localizationMapBengali["WordWindow"] = "";
     _localizationMapSwahili["WordWindow"] = "Dirisha la Neno";
 
-    _localizationMapEnglish["WordKicker"] = "àæyÎ ç·UUUU·UUUUÚ" + delm + "Word Kicker"; // शब्द किकर
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["WordKicker"] = "Word Kicker";
+    _localizationMapHindi["WordKicker"] = "शब्द किकर";
+    // _localizationMapUrdu["WordKicker"] = "";
+    // _localizationMapBengali["WordKicker"] = "";
     _localizationMapSwahili["WordKicker"] = "Mpigo wa Neno";
 
-    _localizationMapEnglish["MathKicker"] = "×ñ‰â ç·UUUU·UUUUÚ" + delm + "Math Kicker"; // मैथ्स किकर
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["MathKicker"] = "Math Kicker";
+    _localizationMapHindi["MathKicker"] = "मैथ्स किकर";
+    // _localizationMapUrdu["MathKicker"] = "";
+    // _localizationMapBengali["MathKicker"] = "";
     _localizationMapSwahili["MathKicker"] = "Mpigo wa Hisabati";
 
-    _localizationMapEnglish["PlaceValue"] = "×æÙ Ú¹ð" + delm + "Place Value"; // मान रखे
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["PlaceValue"] = "Place Value";
+    _localizationMapHindi["PlaceValue"] = "मान रखे";
+    // _localizationMapUrdu["PlaceValue"] = "";
+    // _localizationMapBengali["PlaceValue"] = "";
     _localizationMapSwahili["PlaceValue"] = "Fungu la Thamani";
 
-    _localizationMapEnglish["Labeling"] = "¥¢ç·UUUUÌ·UUUU Ü»æÙæ" + delm + "Labeling"; // अंकितक लगाना
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Labeling"] = "Labeling";
+    _localizationMapHindi["Labeling"] = "अंकितक लगाना";
+    // _localizationMapUrdu["Labeling"] = "";
+    // _localizationMapBengali["Labeling"] = "";
     _localizationMapSwahili["Labeling"] = "Pachika Jina";
 
-    _localizationMapEnglish["LRComprehension"] = "â×Ûæ ÕêÛæ" + delm + "Comprehension"; // समझ बूझ
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["LRComprehension"] = "Comprehension";
+    _localizationMapHindi["LRComprehension"] = "समझ बूझ";
+    // _localizationMapUrdu["LRComprehension"] = "";
+    // _localizationMapBengali["LRComprehension"] = "";
     _localizationMapSwahili["LRComprehension"] = "Ufahamu";
 
-    _localizationMapEnglish["BookwithQuiz"] = "ÂýoAô}æÚè ·ðUUU âæÍ Õé·UUUU ·UUUUÚð¢"; // प्रश्नोत्तरी के साथ बुक करें
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["BookwithQuiz"] = "Book with Quiz";
+    _localizationMapHindi["BookwithQuiz"] = "प्रश्नोत्तरी के साथ बुक करें";
+    // _localizationMapUrdu["BookwithQuiz"] = "";
+    // _localizationMapBengali["BookwithQuiz"] = "";
     _localizationMapSwahili["BookwithQuiz"] = "Kitabu Chenye Jaribio";
 
-    _localizationMapEnglish["Do you want to take a test on this egg?"] = "vØæ ¥æÂ §â ¥¢Çð ÂÚ ÅðSÅ ÜðÙæ ¿æãÌð ãñ¢?"; // क्या आप इस अंडे पर टेस्ट लेना चाहते हैं?
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Do you want to take a test on this egg?"] = "Do you want to take a test on this egg?";
+    _localizationMapHindi["Do you want to take a test on this egg?"] = "क्या आप इस अंडे पर टेस्ट लेना चाहते हैं?";
+    // _localizationMapUrdu["Do you want to take a test on this egg?"] = "";
+    // _localizationMapBengali["Do you want to take a test on this egg?"] = "";
     _localizationMapSwahili["Do you want to take a test on this egg?"] = "Je, unataka kufanya jaribio kuhusu hili yai?";
 
-    _localizationMapEnglish["Take the quiz to add me to your sea world!"] = "×éÛæð ¥ÂÙè â×é¼ýè ÎéçÙØæ ×ð¢ ÁôÇ¸Ùð ·ðUUU çÜ° ÂýoAô}æÚè Üô!"; // मुझे अपनी समुद्री दुनिया में जोड़ने के लिए प्रश्नोत्तरी लो!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Take the quiz to add me to your sea world!"] = "Take the quiz to add me to your sea world!";
+    _localizationMapHindi["Take the quiz to add me to your sea world!"] = "मुझे अपनी समुद्री दुनिया में जोड़ने के लिए प्रश्नोत्तरी लो!";
+    // _localizationMapUrdu[""Take the quiz to add me to your sea world!""] = "";
+    // _localizationMapBengali[""Take the quiz to add me to your sea world!""] = "";
     _localizationMapSwahili["Take the quiz to add me to your sea world!"] = "Fanya jaribio ili uniongeze kwenye\ndunia yako ya bahari!";
 
-    _localizationMapEnglish["Congratulations!\nSee you at your sea world!"] = "ÕÏæ§ü ãô! ¥æÂ·UUUè â×é¼ýè ÎéçÙØæ ×ð¢ ç×ÜÌð ãñ!"; // बधाई हो! आपकी समुद्री दुनिया में मिलते है!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Congratulations!\nSee you at your sea world!"] = "Congratulations!\nSee you at your sea world!";
+    _localizationMapHindi["Congratulations!\nSee you at your sea world!"] = "बधाई हो! आपकी समुद्री दुनिया में मिलते है!";
+    // _localizationMapUrdu["Congratulations!\nSee you at your sea world!"] = "";
+    // _localizationMapBengali["Congratulations!\nSee you at your sea world!"] = "";
     _localizationMapSwahili["Congratulations!\nSee you at your sea world!"] = "Hongera!\nTuonane kwenye\ndunia yako ya bahari!";
 
-    _localizationMapEnglish["Try again to add me to your sea world!"] = "¥ÂÙè â×é¼ýè ÎéçÙØæ ×ð¢ ×éÛæð ÁôÇ¸Ùð ·ðUUU çÜ° çÈUUUUÚ âð ·UUUUôçàæàæ ·UUUUÚð¢!"; // अपनी समुद्री दुनिया में मुझे जोड़ने के लिए फिर से कोशिश करें!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Try again to add me to your sea world!"] = "Try again to add me to your sea world!";
+    _localizationMapHindi["Try again to add me to your sea world!"] = "अपनी समुद्री दुनिया में मुझे जोड़ने के लिए फिर से कोशिश करें!";
+    // _localizationMapUrdu["Try again to add me to your sea world!"] = "";
+    // _localizationMapBengali["Try again to add me to your sea world!"] = "";
     _localizationMapSwahili["Try again to add me to your sea world!"] = "Jaribu tena kuniongeza kwenye\ndunia yako ya bahari!";
 
-    _localizationMapEnglish["Don't give up! Let's try it again!"] = "ãæÚ ×Ì ×æÙô! ¿Üô çÈUUUUÚ âð ·UUUUôçàæàæ ·UUUUÚô!"; // हार मत मानो! चलो फिर से कोशिश करो!
-    // _localizationMapHindi[""] = "";
-    // _localizationMapUrdu[""] = "";
-    // _localizationMapBengali[""] = "";
+    _localizationMapEnglish["Don't give up! Let's try it again!"] = "Don't give up! Let's try it again!";
+    _localizationMapHindi["Don't give up! Let's try it again!"] = "हार मत मानो! चलो फिर से कोशिश करो!";
+    // _localizationMapUrdu["Don't give up! Let's try it again!"] = "";
+    // _localizationMapBengali["Don't give up! Let's try it again!"] = "";
     _localizationMapSwahili["Don't give up! Let's try it again!"] = "Usikate tamaa! Jaribu tena!";
 
     // NB(xenosoz, 2018): Migrated from ShapeMatching. Datasheet? I agree.

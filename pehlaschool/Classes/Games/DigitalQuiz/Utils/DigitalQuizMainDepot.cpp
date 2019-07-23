@@ -19,11 +19,11 @@ string MainDepot::assetPrefix() const {
 }
 
 string MainDepot::defaultFont() const {
-    return "fonts/mukta-bold.ttf";
+    return "arial";
 }
 
 float MainDepot::defaultFontSize() const {
-    return 90.f;
+    return 70.f;
 }
 
 Color3B MainDepot::defaultFontColor() const {

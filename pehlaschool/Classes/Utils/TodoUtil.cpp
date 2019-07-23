@@ -327,11 +327,11 @@ Label* TodoUtil::createLabelMultilineToFit(const std::string &text, float maxFon
         auto smallFontSize = maxFontSize * (boxSize.height /label->getContentSize().height);
         auto adjustedFontSize = (smallFontSize + maxFontSize)/2.0;
         
-        label = Label::createWithTTF(text, fontName, adjustedFontSize, Size(boxSize.width, 0), hAlignment, cocos2d::TextVAlignment::CENTER);
+        label = Label::createWithSystemFont(text, fontName, adjustedFontSize, Size(boxSize.width, 0), hAlignment, cocos2d::TextVAlignment::CENTER);
         label->setTextColor(color);
         
         if (label->getContentSize().height > boxSize.height) {
-            label = Label::createWithTTF(text, fontName, smallFontSize, Size(boxSize.width, 0), hAlignment, cocos2d::TextVAlignment::CENTER);
+            label = Label::createWithSystemFont(text, fontName, smallFontSize, Size(boxSize.width, 0), hAlignment, cocos2d::TextVAlignment::CENTER);
             label->setTextColor(color);
         }
         

@@ -77,7 +77,7 @@ Label* MainDepot::createNextLabel() const {
     } else if (langCode == "sw") {
         titleString = "Chagua moja.";
     }
-    Label* It = Label::createWithTTF(titleString, "fonts/chanakya.ttf", 300.f);
+    Label* It = Label::createWithSystemFont(titleString, "arial", 250.f);
     It->setColor(Color3B(105, 68, 31));
 
     return It;

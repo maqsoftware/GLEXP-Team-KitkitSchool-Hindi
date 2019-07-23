@@ -16,6 +16,7 @@
 #include <Utils/TodoUtil.h>
 #include <cocos/ui/UIButton.h>
 #include "Managers/UserManager.hpp"
+#include "Managers/LanguageManager.hpp"
 
 #include "CCAppController.hpp"
 
@@ -25,8 +26,8 @@ using namespace std;
 
 
 namespace {
-    const string defaultFont("fonts/mukta-bold.ttf");
-    const float defaultFontSize(100.f);
+    const string defaultFont("arial");
+    const float defaultFontSize(60.f);
     
 
     Size windowSize() {
@@ -84,9 +85,22 @@ cocos2d::Scene* GradeSelector::minimalSceneByWrapping() {
     backButton->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     backButton->setPosition(Vec2(25, _winSize.height-25));
     scene->addChild(backButton);
-    
-    auto label = Label::createWithTTF("Choose a level to play (" + gameName_ + ")",
-                                   defaultFont, defaultFontSize); // खेलने के लिए एक स्तर चुनें
+
+    std::string displayText;
+    std::string langCode = LanguageManager::getInstance()->customLanguageCode;
+    if (langCode == "en") {
+        displayText = "Choose a level to play";
+    } else if (langCode == "hi") {
+        displayText = "खेलने के लिए एक स्तर चुनें";
+    } else if (langCode == "ur") {
+        displayText = "سطح کو کھیلنے کے لئے منتخب کریں";
+    } else if (langCode == "bn") {
+        displayText = "";
+    } else if (langCode == "sw") {
+        displayText = "Chagua kiwango kimoja cha kucheza";
+    }
+    auto label = Label::createWithSystemFont(displayText + " (" + gameName_ + ")",
+                                   defaultFont, defaultFontSize);
     
     label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     label->setPosition(_winSize.width/2, _winSize.height-150);
@@ -206,7 +220,7 @@ cocos2d::Scene* GradeSelector::minimalSceneByWrapping() {
         const int DEFAULT_TRIGGER_VOLUME = 110;
         
         Node* nodeVolume = Node::create();
-        auto label = Label::createWithTTF("Trigger Volume: ",
+        auto label = Label::createWithSystemFont("Trigger Volume: ",
                                           defaultFont, defaultFontSize);
         label->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
         label->setPosition(Vec2::ZERO);

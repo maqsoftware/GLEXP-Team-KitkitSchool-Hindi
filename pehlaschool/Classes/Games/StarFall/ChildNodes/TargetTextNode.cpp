@@ -23,7 +23,7 @@ namespace {
     Size contentSize() { return Size(309.f, 308.f); }
 
     string fontFace() { return StarFallDepot().defaultFontFace(); }
-    float fontSize() { return 100.f; }
+    float fontSize() { return 75.f; }
     Color3B fontColor() { return Color3B(255, 255, 255); }
 
 }  // unnamed namespace
@@ -121,7 +121,7 @@ void TargetTextNode::refreshChildNodes() {
     }
     
     TextLabel = ([&] {
-        Label* It = Label::createWithTTF(TitleText(), fontFace(), fontSize());
+        Label* It = Label::createWithSystemFont(TitleText(), fontFace(), fontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         It->setPosition(CS / 2.f);
 
