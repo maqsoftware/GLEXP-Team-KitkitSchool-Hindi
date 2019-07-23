@@ -19,7 +19,7 @@ namespace {
     string questionMarkSkin() { return MainDepot().assetPrefix() + "/GameBoard/question_mark.png"; }
     
     string defaultFont() { return MainDepot().defaultFont(); }
-    float defaultFontSize() { return 270.f; }
+    float defaultFontSize() { return 230.f; }
     Color4B defaultFontColor() { return Color4B(216, 209, 183, 255); }
 
     float durationForCardMove() { return .3f; }
@@ -121,7 +121,7 @@ void GameBoard::refreshChildNodes() {
 
     
     LeftExprLabel = ([&] {
-        auto It = Label::createWithTTF(LeftExpr(), defaultFont(), defaultFontSize());
+        auto It = Label::createWithSystemFont(LeftExpr(), defaultFont(), defaultFontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         It->setTextColor(defaultFontColor());
         It->setVisible(false);
@@ -131,7 +131,7 @@ void GameBoard::refreshChildNodes() {
     }());
     
     OperatorLabel = ([&] {
-        auto It = Label::createWithTTF(Operator(), defaultFont(), defaultFontSize());
+        auto It = Label::createWithSystemFont(Operator(), defaultFont(), defaultFontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         It->setTextColor(defaultFontColor());
         It->setVisible(false);
@@ -141,7 +141,7 @@ void GameBoard::refreshChildNodes() {
     }());
     
     RightExprLabel = ([&] {
-        auto It = Label::createWithTTF(RightExpr(), defaultFont(), defaultFontSize());
+        auto It = Label::createWithSystemFont(RightExpr(), defaultFont(), defaultFontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         It->setTextColor(defaultFontColor());
         It->setVisible(false);
@@ -151,7 +151,7 @@ void GameBoard::refreshChildNodes() {
     }());
     
     EqualsLabel = ([&] {
-        auto It = Label::createWithTTF("=", defaultFont(), defaultFontSize());
+        auto It = Label::createWithSystemFont("=", defaultFont(), defaultFontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         It->setTextColor(defaultFontColor());
         It->setVisible(false);

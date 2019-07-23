@@ -94,7 +94,7 @@ void EraseDataConfirmPopup::refreshChildNodes() {
             Text << ProblemName();
 
         // NB(xenosoz, 2016): Status Label
-        auto It = Label::createWithTTF(Text.str(),
+        auto It = Label::createWithSystemFont(Text.str(),
                                        Depot.defaultFont(),
                                        Depot.defaultFontSize());
         It->setColor(Depot.defaultFontColor());

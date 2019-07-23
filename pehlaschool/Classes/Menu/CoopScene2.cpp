@@ -236,7 +236,8 @@ void CoopScene2::setupCoop()
     
     auto labelText = LanguageManager::getInstance()->getLocalizedString((this->_coopType== CT_LITERACY) ? "English" : "Math");
     
-    auto label = TodoUtil::createLabel(labelText, 100, Size::ZERO, "fonts/chanakya.ttf", Color4B(255, 252, 219, 255));
+    auto label = Label::createWithSystemFont(labelText, "arial", 75);
+    label->setTextColor(Color4B(255, 252, 219, 255));
     label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     label->setPosition(panel->getContentSize()/2);
     panel->addChild(label);
@@ -406,7 +407,7 @@ void CoopScene2::setupDebug()
         }
     } else {
         
-        Label* versionTitle = Label::createWithTTF(UserManager::getInstance()->getAppVersion(), "fonts/mukta-bold.ttf", 42);
+        Label* versionTitle = Label::createWithSystemFont(UserManager::getInstance()->getAppVersion(), "arial", 30);
         versionTitle->setTextColor(Color4B::WHITE);
         versionTitle->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         versionTitle->setPosition(Vec2(30, debugViewSize.height/2));
@@ -1012,7 +1013,6 @@ void Room::setupRoom(LevelCurriculum &cur)
         auto nest = Sprite::create("CoopScene/"+nestName);
         nest->setPosition(Vec2(roomSize.width/2, 114));
         this->addChild(nest);
-        
     }
     
     bird = Bird::create(cur.category, cur.categoryLevel, cur.levelID);

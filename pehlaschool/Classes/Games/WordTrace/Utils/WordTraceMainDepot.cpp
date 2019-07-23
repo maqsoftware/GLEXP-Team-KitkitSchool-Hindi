@@ -27,7 +27,7 @@ std::string MainDepot::assetPrefix() const {
 }
 
 std::string MainDepot::defaultFont() const {
-    return "fonts/mukta-bold.ttf";
+    return "arial";
 }
 
 Size MainDepot::windowSize() const {
@@ -94,7 +94,7 @@ cocos2d::Label* MainDepot::createNextLabel() const {
     } else if (langCode == "sw") {
         displayText = "Inayofuata";
     }
-    Label* It = Label::createWithTTF(displayText, "fonts/chanakya.ttf", 300.f);
+    Label* It = Label::createWithSystemFont(displayText, "arial", 250.f);
     It->setColor(Color3B(255, 249, 237));
     It->setOpacity(GLubyte(255 * .90f));
     
@@ -142,7 +142,7 @@ Button* MainDepot::createNextButton(const std::string& TeaserFileName) const {
 }
 
 cocos2d::Label* MainDepot::createNextButtonLabel(const std::string& Text) const {
-    Label* It = Label::createWithTTF(Text, defaultFont(), 140.f);
+    Label* It = Label::createWithSystemFont(Text, defaultFont(), 120.f);
     It->setColor(Color3B(255, 249, 237));
     It->setOpacity(GLubyte(255 * .90f));
 

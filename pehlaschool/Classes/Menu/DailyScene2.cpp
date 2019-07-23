@@ -48,7 +48,8 @@ namespace DailyScene2Space {
     
     const Size viewSize = Size(2560, 1800);
     
-    const string defaultFont = "fonts/chanakya.ttf";
+    const string defaultFont = "fonts/mukta-bold.ttf";
+    const string arialFont = "arial";
     const string fontName = "fonts/mukta-bold.ttf";
     const string folder = "MainScene/DailyScene/";
     
@@ -257,7 +258,8 @@ bool DailyScene2::init(string levelID)
         _panel->setPosition(Vec2(viewSize.width/2, viewSize.height));
         _mainView->addChild(_panel);
         
-        auto panelLabel = TodoUtil::createLabel(_cur->levelTitle, 100, Size::ZERO, defaultFont, Color4B(255, 252, 236, 255));
+        auto panelLabel = Label::createWithSystemFont(_cur->levelTitle, arialFont, 75);
+        panelLabel->setTextColor(Color4B(255, 252, 236, 255));
         panelLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         panelLabel->setPosition(_panel->getContentSize()/2 - Size(0, 42));
         _panel->addChild(panelLabel);
@@ -871,12 +873,12 @@ void DailyScene2::setupFreechoiceTab()
             string labelHindi = labelName.substr(0, labelName.find(delim));
             string labelEnglish = labelName.substr(labelName.find(delim) + delim.length(),labelName.length()-1);
 
-            auto panelLabelHindi = TodoUtil::createLabelMultilineToFit(labelHindi, 90, Size(btnSize.width, 120), defaultFont, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
+            auto panelLabelHindi = TodoUtil::createLabelMultilineToFit(labelHindi, 75, Size(btnSize.width, 120), defaultFont, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
             panelLabelHindi->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
             panelLabelHindi->setPosition(Vec2(btnSize.width/2, 10));
             gameBtn->addChild(panelLabelHindi);
 
-            auto panelLabelEnglish = TodoUtil::createLabelMultilineToFit(labelEnglish, 90, Size(btnSize.width, 120), fontName, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
+            auto panelLabelEnglish = TodoUtil::createLabelMultilineToFit(labelEnglish, 75, Size(btnSize.width, 120), fontName, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
             panelLabelEnglish->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
             panelLabelEnglish->setPosition(Vec2(btnSize.width/2, 100));
             gameBtn->addChild(panelLabelEnglish);

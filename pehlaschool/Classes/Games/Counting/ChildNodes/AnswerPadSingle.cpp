@@ -16,7 +16,7 @@
 namespace AnswerPadSingleSpace {
     const char* touchEffect = "Counting/paneltouch.m4a";
     const char* formalFont = "fonts/Aileron-Regular.otf";
-    const char* hindiFont = "fonts/chanakya.ttf";
+    const char* arialFont = "arial";
 }
 
 using namespace AnswerPadSingleSpace;
@@ -55,7 +55,7 @@ bool AnswerPadSingle::init()
     } else if (langCode == "sw") {
          displayText = "Ngapi?";
     }
-    _questionLabel = Label::createWithSystemFont(displayText, hindiFont, 100);
+    _questionLabel = Label::createWithSystemFont(displayText, arialFont, 100);
     _questionLabel->setTextColor(Color4B(242, 245, 240, 255));
     _questionLabel->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     _questionLabel->setPosition(Vec2(150, answerPadSize.height-129));

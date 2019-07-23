@@ -85,7 +85,7 @@ bool STTopCard::init()
 			textNode->addChild(sprite, 0, "BGWrong");
 		}
 
-		if (auto label = Label::createWithTTF("", "fonts/mukta-bold.ttf", 130))
+		if (auto label = Label::createWithSystemFont("", "arial", 100))
 		{
 			label->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
 			label->setTextColor(Color4B(81, 53, 24, 230));
@@ -95,7 +95,7 @@ bool STTopCard::init()
 			textNode->addChild(label, 1, "labelBig");
 		}
 
-		if (auto label = Label::createWithTTF("", "fonts/mukta-bold.ttf", 100))
+		if (auto label = Label::createWithSystemFont("", "arial", 75))
 		{
 			label->setAlignment(TextHAlignment::LEFT, TextVAlignment::CENTER);
 			label->setTextColor(Color4B(81, 53, 24, 230));
@@ -302,7 +302,7 @@ bool STDownCard::init()
 			textNode->addChild(sprite, 0, "BGWrong");
 		}
 
-		if (auto label = Label::createWithTTF("Hello World", "fonts/mukta-bold.ttf", 82))
+		if (auto label = Label::createWithSystemFont("Hello World", "arial", 70))
 		{
 			label->setAlignment(TextHAlignment::LEFT, TextVAlignment::CENTER);
 			label->setTextColor(Color4B(81, 53, 24, 230));

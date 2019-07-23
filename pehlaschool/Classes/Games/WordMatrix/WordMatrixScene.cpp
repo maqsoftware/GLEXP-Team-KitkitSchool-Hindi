@@ -842,7 +842,7 @@ void WordMatrixBlock::setLabel(vector<TEXT_INFO> textInfos)
     fontPos.y += 4.0f;
 
     _textInfo = textInfos.at(0);
-    _wordLabel1 = Label::createWithTTF(_textInfo._word.c_str(), _resourcesInfo._fontName, fontSize);
+    _wordLabel1 = Label::createWithSystemFont(_textInfo._word.c_str(), _resourcesInfo._fontName, fontSize);
     _wordLabel1->setHorizontalAlignment(TextHAlignment::CENTER);
     _wordLabel1->setVerticalAlignment(TextVAlignment::CENTER);
     _wordLabel1->setColor(_textInfo._color);
@@ -856,7 +856,7 @@ void WordMatrixBlock::setLabel(vector<TEXT_INFO> textInfos)
         _wordLabel1->setAnchorPoint(Vec2(1.0f, 0.5f));
 
         TEXT_INFO tempInfo = textInfos.at(1);
-        _wordLabel2 = Label::createWithTTF(tempInfo._word.c_str(), _resourcesInfo._fontName, fontSize);
+        _wordLabel2 = Label::createWithSystemFont(tempInfo._word.c_str(), _resourcesInfo._fontName, fontSize);
         _wordLabel2->setHorizontalAlignment(TextHAlignment::LEFT);
         _wordLabel2->setVerticalAlignment(TextVAlignment::CENTER);
         _wordLabel2->setColor(tempInfo._color);

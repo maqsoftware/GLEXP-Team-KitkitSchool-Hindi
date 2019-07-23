@@ -23,7 +23,7 @@ namespace {
     Size contentSize() { return Size(309.f, 308.f); }
     
     string fontFace() { return StarFallDepot().defaultFontFace(); }
-    float fontSize() { return 100.f; }
+    float fontSize() { return 75.f; }
     Color3B fontColor() { return Color3B(255, 255, 255); }
     
     size_t bubbleCount() { return 5; }
@@ -67,7 +67,7 @@ void TargetDummyNode::refreshChildNodes() {
     TextLabel = ([&] {
         Vec2 Translate = Vec2(0.f, Point(CS).length() * .10f);
 
-        auto It = Label::createWithTTF(TitleText(), fontFace(), fontSize());
+        auto It = Label::createWithSystemFont(TitleText(), fontFace(), fontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         It->setPosition(CS / 2.f);
         It->setTextColor(Color4B(fontColor()));
