@@ -53,8 +53,7 @@ namespace MainSceneSpace {
   //  const int coopBackZ = -100;
 
     
-    const string fontName = "fonts/chanakya.ttf";
-    
+
     bool isDemo = true;
 };
 
@@ -373,7 +372,7 @@ bool MainScene::init()
         
         {
             _resetBtn = ui::Button::create("MainScene/for-manager_button_normal.png","MainScene/for-manager_button_touch.png");
-            auto l = TodoUtil::createLabel("ÚèâðÅ", 50, Size::ZERO, "fonts/chanakya.ttf", Color4B(0, 0, 0, 255)); // रीसेट
+            auto l = TodoUtil::createLabel("Reset", 50, Size::ZERO, "fonts/mukta-bold.ttf", Color4B(0, 0, 0, 255));
             l->setPosition(_resetBtn->getContentSize()/2 + Size(0, 10));
             _resetBtn->addChild(l);
 
@@ -405,7 +404,7 @@ bool MainScene::init()
         
         {
             _addCoinsBtn = ui::Button::create("MainScene/for-manager_button_normal.png","MainScene/for-manager_button_touch.png");
-            auto l = TodoUtil::createLabel("çâPðUUU ÁôÇô", 50, Size::ZERO, "fonts/chanakya.ttf", Color4B(0, 0, 0, 255)); // सिक्के जोडो
+            auto l = TodoUtil::createLabel("Add coins", 50, Size::ZERO, "fonts/mukta-bold.ttf", Color4B(0, 0, 0, 255));
             l->setPosition(_addCoinsBtn->getContentSize()/2 + Size(0, 10));
             _addCoinsBtn->addChild(l);
             
@@ -432,7 +431,7 @@ bool MainScene::init()
         
         {
             _openAllBtn = ui::Button::create("MainScene/for-manager_button_normal.png","MainScene/for-manager_button_touch.png");
-            auto l = TodoUtil::createLabel("âÕ ¹ôÜ Îô", 50, Size::ZERO, "fonts/chanakya.ttf", Color4B(0, 0, 0, 255)); // सब खोल दो
+            auto l = TodoUtil::createLabel("Open all", 50, Size::ZERO, "fonts/mukta-bold.ttf", Color4B(0, 0, 0, 255));
             l->setPosition(_openAllBtn->getContentSize()/2 + Size(0, 10));
             _openAllBtn->addChild(l);
             _openAllBtn->setPosition(Vec2(visibleSize.width/2+400, visibleSize.height-400));

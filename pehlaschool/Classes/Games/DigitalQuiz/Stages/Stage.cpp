@@ -88,7 +88,7 @@ void Stage::refreshChildNodes() {
     
     IndicatorNode = [&] {
         auto& Indicator = TheProblem().Indicator;
-        auto It = Label::createWithTTF(Indicator,
+        auto It = Label::createWithSystemFont(Indicator,
                                        Depot.defaultFont(), Depot.defaultFontSize());
         It->setColor(Depot.defaultFontColor());
         
@@ -99,7 +99,7 @@ void Stage::refreshChildNodes() {
     }();
     
     StudentNameNode = [&] {
-        auto It = Label::createWithTTF(TheStudentName(),
+        auto It = Label::createWithSystemFont(TheStudentName(),
                                        Depot.defaultFont(), Depot.defaultFontSize());
         It->setColor(Depot.defaultFontColor());
         
@@ -110,7 +110,7 @@ void Stage::refreshChildNodes() {
     }();
     
     TestClockNode = [&] {
-        auto It = Label::createWithTTF(formatClock(TestClock()),
+        auto It = Label::createWithSystemFont(formatClock(TestClock()),
                                        Depot.defaultFont(), Depot.defaultFontSize());
         It->setColor(Depot.defaultFontColor());
         

@@ -301,7 +301,7 @@ void Card::refreshChildNodes() {
     }());
     
     TitleLabel = ([&] {
-        auto It = Label::createWithTTF(TitleText(), Depot.defaultFont(), titleFontSize());
+        auto It = Label::createWithSystemFont(TitleText(), Depot.defaultFont(), titleFontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         It->setPosition(Point(FrontFace->getContentSize() / 2.f) + Vec2(0.f, -10.f));
         

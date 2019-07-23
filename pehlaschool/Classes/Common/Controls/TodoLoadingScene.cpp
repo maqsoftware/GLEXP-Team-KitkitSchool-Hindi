@@ -126,24 +126,24 @@ bool TodoLoadingScene::init(std::function<Scene*(void)> &creator, float loadingT
     std::string loadingText;
     std::string langCode = LanguageManager::getInstance()->customLanguageCode;
     if (langCode == "en") {
-        loadingText = "How many?";
+        loadingText = "";
     } else if (langCode == "hi") {
-        loadingText = "कितने हैं?";
+        loadingText = "प्रतीक्षा करें...";
     } else if (langCode == "ur") {
-        loadingText = "کتنے ہیں؟";
+        loadingText = "برائے مہربانی انتظار کریں...";
     } else if (langCode == "bn") {
         loadingText = "";
     } else if (langCode == "sw") {
-        loadingText = "Ngapi?";
+        loadingText = "Kusubiri...";
     }
     
-    Label *loadingLabel = Label::createWithTTF(loadingText, "fonts/chanakya.ttf", 150);
+    Label *loadingLabel = Label::createWithSystemFont(loadingText, "arial", 100);
     loadingLabel->setTextColor(Color4B(255, 240, 222, 255));
     loadingLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     loadingLabel->setPosition(Vec2(winSize.width/2, winSize.height/2 - imageSize.height/2 - 170));
     addChild(loadingLabel);
 
-    Label *loadingLabelEnglish = Label::createWithTTF("Please wait...", "fonts/mukta-bold.ttf", 120);
+    Label *loadingLabelEnglish = Label::createWithSystemFont("Please wait...", "arial", 100);
     loadingLabelEnglish->setTextColor(Color4B(255, 240, 222, 255));
     loadingLabelEnglish->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     loadingLabelEnglish->setPosition(Vec2(winSize.width/2, winSize.height/2 - imageSize.height/2));

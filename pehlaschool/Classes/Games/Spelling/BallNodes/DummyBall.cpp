@@ -130,7 +130,7 @@ void DummyBall::refreshChildNodes() {
     Size CS = getContentSize();
     
     [&] {
-        auto It = Label::createWithTTF(Text(),
+        auto It = Label::createWithSystemFont(Text(),
                                        Depot.defaultFont(), fontSize(TheBallSize, TheBallKind));
         It->setTextColor(textColor(TheBallSize, TheBallKind));
 
