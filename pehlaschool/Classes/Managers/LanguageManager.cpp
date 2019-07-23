@@ -535,22 +535,9 @@ void LanguageManager::initLocalizationMap()
     _localizationMapSwahili["Arrange the numbers in order from smallest to largest"] = "panga kwa mpangilio kutoka ndogo zaidi kwenda kubwa zaidi";
 
     _localizationMapEnglish["Largest number"] = "Largest number";
-    // _localizationMapHindi["Largest number"] = "सबसे बड़ी संख्या";
-    // _localizationMapUrdu["Largest number"] = "";
-    _localizationMapBengali["Largest number"] = "বৃহত্তম সংখ্যা";
-    // _localizationMapBengali["NumberPuzzle"] = "";
-    _localizationMapSwahili["NumberPuzzle"] = "Fumbo la Nambari";
-
-    _localizationMapEnglish["Arrange the numbers in order from smallest to largest"] = "Arrange the numbers in order from smallest to largest.";
-    _localizationMapHindi["Arrange the numbers in order from smallest to largest"] = "छोटी से लेकर बड़ी अंक के क्रम में संख्याओं की क्रमबद्ध करें।";
-    // _localizationMapUrdu["Arrange the numbers in order from smallest to largest"] = "";
-    // _localizationMapBengali["Arrange the numbers in order from smallest to largest"] = "";
-    _localizationMapSwahili["Arrange the numbers in order from smallest to largest"] = "panga kwa mpangilio kutoka ndogo zaidi kwenda kubwa zaidi";
-
-    _localizationMapEnglish["Largest number"] = "Largest number";
     _localizationMapHindi["Largest number"] = "सबसे बड़ी संख्या";
     // _localizationMapUrdu["Largest number"] = "";
-    // _localizationMapBengali["Largest number"] = "";
+    _localizationMapBengali["Largest number"] = "বৃহত্তম সংখ্যা";
     _localizationMapSwahili["Largest number"] = "Namba ipi ndiyo kubwa zaidi?";
 
     _localizationMapEnglish["BirdPhonics"] = "Bird Phonics";
