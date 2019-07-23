@@ -92,6 +92,9 @@ android {
         }
     }
     productFlavors {
+        english {
+            applicationIdSuffix ".english"
+        }
         hindi {
 
         }
