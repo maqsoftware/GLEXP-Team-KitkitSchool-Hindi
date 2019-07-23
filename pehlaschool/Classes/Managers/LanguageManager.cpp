@@ -506,7 +506,7 @@ void LanguageManager::initLocalizationMap()
     _localizationMapEnglish["NumberTracingExt"] = "Number Tracing";
     _localizationMapHindi["NumberTracingExt"] = "संख्या अनुरेखण";
     // _localizationMapUrdu["NumberTracingExt"] = "";
-    // _localizationMapBengali["NumberTracingExt"] = "";
+    _localizationMapBengali["NumberTracingExt"] = "সংখ্যা ট্রেসিং";
     _localizationMapSwahili["NumberTracingExt"] = "Kufuatisha Nambari";
 
     _localizationMapEnglish["LetterTracingCard"] = "Letter Tracing Card";
@@ -644,7 +644,7 @@ void LanguageManager::initLocalizationMap()
     _localizationMapEnglish["LRComprehension"] = "Comprehension";
     _localizationMapHindi["LRComprehension"] = "समझ बूझ";
     // _localizationMapUrdu["LRComprehension"] = "";
-    // _localizationMapBengali["LRComprehension"] = "";
+    _localizationMapBengali["LRComprehension"] = "কম্প্রিহেনশন";
     _localizationMapSwahili["LRComprehension"] = "Ufahamu";
 
     _localizationMapEnglish["BookwithQuiz"] = "Book with Quiz";
