@@ -203,7 +203,7 @@
 
         <provider
             android:name="com.maq.kitkitProvider.KitkitProvider"
-            android:authorities="com.maq.provider.pehlaschool.english"
+            android:authorities="com.maq.provider.pehlaschool"
             android:exported="true" />
 
     </application>
