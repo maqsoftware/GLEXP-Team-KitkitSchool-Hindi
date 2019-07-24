@@ -146,28 +146,28 @@ bool ReadingBirdScene::init()
     
     if (isDebug == true)
     {
-        auto mainState = Label::createWithSystemFont("main : " + strMainState[(int)mMainState], "arial", 60);
+        auto mainState = Label::createWithSystemFont("main : " + strMainState[(int)mMainState], "arial", 50);
         mainState->setTextColor(Color4B::WHITE);
         mainState->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
         mainState->setPosition(Vec2(25, winSize.height - 300));
         mainState->setTag(LABEL_MAIN_STATE);
         addChild(mainState);
 
-        auto character1State = Label::createWithSystemFont("c1 : " + strCharacter1State[(int)mCharacter1State], "arial", 60);
+        auto character1State = Label::createWithSystemFont("c1 : " + strCharacter1State[(int)mCharacter1State], "arial", 50);
         character1State->setTextColor(Color4B::WHITE);
         character1State->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
         character1State->setPosition(Vec2(25, winSize.height - 400));
         character1State->setTag(LABEL_CHARACTER1_STATE);
         addChild(character1State);
 
-        auto character2State = Label::createWithSystemFont("c2 : " + strCharacter2State[(int)mCharacter2State], "arial", 60);
+        auto character2State = Label::createWithSystemFont("c2 : " + strCharacter2State[(int)mCharacter2State], "arial", 50);
         character2State->setTextColor(Color4B::WHITE);
         character2State->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
         character2State->setPosition(Vec2(25, winSize.height - 500));
         character2State->setTag(LABEL_CHARACTER2_STATE);
         addChild(character2State);
 
-        auto volume = Label::createWithSystemFont("", "arial", 60);
+        auto volume = Label::createWithSystemFont("", "arial", 50);
         volume->setTextColor(Color4B::WHITE);
         volume->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
         volume->setPosition(Vec2(25, winSize.height - 600));
@@ -175,7 +175,7 @@ bool ReadingBirdScene::init()
 
         addChild(volume);
 
-        auto score = Label::createWithSystemFont("", "arial", 60);
+        auto score = Label::createWithSystemFont("", "arial", 50);
         score->setTextColor(Color4B::WHITE);
         score->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
         score->setPosition(Vec2(25, winSize.height - 700));

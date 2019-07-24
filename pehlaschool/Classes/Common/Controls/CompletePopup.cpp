@@ -143,7 +143,7 @@ bool CompletePopup::init() {
 
     
     _titleTextLabel = Label::createWithSystemFont(labelText(), "arial",
-                                           70, Size::ZERO,
+                                           75, Size::ZERO,
                                            TextHAlignment::CENTER, TextVAlignment::CENTER);
     _titleTextLabel->setTextColor(Color4B(255, 252, 236, 255));
     _titleTextLabel->setPosition(Vec2(p.x, p.y-250));

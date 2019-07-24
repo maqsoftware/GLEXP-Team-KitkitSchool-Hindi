@@ -32,6 +32,7 @@ namespace
     const string missEffect = kPrefixPath + "help.m4a";
     const string pageTurnEffect = kPrefixPath + "card_move_right.m4a";
     const string defaultFont = FONT_ANDIKA_BOLD;
+    const string fontArial = FONT_ARIAL;
     const float kGuideViewTweenDuration = 0.3f;
     const float kGuideViewDelayGameClear = 0.3f;
     const Size gameSize = Size(2560, 1800);
@@ -406,7 +407,7 @@ void LRComprehensionScene::drawQuestionTitle(string titleText, Node* parentNode,
     _questionHighlight->setPosition(200.f, parentNode->getContentSize().height - 300.f);
     parentNode->addChild(_questionHighlight);
 
-    auto titleLabel = Label::createWithSystemFont(titleText, FONT_ARIAL, 50.f, Size::ZERO);
+    auto titleLabel = Label::createWithSystemFont(titleText, FONT_ARIAL, 40.f, Size::ZERO);
     titleLabel->setTextColor(Color4B(77, 77, 77, 255));
 
     titleLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
@@ -444,7 +445,7 @@ void LRComprehensionScene::drawGuideTitle(string titleText)
     _guideHighlight->setPosition(200.f, this->getContentSize().height - 300.f);
     guideHighlightWrapper->addChild(_guideHighlight);
     
-    auto titleLabel = Label::createWithSystemFont(titleText, FONT_ARIAL, 50.f, Size::ZERO);
+    auto titleLabel = Label::createWithSystemFont(titleText, FONT_ARIAL, 40.f, Size::ZERO);
     titleLabel->setTextColor(Color4B(77, 77, 77, 255));
     titleLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     titleLabel->setPosition(leftPadding - 100.f, _guideHighlight->getContentSize().height / 2);

@@ -19,7 +19,7 @@
 namespace MultipleChoicesSceneSpace
 {
 //    const bool bDebug = false;
-    const char* defaultFont = FONT_ANDIKA_BOLD;
+    const char* defaultFont = FONT_ARIAL;
 }
 
 using namespace MultipleChoicesSceneSpace;

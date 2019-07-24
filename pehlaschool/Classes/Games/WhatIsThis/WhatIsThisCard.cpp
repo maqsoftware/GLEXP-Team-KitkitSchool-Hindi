@@ -302,7 +302,7 @@ bool STDownCard::init()
 			textNode->addChild(sprite, 0, "BGWrong");
 		}
 
-		if (auto label = Label::createWithSystemFont("Hello World", "arial", 70))
+		if (auto label = Label::createWithSystemFont("Hello World", "arial", 60))
 		{
 			label->setAlignment(TextHAlignment::LEFT, TextVAlignment::CENTER);
 			label->setTextColor(Color4B(81, 53, 24, 230));

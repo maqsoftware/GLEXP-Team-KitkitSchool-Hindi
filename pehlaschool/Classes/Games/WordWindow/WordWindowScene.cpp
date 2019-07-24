@@ -3060,7 +3060,7 @@ void WordWindowScene::createQuestion()
 		}
 	}
 
-	m_pLabelQuestion = TodoUtil::createLabelMultilineToFit(newText, 80.f, Size(1424.f, 800.f), arialFont, Color4B::WHITE, TextHAlignment::LEFT, TextVAlignment::CENTER);
+	m_pLabelQuestion = TodoUtil::createLabelMultilineToFit(newText, 60.f, Size(1424.f, 800.f), arialFont, Color4B::WHITE, TextHAlignment::LEFT, TextVAlignment::CENTER);
 	m_pLabelQuestion->setPosition(Vec2(749.f + (1424.f / 2.f), 901.f + (336.f / 2.f)));
 	_gameNode->addChild(m_pLabelQuestion);
 }

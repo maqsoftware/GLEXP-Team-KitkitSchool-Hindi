@@ -15,8 +15,8 @@
 USING_NS_CC;
 
 #define FONT_MUKTA_BOLD     "fonts/mukta-bold.ttf"
+#define FONT_ARIAL			"arial"
 #define FONT_ANDIKA_BOLD    "fonts/AndikaNewBasic-B.ttf"
-#define FONT_ARIAL          "arial"
 
 #define DELAYED_CALLFUNC_TARGET(TARGET, TIME, FUNCTION_CONTENT)\
 TARGET->runAction(Sequence::create(DelayTime::create(TIME),CallFunc::create([this](){FUNCTION_CONTENT;}), nullptr))

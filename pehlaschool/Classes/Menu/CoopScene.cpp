@@ -493,7 +493,7 @@ void CoopScene::setupDebug()
         }
     } else {
         
-        Label* versionTitle = Label::createWithSystemFont(UserManager::getInstance()->getAppVersion(), "arial", 30);
+        Label* versionTitle = Label::createWithSystemFont(UserManager::getInstance()->getAppVersion(), "arial", 25);
         versionTitle->setTextColor(Color4B::WHITE);
         versionTitle->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         versionTitle->setPosition(Vec2(30, debugViewSize.height/2));
