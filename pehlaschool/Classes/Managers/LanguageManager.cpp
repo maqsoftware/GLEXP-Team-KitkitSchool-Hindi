@@ -184,7 +184,7 @@ std::string LanguageManager::getLocalizedString(std::string str)
     } else if (customLanguageCode == "ur") {
         localized = _localizationMapEnglish[str];
     } else if (customLanguageCode == "bn") {
-        localized = _localizationMapEnglish[str];
+        localized = _localizationMapBengali[str];
     } else if (customLanguageCode == "sw") {
         localized = _localizationMapSwahili[str];
     }

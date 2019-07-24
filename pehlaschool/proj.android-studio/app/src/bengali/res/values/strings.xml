@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">पहला स्कूल - Pehla School</string>
-    <string name="content_extraction" translatable="false">यह प्रक्रिया केवल एक बार की जाएगी। इसमें १० मिनट तक का समय लग सकता है।</string>
+    <string name="app_name">পেহলা স্কুল  - Pehla School</string>
+    <string name="content_extraction" translatable="false">এই প্রক্রিয়া শুধুমাত্র একবার সম্পন্ন করা হবে. এটি 10 ​​মিনিট সময় নিতে পারে.</string>
     <string name="content_extraction_english" translatable="false">This process will be done only once. It can take up to 10 minutes.</string>
-    <string name="tools_activity_title">Tools</string>
+    <string name="tools_activity_title">টুল </string>
     <string name="user_default_id">user0</string>
-    <string name="launcher_title">पहला स्कूल - Pehla School</string>
+    <string name="launcher_title">পেহলা স্কুল - Pehla School</string>
     <string name="btn_setting">Settings</string>
     <string name="btn_credit">Credit</string>
     <string name="about_activity_title">About</string>
@@ -14,10 +14,10 @@
     <string name="go_setting">Go to Android Settings</string>
     <string name="enter_password">Enter password</string>
     <string name="wrong_password">Wrong password</string>
-    <string name="start">\tStart\nशुरू करो</string>
+    <string name="start">\tStart\nশুরু করুন।</string>
     <string name="install">Install</string>
-    <string name="library">Library\nपुस्तकालय</string>
-    <string name="tools">Tools\nउपकरण</string>
+    <string name="library">Library\nলাইব্রেরি </string>
+    <string name="tools">Tools \nটুল</string>
     <string name="btn_upload">Upload logs</string>
     <string name="btn_clear_appdata">Clear app data</string>
     <string name="setting_activity_title">Settings</string>
@@ -41,15 +41,15 @@
     <string name="cancel2">CANCEL</string>
     <string name="enter">ENTER</string>
     <string name="number">number</string>
-    <string name="defaultLanguage">hi-IN</string>
-    <string name="drums">Drums\nढोल</string>
-    <string name="marimba">Xylophone\nमरिम्बा</string>
-    <string name="drawing">Drawing\nचित्रकारी</string>
-    <string name="coloring">Coloring\nरंग भरे</string>
-    <string name="camera">Camera\nकैमरा</string>
-    <string name="album">Album\nएल्बम</string>
-    <string name="blackboard">Black Board\nश्यामपट्ट</string>
-    <string name="writing_board">Writing Board\nबोर्ड लेखन</string>
+    <string name="defaultLanguage">bn-IN</string>
+    <string name="drums">Drums\nড্রামস</string>
+    <string name="marimba">Xylophone\nক্সাইলফোন</string>
+    <string name="drawing">Drawing\nঅঙ্কন</string>
+    <string name="coloring">Coloring\nরঙ</string>
+    <string name="camera">Camera\nক্যামেরা</string>
+    <string name="album">Album\nঅ্যালবাম </string>
+    <string name="blackboard">Black Board\nব্ল্যাক বোর্ড </string>
+    <string name="writing_board">Writing Board\nলেখার বোর্ড</string>
 
     <string name="select_user_no">Select user number</string>
     <string name="select_tablet_no">Select tablet number</string>
@@ -58,7 +58,7 @@
     <string name="username_activity_title">User name</string>
     <string name="username_list">[ User name list ]</string>
     <string name="rename">Rename</string>
-    <string name="dialog_message" translatable="false">Install this application to enable this module in music and arts section.\nसंगीत और कला अनुभाग में इस मॉड्यूल को शुरू करने के लिए इस एप्लिकेशन को इंस्टॉल करें।</string>
+    <string name="dialog_message" translatable="false">Install this application to enable this module in music and arts section.\nসঙ্গীত এবং শিল্প বিভাগে এই মডিউল সক্রিয় করতে এই অ্যাপ্লিকেশনটি ইনস্টল করুন।</string>
     <string name="title_drawing">Drawing</string>
     <string name="title_coloring">Coloring</string>
 
