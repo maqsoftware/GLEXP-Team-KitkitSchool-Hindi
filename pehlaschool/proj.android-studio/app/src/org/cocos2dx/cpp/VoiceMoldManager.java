@@ -64,7 +64,12 @@ public class VoiceMoldManager
     }
 
     public void speak(String text) {
-        speak(text, defaultLocale);
+        if( defaultLocale.equals("bn-IN") && ((!text.equals("")) && (text != null) && (text.matches("^[a-zA-Z0-9_ ?.,'\"]*$")))){
+            speak(text, "hi-IN");
+        }
+        else {
+            speak(text, defaultLocale);
+        }
     }
 
     public void speak(String text, String locale) {
