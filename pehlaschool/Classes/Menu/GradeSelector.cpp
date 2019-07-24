@@ -85,8 +85,8 @@ cocos2d::Scene* GradeSelector::minimalSceneByWrapping() {
     backButton->setPosition(Vec2(25, _winSize.height-25));
     scene->addChild(backButton);
     
-    auto label = Label::createWithTTF("Choose a level to play (" + gameName_ + ")",
-                                   defaultFont, defaultFontSize); // खेलने के लिए एक स्तर चुनें
+    auto label = Label::createWithSystemFont("Choose a level to play (" + gameName_ + ")",
+                                   defaultFont, defaultFontSize);
     
     label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     label->setPosition(_winSize.width/2, _winSize.height-150);

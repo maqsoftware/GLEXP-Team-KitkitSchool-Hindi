@@ -243,7 +243,7 @@ void CoopScene::setupCoop()
     
     auto labelText = LanguageManager::getInstance()->getLocalizedString((this->_coopType== CT_LITERACY) ? "English" : "Math");
     
-    auto label = TodoUtil::createLabel(labelText, 100, Size::ZERO, "fonts/chanakya.ttf", Color4B(255, 252, 219, 255));
+    auto label = TodoUtil::createLabel(labelText, 75, Size::ZERO, "arial", Color4B(255, 252, 219, 255));
     label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     label->setPosition(panel->getContentSize()/2);
     panel->addChild(label);
@@ -492,7 +492,7 @@ void CoopScene::setupDebug()
         }
     } else {
         
-        Label* versionTitle = Label::createWithTTF(UserManager::getInstance()->getAppVersion(), "fonts/mukta-bold.ttf", 42);
+        Label* versionTitle = Label::createWithSystemFont(UserManager::getInstance()->getAppVersion(), "arial", 25);
         versionTitle->setTextColor(Color4B::WHITE);
         versionTitle->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         versionTitle->setPosition(Vec2(30, debugViewSize.height/2));

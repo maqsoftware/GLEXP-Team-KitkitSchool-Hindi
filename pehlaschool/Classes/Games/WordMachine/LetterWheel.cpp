@@ -184,7 +184,7 @@ void LetterWheel::setup(std::string wheelString, Size viewSize, float numShowing
     
     _lables.clear();
     for (int i=0; i<_labelNum; i++) {
-        auto l = Label::createWithTTF("", "fonts/mukta-bold.ttf", fontSize);
+        auto l = Label::createWithSystemFont("", "arial", fontSize);
         _lables.push_back(l);
         
         l->setTextColor(Color4B::BLACK);

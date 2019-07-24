@@ -121,7 +121,7 @@ void TargetTextNode::refreshChildNodes() {
     }
     
     TextLabel = ([&] {
-        Label* It = Label::createWithTTF(TitleText(), fontFace(), fontSize());
+        Label* It = Label::createWithSystemFont(TitleText(), fontFace(), fontSize());
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         It->setPosition(CS / 2.f);
 

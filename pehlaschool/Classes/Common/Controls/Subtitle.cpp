@@ -93,11 +93,11 @@ void Subtitle::setContent(string content) {
     
     this->removeAllChildren();
     
-    const string font = "fonts/mukta-bold.ttf";
+    const string font = "arial";
     const float shadow = 8;
     
     auto drawShadow = [this, font, content](float posX, float posY){
-        auto shadow = TodoUtil::createLabel(content, 100, Size::ZERO, font, Color4B::BLACK);
+        auto shadow = TodoUtil::createLabel(content, 75, Size::ZERO, font, Color4B::BLACK);
         shadow->setPosition(posX,posY);
         this->addChild(shadow);
     };
@@ -114,7 +114,7 @@ void Subtitle::setContent(string content) {
     drawShadow(shadow, 0);
     drawShadow(shadow, shadow);
 
-    auto label = TodoUtil::createLabel(content, 100, Size::ZERO, font, Color4B::WHITE);
+    auto label = TodoUtil::createLabel(content, 75, Size::ZERO, font, Color4B::WHITE);
     this->addChild(label);
     
 }

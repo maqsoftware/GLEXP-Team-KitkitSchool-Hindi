@@ -36,9 +36,8 @@ using namespace std;
 
 namespace MultiplicationBoardSceneSpace
 {
-    const char* defaultFont = "fonts/mukta-bold.ttf";
-    const char* andikaFont = "fonts/mukta-bold.ttf";
-    
+    const char* fontArial = "arial";
+
     const string resourcePath = "MultiplicationBoard/";
     
     const Size gameSize = Size(2560, 1800);
@@ -308,7 +307,7 @@ void MultiplicationBoardScene::createBoard(int index)
 
         //상단 숫자
         //상단 백숫자
-        auto boardNumberBack = Label::createWithTTF(TodoUtil::itos(i+1), defaultFont, 117);
+        auto boardNumberBack = Label::createWithTTF(TodoUtil::itos(i+1), fontArial, 80);
         boardNumberBack->setColor(Color3B(38, 33, 33));
         boardNumberBack->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
         boardNumberBack->setPosition(Vec2(multiplierNumberPos.x + (i * 154) + 40, multiplierNumberPos.y - 10));
@@ -683,7 +682,7 @@ void MultiplicationBoardScene::createBoard(int index)
 
                                            //결과 수
                                            CallFunc::create([this, piece](){
-                                                auto result = Label::createWithTTF(TodoUtil::itos(_multiplicand * _multiplier), defaultFont, 80);
+                                                auto result = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), fontArial, 50);
                                                 result->setColor(numberColor);
                                                 result->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
                                                 result->setPosition(Vec2(piece->getPosition().x + 20, piece->getPosition().y - (piece->getContentSize().height/2) + 60));
@@ -765,7 +764,7 @@ void MultiplicationBoardScene::createBoard(int index)
                             CallFunc::create([this, piece](){
                             
                                 //최종 수식 까만색으로 띄우자
-                                auto lastExpression = Label::createWithTTF(TodoUtil::itos(_multiplicand) + " x " + TodoUtil::itos(_numSnappedPieces) + " = " + TodoUtil::itos(_multiplicand * _numSnappedPieces), andikaFont, 120);
+                                auto lastExpression = Label::createWithSystemFont(TodoUtil::itos(_multiplicand) + " x " + TodoUtil::itos(_numSnappedPieces) + " = " + TodoUtil::itos(_multiplicand * _numSnappedPieces), fontArial, 90);
                                 lastExpression->setName("lastExpression");
                                 lastExpression->setColor(Color3B(0, 0, 0));
                                 lastExpression->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -871,10 +870,10 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
 {
     _expressionNode->removeAllChildren();
 
-    auto expNumber = Label::createWithTTF(TodoUtil::itos(_multiplicand), andikaFont, 160);
-    auto resultNumber = Label::createWithTTF(TodoUtil::itos(_multiplicand * _multiplier), andikaFont, 160);
-    auto plusSymbol = Label::createWithTTF("+", andikaFont, 160);
-    auto equalSymbol = Label::createWithTTF("=", andikaFont, 160);
+    auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), fontArial, 120);
+    auto resultNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), fontArial, 120);
+    auto plusSymbol = Label::createWithSystemFont("+", fontArial, 120);
+    auto equalSymbol = Label::createWithSystemFont("=", fontArial, 120);
     
     int count = _numSnappedPieces + (isPick ? 1 : 0);
     
@@ -898,7 +897,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
     {
         if (i > 0)
         {
-            auto expSymbol = Label::createWithTTF("+", andikaFont, 160);
+            auto expSymbol = Label::createWithSystemFont("+", fontArial, 120);
             expSymbol->setColor(symbolColor);
             expSymbol->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
             expSymbol->setPosition(Vec2(expX, expY));
@@ -914,7 +913,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
             _expressionNode->addChild(expSymbol);
         }
         
-        auto expNumber = Label::createWithTTF(TodoUtil::itos(_multiplicand), andikaFont, 160);
+        auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), fontArial, 120);
         expNumber->setColor(numberColor);
         expNumber->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         expNumber->setPosition(Vec2(expX, expY));
@@ -933,7 +932,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
     if (isSnapped && _numSnappedPieces > 1)
     {
         //= 이퀄
-        auto expSymbol = Label::createWithTTF("=", andikaFont, 160);
+        auto expSymbol = Label::createWithSystemFont("=", fontArial, 120);
         expSymbol->setName("");
         expSymbol->setColor(symbolColor);
         expSymbol->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
@@ -944,7 +943,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
         _expressionNode->addChild(expSymbol);
         
         //결과수
-        auto expNumber = Label::createWithTTF(TodoUtil::itos(_multiplicand * _numSnappedPieces), andikaFont, 160);
+        auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _numSnappedPieces), fontArial, 120);
         expNumber->setColor(numberColor);
         expNumber->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         expNumber->setPosition(Vec2(expX, expY));
@@ -968,11 +967,11 @@ void MultiplicationBoardScene::makeCompleteExpression()
     _expressionNode->removeAllChildren();
     
     //사용될 라벨 생성
-    auto multiplicandNumber = Label::createWithTTF(TodoUtil::itos(_multiplicand), andikaFont, 160);
-    auto xSymbol = Label::createWithTTF("X", andikaFont, 160);
-    auto multiplierNumber = Label::createWithTTF(TodoUtil::itos(_multiplier), andikaFont, 160);
-    auto equalSymbol = Label::createWithTTF("=", andikaFont, 160);
-    auto resultNumber = Label::createWithTTF(TodoUtil::itos(_multiplicand * _multiplier), andikaFont, 160);
+    auto multiplicandNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), fontArial, 120);
+    auto xSymbol = Label::createWithSystemFont("X", fontArial, 120);
+    auto multiplierNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplier), fontArial, 120);
+    auto equalSymbol = Label::createWithSystemFont("=", fontArial, 120);
+    auto resultNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), fontArial, 120);
     
     //전체 수식 길이 계산
     int expWidth = (multiplicandNumber->getContentSize().width + xSymbol->getContentSize().width + multiplierNumber->getContentSize().width +
@@ -1346,7 +1345,7 @@ void MultiplicationBoardPiece::setTexture(int multiplicand, int multiplier)
             
             _bulb->addChild(numberBack);
 
-            auto number = Label::createWithTTF(TodoUtil::itos(multiplicand * multiplier), defaultFont, 80);
+            auto number = Label::createWithTTF(TodoUtil::itos(multiplicand * multiplier), fontArial, 50);
             number->setColor(numberColor);
             number->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
             number->setPosition(Vec2(bulb->getPosition().x + 4, bulb->getPosition().y - bulb->getContentSize().height/2 - 4));

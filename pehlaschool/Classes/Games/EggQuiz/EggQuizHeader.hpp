@@ -39,7 +39,7 @@ const string soundsPath = "eggquiz/sounds/";
 const string soundsNumberPath = "numbervoice/d_";
 const string tsvPath = "eggquiz/";
 
-const string FONT_NORMAL = "fonts/mukta-bold.ttf";
+const string FONT_NORMAL = "arial";
 const string FONT_BOLD = "fonts/chanakya.ttf";
 const Color4B FONT_COLOR = Color4B(60,60,60,255);
 

@@ -134,7 +134,7 @@ void TrainCar::setAnimal(TrainCar::animalType animalType, bool isNumber, bool on
     auto size = getContentSize();
     Vec2 bPos;
     
-    const string fontName = "fonts/chanakya.ttf";
+    const string fontName = "arial";
 
     if (animalType==MOUSE) {
         _animal = Sprite::create("NumberTrain/smallet_largest_mice_normal.png");
@@ -176,7 +176,7 @@ void TrainCar::setAnimal(TrainCar::animalType animalType, bool isNumber, bool on
         
         string labelKey = LanguageManager::getInstance()->getLocalizedString("Arrange the numbers in order from smallest to largest");
         
-        _label = TodoUtil::createLabel(labelKey, 45, Size(500, 190), fontName, Color4B(54, 54, 54, 255), TextHAlignment::LEFT);
+        _label = TodoUtil::createLabel(labelKey, 25, Size(500, 190), fontName, Color4B(54, 54, 54, 255), TextHAlignment::LEFT);
         _label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         _label->setPosition(565, 320);
         
@@ -194,7 +194,7 @@ void TrainCar::setAnimal(TrainCar::animalType animalType, bool isNumber, bool on
             }
             
             string labelKey = LanguageManager::getInstance()->getLocalizedString("Largest number");
-            _label = TodoUtil::createLabel(labelKey, 45, Size(430, 120), fontName, Color4B(54, 54, 54, 255), TextHAlignment::LEFT);
+            _label = TodoUtil::createLabel(labelKey, 25, Size(430, 120), fontName, Color4B(54, 54, 54, 255), TextHAlignment::LEFT);
             _label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
             _label->setPosition(610, 160);
             

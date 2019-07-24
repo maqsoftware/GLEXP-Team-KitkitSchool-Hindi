@@ -33,7 +33,7 @@ BigLabel::createWithTTF(const std::string& Text,
     
     BL->SampleRate = SR;
     BL->ChildLabel = ([&] {
-        Label* It = Label::createWithTTF(Text, FontFilePath, FontSize * SR,
+        Label* It = Label::createWithSystemFont(Text, FontFilePath, FontSize * SR,
                                          Dimensions * SR, HAlignment, VAlignment);
         It->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
         It->setPosition(Point::ZERO);

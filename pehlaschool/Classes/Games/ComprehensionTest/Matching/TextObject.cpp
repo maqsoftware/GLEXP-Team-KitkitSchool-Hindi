@@ -15,7 +15,7 @@ namespace ComprehensionTest
     {
         const Size txtSize = Size(600, 300);
 //        const Size txtSize = Size(510, 374);
-        const string fontName = FONT_MUKTA_BOLD;
+        const string fontName = FONT_ARIAL;
         
         TextObject::TextObject():
         _dotDirection(DotDirection::Right)
@@ -33,7 +33,7 @@ namespace ComprehensionTest
         void TextObject::setText(std::string text)
         {
             auto halign = (location == ObjectLocation::LeftSide ? TextHAlignment::RIGHT : TextHAlignment::LEFT);
-            _textLabel = TodoUtil::createLabelMultilineToFit(text, 80, txtSize, fontName, Color4B(77, 77, 77, 255), halign, TextVAlignment::CENTER);
+            _textLabel = TodoUtil::createLabelMultilineToFit(text, 40, txtSize, fontName, Color4B(77, 77, 77, 255), halign, TextVAlignment::CENTER);
             addChild(_textLabel);
             
             setContentSize(_textLabel->getContentSize());
