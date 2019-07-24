@@ -358,7 +358,7 @@ void LanguageManager::initLocalizationMap()
     _localizationMapSwahili["TutorialTrace"] = "Kufuatisha Mstari";
 
     _localizationMapEnglish["FindTheMatch"] = "Find The Match";
-    _localizationMapHindi[""] = "जोड़ी खोजिये";
+    _localizationMapHindi["FindTheMatch"] = "जोड़ी खोजिये";
     // _localizationMapUrdu["FindTheMatch"] = "";
     // _localizationMapBengali["FindTheMatch"] = "";
     _localizationMapSwahili["FindTheMatch"] = "Tafuta Sare";

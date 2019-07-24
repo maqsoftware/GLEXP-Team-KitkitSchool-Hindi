@@ -21,7 +21,7 @@ import android.text.TextUtils;
 public class KitkitProvider extends ContentProvider {
 
     private static final String AUTHORITY =
-            "com.maq.provider.pehlaschool";
+            "com.maq.provider.pehlaschool.english";
 
     private static final String USER_TABLE = "users";
     private static final String CURRENT_USER_TABLE = "current_user";

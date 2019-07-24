@@ -188,7 +188,7 @@ void StarFallScene::refreshChildNodes() {
 
     HitCounterNode = ([&] {
         auto S = format("%d / %d", HitCount(), TargetHitCount());
-        Label* It = Label::createWithTTF(S, Depot.defaultFontFace(), 60.f);
+        Label* It = Label::createWithSystemFont(S, Depot.defaultFontFace(), 40.f);
         It->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
         It->setPosition(Point(GameSize.width - 100.f, GameSize.height - 50.f));
         

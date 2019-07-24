@@ -107,7 +107,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files/"; // can be changed to any other resource location
+    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool.english/files/"; // can be changed to any other resource location
     FileUtils::getInstance()->setDefaultResourceRootPath(devicePath);
 
 #endif
