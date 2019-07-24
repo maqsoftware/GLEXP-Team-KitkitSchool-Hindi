@@ -20,7 +20,7 @@
 
 BEGIN_NS_EGGQUIZ;
 
-const string curlyFont = "fonts/chanakya.ttf";
+const string curlyFont = "arial";
 
 EggQuizPopup* EggQuizPopup::create(Node* parent)
 {
@@ -70,7 +70,8 @@ void EggQuizPopup::setCommon(char category, int level)
     panel->setPosition(winSize.width/2, winSize.height-320);
     this->addChild(panel);
     
-    auto panelLabel = TodoUtil::createLabel(_cur->levelTitle, 70, Size::ZERO, curlyFont, Color4B(255, 252, 236, 255));
+    auto panelLabel = Label::createWithSystemFont(_cur->levelTitle, curlyFont, 70, Size::ZERO);
+    panelLabel->setTextColor(Color4B(255, 252, 236, 255));
     panelLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     panelLabel->setPosition(panel->getContentSize()/2);
     panel->addChild(panelLabel);
@@ -175,8 +176,9 @@ Button* createButton(string prefix, string text) {
     
     
     if (text.length()>0) {
-        auto localTxt = LanguageManager::getInstance()->getLocalizedString(text);
-        auto l = TodoUtil::createLabel(localTxt, 60, Size::ZERO, curlyFont, Color4B(255, 252, 236, 255));
+        auto localTxt = LanguageManager::getInstance()->getLocalizedString(text, false);
+        auto l = Label::createWithSystemFont(localTxt, curlyFont, 60, Size::ZERO);
+        l->setTextColor(Color4B(255, 252, 236, 255));
         auto lPos = btn->getContentSize()/2 + Size(0, 10);
         l->setPosition(lPos);
         btn->addChild(l);
@@ -294,16 +296,18 @@ void EggQuizPopup::setPreCompleted(char category, int level)
     
     
     {
-        auto localTxt = LanguageManager::getInstance()->getLocalizedString("Success!");
-        auto l = TodoUtil::createLabel(localTxt, 70, Size::ZERO, curlyFont, Color4B(255, 252, 236, 225));
+        auto localTxt = LanguageManager::getInstance()->getLocalizedString("Success!", false);
+        auto l = Label::createWithSystemFont(localTxt, curlyFont, 70, Size::ZERO);
+        l->setTextColor(Color4B(255, 252, 236, 225));
         l->setPosition(Vec2(winSize.width/2, winSize.height-965));
         this->addChild(l);
     }
     
     {
-        auto s = LanguageManager::getInstance()->getLocalizedString("You passed!");
+        auto s = LanguageManager::getInstance()->getLocalizedString("You passed!", false);
         
-        auto l = TodoUtil::createLabel(s, 50, Size::ZERO, curlyFont, Color4B(115, 61, 19, 225));
+        auto l = Label::createWithSystemFont(s, curlyFont, 50, Size::ZERO);
+        l->setTextColor(Color4B(115, 61, 19, 225));
         l->setPosition(Vec2(winSize.width/2, winSize.height-1130));
         this->addChild(l);
     }
@@ -384,8 +388,9 @@ void EggQuizPopup::setPostCompleted(char category, int level)
     
     
     {
-        auto localTxt = LanguageManager::getInstance()->getLocalizedString("Congratulations!");
-        auto l = TodoUtil::createLabel(localTxt, 60, Size::ZERO, curlyFont, Color4B(255, 252, 236, 225));
+        auto localTxt = LanguageManager::getInstance()->getLocalizedString("Congratulations!", false);
+        auto l = Label::createWithSystemFont(localTxt, curlyFont, 60, Size::ZERO);
+        l->setTextColor(Color4B(255, 252, 236, 225));
         l->setPosition(Vec2(winSize.width/2, winSize.height-965-175));
         this->addChild(l);
     }
@@ -425,10 +430,11 @@ void EggQuizPopup::setPreFailed(char category, int level)
     
     
     {
-        auto s1 = LanguageManager::getInstance()->getLocalizedString("You are not ready.");
-        auto s2 = LanguageManager::getInstance()->getLocalizedString("Practice more and try again later.");
+        auto s1 = LanguageManager::getInstance()->getLocalizedString("You are not ready.", false);
+        auto s2 = LanguageManager::getInstance()->getLocalizedString("Practice more and try again later.", false);
         
-        auto l = TodoUtil::createLabel(s1+"\n"+s2, 50, Size::ZERO, curlyFont, Color4B(115, 61, 19, 225), TextHAlignment::CENTER);
+        auto l = Label::createWithSystemFont(s1+"\n"+s2, curlyFont, 50, Size::ZERO, TextHAlignment::CENTER);
+        l->setTextColor(Color4B(115, 61, 19, 225));
         l->setPosition(Vec2(winSize.width/2, winSize.height-1120));
         this->addChild(l);
     }
@@ -470,9 +476,10 @@ void EggQuizPopup::setPostFailed(char category, int level)
     
     
     {
-        auto s1 = LanguageManager::getInstance()->getLocalizedString("You are not ready.");
-        auto s2 = LanguageManager::getInstance()->getLocalizedString("Practice more and try again later.");
-        auto l = TodoUtil::createLabel(s1+"\n"+s2, 50, Size::ZERO, curlyFont, Color4B(115, 61, 19, 225), TextHAlignment::CENTER);
+        auto s1 = LanguageManager::getInstance()->getLocalizedString("You are not ready.", false);
+        auto s2 = LanguageManager::getInstance()->getLocalizedString("Practice more and try again later.", false);
+        auto l = Label::createWithSystemFont(s1+"\n"+s2, curlyFont, 50, Size::ZERO, TextHAlignment::CENTER);
+        l->setTextColor(Color4B(115, 61, 19, 225));
         l->setPosition(Vec2(winSize.width/2, winSize.height-1120));
         this->addChild(l);
     }

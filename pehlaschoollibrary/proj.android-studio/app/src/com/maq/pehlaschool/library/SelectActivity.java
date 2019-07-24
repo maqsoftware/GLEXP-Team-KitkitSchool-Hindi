@@ -28,7 +28,7 @@ import static kitkitschool.DownloadExpansionFile.xAPKS;
  */
 
 public class SelectActivity extends KitKitLoggerActivity {
-    public static boolean isUrduText;
+    public static String locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,8 @@ public class SelectActivity extends KitKitLoggerActivity {
         Bundle extras = libraryIntent.getExtras();
         if (extras != null) {
             String intentValue = extras.getString("locale");
-            if (intentValue != null && intentValue.equalsIgnoreCase("urdu")) {
-                isUrduText = true;
+            if (intentValue != null) {
+                locale = intentValue.toLowerCase();
                 // clear the library intent by removing the extended data from the intent
                 // this is done to get the latest extended data of the intent
                 libraryIntent.removeExtra("locale");
@@ -49,7 +49,7 @@ public class SelectActivity extends KitKitLoggerActivity {
             }
         } else {
             // set the default value of the variable on successive calls
-            isUrduText = false;
+            locale = "hindi";
         }
 
         // Retrieve the stored values of main and patch file version
@@ -76,13 +76,29 @@ public class SelectActivity extends KitKitLoggerActivity {
         Util.hideSystemUI(this);
 
         setContentView(R.layout.activity_select);
-        if (isUrduText) {
-            TextView titleName = findViewById(R.id.toolbar_title);
-            TextView videoTabName = (TextView) findViewById(R.id.video_textView);
-            TextView booksTabName = (TextView) findViewById(R.id.book_textView);
-            titleName.setText(getResources().getString(R.string.app_name_urdu));
-            videoTabName.setText(getResources().getString(R.string.tab_video_urdu));
-            booksTabName.setText(getResources().getString(R.string.tab_book_urdu));
+
+        TextView titleName = findViewById(R.id.toolbar_title);
+        TextView videoTabName = findViewById(R.id.video_textView);
+        TextView booksTabName = findViewById(R.id.book_textView);
+
+        switch (locale) {
+            case "english":
+                titleName.setText(getResources().getString(R.string.app_name));
+                videoTabName.setText(getResources().getString(R.string.tab_video));
+                booksTabName.setText(getResources().getString(R.string.tab_book));
+                break;
+            case "urdu":
+                titleName.setText(getResources().getString(R.string.app_name_urdu));
+                videoTabName.setText(getResources().getString(R.string.tab_video_urdu));
+                booksTabName.setText(getResources().getString(R.string.tab_book_urdu));
+                break;
+            case "bengali":
+                titleName.setText(getResources().getString(R.string.app_name_bengali));
+                videoTabName.setText(getResources().getString(R.string.tab_video_bengali));
+                booksTabName.setText(getResources().getString(R.string.tab_book_bengali));
+                break;
+            default: // Do nothing as Hindi text is set by default
+                break;
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);

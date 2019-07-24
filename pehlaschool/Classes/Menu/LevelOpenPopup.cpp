@@ -120,9 +120,9 @@ void LevelOpenPopup::setup(std::string levelID)
     
     string s1;
     if (cur->categoryLevel == CoopScene::LEVEL_FISH_PRESENT) {
-        s1 = LanguageManager::getInstance()->getLocalizedString("Take the quiz to add me to your sea world!");
+        s1 = LanguageManager::getInstance()->getLocalizedString("Take the quiz to add me to your sea world!", false);
     } else {
-        s1 = LanguageManager::getInstance()->getLocalizedString("Do you want to take a test on this egg?");
+        s1 = LanguageManager::getInstance()->getLocalizedString("Do you want to take a test on this egg?", false);
     }
 
     /*
@@ -218,10 +218,10 @@ void LevelOpenPopup::setup(std::string levelID)
             defaultColor = Color4B(190, 249, 249, 249);
         }
         
-        auto startL = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("Start"), 50, Size::ZERO, arialFont, defaultColor);
+        auto startL = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("Start", false), 50, Size::ZERO, arialFont, defaultColor);
         auto startLPos = Vec2(startBtn->getContentSize()/2 + Size(0, 35));
         
-        auto coinL = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("10"), 35, Size::ZERO, arialFont, isEnable ? defaultColor : Color4B(190, 240, 76, 31));
+        auto coinL = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("10", false), 35, Size::ZERO, arialFont, isEnable ? defaultColor : Color4B(190, 240, 76, 31));
         
         auto coinLPos = Vec2(startBtn->getContentSize()/2 + Size(20, -40));
         
@@ -250,7 +250,7 @@ void LevelOpenPopup::setup(std::string levelID)
 
     } else {
         startBtn->loadTextures(folder+"main_button_normal.png", folder+"main_button_active.png");
-        auto startL = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("Start"), 50, Size::ZERO, arialFont, Color4B(255, 249, 235, 255));
+        auto startL = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("Start", false), 50, Size::ZERO, arialFont, Color4B(255, 249, 235, 255));
         auto startLPos = Vec2(startBtn->getContentSize()/2 + Size(0, -2));
         
         startL->setPosition(startLPos);

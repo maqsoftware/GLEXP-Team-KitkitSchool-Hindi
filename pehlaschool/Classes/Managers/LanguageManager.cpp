@@ -171,27 +171,29 @@ std::string LanguageManager::soundPathForWordFile(std::string& wordFile)
 
 }
 
-std::string LanguageManager::getLocalizedString(std::string str)
+std::string LanguageManager::getLocalizedString(std::string str, bool isBilingualRequired)
 {
-
     std::string localized;
-
+    std::string delimiter =  "$#$";
     // todo July 21, 2019: change the map suffix to correct language once the translations are in place
     if (customLanguageCode == "en") {
         localized = _localizationMapEnglish[str];
     } else if (customLanguageCode == "hi") {
         localized = _localizationMapHindi[str];
     } else if (customLanguageCode == "ur") {
-        localized = _localizationMapEnglish[str];
+        localized = _localizationMapUrdu[str];
     } else if (customLanguageCode == "bn") {
-        localized = _localizationMapEnglish[str];
+        localized = _localizationMapBengali[str];
     } else if (customLanguageCode == "sw") {
         localized = _localizationMapSwahili[str];
     }
     if (localized.empty()) return str;
 
-    return localized;
+    if (isBilingualRequired && customLanguageCode != "en") {
+        localized += delimiter + _localizationMapEnglish[str];
+    }
 
+    return localized;
 }
 
 std::string LanguageManager::findLocalizedResource(std::string path)
@@ -204,10 +206,18 @@ std::string LanguageManager::findLocalizedResource(std::string path)
 
 void LanguageManager::initLocalizationMap()
 {
+    string delm =  "$#$";
     _localizationMapEnglish["Stop the test"] = "Stop the test";
     _localizationMapHindi["Stop the test"] = "टेस्ट बन्द करिए";
+//    _localizationMapUrdu["Stop the test"] = "";
+//    _localizationMapBengali["Stop the test"] = "";
+//    _localizationMapSwahili["Stop the test"] = "";
+
     _localizationMapEnglish["Go back to test"] = "Go back to test";
     _localizationMapHindi["Go back to test"] = "टेस्ट पर बापस जाइये";
+//    _localizationMapUrdu["Go back to test"] = "";
+//    _localizationMapBengali["Go back to test"] = "";
+//    _localizationMapSwahili["Go back to test"] = "";
 
     _localizationMapEnglish["Great!"] = "Great!";
     _localizationMapHindi["Great!"] = "बहुत अच्छे!";
@@ -215,7 +225,7 @@ void LanguageManager::initLocalizationMap()
     // _localizationMapBengali["Great!"] = "";
     _localizationMapSwahili["Great!"] = "Vizuri!";
 
-    _localizationMapEnglish["Are you ready for"] = "Are you ready for"; //
+    _localizationMapEnglish["Are you ready for"] = "Are you ready for";
     _localizationMapHindi["Are you ready for"] = "क्या तुम तैयार हो";
     // _localizationMapUrdu["Are you ready for"] = "";
     // _localizationMapBengali["Are you ready for"] = "";

@@ -174,7 +174,7 @@ void TrainCar::setAnimal(TrainCar::animalType animalType, bool isNumber, bool on
         _soundButtonNormal->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
         
-        string labelKey = LanguageManager::getInstance()->getLocalizedString("Arrange the numbers in order from smallest to largest");
+        string labelKey = LanguageManager::getInstance()->getLocalizedString("Arrange the numbers in order from smallest to largest", false);
         
         _label = TodoUtil::createLabel(labelKey, 45, Size(500, 190), fontName, Color4B(54, 54, 54, 255), TextHAlignment::LEFT);
         _label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -193,7 +193,7 @@ void TrainCar::setAnimal(TrainCar::animalType animalType, bool isNumber, bool on
                 bPos = Vec2(-470, size.height + 50);
             }
             
-            string labelKey = LanguageManager::getInstance()->getLocalizedString("Largest number");
+            string labelKey = LanguageManager::getInstance()->getLocalizedString("Largest number", false);
             _label = TodoUtil::createLabel(labelKey, 45, Size(430, 120), fontName, Color4B(54, 54, 54, 255), TextHAlignment::LEFT);
             _label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
             _label->setPosition(610, 160);

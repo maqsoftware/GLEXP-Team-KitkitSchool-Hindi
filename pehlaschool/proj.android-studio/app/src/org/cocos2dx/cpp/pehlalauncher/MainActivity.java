@@ -358,6 +358,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                 if (view.isEnabled()) {
                     try {
                         Intent i = new Intent(Intent.ACTION_MAIN);
+                        i.putExtra("locale", "hindi");
                         i.setComponent(new ComponentName(libraryAppPackageName, "com.maq.pehlaschool.library.SelectActivity"));
                         startActivity(i);
                     } catch (Exception e) {

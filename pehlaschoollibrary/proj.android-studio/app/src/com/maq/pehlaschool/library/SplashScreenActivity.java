@@ -30,7 +30,7 @@ import java.util.zip.ZipFile;
 import kitkitschool.DownloadExpansionFile;
 import utils.Zip;
 
-import static com.maq.pehlaschool.library.SelectActivity.isUrduText;
+import static com.maq.pehlaschool.library.SelectActivity.locale;
 import static kitkitschool.DownloadExpansionFile.xAPKS;
 
 
@@ -59,12 +59,23 @@ public class SplashScreenActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
         setContentView(R.layout.activity_splash_screen);
 
-        // if urdu intent update the splash screen image and the extraction text
-        if (isUrduText) {
-            TextView splashScreenText = (TextView) findViewById(R.id.oneTimeExtractionMessage);
-            ImageView splashScreenImage = (ImageView) findViewById(R.id.imageView);
-            splashScreenImage.setImageResource(R.drawable.splash_screen_background_urdu);
-            splashScreenText.setText(getResources().getString(R.string.content_extraction_urdu));
+        TextView splashScreenText = findViewById(R.id.oneTimeExtractionMessage);
+        ImageView splashScreenImage = findViewById(R.id.imageView);
+        switch (locale) {
+            case "english":
+                splashScreenImage.setImageResource(R.drawable.splash_screen_background);
+                splashScreenText.setText(getResources().getString(R.string.content_extraction));
+                break;
+            case "urdu":
+                splashScreenImage.setImageResource(R.drawable.splash_screen_background_urdu);
+                splashScreenText.setText(getResources().getString(R.string.content_extraction_urdu));
+                break;
+            case "bengali":
+                splashScreenImage.setImageResource(R.drawable.splash_screen_background_bengali);
+                splashScreenText.setText(getResources().getString(R.string.content_extraction_bengali));
+                break;
+            default: // Do nothing as Hindi text is set by default
+                break;
         }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {

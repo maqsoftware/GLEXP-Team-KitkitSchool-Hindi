@@ -234,7 +234,7 @@ void CoopScene2::setupCoop()
     panel->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     panel->setPosition(Vec2(coopSize.width/2.f, coopSize.height - 80));
     
-    auto labelText = LanguageManager::getInstance()->getLocalizedString((this->_coopType== CT_LITERACY) ? "English" : "Math");
+    auto labelText = LanguageManager::getInstance()->getLocalizedString((this->_coopType== CT_LITERACY) ? "English" : "Math", false);
     
     auto label = Label::createWithSystemFont(labelText, "arial", 75);
     label->setTextColor(Color4B(255, 252, 219, 255));

@@ -1104,7 +1104,7 @@ void CCAppController::startBookScene(std::string bookFolder, bool replaceParent,
             backButton->setPosition(Vec2(25, nextScene->getContentSize().height-25));
             nextScene->addChild(backButton);
             
-            auto l = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("Error"), 200, Size::ZERO, "fonts/Aileron-Regular.otf", Color4B::WHITE);
+            auto l = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString("Error", false), 200, Size::ZERO, "fonts/Aileron-Regular.otf", Color4B::WHITE);
             l->setPosition(nextScene->getContentSize()/2);
             nextScene->addChild(l);
             
