@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.maq.pehlaschool"
     android:installLocation="internalOnly"
-    android:versionCode="4"
+    android:versionCode="5"
     android:versionName="3.5.0">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
