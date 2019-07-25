@@ -121,10 +121,10 @@ public class MainActivity extends KitKitLoggerActivity {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
 
         switch (locale) {
-            case "english":
-                titleName.setText(getResources().getString(R.string.app_name));
-                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video));
-                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book));
+            case "hindi":
+                titleName.setText(getResources().getString(R.string.app_name_hindi));
+                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_hindi));
+                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_hindi));
                 break;
             case "urdu":
                 titleName.setText(getResources().getString(R.string.app_name_urdu));
@@ -136,7 +136,7 @@ public class MainActivity extends KitKitLoggerActivity {
                 tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_bengali));
                 tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_bengali));
                 break;
-            default: // Do nothing as Hindi text is set by default
+            default: // Do nothing as English text is set by default
                 break;
         }
 

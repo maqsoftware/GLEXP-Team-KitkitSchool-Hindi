@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/app_name_hindi"
+            android:text="@string/app_name"
             android:textColor="#ffffff"
             android:textSize="30sp" />
 
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/tab_video_hindi"
+                android:text="@string/tab_video"
                 android:textAlignment="center"
                 android:textColor="#6b6b6b"
                 android:textSize="30sp"
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/tab_book_hindi"
+                android:text="@string/tab_book"
                 android:textAlignment="center"
                 android:textColor="#6b6b6b"
                 android:textSize="30sp"

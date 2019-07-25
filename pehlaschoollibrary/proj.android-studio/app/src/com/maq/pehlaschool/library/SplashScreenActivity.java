@@ -59,22 +59,26 @@ public class SplashScreenActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
         setContentView(R.layout.activity_splash_screen);
 
-        TextView splashScreenText = findViewById(R.id.oneTimeExtractionMessage);
+        TextView extractionMessageLocale = findViewById(R.id.oneTimeExtractionMessage);
+        TextView extractionMessageEnglish = findViewById(R.id.oneTimeExtractionMessageEnglish);
         ImageView splashScreenImage = findViewById(R.id.imageView);
         switch (locale) {
-            case "english":
-                splashScreenImage.setImageResource(R.drawable.splash_screen_background);
-                splashScreenText.setText(getResources().getString(R.string.content_extraction));
+            case "hindi":
+                splashScreenImage.setImageResource(R.drawable.splash_screen_background_hindi);
+                extractionMessageLocale.setText(getResources().getString(R.string.content_extraction_hindi));
+                extractionMessageEnglish.setText(getResources().getString(R.string.content_extraction));
                 break;
             case "urdu":
                 splashScreenImage.setImageResource(R.drawable.splash_screen_background_urdu);
-                splashScreenText.setText(getResources().getString(R.string.content_extraction_urdu));
+                extractionMessageLocale.setText(getResources().getString(R.string.content_extraction_urdu));
+                extractionMessageEnglish.setText(getResources().getString(R.string.content_extraction));
                 break;
             case "bengali":
                 splashScreenImage.setImageResource(R.drawable.splash_screen_background_bengali);
-                splashScreenText.setText(getResources().getString(R.string.content_extraction_bengali));
+                extractionMessageLocale.setText(getResources().getString(R.string.content_extraction_bengali));
+                extractionMessageEnglish.setText(getResources().getString(R.string.content_extraction));
                 break;
-            default: // Do nothing as Hindi text is set by default
+            default: // Do nothing as English text is set by default
                 break;
         }
 
@@ -131,7 +135,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     public void toCallApplication() {
         intent = new Intent(SplashScreenActivity.this, SelectActivity.class);
         // send an empty value so that the locale value is not updated
-        intent.putExtra("locale", "");
+        intent.putExtra("locale", locale);
         startActivity(intent);
         finish();
     }

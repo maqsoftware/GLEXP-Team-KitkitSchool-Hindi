@@ -38,18 +38,15 @@ public class SelectActivity extends KitKitLoggerActivity {
         // render text based on the calling application
         Intent libraryIntent = getIntent();
         Bundle extras = libraryIntent.getExtras();
-        if (extras != null) {
-            String intentValue = extras.getString("locale");
-            if (intentValue != null) {
-                locale = intentValue.toLowerCase();
-                // clear the library intent by removing the extended data from the intent
-                // this is done to get the latest extended data of the intent
-                libraryIntent.removeExtra("locale");
-                setIntent(libraryIntent);
-            }
+        if (extras != null && extras.getString("locale") != null) {
+            locale = extras.getString("locale").toLowerCase();
+            // clear the library intent by removing the extended data from the intent
+            // this is done to get the latest extended data of the intent
+            libraryIntent.removeExtra("locale");
+            setIntent(libraryIntent);
         } else {
             // set the default value of the variable on successive calls
-            locale = "hindi";
+            locale = "english";
         }
 
         // Retrieve the stored values of main and patch file version
@@ -82,10 +79,10 @@ public class SelectActivity extends KitKitLoggerActivity {
         TextView booksTabName = findViewById(R.id.book_textView);
 
         switch (locale) {
-            case "english":
-                titleName.setText(getResources().getString(R.string.app_name));
-                videoTabName.setText(getResources().getString(R.string.tab_video));
-                booksTabName.setText(getResources().getString(R.string.tab_book));
+            case "hindi":
+                titleName.setText(getResources().getString(R.string.app_name_hindi));
+                videoTabName.setText(getResources().getString(R.string.tab_video_hindi));
+                booksTabName.setText(getResources().getString(R.string.tab_book_hindi));
                 break;
             case "urdu":
                 titleName.setText(getResources().getString(R.string.app_name_urdu));
@@ -97,7 +94,7 @@ public class SelectActivity extends KitKitLoggerActivity {
                 videoTabName.setText(getResources().getString(R.string.tab_video_bengali));
                 booksTabName.setText(getResources().getString(R.string.tab_book_bengali));
                 break;
-            default: // Do nothing as Hindi text is set by default
+            default: // Do nothing as English text is set by default
                 break;
         }
 
