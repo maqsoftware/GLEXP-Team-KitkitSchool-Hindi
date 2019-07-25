@@ -73,7 +73,7 @@ Label* MainDepot::createNextLabel() const {
     } else if (langCode == "ur") {
         titleString = "ایک کا انتخاب کریں.";
     } else if (langCode == "bn") {
-        titleString = "";
+        titleString = "একটি নির্বাচন করুন";
     } else if (langCode == "sw") {
         titleString = "Chagua moja.";
     }

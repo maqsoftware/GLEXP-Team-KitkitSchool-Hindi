@@ -633,7 +633,7 @@ void LanguageManager::initLocalizationMap()
     _localizationMapEnglish["MathKicker"] = "Math Kicker";
     _localizationMapHindi["MathKicker"] = "मैथ्स किकर";
     // _localizationMapUrdu["MathKicker"] = "";
-    // _localizationMapBengali["MathKicker"] = "";
+    _localizationMapBengali["MathKicker"] = "স্থানিক কিকের";
     _localizationMapSwahili["MathKicker"] = "Mpigo wa Hisabati";
 
     _localizationMapEnglish["PlaceValue"] = "Place Value";

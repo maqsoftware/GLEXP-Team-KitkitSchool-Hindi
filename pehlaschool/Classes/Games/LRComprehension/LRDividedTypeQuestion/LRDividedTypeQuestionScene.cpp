@@ -83,7 +83,7 @@ void LRDividedTypeQuestionScene::onEnter()
     } else if (langCode == "ur") {
         directionContent = "صحیح جواب چنیں۔";
     } else if (langCode == "bn") {
-        directionContent = "";
+        directionContent = "সঠিক উত্তর নির্বাচন করুন";
     } else if (langCode == "sw") {
         directionContent = "Chagua jibu sahihi.";
     }
@@ -97,7 +97,7 @@ void LRDividedTypeQuestionScene::onEnter()
         } else if (langCode == "ur") {
             directionContent = "متن سے ملنے کے لئے تصویر کا انتخاب کریں.";
         } else if (langCode == "bn") {
-            directionContent = "";
+            directionContent = "টেক্সট ম্যাচ করে ছবি নির্বাচন করুন।";
         } else if (langCode == "sw") {
             directionContent = "Chagua picha ili kuendana na maandishi.";
         }

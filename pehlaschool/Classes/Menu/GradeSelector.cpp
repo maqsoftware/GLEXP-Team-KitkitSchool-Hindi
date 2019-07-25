@@ -95,7 +95,7 @@ cocos2d::Scene* GradeSelector::minimalSceneByWrapping() {
     } else if (langCode == "ur") {
         displayText = "سطح کو کھیلنے کے لئے منتخب کریں";
     } else if (langCode == "bn") {
-        displayText = "";
+        displayText = "খেলার একটি স্তর চয়ন করুন";
     } else if (langCode == "sw") {
         displayText = "Chagua kiwango kimoja cha kucheza";
     }

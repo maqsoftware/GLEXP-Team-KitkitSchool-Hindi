@@ -95,7 +95,7 @@ namespace ComprehensionTest
             } else if (langCode == "ur") {
                 directionContent = "لکیر کھینچ کر جوڑی ملائیں";
             } else if (langCode == "bn") {
-                directionContent = "";
+                directionContent = "ম্যাচ করার জন্যে লাইন আঁকুন";
             } else if (langCode == "sw") {
                 directionContent = "Chora mstari baina ya jozi.";
             }

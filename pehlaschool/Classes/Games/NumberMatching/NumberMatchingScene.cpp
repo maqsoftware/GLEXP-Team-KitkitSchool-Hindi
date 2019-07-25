@@ -46,7 +46,7 @@ namespace NumberMatching
         } else if (langCode == "ur") {
             return "آگے بڑھیں";
         } else if (langCode == "bn") {
-            return "";
+            return "পরবর্তী.";
         } else if (langCode == "sw") {
             return "Inayofuata";
         }

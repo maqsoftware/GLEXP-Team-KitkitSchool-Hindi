@@ -92,7 +92,7 @@ namespace ComprehensionTest
             } else if (langCode == "ur") {
                 directionContent = "ان کو ترتیب میں رکھیں.";
             } else if (langCode == "bn") {
-                directionContent = "";
+                directionContent = "ক্রমএ রাখুন";
             } else if (langCode == "sw") {
                 directionContent = "Pangilia hadithi.";
             }

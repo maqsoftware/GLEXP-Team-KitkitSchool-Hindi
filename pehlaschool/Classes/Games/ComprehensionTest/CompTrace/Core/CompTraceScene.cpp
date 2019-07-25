@@ -158,7 +158,7 @@ void CompTraceScene::refreshChildNodes() {
     } else if (langCode == "ur") {
         directionContent = "لفظ کو ٹریس کریں.";
     } else if (langCode == "bn") {
-        directionContent = "";
+        directionContent = "শব্দ ট্রেস করুন";
     } else if (langCode == "sw") {
         directionContent = "Fuatilia neno.";
     }

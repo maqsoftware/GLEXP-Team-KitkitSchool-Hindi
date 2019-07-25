@@ -174,7 +174,7 @@ namespace ComprehensionTest
             } else if (langCode == "ur") {
                 directionContent = "خانہ پری کریں";
             } else if (langCode == "bn") {
-                directionContent = "";
+                directionContent = "ফাঁকা পূরণ করুন";
             } else if (langCode == "sw") {
                 directionContent = "Jaza nafasi.";
             }

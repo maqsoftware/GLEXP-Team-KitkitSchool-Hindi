@@ -84,7 +84,7 @@ void LRDividedTypeReorderingScene::onEnter()
     } else if (langCode == "ur") {
         directionContent = "واقعات کو صحیح ترتیب دیں۔";
     } else if (langCode == "bn") {
-        directionContent = "";
+        directionContent = "সঠিক ক্রম ইভেন্ট রাখুন";
     } else if (langCode == "sw") {
         directionContent = "Yaweke matukio katika mpangilio ulio sahihi.";
     }

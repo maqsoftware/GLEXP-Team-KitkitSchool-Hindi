@@ -22,7 +22,7 @@ namespace CompletePopupNS {
         } else if (langCode == "ur") {
             return "بہت اچھا";
         } else if (langCode == "bn") {
-            return "";
+            return "খুব ভালো";
         } else if (langCode == "sw") {
             return "Vizuri!";
         }

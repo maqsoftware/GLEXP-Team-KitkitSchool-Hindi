@@ -90,7 +90,7 @@ cocos2d::Label* MainDepot::createNextLabel() const {
     } else if (langCode == "ur") {
         displayText = "آگے بڑھیں";
     } else if (langCode == "bn") {
-        displayText = "";
+        displayText = "পরবর্তী.";
     } else if (langCode == "sw") {
         displayText = "Inayofuata";
     }
