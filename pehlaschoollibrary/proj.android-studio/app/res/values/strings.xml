@@ -2,7 +2,7 @@
     <string name="app_name">Library: Pehla School</string>
     <string name="app_name_hindi" translatable="false">Library: पहला स्कूल - Pehla School</string>
     <string name="app_name_urdu" translatable="false">Library: Pehla School - پہلا اسکول </string>
-    <string name="app_name_bengali" translatable="false">Library: পেহ্লা স্কুল - Pehla School</string>
+    <string name="app_name_bengali" translatable="false">Library: পহলা স্কুল - Pehla School</string>
     <string name="description">Media Controls</string>
     <string name="tab_video" translatable="false">VIDEOS</string>
     <string name="tab_book" translatable="false">BOOKS</string>

@@ -132,7 +132,7 @@ public class MainActivity extends KitKitLoggerActivity {
                 tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_urdu));
                 break;
             case "bengali":
-                titleName.setText(getResources().getString(R.string.app_name_urdu));
+                titleName.setText(getResources().getString(R.string.app_name_bengali));
                 tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_bengali));
                 tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_bengali));
                 break;

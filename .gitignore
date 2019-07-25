@@ -90,7 +90,7 @@ lint/tmp/
 # lint/reports/
 
 pehlaschool/cocos2d/*
-!pehlaschool/cocos2d/readme.txt
+pehlaschool/cocos2d/readme.txt
 
 pehlaschoollibrary/cocos2d/*
 
