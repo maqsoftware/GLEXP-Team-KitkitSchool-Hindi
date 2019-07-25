@@ -474,6 +474,7 @@ void LRComprehensionScene::onSolve(bool playSound)
     _blocker->setEnabled(true);
     if (playSound)
     {
+        VoiceMoldManager::shared()->speak(" "); //to TTS after right option is selected
         GameSoundManager::getInstance()->playEffectSound("Common/Sounds/Effect/success.m4a");
     }
     
