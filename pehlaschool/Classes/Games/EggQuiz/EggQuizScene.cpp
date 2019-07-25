@@ -346,8 +346,8 @@ BEGIN_NS_EGGQUIZ ;
 
         createSmallSpeakerView(_problem.questionOption5);
 
-        auto label = TodoUtil::createLabel(_problem.questionOption4, 100, Size::ZERO, FONT_BOLD,
-                                           FONT_COLOR);
+        auto label = Label::createWithSystemFont(_problem.questionOption4, FONT_BOLD, 75, Size::ZERO);
+        label->setTextColor(FONT_COLOR);
         label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         label->setPosition(questionBox->getContentSize() / 2);
         questionBox->addChild(label);
@@ -672,8 +672,8 @@ BEGIN_NS_EGGQUIZ ;
 
         createSmallSpeakerView(_problem.questionOption3);
 
-        auto label = TodoUtil::createLabel(_problem.questionOption2, 128, Size::ZERO, FONT_BOLD,
-                                           FONT_COLOR);
+        auto label = Label::createWithSystemFont(_problem.questionOption2, FONT_BOLD, 75, Size::ZERO);
+        label->setTextColor(FONT_COLOR);
         label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         label->setPosition(questionBox->getContentSize() / 2);
 
@@ -712,8 +712,8 @@ BEGIN_NS_EGGQUIZ ;
         _gameNode->addChild(speaker);
         speaker->setPressed(autoStartDelay);
 
-        auto label = TodoUtil::createLabel(_problem.questionOption2, 68, Size::ZERO, FONT_BOLD,
-                                           FONT_COLOR);
+        auto label = Label::createWithSystemFont(_problem.questionOption2, FONT_BOLD, 50, Size::ZERO);
+        label->setTextColor(FONT_COLOR);
         label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         label->setPosition(_gameSize.width / 2, 1325 + 71 / 2);
         _gameNode->addChild(label);
@@ -771,8 +771,8 @@ BEGIN_NS_EGGQUIZ ;
 
         createSmallSpeakerView(_problem.questionOption4);
 
-        auto label = TodoUtil::createLabel(_problem.questionOption3, 100, Size::ZERO, FONT_BOLD,
-                                           FONT_COLOR);
+        auto label = Label::createWithSystemFont(_problem.questionOption3, FONT_BOLD, 75, Size::ZERO);
+        label->setTextColor(FONT_COLOR);
         label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         label->setPosition(_gameSize.width / 2 - 224 - 652, 1292 + 80 / 2);
         _gameNode->addChild(label);
@@ -819,8 +819,8 @@ BEGIN_NS_EGGQUIZ ;
 
         createSmallSpeakerView(_problem.questionOption3);
 
-        auto label = TodoUtil::createLabel(_problem.questionOption2, 100, Size::ZERO, FONT_BOLD,
-                                           FONT_COLOR);
+        auto label = Label::createWithSystemFont(_problem.questionOption2, FONT_BOLD, 75, Size::ZERO);
+        label->setTextColor(FONT_COLOR);
         label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         label->setPosition(questionBox->getContentSize() / 2);
         questionBox->addChild(label);
@@ -1128,8 +1128,8 @@ BEGIN_NS_EGGQUIZ ;
 
         createSmallSpeakerView(_problem.questionOption2);
 
-        auto label = TodoUtil::createLabel(_problem.questionOption1, 68, Size(1945, 0), FONT_BOLD,
-                                           FONT_COLOR);
+        auto label = Label::createWithSystemFont(_problem.questionOption1, FONT_BOLD, 50, Size(1945, 0));
+        label->setTextColor(FONT_COLOR);
         label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         label->setPosition(
                 questionBox->getPositionX() - questionBox->getContentSize().width / 2 + 294 + 20,
@@ -1253,15 +1253,15 @@ BEGIN_NS_EGGQUIZ ;
 
         if (_problem.questionOption2.back() == '.' || _problem.questionOption2.back() == '?' ||
             _problem.questionOption2.back() == '!' || _problem.questionOption2.back() == '_') {
-            questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 100,
+            questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 75,
                                                                      Size(1600, 600), FONT_NORMAL,
                                                                      FONT_COLOR,
                                                                      TextHAlignment::CENTER);
         } else {
-            questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 100,
-                                                                     Size(1600, 600), FONT_BOLD,
-                                                                     FONT_COLOR,
+            questionLabel = Label::createWithSystemFont(_problem.questionOption2, FONT_BOLD, 75,
+                                                                     Size(1600, 600),
                                                                      TextHAlignment::CENTER);
+            questionLabel->setTextColor(FONT_COLOR);
         }
         questionLabel->setPosition(questionBox->getContentSize() / 2);
         questionBox->addChild(questionLabel);
@@ -1287,10 +1287,10 @@ BEGIN_NS_EGGQUIZ ;
                                                                      FONT_COLOR,
                                                                      TextHAlignment::CENTER);
         } else {
-            questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 100,
-                                                                     Size(1600, 600), FONT_BOLD,
-                                                                     FONT_COLOR,
+            questionLabel = Label::createWithSystemFont(_problem.questionOption2, FONT_BOLD, 75,
+                                                                     Size(1600, 600),
                                                                      TextHAlignment::CENTER);
+            questionLabel->setTextColor(FONT_COLOR);
         }
         questionLabel->setPosition(questionBox->getContentSize() / 2);
         questionBox->addChild(questionLabel);
@@ -1460,8 +1460,8 @@ BEGIN_NS_EGGQUIZ ;
         questionBox->setPosition(_gameNode->getContentSize().width / 2, 670);
         _gameNode->addChild(questionBox);
 
-        auto title = TodoUtil::createLabel(_problem.questionOption1, 100, Size::ZERO, FONT_BOLD,
-                                           FONT_COLOR);
+        auto title = Label::createWithSystemFont(_problem.questionOption1, FONT_BOLD, 75, Size::ZERO);
+        title->setTextColor(FONT_COLOR);
         title->setPosition(_gameSize.width / 2, 1354 + 40);
         _gameNode->addChild(title);
 
@@ -1488,8 +1488,8 @@ BEGIN_NS_EGGQUIZ ;
         float labelStartY = 1188 + 49 / 2;
         auto numberVec = {1, 2, 3};
         for (auto number : numberVec) {
-            auto numberLabel = TodoUtil::createLabel(TodoUtil::itos(number), 68, Size::ZERO,
-                                                     FONT_BOLD, FONT_COLOR);
+            auto numberLabel = Label::createWithSystemFont(TodoUtil::itos(number), FONT_BOLD, 68, Size::ZERO);
+            numberLabel->setTextColor(FONT_COLOR);
             numberLabel->setPosition(_gameSize.width / 2 - 1071 - 31 / 2, labelStartY);
             _gameNode->addChild(numberLabel);
             labelStartY -= 155 + 49;
@@ -1520,7 +1520,7 @@ BEGIN_NS_EGGQUIZ ;
         for (auto choice : choiceVec) {
             labels.push_back(choice);
         }
-        float fontSize = getMinFontSize(labels, 68, buttonSize);
+        float fontSize = getMinFontSize(labels, 40, buttonSize);
 
         random_shuffle(choiceVec.begin(), choiceVec.end(), [](int n) { return rand() % n; });
 
@@ -1553,7 +1553,7 @@ BEGIN_NS_EGGQUIZ ;
         speaker->setPressed(autoStartDelay);
 
         Label *questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2,
-                                                                        100, Size(1060, 600),
+                                                                        75, Size(1060, 600),
                                                                         FONT_NORMAL, FONT_COLOR,
                                                                         TextHAlignment::CENTER);
         questionLabel->setPosition(posX, 1245 + 215 / 2);
@@ -2190,16 +2190,16 @@ BEGIN_NS_EGGQUIZ ;
         float minSize = fontSize;
         for (auto it : labels) {
             TodoUtil::replaceAll(it, "_", "\n");
-            auto label = Label::createWithTTF(it, FONT_NORMAL, fontSize,
-                                              Size(boxSize.width * 0.95, 0), TextHAlignment::CENTER,
+            auto label = Label::createWithSystemFont(it, FONT_NORMAL, fontSize,
+                                                     Size(static_cast<float>(boxSize.width * 0.95), 0), TextHAlignment::CENTER,
                                               cocos2d::TextVAlignment::CENTER);
 
             if (label->getContentSize().width > boxSize.width)
-                minSize = MIN(minSize, fontSize * boxSize.width / label->getContentSize().width *
-                                       0.8);
+                minSize = MIN(minSize, static_cast<float>(fontSize * boxSize.width / label->getContentSize().width *
+                                       0.8));
             if (label->getContentSize().height > boxSize.height)
-                minSize = MIN(minSize, fontSize * boxSize.height / label->getContentSize().height *
-                                       0.8);
+                minSize = MIN(minSize, static_cast<float>(fontSize * boxSize.height / label->getContentSize().height *
+                                       0.8));
             //CCLOG("minSize: %f",minSize);
         }
 

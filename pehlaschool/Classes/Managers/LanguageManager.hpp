@@ -58,7 +58,7 @@ public:
     
     std::string soundPathForWordFile(std::string& wordFile);
     
-    std::string getLocalizedString(std::string str);
+    std::string getLocalizedString(std::string str, bool isBilingualRequired);
     
     std::string findLocalizedResource(std::string path);
     
@@ -77,7 +77,6 @@ private:
     std::vector<LocaleType> _supportedLocales;
     
     
-    std::map<std::string, std::string> _localizationMap;
     std::map<std::string, std::string> _localizationMapEnglish;
     std::map<std::string, std::string> _localizationMapHindi;
     std::map<std::string, std::string> _localizationMapUrdu;

@@ -19,7 +19,7 @@ namespace {
     string questionMarkSkin() { return MainDepot().assetPrefix() + "/GameBoard/question_mark.png"; }
     
     string defaultFont() { return MainDepot().defaultFont(); }
-    float defaultFontSize() { return 230.f; }
+    float defaultFontSize() { return 180.f; }
     Color4B defaultFontColor() { return Color4B(216, 209, 183, 255); }
 
     float durationForCardMove() { return .3f; }

@@ -633,7 +633,7 @@ LetterWheel* WordMachineScene::CreateWheel(WordType wordType, bool playTick)
     std::string vowelString = "AEIOU";
     
     auto w = LetterWheel::create();
-    w->setup(wordType == WordType::Consonant ? consonantString : vowelString, Size(400, 700), 2.0, 240, 0.6, playTick);
+    w->setup(wordType == WordType::Consonant ? consonantString : vowelString, Size(400, 700), 2.0, 200, 0.6, playTick);
     
     return w;
 }

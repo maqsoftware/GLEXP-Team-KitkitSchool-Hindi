@@ -98,7 +98,7 @@ void ShapeMatchingCard::setImage(int level, int type, int number,
             
             shape = Sprite::create(StringUtils::format("ShapeMatching/Images/matchinggame_numbers_type1_%d.png",number) );
             
-            string attrText = LanguageManager::getInstance()->getLocalizedString(key);
+            string attrText = LanguageManager::getInstance()->getLocalizedString(key, false);
             
             auto label = TodoUtil::createLabel(attrText, 70, Size(contentSize.width- 10, 100), fontName, fontColor, TextHAlignment::CENTER);
             label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);

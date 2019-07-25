@@ -291,8 +291,7 @@ bool TodoUtil::replace(std::string& str, const std::string& from, const std::str
 
 Label* TodoUtil::createLabel(const std::string &text, float maxFontSize, Size boxSize,const std::string &fontName, const Color4B &color, TextHAlignment hAlignment /*= TextHAlignment::LEFT*/, TextVAlignment vAlignment/* = TextVAlignment::CENTER*/) {
     
-    TTFConfig ttfConfig(fontName.c_str(),maxFontSize,GlyphCollection::DYNAMIC);
-    Label *label = Label::createWithTTF(ttfConfig, text);
+    Label *label = Label::createWithSystemFont(text, fontName, maxFontSize);
     label->setTextColor(color);
     label->setDimensions(boxSize.width, boxSize.height);
     label->setAlignment(hAlignment, vAlignment);
@@ -317,7 +316,7 @@ Label* TodoUtil::createLabelMultilineToFit(const std::string &text, float maxFon
     Label* label;
     
     
-    label = Label::createWithTTF(text, fontName, maxFontSize, Size(boxSize.width, 0), hAlignment, cocos2d::TextVAlignment::CENTER);
+    label = Label::createWithSystemFont(text, fontName, maxFontSize, Size(boxSize.width, 0), hAlignment, cocos2d::TextVAlignment::CENTER);
     label->setTextColor(color);
 
     

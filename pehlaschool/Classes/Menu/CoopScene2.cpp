@@ -234,7 +234,7 @@ void CoopScene2::setupCoop()
     panel->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     panel->setPosition(Vec2(coopSize.width/2.f, coopSize.height - 80));
     
-    auto labelText = LanguageManager::getInstance()->getLocalizedString((this->_coopType== CT_LITERACY) ? "English" : "Math");
+    auto labelText = LanguageManager::getInstance()->getLocalizedString((this->_coopType== CT_LITERACY) ? "English" : "Math", false);
     
     auto label = Label::createWithSystemFont(labelText, "arial", 75);
     label->setTextColor(Color4B(255, 252, 219, 255));
@@ -407,7 +407,7 @@ void CoopScene2::setupDebug()
         }
     } else {
         
-        Label* versionTitle = Label::createWithSystemFont(UserManager::getInstance()->getAppVersion(), "arial", 30);
+        Label* versionTitle = Label::createWithSystemFont(UserManager::getInstance()->getAppVersion(), "arial", 25);
         versionTitle->setTextColor(Color4B::WHITE);
         versionTitle->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         versionTitle->setPosition(Vec2(30, debugViewSize.height/2));

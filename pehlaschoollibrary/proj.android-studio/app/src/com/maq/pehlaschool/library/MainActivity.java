@@ -48,7 +48,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static com.maq.pehlaschool.library.SelectActivity.isUrduText;
+import static com.maq.pehlaschool.library.SelectActivity.locale;
 
 
 /**
@@ -116,17 +116,30 @@ public class MainActivity extends KitKitLoggerActivity {
         checkExternalData();
         setContentView(R.layout.activity_main);
 
-        // if urdu intent set the toolbar and the title name
-        if (isUrduText) {
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            TextView titleName = (TextView) toolbar.findViewById(R.id.toolbar_title_text);
-            titleName.setText(getResources().getString(R.string.app_name_urdu));
-            TabLayout libraryTab = findViewById(R.id.tabLayout);
-            libraryTab.getTabAt(0).setText(getResources().getString(R.string.tab_video_urdu));
-            libraryTab.getTabAt(1).setText(getResources().getString(R.string.tab_book_urdu));
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView titleName = toolbar.findViewById(R.id.toolbar_title_text);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+
+        switch (locale) {
+            case "hindi":
+                titleName.setText(getResources().getString(R.string.app_name_hindi));
+                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_hindi));
+                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_hindi));
+                break;
+            case "urdu":
+                titleName.setText(getResources().getString(R.string.app_name_urdu));
+                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_urdu));
+                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_urdu));
+                break;
+            case "bengali":
+                titleName.setText(getResources().getString(R.string.app_name_bengali));
+                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_bengali));
+                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_bengali));
+                break;
+            default: // Do nothing as English text is set by default
+                break;
         }
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.library_icon_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +148,6 @@ public class MainActivity extends KitKitLoggerActivity {
             }
         });
 
-
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
 
         final CustomViewPager viewPager = findViewById(R.id.pager);

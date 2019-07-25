@@ -882,7 +882,7 @@ Node* EquationMakerScene::createCrabResult(int lhs, int rhs)
     sprintf(buf, "%d X %d = %d", lhs, rhs, lhs*rhs);
     
     
-    auto label = TodoUtil::createLabel(buf, 140, Size(800, 150), defaultFont, Color4B(165, 96, 83,255));
+    auto label = TodoUtil::createLabel(buf, 110, Size(800, 150), defaultFont, Color4B(165, 96, 83,255));
     
     //TodoLabel::createLabelToFitWidth(buf, 140, Size(800, 150), TodoFontNameForNumber, Color4B(165, 96, 83,255));
     label->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
@@ -915,7 +915,7 @@ Node* EquationMakerScene::createBaloonResult(int lhs, int rhs)
         float x = winSize.width/2 - step*2 + step*index + random(-5, 5);
         b->setPosition(Vec2(x, 0));
 
-        auto l = TodoUtil::createLabel(s, 140, Size::ZERO, defaultFont, Color4B(222, 222, 222, 255));
+        auto l = TodoUtil::createLabel(s, 110, Size::ZERO, defaultFont, Color4B(222, 222, 222, 255));
         l->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         l->setPosition(Vec2(150, isNum ? 920 : 900));
         b->addChild(l);

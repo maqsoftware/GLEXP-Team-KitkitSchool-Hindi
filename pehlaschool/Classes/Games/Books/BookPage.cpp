@@ -298,7 +298,7 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
         _textView->setPosition(Vec2(halfSize.width-610, 1800-250));
         _rightView->addChild(_textView);
         
-        float fontSize = 120;
+        float fontSize = 100;
         
         auto labelFunc = [&](Color4B color, string fontName, Size offset){
             
@@ -396,7 +396,7 @@ void BookPage::setTitle(string title, string titleImagePath, string audioPath, T
         _textView->setPosition(Vec2(bigSize.width/2, 1800-380-100));
         _rightView->addChild(_textView);
         
-        float fontSize = 120;
+        float fontSize = 100;
         
         
         
@@ -992,7 +992,7 @@ void BookPage::setCreditPage()
         {
             string creditTxt = getSentence(1);
             
-            Label* label = Label::createWithSystemFont(creditTxt, arialFont, 35, textViewSize, TextHAlignment::CENTER, TextVAlignment::TOP);
+            Label* label = Label::createWithSystemFont(creditTxt, arialFont, 30, textViewSize, TextHAlignment::CENTER, TextVAlignment::TOP);
             label->setTextColor(Color4B(98, 61, 29, 255));
             label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
             label->setPosition(textViewSize/2);
@@ -1002,7 +1002,7 @@ void BookPage::setCreditPage()
         {
             string licenseTxt = getSentence(2);
             
-            auto bottom = Label::createWithSystemFont(licenseTxt, arialFont, 20, Size(0, 0), TextHAlignment::CENTER, TextVAlignment::CENTER);
+            auto bottom = Label::createWithSystemFont(licenseTxt, arialFont, 15, Size(0, 0), TextHAlignment::CENTER, TextVAlignment::CENTER);
             bottom->setTextColor(Color4B(98, 61, 29, 255));
             bottom->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
             bottom->setPosition(Size(halfSize.width/2+centerOffset, 50));
@@ -1107,7 +1107,7 @@ void BookPage::setCreditPage()
         {
             string creditTxt = getSentence(1);
             
-            Label* label = Label::createWithSystemFont(creditTxt, arialFont, 35, textViewSize, TextHAlignment::CENTER, TextVAlignment::TOP);
+            Label* label = Label::createWithSystemFont(creditTxt, arialFont, 30, textViewSize, TextHAlignment::CENTER, TextVAlignment::TOP);
             label->setTextColor(Color4B(54, 28, 14, 255));
             label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
             label->setPosition(Vec2(textViewSize.width/2, textViewSize.height - 600));
@@ -1117,7 +1117,7 @@ void BookPage::setCreditPage()
         {
             string licenseTxt = getSentence(2);
             
-            auto bottom = Label::createWithSystemFont(licenseTxt, arialFont, 20, Size(0, 0), TextHAlignment::CENTER, TextVAlignment::CENTER);
+            auto bottom = Label::createWithSystemFont(licenseTxt, arialFont, 15, Size(0, 0), TextHAlignment::CENTER, TextVAlignment::CENTER);
             bottom->setTextColor(Color4B(255, 249, 225, 255));
             bottom->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
             bottom->setPosition(Size(defaultSize.width/2, 50));
@@ -1127,7 +1127,7 @@ void BookPage::setCreditPage()
             cc->setPosition(Vec2(defaultSize.width/2, bottom->getContentSize().height + 120));
             _rightView->addChild(cc);
             
-            auto enuma = Label::createWithSystemFont("(c) 2015 Enuma, Inc.", arialFont, 20);
+            auto enuma = Label::createWithSystemFont("(c) 2015 Enuma, Inc.", arialFont, 15);
             enuma->setTextColor(Color4B(255, 249, 225, 255));
             enuma->setPosition(cc->getPosition() + Vec2(0, cc->getContentSize().height/2 + 40));
             _rightView->addChild(enuma);
@@ -1205,7 +1205,7 @@ void BookPage::setCreditPage()
         {
             string creditTxt = getSentence(1);
             
-            Label* label = Label::createWithSystemFont(creditTxt, arialFont, 35, textViewSize, TextHAlignment::CENTER, TextVAlignment::TOP);
+            Label* label = Label::createWithSystemFont(creditTxt, arialFont, 30, textViewSize, TextHAlignment::CENTER, TextVAlignment::TOP);
             label->setTextColor(Color4B(54, 28, 14, 255));
             label->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
             label->setPosition(Vec2(textViewSize.width/2, textViewSize.height - 600));
@@ -1215,7 +1215,7 @@ void BookPage::setCreditPage()
         {
             string licenseTxt = getSentence(2);
             
-            auto bottom = Label::createWithSystemFont(licenseTxt, arialFont, 20, Size(0, 0), TextHAlignment::CENTER, TextVAlignment::CENTER);
+            auto bottom = Label::createWithSystemFont(licenseTxt, arialFont, 15, Size(0, 0), TextHAlignment::CENTER, TextVAlignment::CENTER);
             bottom->setTextColor(Color4B(54, 28, 14, 255));
             bottom->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
             bottom->setPosition(Size(squareSize.width/2, 50));
@@ -1225,19 +1225,19 @@ void BookPage::setCreditPage()
             cc->setPosition(Vec2(squareSize.width/2, bottom->getContentSize().height + 120));
             _rightView->addChild(cc);
             
-            auto enuma = Label::createWithSystemFont("(c) 2015 Enuma, Inc.", arialFont, 20);
+            auto enuma = Label::createWithSystemFont("(c) 2015 Enuma, Inc.", arialFont, 15);
             enuma->setTextColor(Color4B(54, 28, 14, 255));
             enuma->setPosition(cc->getPosition() + Vec2(0, cc->getContentSize().height/2 + 40));
             _rightView->addChild(enuma);
             
         }
         
-        
-        
-    }
-    
 
-    
+
+    }
+
+
+
     
     
 }

@@ -23,7 +23,7 @@ string MainDepot::defaultFont() const {
 }
 
 float MainDepot::defaultFontSize() const {
-    return 70.f;
+    return 60.f;
 }
 
 Color3B MainDepot::defaultFontColor() const {

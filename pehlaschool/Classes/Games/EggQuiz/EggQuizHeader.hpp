@@ -40,7 +40,7 @@ const string soundsNumberPath = "numbervoice/d_";
 const string tsvPath = "eggquiz/";
 
 const string FONT_NORMAL = "fonts/mukta-bold.ttf";
-const string FONT_BOLD = "fonts/chanakya.ttf";
+const string FONT_BOLD = "arial";
 const Color4B FONT_COLOR = Color4B(60,60,60,255);
 
 const Size BUTTON_SIZE_SMALL = Size(192, 300);

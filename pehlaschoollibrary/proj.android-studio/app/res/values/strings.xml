@@ -2,19 +2,25 @@
     <string name="app_name">Library: Pehla School</string>
     <string name="app_name_hindi" translatable="false">Library: पहला स्कूल - Pehla School</string>
     <string name="app_name_urdu" translatable="false">Library: Pehla School - پہلا اسکول </string>
+    <string name="app_name_bengali" translatable="false">Library: পহলা স্কুল - Pehla School</string>
     <string name="description">Media Controls</string>
-    <string name="tab_video" translatable="false">VIDEOS\nवीडियो</string>
-    <string name="tab_book" translatable="false">BOOKS\nकिताबें</string>
+    <string name="tab_video" translatable="false">VIDEOS</string>
+    <string name="tab_book" translatable="false">BOOKS</string>
+    <string name="tab_video_hindi" translatable="false">VIDEOS\nवीडियो</string>
+    <string name="tab_book_hindi" translatable="false">BOOKS\nकिताबें</string>
     <string name="tab_video_urdu" translatable="false">VIDEOS\nویڈیوز</string>
     <string name="tab_book_urdu" translatable="false">BOOKS\nکتابیں</string>
+    <string name="tab_video_bengali" translatable="false">VIDEOS\nভিডিও</string>
+    <string name="tab_book_bengali" translatable="false">BOOKS\nবুক</string>
     <string name="button_next">Next</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_more">More</string>
     <string name="button_less">Less</string>
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="content_extraction">This process will be done only once. It can take up to 10 minutes.</string>
     <string name="content_extraction_hindi" translatable="false">यह प्रक्रिया केवल एक बार की जाएगी। इसमें १० मिनट तक का समय लग सकता है।</string>
     <string name="content_extraction_urdu" translatable="false">یہ عمل صرف ایک بار کیا جائے گا. اس میں 10 منٹ تک لگ سکتا ہے.</string>
-    <string name="content_extraction_english">This process will be done only once. It can take up to 10 minutes.</string>
+    <string name="content_extraction_bengali" translatable="false">এই প্রক্রিয়া শুধুমাত্র একবার সম্পন্ন করা হবে. এটি 10 ​​মিনিট সময় নিতে পারে.</string>
     <string name="mainFileVersion">mainFileVersion</string>
     <string name="patchFileVersion">patchFileVersion</string>
     <string name="help_button_description" translatable="false">Help button</string>

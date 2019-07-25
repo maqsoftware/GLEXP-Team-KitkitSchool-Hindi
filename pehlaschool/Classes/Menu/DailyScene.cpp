@@ -1037,7 +1037,7 @@ void DailyScene::showFreechoicePopup(std::string gameName, int maxPlayable, int 
         popup->addChild(panel);
         
 //        auto l = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString(gameName), 70, Size::ZERO, defaultFont, Color4B(255, 210, 74, 255));
-        auto l = TodoUtil::createLabelMultilineToFit(LanguageManager::getInstance()->getLocalizedString(gameName), 35, Size(900,0), arialFont, Color4B(255, 210, 74, 255));
+        auto l = TodoUtil::createLabelMultilineToFit(LanguageManager::getInstance()->getLocalizedString(gameName, false), 35, Size(900,0), arialFont, Color4B(255, 210, 74, 255));
         l->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
         l->setPosition(panel->getContentSize()/2);
         panel->addChild(l);

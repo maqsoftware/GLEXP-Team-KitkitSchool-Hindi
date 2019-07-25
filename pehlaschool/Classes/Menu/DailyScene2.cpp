@@ -294,7 +294,7 @@ bool DailyScene2::init(string levelID)
             auto clear = ui::Button::create();
             clear->setTitleText("Clear All but Last");
             clear->setTitleFontName(defaultFont);
-            clear->setTitleFontSize(50);
+            clear->setTitleFontSize(30);
             clear->setPosition(Vec2(winSize.width-300, 400));
             clear->addClickEventListener([this, levelID](Ref*) {
                 for (int i=0; i<_cur->numDays-1; i++) {
@@ -311,7 +311,7 @@ bool DailyScene2::init(string levelID)
             auto clearLast = ui::Button::create();
             clearLast->setTitleText("ClearLast");
             clearLast->setTitleFontName(defaultFont);
-            clearLast->setTitleFontSize(50);
+            clearLast->setTitleFontSize(30);
             clearLast->setPosition(Vec2(winSize.width-300, 200));
             clearLast->addClickEventListener([this, levelID](Ref*) {
                 _currentDay = _cur->numDays;
@@ -870,24 +870,22 @@ void DailyScene2::setupFreechoiceTab()
 
             string delim = "$#$";
             string langCode = LanguageManager::getInstance()->customLanguageCode;
-            langCode = "hi"; // TODO: Remove this
+
             string labelEnglish;
             string labelLocale;
-            string labelName = LanguageManager::getInstance()->getLocalizedString(it.first.c_str());
-            __android_log_print(ANDROID_LOG_DEBUG, "Line 879", "labelEnglish = %s, delimPos = %u", labelName.c_str(), labelName.find(delim));
+            string labelName = LanguageManager::getInstance()->getLocalizedString(it.first.c_str(), true);
             if (langCode == "en") {
                 labelEnglish = labelName;
             } else {
                 labelEnglish = labelName.substr(labelName.find(delim) + delim.length());
-                __android_log_print(ANDROID_LOG_DEBUG, "Line 879", "labelEnglish = %s, delimPos = %u", labelEnglish.c_str(), labelName.find(delim));
                 labelLocale = labelName.substr(0, labelName.find(delim));
-                auto panelLabelLocale = TodoUtil::createLabelMultilineToFit("संख्या मिलाना", 75, Size(btnSize.width, 120), defaultFont, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
+                auto panelLabelLocale = TodoUtil::createLabelMultilineToFit(labelLocale, 65, Size(btnSize.width, 120), defaultFont, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
                 panelLabelLocale->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
                 panelLabelLocale->setPosition(Vec2(btnSize.width/2, 10));
                 gameBtn->addChild(panelLabelLocale);
             }
 
-            auto panelLabelEnglish = TodoUtil::createLabelMultilineToFit(labelEnglish, 75, Size(btnSize.width, 120), fontName, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
+            auto panelLabelEnglish = TodoUtil::createLabelMultilineToFit(labelEnglish, 65, Size(btnSize.width, 120), fontName, Color4B(255, 210, 74, 255*(avaliable ? 1 : 0.1)));
             panelLabelEnglish->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
             panelLabelEnglish->setPosition(Vec2(btnSize.width/2, 100));
             gameBtn->addChild(panelLabelEnglish);
@@ -1203,10 +1201,10 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
         popup->addChild(panel);
 
 //        auto l = TodoUtil::createLabel(LanguageManager::getInstance()->getLocalizedString(gameName), 70, Size::ZERO, defaultFont, Color4B(255, 210, 74, 255));
-        string labelName = LanguageManager::getInstance()->getLocalizedString(gameName);
+        string labelName = LanguageManager::getInstance()->getLocalizedString(gameName, false);
         string delim = "$#$";
         string labelHindi = labelName.substr(0, labelName.find(delim));
-        auto l = TodoUtil::createLabelMultilineToFit(labelHindi, 100, Size(900,0), defaultFont, Color4B(255, 210, 74, 255));
+        auto l = TodoUtil::createLabelMultilineToFit(labelHindi, 75, Size(900,0), defaultFont, Color4B(255, 210, 74, 255));
         l->setAlignment(TextHAlignment::CENTER, TextVAlignment::CENTER);
         l->setPosition(panel->getContentSize()/2);
         panel->addChild(l);
@@ -1217,8 +1215,7 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
     {
         auto filename = "MainScene/FreeChoiceThumbnail/freechoice_game_"+gameName+".png";
         Node *thumb = Sprite::create(filename);
-        if (thumb==nullptr) thumb = TodoUtil::createLabel(gameName, 120, Size(800, 500), defaultFont, Color4B::BLACK);
-
+        if (thumb==nullptr) thumb = TodoUtil::createLabel(gameName, 90, Size(800, 500), defaultFont, Color4B::BLACK);
         thumb->setPosition(Vec2(winSize.width/2, winSize.height-600));
         popup->addChild(thumb);
     }
@@ -1268,9 +1265,9 @@ void DailyScene2::showFreechoicePopup(std::string gameName, int maxPlayable, int
             } else {
                 x += stepX;
             }
-
-
-            auto l = TodoUtil::createLabel(TodoUtil::itos(i+1), 100, Size::ZERO, defaultFont, Color4B::WHITE);
+            
+            
+            auto l = TodoUtil::createLabel(TodoUtil::itos(i+1), 75, Size::ZERO, defaultFont, Color4B::WHITE);
             l->setPosition(b->getContentSize()/2 + Size(2, -6));
             b->addChild(l);
 

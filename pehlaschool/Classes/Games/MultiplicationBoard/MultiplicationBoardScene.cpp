@@ -682,7 +682,7 @@ void MultiplicationBoardScene::createBoard(int index)
 
                                            //결과 수
                                            CallFunc::create([this, piece](){
-                                                auto result = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), arialFont, 60);
+                                                auto result = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), arialFont, 50);
                                                 result->setColor(numberColor);
                                                 result->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
                                                 result->setPosition(Vec2(piece->getPosition().x + 20, piece->getPosition().y - (piece->getContentSize().height/2) + 60));
@@ -764,7 +764,7 @@ void MultiplicationBoardScene::createBoard(int index)
                             CallFunc::create([this, piece](){
                             
                                 //최종 수식 까만색으로 띄우자
-                                auto lastExpression = Label::createWithSystemFont(TodoUtil::itos(_multiplicand) + " x " + TodoUtil::itos(_numSnappedPieces) + " = " + TodoUtil::itos(_multiplicand * _numSnappedPieces), arialFont, 100);
+                                auto lastExpression = Label::createWithSystemFont(TodoUtil::itos(_multiplicand) + " x " + TodoUtil::itos(_numSnappedPieces) + " = " + TodoUtil::itos(_multiplicand * _numSnappedPieces), arialFont, 90);
                                 lastExpression->setName("lastExpression");
                                 lastExpression->setColor(Color3B(0, 0, 0));
                                 lastExpression->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -870,10 +870,10 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
 {
     _expressionNode->removeAllChildren();
 
-    auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), arialFont, 130);
-    auto resultNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), arialFont, 130);
-    auto plusSymbol = Label::createWithSystemFont("+", arialFont, 130);
-    auto equalSymbol = Label::createWithSystemFont("=", arialFont, 130);
+    auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), arialFont, 120);
+    auto resultNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), arialFont, 120);
+    auto plusSymbol = Label::createWithSystemFont("+", arialFont, 120);
+    auto equalSymbol = Label::createWithSystemFont("=", arialFont, 120);
     
     int count = _numSnappedPieces + (isPick ? 1 : 0);
     
@@ -897,7 +897,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
     {
         if (i > 0)
         {
-            auto expSymbol = Label::createWithSystemFont("+", arialFont, 130);
+            auto expSymbol = Label::createWithSystemFont("+", arialFont, 120);
             expSymbol->setColor(symbolColor);
             expSymbol->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
             expSymbol->setPosition(Vec2(expX, expY));
@@ -913,7 +913,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
             _expressionNode->addChild(expSymbol);
         }
         
-        auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), arialFont, 130);
+        auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), arialFont, 120);
         expNumber->setColor(numberColor);
         expNumber->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         expNumber->setPosition(Vec2(expX, expY));
@@ -932,7 +932,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
     if (isSnapped && _numSnappedPieces > 1)
     {
         //= 이퀄
-        auto expSymbol = Label::createWithSystemFont("=", arialFont, 130);
+        auto expSymbol = Label::createWithSystemFont("=", arialFont, 120);
         expSymbol->setName("");
         expSymbol->setColor(symbolColor);
         expSymbol->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
@@ -943,7 +943,7 @@ void MultiplicationBoardScene::makeExpression(bool isPick, bool isSnapped)
         _expressionNode->addChild(expSymbol);
         
         //결과수
-        auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _numSnappedPieces), arialFont, 130);
+        auto expNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _numSnappedPieces), arialFont, 120);
         expNumber->setColor(numberColor);
         expNumber->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         expNumber->setPosition(Vec2(expX, expY));
@@ -967,11 +967,11 @@ void MultiplicationBoardScene::makeCompleteExpression()
     _expressionNode->removeAllChildren();
     
     //사용될 라벨 생성
-    auto multiplicandNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), arialFont, 130);
-    auto xSymbol = Label::createWithSystemFont("X", arialFont, 130);
-    auto multiplierNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplier), arialFont, 130);
-    auto equalSymbol = Label::createWithSystemFont("=", arialFont, 130);
-    auto resultNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), arialFont, 130);
+    auto multiplicandNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand), arialFont, 120);
+    auto xSymbol = Label::createWithSystemFont("X", arialFont, 120);
+    auto multiplierNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplier), arialFont, 120);
+    auto equalSymbol = Label::createWithSystemFont("=", arialFont, 120);
+    auto resultNumber = Label::createWithSystemFont(TodoUtil::itos(_multiplicand * _multiplier), arialFont, 120);
     
     //전체 수식 길이 계산
     int expWidth = (multiplicandNumber->getContentSize().width + xSymbol->getContentSize().width + multiplierNumber->getContentSize().width +
@@ -1345,7 +1345,7 @@ void MultiplicationBoardPiece::setTexture(int multiplicand, int multiplier)
             
             _bulb->addChild(numberBack);
 
-            auto number = Label::createWithSystemFont(TodoUtil::itos(multiplicand * multiplier), arialFont, 60);
+            auto number = Label::createWithSystemFont(TodoUtil::itos(multiplicand * multiplier), arialFont, 50);
             number->setColor(numberColor);
             number->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
             number->setPosition(Vec2(bulb->getPosition().x + 4, bulb->getPosition().y - bulb->getContentSize().height/2 - 4));

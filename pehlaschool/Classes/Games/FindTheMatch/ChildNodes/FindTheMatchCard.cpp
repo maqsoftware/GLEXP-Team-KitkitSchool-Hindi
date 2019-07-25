@@ -328,7 +328,7 @@ void Card::refreshChildNodes() {
     refreshTitleSprite();
 
     TitleLabel = ([&] {
-        auto It = Label::createWithSystemFont(TitleText(), Depot.defaultFont(), 300.f);
+        auto It = Label::createWithSystemFont(TitleText(), Depot.defaultFont(), 250.f);
         It->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         It->setPosition(FrontFace->getContentSize() / 2.f);
         

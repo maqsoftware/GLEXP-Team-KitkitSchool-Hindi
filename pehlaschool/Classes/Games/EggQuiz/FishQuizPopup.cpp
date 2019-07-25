@@ -115,7 +115,7 @@ Button* FishQuizPopup::createButton(string prefix, string text) {
     
     
     if (text.length()>0) {
-        auto localTxt = LanguageManager::getInstance()->getLocalizedString(text);
+        auto localTxt = LanguageManager::getInstance()->getLocalizedString(text, false);
         auto l = TodoUtil::createLabel(localTxt, 60, Size::ZERO, curlyFont, Color4B(255, 252, 236, 255));
         auto lPos = btn->getContentSize()/2 + Size(0, 10);
         l->setPosition(lPos);
@@ -220,7 +220,7 @@ void FishQuizPopup::showSuccess(char category, int progressLevelIndex, int progr
         }
     };
     
-    auto localTxt = LanguageManager::getInstance()->getLocalizedString("Congratulations!\nSee you at your sea world!");
+    auto localTxt = LanguageManager::getInstance()->getLocalizedString("Congratulations!\nSee you at your sea world!", false);
     auto splits = TodoUtil::split(localTxt, '\n');
     auto l = TodoUtil::createLabel(localTxt, splits.size() > 2 ? 45 : 50, Size::ZERO, curlyFont, Color4B(255, 252, 236, 225));
     l->setAlignment(TextHAlignment::CENTER);
@@ -334,7 +334,7 @@ void FishQuizPopup::showFail(char category, int progressLevelIndex, int progress
     }
     
     {
-        auto s1 = LanguageManager::getInstance()->getLocalizedString((bRetry ? "Don't give up! Let's try it again!": "Try again to add me to your sea world!"));
+        auto s1 = LanguageManager::getInstance()->getLocalizedString((bRetry ? "Don't give up! Let's try it again!": "Try again to add me to your sea world!"), false);
         auto l = TodoUtil::createLabel(s1, 50, Size::ZERO, curlyFont,
                                        Color4B(115, 61, 19, 225), TextHAlignment::CENTER);
         l->setPosition(Vec2(winSize.width / 2, winSize.height - 1120));

@@ -142,7 +142,7 @@ Button* MainDepot::createNextButton(const std::string& TeaserFileName) const {
 }
 
 cocos2d::Label* MainDepot::createNextButtonLabel(const std::string& Text) const {
-    Label* It = Label::createWithSystemFont(Text, defaultFont(), 120.f);
+    Label* It = Label::createWithSystemFont(Text, defaultFont(), 110.f);
     It->setColor(Color3B(255, 249, 237));
     It->setOpacity(GLubyte(255 * .90f));
 

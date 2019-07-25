@@ -91,7 +91,7 @@ bool AnswerPiece::init()
 
 Node* AnswerPiece::createFace(int number)
 {
-    const string fontName = "fonts/mukta-bold.ttf";
+    const string fontName = "arial";
     
     auto faceSize = Size(222, 244)  - Size(22, 44) - Size(30, 30);
     if (number>=10000) {
@@ -118,7 +118,7 @@ Node* AnswerPiece::createFace(int number)
         
     } else {
 
-        auto l = TodoUtil::createLabel(TodoUtil::itos(number), 100, faceSize, fontName, Color4B(79, 67, 61, 255), TextHAlignment::CENTER);
+        auto l = TodoUtil::createLabel(TodoUtil::itos(number), 75, faceSize, fontName, Color4B(79, 67, 61, 255), TextHAlignment::CENTER);
         return l;
         
     }
