@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 public class VoiceMoldManager
 {
-    public String defaultLocale = "bn-IN";
+    public String defaultLocale = "hi-IN";
     public HashMap<String, VoiceMold> moldForLocaleCache;
 
     public String getDefaultLocale() { return defaultLocale; }
