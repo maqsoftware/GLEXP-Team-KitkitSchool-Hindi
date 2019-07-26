@@ -65,12 +65,18 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // Extracted content path for Hindi
     std::string extractedContentPathHindi = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files/";
     std::string extractedContentPathUrdu = "/storage/emulated/0/Android/data/com.maq.pehlaschool.urdu/files/";
+    std::string extractedContentPathEnglish = "/storage/emulated/0/Android/data/com.maq.pehlaschool.english/files/";
+    std::string extractedContentPathBengali = "/storage/emulated/0/Android/data/com.maq.pehlaschool.bengali/files/";
 
     // Set resource path based on available resource directory
     if (FileUtils::getInstance()->isDirectoryExist(extractedContentPathHindi)) {
         FileUtils::getInstance()->setDefaultResourceRootPath(extractedContentPathHindi);
     } else if (FileUtils::getInstance()->isDirectoryExist(extractedContentPathUrdu)) {
         FileUtils::getInstance()->setDefaultResourceRootPath(extractedContentPathUrdu);
+    } else if (FileUtils::getInstance()->isDirectoryExist(extractedContentPathEnglish)) {
+        FileUtils::getInstance()->setDefaultResourceRootPath(extractedContentPathEnglish);
+    } else if (FileUtils::getInstance()->isDirectoryExist(extractedContentPathBengali)) {
+        FileUtils::getInstance()->setDefaultResourceRootPath(extractedContentPathBengali);
     }
 
 

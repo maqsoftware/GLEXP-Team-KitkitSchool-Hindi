@@ -1,12 +1,15 @@
 package com.maq.pehlaschool.library;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,6 +32,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.maq.kitkitlogger.KitKitLogger;
 import com.maq.kitkitlogger.KitKitLoggerActivity;
@@ -68,6 +72,8 @@ public class MainActivity extends KitKitLoggerActivity {
     ArrayList<LinearLayout> layouts;
     int mWidth;
     private String TAG = "MainActivity";
+    private static String pehlaSchoolUrl = "https://play.google.com/store/apps/details?id=com.maq.pehlaschool";
+    private static String packageNamePrefix = "com.maq.pehlaschool";
 
     public static int dpTopx(int dp, Context context) {
         Resources r = context.getResources();
@@ -692,16 +698,78 @@ public class MainActivity extends KitKitLoggerActivity {
 
             }
 
+
+            ArrayList<String> learningModuleDirList = new ArrayList<String>();
+            learningModuleDirList.add(".english");
+            learningModuleDirList.add(".bengali");
+            learningModuleDirList.add("");
+            learningModuleDirList.add(".urdu");
+
+            int iCounter;
+            int jCounter = 0;
+
+            boolean isAppInstalled;
+
+            File learningModuleDir;
+
+            // Check if the Learning module's content is extracted
+            for (iCounter = 0; iCounter < learningModuleDirList.size(); iCounter++) {
+                learningModuleDir = new File("/storage/emulated/0/Android/data/com.maq.pehlaschool" + learningModuleDirList.get(iCounter) + "/files/");
+                if (learningModuleDir.exists()) {
+                    break;
+                }
+            }
+
+            // If Learning module's content is not extracted, check whether the Learning module is installed
+            if (iCounter == learningModuleDirList.size()) {
+                for (jCounter = 0; jCounter < learningModuleDirList.size(); jCounter++) {
+                    isAppInstalled = appInstalledOrNot(packageNamePrefix + learningModuleDirList.get(jCounter));
+                    if (isAppInstalled) {
+                        break;
+                    }
+                }
+            }
+
+            final boolean dataDirExist = (iCounter != learningModuleDirList.size());
+            final boolean appInstalled = (jCounter != learningModuleDirList.size());
+
             holder.mImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.setComponent(new ComponentName("com.maq.pehlaschool.library", "org.cocos2dx.cpp.AppActivity"));
+                        // If Learning module's content is extracted, launch the story book
+                        if (dataDirExist) {
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.setComponent(new ComponentName("com.maq.pehlaschool.library", "org.cocos2dx.cpp.AppActivity"));
 
-                        intent.putExtra("book", item.foldername);
-                        Log.d("booktest", item.foldername);
-                        mActivity.startActivity(intent);
+                            intent.putExtra("book", item.foldername);
+                            Log.d("booktest", item.foldername);
+                            mActivity.startActivity(intent);
+                        }
+                        // If the content is not extracted, but the app is installed, show a TOAST
+                        else if (appInstalled) {
+                                Toast.makeText(mActivity.getApplicationContext(), mActivity.getString(R.string.toast_message), Toast.LENGTH_LONG).show();
+                        }
+                        // If both don't exist, show a dialog to install the app
+                        else {
+                            new AlertDialog.Builder(mActivity)
+                                    .setMessage(mActivity.getString(R.string.dialog_message))
+                                    .setPositiveButton("Yes",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.dismiss();
+                                                    mActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(pehlaSchoolUrl)));
+                                                }
+                                            })
+                                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .create()
+                                    .show();
+                        }
                     } catch (Exception ignore) {
                     }
 
@@ -737,7 +805,21 @@ public class MainActivity extends KitKitLoggerActivity {
                 mImageButton = view.findViewById(R.id.book_image_button);
             }
         }
+
+        // Check if the app is installed on the device
+        private boolean appInstalledOrNot(String uri) {
+            PackageManager pm = mActivity.getPackageManager();
+            try {
+                pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+                return true;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
     }
+
+
 
     public static class RecyclerViewDecoration extends RecyclerView.ItemDecoration {
         private int mLeft;

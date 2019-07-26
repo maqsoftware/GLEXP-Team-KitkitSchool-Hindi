@@ -28,7 +28,7 @@ import static kitkitschool.DownloadExpansionFile.xAPKS;
  */
 
 public class SelectActivity extends KitKitLoggerActivity {
-    public static String locale;
+    public static String locale = "english";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class SelectActivity extends KitKitLoggerActivity {
         // render text based on the calling application
         Intent libraryIntent = getIntent();
         Bundle extras = libraryIntent.getExtras();
-        if (extras != null && extras.getString("locale") != null) {
+        if (extras != null && extras.getString("locale") != null && !extras.getString("locale").isEmpty()) {
             locale = extras.getString("locale").toLowerCase();
             // clear the library intent by removing the extended data from the intent
             // this is done to get the latest extended data of the intent

@@ -28,4 +28,6 @@
     <string name="video_button_description" translatable="false">Video button</string>
     <string name="books_button_shadow_description" translatable="false">Books button shadow</string>
     <string name="books_button_description" translatable="false">Books button</string>
+    <string name="dialog_message" translatable="false">Please install Pehla School application to read exciting story books.\nDo you want to install it?</string>
+    <string name="toast_message" translatable="false">Please open the Learning module in Pehla School application once to start the story</string>
 </resources>

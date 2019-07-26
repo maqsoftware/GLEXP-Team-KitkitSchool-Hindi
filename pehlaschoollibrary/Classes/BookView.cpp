@@ -611,14 +611,17 @@ void BookView::popBookScene()
             CCAppController::sharedAppController()->handleGameComplete(1);
 
         } else {
-            JniMethodInfo t;
+            LogManager::getInstance()->logEvent(_book->bookTitle, "finish_read", "", _currentPage);
+            CCAppController::sharedAppController()->handleGameComplete(1);
+            // TODO: July 26, 2019: Current page in story is not retained after pressing back btn
+            /*JniMethodInfo t;
 
             bool result = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "sendToBack", "()V");
             if (result)
             {
                 t.env->CallStaticVoidMethod(t.classID, t.methodID);
                 t.env->DeleteLocalRef(t.classID);
-            }
+            }*/
         }
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 	{
