@@ -33,7 +33,7 @@ bool PushButton::initWithSize(Size buttonSize, float fontSize, string label, fun
     addChild(_active);
     _active->setVisible(false);
     
-    _label = TodoUtil::createLabelMultilineToFitWidth(label, fontSize, buttonSize, fontPath.empty() ? FONT_NORMAL : fontPath, FONT_COLOR, TextHAlignment::CENTER);
+    _label = TodoUtil::createLabelMultilineToFitWidth(label, fontSize, buttonSize, "arial", FONT_COLOR, TextHAlignment::CENTER);
     _label->setPosition(_body->getContentSize()/2+Size(0,10));
     if (_label->getName() == "multiline") _label->setPosition(_label->getPosition()+Vec2(0,fontSize*0.4));
     addChild(_label);

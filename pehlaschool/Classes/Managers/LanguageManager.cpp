@@ -458,7 +458,7 @@ void LanguageManager::initLocalizationMap()
     _localizationMapBengali["LetterTrace"] = "বর্ণমালা ট্রেস";
     _localizationMapSwahili["LetterTrace"] = "Kufuatisha Herufi";
 
-    _localizationMapEnglish["MovingInsects"] = "Bug Math";
+    _localizationMapEnglish["MovingInsects"] = "Moving Insects";
     _localizationMapHindi["MovingInsects"] = "कीड़े की गिनती";
     // _localizationMapUrdu["MovingInsects"] = "";
     _localizationMapBengali["MovingInsects"] = "বাগ ম্যাথ";
@@ -524,7 +524,7 @@ void LanguageManager::initLocalizationMap()
     _localizationMapBengali["LetterTracingCard"] = "বর্ণমালা ট্রেসিং কার্ড";
     _localizationMapSwahili["LetterTracingCard"] = "Fuatisha Mara 3";
 
-    _localizationMapEnglish["NumberPuzzle"] = "Number Blocks";
+    _localizationMapEnglish["NumberPuzzle"] = "Number Puzzle";
     _localizationMapHindi["NumberPuzzle"] = "संख्यायों की पहेलियाँ";
     // _localizationMapUrdu["NumberPuzzle"] = "";
     _localizationMapBengali["NumberPuzzle"] = "সংখ্যা ব্লক";

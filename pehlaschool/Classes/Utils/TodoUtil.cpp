@@ -345,13 +345,13 @@ Label* TodoUtil::createLabelMultilineToFitWidth(const std::string &text, float m
 {
     Label* label;
     boxSize.width *= 0.95;
-    label = Label::createWithTTF(text, fontName, maxFontSize, Size(boxSize.width, 0), hAlignment, vAlignment);
+    label = Label::createWithSystemFont(text, fontName, maxFontSize, Size(boxSize.width, 0), hAlignment, vAlignment);
     label->setTextColor(color);
     if (boxSize.height<1) return label;
     if (label->getContentSize().height <= maxFontSize*2) return label;
     else {
         maxFontSize *= 0.8;
-        label = Label::createWithTTF(text, fontName, maxFontSize, Size(boxSize.width, 0), hAlignment, vAlignment);
+        label = Label::createWithSystemFont(text, fontName, maxFontSize, Size(boxSize.width, 0), hAlignment, vAlignment);
         label->setTextColor(color);
     }
     

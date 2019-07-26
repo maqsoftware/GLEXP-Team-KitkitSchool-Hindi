@@ -121,7 +121,7 @@ public class VoiceMoldManager {
 
     public void speak(String text) {
         // to handle Bengali accent issue while speaking English
-        if (defaultLocale.equals("bn-IN") && ((!text.equals("")) && (text != null) && (text.matches("^[a-zA-Z0-9_ ?.,'\"]*$")))) {
+        if (defaultLocale.equals("bn-IN") && ((!text.equals("")) && (text != null) && (text.matches("^[a-zA-Z0-9_ ?!.,'\"]*$")))) {
             speak(text, "hi-IN");
         } else {
             speak(text, defaultLocale);

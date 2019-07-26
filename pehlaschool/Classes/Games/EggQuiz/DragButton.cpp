@@ -43,7 +43,7 @@ bool DragButton::initWithSize(string label, Size size, float fontSize, vector<Sl
     addChild(_active);
     _active->setVisible(false);
     
-    _label = TodoUtil::createLabelMultilineToFitWidth(label, fontSize, size, FONT_NORMAL, FONT_COLOR, TextHAlignment::CENTER);
+    _label = TodoUtil::createLabelMultilineToFitWidth(label, fontSize, size, "arial", FONT_COLOR, TextHAlignment::CENTER);
     _label->setPosition(_body->getContentSize()/2+Size(0,fontSize/10));
     if (_label->getName() == "multiline") _label->setPosition(_label->getPosition()+Vec2(0,fontSize*0.4));
     addChild(_label);
