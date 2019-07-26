@@ -510,11 +510,12 @@ void ReadingBirdScene::changeMainState(MAIN_STATE state)
                     auto locale = languageManager->convertLocaleTypeToCode(languageManager->getCurrentLocaleType());
 
                     JniHelper::callStaticVoidMethod(JNI_CLASS_NAME, "onPauseListeningAndRecognition");
-                    JniHelper::callStaticVoidMethod(JNI_CLASS_NAME, "playAudio", "localized/en-US/" + ROOT_RESOURCE_PATH + "/effect/readaloud.m4a");
+//                    Todo: Add code to switch file based on locale
+                    JniHelper::callStaticVoidMethod(JNI_CLASS_NAME, "playAudio", "localized/en-US/" + ROOT_RESOURCE_PATH + "/effect/readaloud_en.m4a");
                 });
 #else
                 this->changeCharacter1State(CHARACTER1_STATE::look, [&](){
-                    GameSoundManager::getInstance()->playEffectSound(ROOT_RESOURCE_PATH + "/effect/readaloud.m4a");
+                    GameSoundManager::getInstance()->playEffectSound(ROOT_RESOURCE_PATH + "/effect/readaloud_en.m4a");
                     processStopLook();
                 });
 #endif
