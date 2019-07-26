@@ -1250,19 +1250,10 @@ BEGIN_NS_EGGQUIZ ;
         _gameNode->addChild(questionBox);
 
         createSmallSpeakerView(_problem.questionOption5);
-
-        if (_problem.questionOption2.back() == '.' || _problem.questionOption2.back() == '?' ||
-            _problem.questionOption2.back() == '!' || _problem.questionOption2.back() == '_') {
-            questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 75,
-                                                                     Size(1600, 600), FONT_NORMAL,
+        questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 75,
+                                                                     Size(1600, 600), FONT_BOLD,
                                                                      FONT_COLOR,
                                                                      TextHAlignment::CENTER);
-        } else {
-            questionLabel = Label::createWithSystemFont(_problem.questionOption2, FONT_BOLD, 75,
-                                                                     Size(1600, 600),
-                                                                     TextHAlignment::CENTER);
-            questionLabel->setTextColor(FONT_COLOR);
-        }
         questionLabel->setPosition(questionBox->getContentSize() / 2);
         questionBox->addChild(questionLabel);
 
@@ -1279,19 +1270,10 @@ BEGIN_NS_EGGQUIZ ;
         _gameNode->addChild(questionBox);
 
         createSmallSpeakerView(_problem.questionOption5);
-
-        if (_problem.questionOption2.back() == '.' || _problem.questionOption2.back() == '?' ||
-            _problem.questionOption2.back() == '"' || _problem.questionOption2.back() == '_') {
-            questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 100,
-                                                                     Size(1600, 600), FONT_NORMAL,
+        questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2, 100,
+                                                                     Size(1600, 600), FONT_BOLD,
                                                                      FONT_COLOR,
                                                                      TextHAlignment::CENTER);
-        } else {
-            questionLabel = Label::createWithSystemFont(_problem.questionOption2, FONT_BOLD, 75,
-                                                                     Size(1600, 600),
-                                                                     TextHAlignment::CENTER);
-            questionLabel->setTextColor(FONT_COLOR);
-        }
         questionLabel->setPosition(questionBox->getContentSize() / 2);
         questionBox->addChild(questionLabel);
 
@@ -1388,7 +1370,7 @@ BEGIN_NS_EGGQUIZ ;
                                                                                             : 100,
                                                                         Size(1060 -
                                                                              questionLabelWeight,
-                                                                             400), FONT_NORMAL,
+                                                                             400), FONT_BOLD,
                                                                         FONT_COLOR,
                                                                         questionLabelWeight
                                                                         ? TextHAlignment::LEFT
@@ -1554,7 +1536,7 @@ BEGIN_NS_EGGQUIZ ;
 
         Label *questionLabel = TodoUtil::createLabelMultilineToFitWidth(_problem.questionOption2,
                                                                         75, Size(1060, 600),
-                                                                        FONT_NORMAL, FONT_COLOR,
+                                                                        FONT_BOLD, FONT_COLOR,
                                                                         TextHAlignment::CENTER);
         questionLabel->setPosition(posX, 1245 + 215 / 2);
         _gameNode->addChild(questionLabel);
