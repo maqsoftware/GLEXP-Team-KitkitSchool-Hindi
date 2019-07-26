@@ -38,7 +38,7 @@ void LanguageManager::init()
     for (int i=0; i<LocaleType_MAX; i++) {
         LocaleType l = (LocaleType)i;
         auto lc = convertLocaleTypeToCode(l);
-        auto lp = "Localized/CurriculumData_" + lc.substr(0, 2) + ".tsv";
+        auto lp = "Localized/"+ lc + "/CurriculumData_" + lc.substr(0, 2) + ".tsv";
         if (FileUtils::getInstance()->isFileExist(lp)) _supportedLocales.push_back(l);
 
     }
@@ -110,8 +110,8 @@ void LanguageManager::setCurrentLocale(LocaleType type)
 
     std::vector<std::string> paths = {};
 
-    paths.push_back("localized/games");
-    paths.push_back("localized");
+    paths.push_back("localized/en-US");
+    paths.push_back("localized/en-US/games");
     paths.push_back("games");
     paths.push_back("main");
 
