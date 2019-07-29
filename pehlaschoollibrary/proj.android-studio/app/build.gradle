@@ -62,7 +62,7 @@ android {
 
 
         general {
-            assets.srcDirs = ['../../../mainapp/Resources/bookviewer', '../../../mainapp/Resources/Localized/en-US/Games/Books', '../../../mainapp/Resources/Localized/sw-TZ/Games/Books']
+            assets.srcDirs = ['../../../mainapp/Resources/bookviewer', '../../../mainapp/Resources/Localized/Games/Books', '../../../mainapp/Resources/Localized/en-US/Games/Books']
         }
 
         noresource {
@@ -70,7 +70,7 @@ android {
         }
 
         english {
-            assets.srcDirs = ['../../../mainapp/Resources/bookviewer', '../../../mainapp/Resources/Localized/en-US/Games/Books']
+            assets.srcDirs = ['../../../mainapp/Resources/bookviewer', '../../../mainapp/Resources/Localized/Games/Books', '../../../mainapp/Resources/Localized/en-US/Games/Books']
         }
 
         swahili {

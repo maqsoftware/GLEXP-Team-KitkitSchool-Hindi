@@ -119,14 +119,19 @@ void LanguageManager::setCurrentLocale(LocaleType type)
     
     std::vector<std::string> paths = {};
     
-    for (auto p : _localizedResourcePaths) {
-        auto localizedPath = "localized/"+p;
-        paths.push_back(localizedPath);
-        paths.push_back(localizedPath+"/games");
-        paths.push_back(localizedPath+"/games/books");
-    }
+    paths.push_back("localized");
+    paths.push_back("localized/games");
+    paths.push_back("localized/games/books");
+
+    // todo July 29, 2019: following 3 lines should be removed once OBBs are updated in all the 4 variants of Pehla School
+    paths.push_back("localized/en-us");
+    paths.push_back("localized/en-us/games");
+    paths.push_back("localized/en-us/games/books");
+
     paths.push_back("games");
     paths.push_back("bookviewer");
+
+
     
     FileUtils::getInstance()->setSearchPaths(paths);
     
