@@ -49,7 +49,6 @@ android {
             manifest.srcFile 'main/AndroidManifest.xml'
             java.srcDirs = ["src"]
             res.srcDirs = ["res"]
-            assets.srcDirs = ['../../../mainapp/Resources/bookviewer']
         }
 
         release {
@@ -60,29 +59,11 @@ android {
             manifest.srcFile 'debug/AndroidManifest.xml'
         }
 
-
-        general {
-            assets.srcDirs = ['../../../mainapp/Resources/bookviewer', '../../../mainapp/Resources/Localized/Games/Books', '../../../mainapp/Resources/Localized/en-US/Games/Books']
-        }
-
-        noresource {
-            assets.srcDir "assets"
-        }
-
-        english {
-            assets.srcDirs = ['../../../mainapp/Resources/bookviewer', '../../../mainapp/Resources/Localized/Games/Books', '../../../mainapp/Resources/Localized/en-US/Games/Books']
-        }
-
-        swahili {
-            assets.srcDirs = ['../../../mainapp/Resources/bookviewer', '../../../mainapp/Resources/Localized/sw-TZ/Games/Books']
-        }
-
     }
 
 
     productFlavors {
         general {
-
         }
 
         noresource {
@@ -92,7 +73,6 @@ android {
         }
 
         swahili {
-
         }
     }
 
