@@ -221,7 +221,7 @@ void LanguageManager::initLocalizationMap()
 
     _localizationMapEnglish["Great!"] = "Great!";
     _localizationMapHindi["Great!"] = "बहुत अच्छे!";
-    _localizationMapUrdu["Great!"] = "";
+    _localizationMapUrdu["Great!"] = "بہت اچھا";
     _localizationMapBengali["Great!"] = "খুব ভালো";
     _localizationMapSwahili["Great!"] = "Vizuri!";
 
@@ -353,7 +353,7 @@ void LanguageManager::initLocalizationMap()
 
     _localizationMapEnglish["TutorialTrace"] = "Line Tracing";
     _localizationMapHindi["TutorialTrace"] = "लाइन खीचें";
-    _localizationMapUrdu["TutorialTrace"] = "";
+    _localizationMapUrdu["TutorialTrace"] = "ٹیوٹوریل ٹریس";
     _localizationMapBengali["TutorialTrace"] = "লাইন ট্রেসিং";
     _localizationMapSwahili["TutorialTrace"] = "Kufuatisha Mstari";
 
