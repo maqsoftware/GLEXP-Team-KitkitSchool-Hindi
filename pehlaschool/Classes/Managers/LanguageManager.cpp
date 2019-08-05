@@ -292,7 +292,7 @@ void LanguageManager::initLocalizationMap()
     _localizationMapSwahili["You need more practice."] = "Unahitaji mazoezi zaidi.";
 
     _localizationMapEnglish["Welcome!"] = "Welcome!";
-    _localizationMapHindi[""] = "स्वागत है!";
+    _localizationMapHindi["Welcome!"] = "स्वागत है!";
     _localizationMapUrdu["Welcome!"] = "خوش آمدید!";
     _localizationMapBengali["Welcome!"] = "স্বাগত!";
     _localizationMapSwahili["Welcome!"] = "Karibu!";
@@ -443,6 +443,7 @@ void LanguageManager::initLocalizationMap()
 
     _localizationMapEnglish["FishTank"] = "Fish Tank";
     _localizationMapHindi["FishTank"] = "मछली घर";
+    _localizationMapUrdu["FishTank"] = "مچھلی گھر";
     _localizationMapBengali["FishTank"] = "মাছের ট্যাঁক";
     _localizationMapSwahili["FishTank"] = "Tangi ya Samaki";
 
