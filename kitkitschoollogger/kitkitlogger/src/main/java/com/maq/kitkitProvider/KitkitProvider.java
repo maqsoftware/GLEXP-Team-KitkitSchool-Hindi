@@ -14,35 +14,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import static android.provider.ContactsContract.Directory.PACKAGE_NAME;
+
 /**
  * Created by ingtellect on 9/1/17.
  */
 
 public class KitkitProvider extends ContentProvider {
-
-    private static final String AUTHORITY =
-            "com.maq.provider.pehlaschool";
-
-    private static final String USER_TABLE = "users";
-    private static final String CURRENT_USER_TABLE = "current_user";
-    private static final String SNTP_RESULT_TABLE = "sntp_result";
-    private static final String PREFERENCE = "preference";
-    private static final String FISHES_TABLE = "fishes";
-
-    public static final Uri CONTENT_URI =
-            Uri.parse("content://" + AUTHORITY + "/" + USER_TABLE);
-
-    public static final Uri CURRENT_USER_URI =
-            Uri.parse("content://" + AUTHORITY + "/" + CURRENT_USER_TABLE);
-
-    public static final Uri SNTP_RESULT_URI =
-            Uri.parse("content://"+ AUTHORITY + "/" + SNTP_RESULT_TABLE);
-
-    public static final Uri PREFERENCE_URI=
-            Uri.parse("content://" + AUTHORITY + "/" + PREFERENCE);
-
-    public static final Uri FISHES_URI =
-            Uri.parse("content://" + AUTHORITY + "/" + FISHES_TABLE);
 
     public static final int USER = 1;
     public static final int USER_ID = 2;
@@ -50,7 +28,22 @@ public class KitkitProvider extends ContentProvider {
     public static final int SNTP_RESULT = 4;
     public static final int PREFERENCE_INFO = 5;
     public static final int FISHES = 6;
-
+    private static final String AUTHORITY = "com.maq.provider.pehlaschool" + PACKAGE_NAME.substring(19); // to fetch the app flavor
+    private static final String USER_TABLE = "users";
+    public static final Uri CONTENT_URI =
+            Uri.parse("content://" + AUTHORITY + "/" + USER_TABLE);
+    private static final String CURRENT_USER_TABLE = "current_user";
+    public static final Uri CURRENT_USER_URI =
+            Uri.parse("content://" + AUTHORITY + "/" + CURRENT_USER_TABLE);
+    private static final String SNTP_RESULT_TABLE = "sntp_result";
+    public static final Uri SNTP_RESULT_URI =
+            Uri.parse("content://" + AUTHORITY + "/" + SNTP_RESULT_TABLE);
+    private static final String PREFERENCE = "preference";
+    public static final Uri PREFERENCE_URI =
+            Uri.parse("content://" + AUTHORITY + "/" + PREFERENCE);
+    private static final String FISHES_TABLE = "fishes";
+    public static final Uri FISHES_URI =
+            Uri.parse("content://" + AUTHORITY + "/" + FISHES_TABLE);
     private static final UriMatcher sURIMatcher =
             new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -158,45 +151,45 @@ public class KitkitProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-            int uriType = sURIMatcher.match(uri);
-            SQLiteDatabase sqlDB = myDB.getWritableDatabase();
-            int rowsDeleted = 0;
+        int uriType = sURIMatcher.match(uri);
+        SQLiteDatabase sqlDB = myDB.getWritableDatabase();
+        int rowsDeleted = 0;
 
-            switch (uriType) {
-                case USER:
+        switch (uriType) {
+            case USER:
+                rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_USERS,
+                        selection,
+                        selectionArgs);
+                break;
+
+            case USER_ID:
+                String id = uri.getLastPathSegment();
+                if (TextUtils.isEmpty(selection)) {
                     rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_USERS,
-                            selection,
+                            KitkitDBHandler.COLUMN_ID + "=" + id,
+                            null);
+                } else {
+                    rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_USERS,
+                            KitkitDBHandler.COLUMN_ID + "=" + id
+                                    + " and " + selection,
                             selectionArgs);
-                    break;
-
-                case USER_ID:
-                    String id = uri.getLastPathSegment();
-                    if (TextUtils.isEmpty(selection)) {
-                        rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_USERS,
-                                KitkitDBHandler.COLUMN_ID + "=" + id,
-                                null);
-                    } else {
-                        rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_USERS,
-                                KitkitDBHandler.COLUMN_ID + "=" + id
-                                        + " and " + selection,
-                                selectionArgs);
-                    }
-                    break;
-                case SNTP_RESULT:
-                    rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_SNTP_RESULT,
-                            selection,
-                            selectionArgs);
-                    break;
-                case FISHES:
-                    rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_FISHES,
-                            selection,
-                            selectionArgs);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Unknown URI: " + uri);
-            }
-            getContext().getContentResolver().notifyChange(uri, null);
-            return rowsDeleted;
+                }
+                break;
+            case SNTP_RESULT:
+                rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_SNTP_RESULT,
+                        selection,
+                        selectionArgs);
+                break;
+            case FISHES:
+                rowsDeleted = sqlDB.delete(KitkitDBHandler.TABLE_FISHES,
+                        selection,
+                        selectionArgs);
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown URI: " + uri);
+        }
+        getContext().getContentResolver().notifyChange(uri, null);
+        return rowsDeleted;
     }
 
     @Override

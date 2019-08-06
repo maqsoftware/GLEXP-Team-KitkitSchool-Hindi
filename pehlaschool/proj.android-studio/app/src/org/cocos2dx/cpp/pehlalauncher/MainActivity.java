@@ -55,6 +55,8 @@ import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import static android.provider.ContactsContract.Directory.PACKAGE_NAME;
+
 
 public class MainActivity extends KitKitLoggerActivity implements PasswordDialogFragment.PasswordDialogListener {
 
@@ -358,7 +360,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                 if (view.isEnabled()) {
                     try {
                         Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.putExtra("locale", "hindi");
+                        i.putExtra("locale", PACKAGE_NAME.substring(20));
                         i.setComponent(new ComponentName(libraryAppPackageName, "com.maq.pehlaschool.library.SelectActivity"));
                         startActivity(i);
                     } catch (Exception e) {

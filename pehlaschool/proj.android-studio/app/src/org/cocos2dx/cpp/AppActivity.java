@@ -404,8 +404,13 @@ public class AppActivity extends Cocos2dxActivity {
         }
     }
 
+    public static String getApplicationDataDirectory(){
+        return AppActivity.getContext().getApplicationInfo().dataDir;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("Line 413" + AppActivity.getContext().getApplicationInfo().dataDir);
         SharedPreferences sharedPref = getSharedPreferences("ExpansionFile", MODE_PRIVATE);
         int defaultFileVersion = 0;
 
