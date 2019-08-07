@@ -745,7 +745,6 @@ public class MainActivity extends KitKitLoggerActivity {
                             intent.putExtra("book", item.foldername);
                             Log.d("booktest", item.foldername);
                             mActivity.startActivityForResult(intent, 1);
-                            //mActivity.startActivity(intent);
                         }
                         // If the content is not extracted, but the app is installed, show a TOAST
                         else if (appInstalled) {
