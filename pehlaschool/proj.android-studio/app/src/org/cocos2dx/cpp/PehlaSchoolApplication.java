@@ -4,10 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.maq.kitkitProvider.KitkitDBHandler;
-import com.maq.kitkitProvider.User;
-import com.maq.kitkitlogger.KitKitLogger;
-import com.maq.pehlaschool.R;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
 
 import java.util.UUID;
 

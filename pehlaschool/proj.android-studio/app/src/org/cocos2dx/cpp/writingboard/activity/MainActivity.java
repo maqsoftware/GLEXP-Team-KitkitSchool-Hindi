@@ -16,8 +16,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.maq.kitkitProvider.KitkitDBHandler;
-import com.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
 import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.writingboard.core.Const;

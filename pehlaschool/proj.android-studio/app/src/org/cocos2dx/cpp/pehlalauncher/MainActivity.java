@@ -30,10 +30,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.maq.kitkitProvider.KitkitDBHandler;
-import com.maq.kitkitProvider.User;
-import com.maq.kitkitlogger.KitKitLogger;
-import com.maq.kitkitlogger.KitKitLoggerActivity;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -66,6 +66,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
     public static final String UPLOAD_TIME_RECORD_FILE = "upload_time.txt";
     public static final String PATH_IMAGE_LOG_WRITING_BOARD = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "writingboard" + File.separator + "log_image" + File.separator;
     public static String PACKAGE_NAME;
+    public static String TTS_LOCALE;
     public static MainActivity _activity;
     public static String TAG = "MainActivity";
     private static Thread logUploader = null;
@@ -329,6 +330,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
         super.onCreate(savedInstanceState);
         _activity = this;
         PACKAGE_NAME = getPackageName();
+        TTS_LOCALE = getResources().getString(R.string.tts_locale);
         setContentView(R.layout.activity_main);
         Util.hideSystemUI(this);
         cntx = getBaseContext();
@@ -358,7 +360,8 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                 if (view.isEnabled()) {
                     try {
                         Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.putExtra("locale", "hindi");
+                        // TODO: 8/7/2019 ShailinS: Pass 2 letter locale code to Library app
+                        i.putExtra("locale", PACKAGE_NAME.substring(20));
                         i.setComponent(new ComponentName(libraryAppPackageName, "com.maq.pehlaschool.library.SelectActivity"));
                         startActivity(i);
                     } catch (Exception e) {

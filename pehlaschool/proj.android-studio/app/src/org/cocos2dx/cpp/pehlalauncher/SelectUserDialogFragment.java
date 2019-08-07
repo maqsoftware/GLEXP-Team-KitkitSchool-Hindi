@@ -12,8 +12,8 @@ import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.ArrayAdapter;
 
-import com.maq.kitkitProvider.KitkitDBHandler;
-import com.maq.kitkitProvider.KitkitProvider;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitProvider;
 import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.PehlaSchoolApplication;

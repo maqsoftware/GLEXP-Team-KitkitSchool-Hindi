@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.maq.kitkitlogger.KitKitLoggerActivity;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
 import static org.cocos2dx.cpp.pehlalauncher.MainActivity.PACKAGE_NAME;

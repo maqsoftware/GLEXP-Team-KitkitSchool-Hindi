@@ -20,7 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
 
 import org.cocos2dx.cpp.PehlaSchoolApplication;
 
@@ -30,7 +30,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static com.maq.kitkitProvider.KitkitDBHandler.DATABASE_NAME;
+import static org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler.DATABASE_NAME;
 
 public class Util {
     public static String TAG = "TodoschoolLauncher";

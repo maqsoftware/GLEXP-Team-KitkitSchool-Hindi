@@ -16,10 +16,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.maq.kitkitProvider.KitkitDBHandler;
-import com.maq.kitkitProvider.User;
-import com.maq.kitkitlogger.KitKitLogger;
-import com.maq.kitkitlogger.KitKitLoggerActivity;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.drum.activity.DrumActivity;

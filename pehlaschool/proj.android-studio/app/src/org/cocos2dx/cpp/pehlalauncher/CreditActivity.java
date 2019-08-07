@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.maq.kitkitlogger.KitKitLogger;
-import com.maq.kitkitlogger.KitKitLoggerActivity;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.PehlaSchoolApplication;

@@ -3,7 +3,8 @@ package org.cocos2dx.cpp.pehlalauncher.core;
 import android.app.Application;
 import android.content.Context;
 
-import com.maq.kitkitlogger.KitKitLogger;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
+
 import com.maq.pehlaschool.BuildConfig;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -28,7 +29,7 @@ public class GalleryApplication extends Application {
         config.diskCacheSize(100 * 1024 * 1024); // 100 MiB
         config.tasksProcessingOrder(QueueProcessingType.LIFO);
 
-        if (BuildConfig.DEBUG == true) {
+        if (BuildConfig.DEBUG) {
             config.writeDebugLogs(); // Remove for release app
         }
 

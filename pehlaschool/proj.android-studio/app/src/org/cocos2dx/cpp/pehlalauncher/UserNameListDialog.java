@@ -16,7 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
 import com.maq.pehlaschool.R;
 
 import java.util.ArrayList;

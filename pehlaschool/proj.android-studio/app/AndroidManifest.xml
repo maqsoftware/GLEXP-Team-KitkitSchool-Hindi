@@ -200,12 +200,5 @@
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
             </intent-filter>
         </receiver>
-
-        <provider
-            android:name="com.maq.kitkitProvider.KitkitProvider"
-            android:authorities="com.maq.provider.pehlaschool"
-            android:exported="true" />
-
     </application>
-
 </manifest>

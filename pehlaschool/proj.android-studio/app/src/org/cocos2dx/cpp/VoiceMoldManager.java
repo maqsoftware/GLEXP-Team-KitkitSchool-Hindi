@@ -12,11 +12,13 @@ import android.content.Intent;
 
 import java.util.HashMap;
 
+import static org.cocos2dx.cpp.pehlalauncher.MainActivity.TTS_LOCALE;
+
 
 public class VoiceMoldManager {
     // ----
     private static VoiceMoldManager _shared;
-    public String defaultLocale = "hi-IN";
+    public String defaultLocale = TTS_LOCALE;
     public HashMap<String, VoiceMold> moldForLocaleCache;
 
     public VoiceMoldManager() {

@@ -11,8 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.maq.kitkitlogger.KitKitLogger;
-import com.maq.kitkitlogger.KitKitLoggerActivity;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
 import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.PehlaSchoolApplication;

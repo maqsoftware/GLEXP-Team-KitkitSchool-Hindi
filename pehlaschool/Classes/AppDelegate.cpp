@@ -107,7 +107,18 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    string devicePath = "/storage/emulated/0/Android/data/com.maq.pehlaschool/files/"; // can be changed to any other resource location
+
+    // JNI call to get data folder path
+    JniMethodInfo t;
+    bool response = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "getApplicationDataDirectory", "()Ljava/lang/String;");
+    string devicePath;
+    if (response)
+    {
+        jstring jLocale = (jstring)t.env->CallStaticObjectMethod(t.classID, t.methodID);
+        devicePath = JniHelper::jstring2string(jLocale);
+        t.env->DeleteLocalRef(t.classID);
+        t.env->DeleteLocalRef(jLocale);
+    }
     FileUtils::getInstance()->setDefaultResourceRootPath(devicePath);
 
 #endif

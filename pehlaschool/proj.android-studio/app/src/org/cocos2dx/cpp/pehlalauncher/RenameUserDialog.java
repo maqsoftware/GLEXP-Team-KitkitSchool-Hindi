@@ -14,7 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
 import com.maq.pehlaschool.R;
 
 public class RenameUserDialog extends Dialog {

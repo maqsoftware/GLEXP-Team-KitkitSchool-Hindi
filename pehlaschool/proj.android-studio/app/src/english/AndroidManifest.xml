@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <provider
+            android:name="org.cocos2dx.cpp.maq.kitkitProvider.KitkitProvider"
+            android:authorities="com.maq.provider.pehlaschool.english"
+            android:exported="true" />
+    </application>
+</manifest>

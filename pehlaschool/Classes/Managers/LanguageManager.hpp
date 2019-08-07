@@ -30,7 +30,7 @@ class LanguageManager {
 
     static LanguageManager* _instance;
 public:
-    std::string customLanguageCode = "hi"; // en hi ur bn sw
+    std::string customLanguageCode;
     enum LocaleType {
         sw_TZ = 0,
         en_US,

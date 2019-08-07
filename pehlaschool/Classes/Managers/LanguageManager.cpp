@@ -31,6 +31,17 @@ void LanguageManager::init()
     auto defaultLang = LanguageType::ENGLISH;
 #endif
     std::string localeCode = "en-US";
+
+    // JNI call to get the language code
+    JniMethodInfo t;
+    bool result = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "getLanguageCode", "()Ljava/lang/String;");
+    if (result)
+    {
+        jstring jLanguageCode = (jstring)t.env->CallStaticObjectMethod(t.classID, t.methodID);
+        customLanguageCode = JniHelper::jstring2string(jLanguageCode);
+        t.env->DeleteLocalRef(t.classID);
+        t.env->DeleteLocalRef(jLanguageCode);
+    }
     auto localeType = convertLocaleCodeToType(localeCode);
     if (localeType>=LocaleType_MAX) localeType = en_US;
 

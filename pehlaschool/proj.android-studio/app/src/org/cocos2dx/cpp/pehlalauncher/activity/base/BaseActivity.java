@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Message;
 
-import com.maq.kitkitlogger.KitKitLoggerActivity;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
 
 import org.cocos2dx.cpp.pehlalauncher.utility.RecycleUtils;
 import org.cocos2dx.cpp.pehlalauncher.utility.Util;

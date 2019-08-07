@@ -42,10 +42,10 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.maq.kitkitProvider.Fish;
-import com.maq.kitkitProvider.KitkitDBHandler;
-import com.maq.kitkitProvider.User;
-import com.maq.kitkitlogger.KitKitLogger;
+import org.cocos2dx.cpp.maq.kitkitProvider.Fish;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
 import com.maq.pehlaschool.R;
 
 import org.cocos2dx.cpp.ReadingBird.PlayAudio;
@@ -393,15 +393,18 @@ public class AppActivity extends Cocos2dxActivity {
                     == PackageManager.PERMISSION_GRANTED &&
                     checkSelfPermission(Manifest.permission.RECORD_AUDIO)
                             == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG, "Permission is granted");
             } else {
-
-                Log.v(TAG, "Permission is revoked");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
             }
-        } else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG, "Permission is granted");
         }
+    }
+
+    public static String getApplicationDataDirectory(){
+        return AppActivity.getContext().getExternalFilesDir(null).toString();
+    }
+
+    public static String getLanguageCode(){
+        return AppActivity.getContext().getResources().getString(R.string.lang_code);
     }
 
     @Override
