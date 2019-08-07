@@ -6,7 +6,7 @@
 5. Open _proj.android-studio_ folder in Android Studio and select the Build option under Build menu.
 6. Android Studio might show a prompt to install various dependencies related to Android SDK and Build Tool during the build process. Make sure to install all of them.
 7. Do not update _Gradle_ version used in the project, in case you are prompted to update it.
-8. Download the OBB file from the latest GitHub release and follow the instructions provide there.
+8. Download the OBB file from the latest GitHub release and follow the instructions provided there.
 9. To change the app locale just select the desired language from the build variant and then, build the project.
 
 #### Note:
