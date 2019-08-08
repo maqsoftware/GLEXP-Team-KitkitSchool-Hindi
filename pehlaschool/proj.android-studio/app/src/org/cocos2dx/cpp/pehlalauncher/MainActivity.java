@@ -30,14 +30,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
-import org.cocos2dx.cpp.maq.kitkitProvider.User;
-import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
-import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
+import com.maq.pehlaschool.BuildConfig;
 import com.maq.pehlaschool.R;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.cocos2dx.cpp.PehlaSchoolApplication;
+import org.cocos2dx.cpp.maq.kitkitProvider.KitkitDBHandler;
+import org.cocos2dx.cpp.maq.kitkitProvider.User;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLogger;
+import org.cocos2dx.cpp.maq.kitkitlogger.KitKitLoggerActivity;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -361,7 +362,7 @@ public class MainActivity extends KitKitLoggerActivity implements PasswordDialog
                     try {
                         Intent i = new Intent(Intent.ACTION_MAIN);
                         // TODO: 8/7/2019 ShailinS: Pass 2 letter locale code to Library app
-                        i.putExtra("locale", PACKAGE_NAME.substring(20));
+                        i.putExtra("locale", BuildConfig.FLAVOR);
                         i.setComponent(new ComponentName(libraryAppPackageName, "com.maq.pehlaschool.library.SelectActivity"));
                         startActivity(i);
                     } catch (Exception e) {
