@@ -744,6 +744,7 @@ public class MainActivity extends KitKitLoggerActivity {
 
                             intent.putExtra("book", item.foldername);
                             Log.d("booktest", item.foldername);
+                            // Start the next activity with intent and return back if that activity is closed
                             mActivity.startActivityForResult(intent, 1);
                         }
                         // If the content is not extracted, but the app is installed, show a TOAST
