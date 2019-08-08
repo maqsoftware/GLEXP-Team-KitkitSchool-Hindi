@@ -94,15 +94,22 @@ android {
     productFlavors {
         english {
             applicationIdSuffix ".english"
+            versionCode 7
+            versionName '3.5.2'
         }
         hindi {
-
+            versionCode 5
+            versionName '3.4.3'
         }
         urdu {
             applicationIdSuffix ".urdu"
+            versionCode 9
+            versionName '3.5.3'
         }
-        bengali{
+        bengali {
             applicationIdSuffix ".bengali"
+            versionCode 6
+            versionName '3.5.1'
         }
     }
     buildTypes {
