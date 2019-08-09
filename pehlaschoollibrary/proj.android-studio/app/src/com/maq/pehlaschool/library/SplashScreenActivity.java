@@ -17,8 +17,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.vending.expansion.downloader.Helpers;
@@ -59,28 +57,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
         setContentView(R.layout.activity_splash_screen);
 
-        TextView extractionMessageLocale = findViewById(R.id.oneTimeExtractionMessage);
-        TextView extractionMessageEnglish = findViewById(R.id.oneTimeExtractionMessageEnglish);
-        ImageView splashScreenImage = findViewById(R.id.imageView);
-        switch (locale) {
-            case "hindi":
-                splashScreenImage.setImageResource(R.drawable.splash_screen_background_hindi);
-                extractionMessageLocale.setText(getResources().getString(R.string.content_extraction_hindi));
-                extractionMessageEnglish.setText(getResources().getString(R.string.content_extraction));
-                break;
-            case "urdu":
-                splashScreenImage.setImageResource(R.drawable.splash_screen_background_urdu);
-                extractionMessageLocale.setText(getResources().getString(R.string.content_extraction_urdu));
-                extractionMessageEnglish.setText(getResources().getString(R.string.content_extraction));
-                break;
-            case "bengali":
-                splashScreenImage.setImageResource(R.drawable.splash_screen_background_bengali);
-                extractionMessageLocale.setText(getResources().getString(R.string.content_extraction_bengali));
-                extractionMessageEnglish.setText(getResources().getString(R.string.content_extraction));
-                break;
-            default: // Do nothing as English text is set by default
-                break;
-        }
+
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted

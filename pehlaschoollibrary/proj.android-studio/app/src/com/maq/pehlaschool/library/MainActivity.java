@@ -123,28 +123,7 @@ public class MainActivity extends KitKitLoggerActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        TextView titleName = toolbar.findViewById(R.id.toolbar_title_text);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
-
-        switch (locale) {
-            case "hindi":
-                titleName.setText(getResources().getString(R.string.app_name_hindi));
-                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_hindi));
-                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_hindi));
-                break;
-            case "urdu":
-                titleName.setText(getResources().getString(R.string.app_name_urdu));
-                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_urdu));
-                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_urdu));
-                break;
-            case "bengali":
-                titleName.setText(getResources().getString(R.string.app_name_bengali));
-                tabLayout.getTabAt(0).setText(getResources().getString(R.string.tab_video_bengali));
-                tabLayout.getTabAt(1).setText(getResources().getString(R.string.tab_book_bengali));
-                break;
-            default: // Do nothing as English text is set by default
-                break;
-        }
 
         toolbar.setNavigationIcon(R.drawable.library_icon_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

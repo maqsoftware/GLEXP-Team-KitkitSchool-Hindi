@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Library: Pehla School</string>
+    <string name="tab_video" translatable="false">VIDEOS</string>
+    <string name="tab_book" translatable="false">BOOKS</string>
+    <string name="content_extraction">This process will be done only once. It can take up to 10 minutes.</string>
+</resources>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name" translatable="false">Library: Pehla School - پہلا اسکول </string>
+    <string name="tab_video" translatable="false">VIDEOS\nویڈیوز</string>
+    <string name="tab_book" translatable="false">BOOKS\nکتابیں</string>
+    <string name="content_extraction" translatable="false">یہ عمل صرف ایک بار کیا جائے گا. اس میں 10 منٹ تک لگ سکتا ہے.</string>
+ </resources>
