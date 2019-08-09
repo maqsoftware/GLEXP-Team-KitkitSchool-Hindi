@@ -935,7 +935,7 @@ BEGIN_NS_EGGQUIZ ;
         questionBox->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
         questionBox->setPosition(_gameNode->getContentSize().width / 2, 680);
         _gameNode->addChild(questionBox);
-        createSmallSpeakerView(_problem.answer);
+        createSmallSpeakerView(convertToWords(TodoUtil::stoi(_problem.answer)));
 
         Size slotSize = Slot::create(SlotSize::Small)->getContentSize();
         float space = 44;
