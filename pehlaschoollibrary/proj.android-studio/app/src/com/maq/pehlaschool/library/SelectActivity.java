@@ -53,6 +53,7 @@ public class SelectActivity extends KitKitLoggerActivity {
             // set the default value of the variable on successive calls
             locale = "english";
         }
+        //Update the app locale
         updateStringLocale(this, locale);
         // Retrieve the stored values of main and patch file version
         int storedMainFileVersion = sharedPref.getInt(getString(R.string.mainFileVersion), defaultFileVersion);
@@ -217,9 +218,12 @@ public class SelectActivity extends KitKitLoggerActivity {
     {
         Resources res = context.getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
+        //get the current configuration
         android.content.res.Configuration conf = res.getConfiguration();
+        //update the locale if there is value in locale
         if (locale.length()>0)
             conf.setLocale(new Locale(locale.toLowerCase()));
+        //set the locale with the updated configuration
         res.updateConfiguration(conf, dm);
     }
 
