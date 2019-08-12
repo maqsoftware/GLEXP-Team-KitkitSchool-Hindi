@@ -216,15 +216,16 @@ public class SelectActivity extends KitKitLoggerActivity {
     // Change the translatable strings as per the locale
     public static void updateStringLocale( Context context, String locale)
     {
-        Resources res = context.getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
+        Resources currRes = context.getResources();
+        //get the diplay information
+        DisplayMetrics currDispMetrics = currRes.getDisplayMetrics();
         //get the current configuration
-        android.content.res.Configuration conf = res.getConfiguration();
+        android.content.res.Configuration currConfig = currRes.getConfiguration();
         //update the locale if there is value in locale
         if (locale.length()>0)
-            conf.setLocale(new Locale(locale.toLowerCase()));
+            currConfig.setLocale(new Locale(locale.toLowerCase()));
         //set the locale with the updated configuration
-        res.updateConfiguration(conf, dm);
+        currRes.updateConfiguration(currConfig, currDispMetrics);
     }
 
 }
