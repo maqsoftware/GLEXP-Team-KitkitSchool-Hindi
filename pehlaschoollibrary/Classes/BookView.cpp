@@ -231,8 +231,15 @@ bool BookView::init(const Size &size, std::string &bookPath, bool checkCompleteC
         backBtn->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyListener, backBtn);
         backBtn->addClickEventListener([this](Ref*){
             LogManager::getInstance()->logEvent(_book->bookTitle, "back_pressed", "", _currentPage);
-            GameSoundManager::getInstance()->playEffectSound("Common/Sounds/Effect/SFX_GUIBack.m4a");
-            this->popBookScene();
+            //GameSoundManager::getInstance()->playEffectSound("Common/Sounds/Effect/SFX_GUIBack.m4a");
+            JniMethodInfo t;
+
+            bool result = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "sendToBack", "()V");
+            if (result)
+            {
+                t.env->CallStaticVoidMethod(t.classID, t.methodID);
+                t.env->DeleteLocalRef(t.classID);
+            }
         });
         
         backBtn->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
