@@ -234,7 +234,7 @@ bool BookView::init(const Size &size, std::string &bookPath, bool checkCompleteC
             //GameSoundManager::getInstance()->playEffectSound("Common/Sounds/Effect/SFX_GUIBack.m4a");
             JniMethodInfo t;
 
-            bool result = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "sendToBack", "()V");
+            bool result = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "finishActivity", "()V");
             if (result)
             {
                 t.env->CallStaticVoidMethod(t.classID, t.methodID);

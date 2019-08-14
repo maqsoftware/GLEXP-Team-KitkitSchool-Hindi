@@ -76,12 +76,16 @@ public class AppActivity extends Cocos2dxActivity {
                     @Override
                     public void run() {
                         Log.d("AppActivity", "sendToBack onUIThread 2 - booktest");
-                        //_activity.moveTaskToBack(true);
-                        _activity.finish();
+                        _activity.moveTaskToBack(true);
                     }
                 });
             }
         });
+    }
+
+    public static void finishActivity() {
+        Log.d("AppActivity", "finish the activity");
+        _activity.finish();
     }
 
     public static void staticSetFullScreen() {
