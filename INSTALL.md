@@ -15,7 +15,7 @@
 
 ## FAQs
 1. How to fix missing google-services.json file error?
-	> Put google-services.json file in [app](https://github.com/maqsoftware/Pehla-School/tree/newmaster/pehlaschool/proj.android-studio/app) folder. It is there in Firebase console after the app project has been created.
+	> Put `google-services.json` file in [app](https://github.com/maqsoftware/Pehla-School/tree/newmaster/pehlaschool/proj.android-studio/app) folder. The JSON file is present in the [Firebase console](https://docs.kii.com/en/samples/push-notifications/push-notifications-android-fcm/create-project/) after the app project has been created.
 
 1. There is a cross mark on the app cofiguration button. How do I fix that?
 

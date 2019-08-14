@@ -25,7 +25,7 @@ Android Studio will also ask to install the relevant SDKs and build tools that a
 
 ## Copy Resource files
 
-Download the relevant 3rd party files from [release assets](https://github.com/XPRIZE/GLEXP-Team-KitkitSchool/releases/download/v1.0/cocos2d.zip) 
+Download correct version of file from [release assets](https://github.com/XPRIZE/GLEXP-Team-KitkitSchool/releases/download/v1.0/cocos2d.zip).
 
 * to build pehlaschool, place the 3rd party files in the following folders:
   * ROOT/pehlaschool/cocos2d
@@ -47,5 +47,4 @@ The resulting debug and release APKs will be generated in _app/build/outputs/apk
 
 ## Install the APKs
 
-1. Install the APK generated after successful project build.
-2. Download the OBB file and follow the instructions which are present in the latest [GitHub release](https://github.com/maqsoftware/Pehla-School/releases/).
+1. Download the OBB file and follow the instructions which are present in the latest [GitHub release](https://github.com/maqsoftware/Pehla-School/releases/).
