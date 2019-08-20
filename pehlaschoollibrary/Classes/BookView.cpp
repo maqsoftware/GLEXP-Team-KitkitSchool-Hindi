@@ -439,7 +439,7 @@ void BookView::nextPage()
                                                     LogManager::getInstance()->logEvent(
                                                             _book->bookTitle, "finish_read", "",
                                                             _currentPage);
-                                                    CompletePopup::create()->show(0, [this]() {
+                                                    CompletePopup::create()->show(0.0, [this]() {
                                                         _isReadAll = true;
 
                                                         //Finish the current activity and go back to Main screen
