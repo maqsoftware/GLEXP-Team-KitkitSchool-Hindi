@@ -89,7 +89,6 @@ public class AppActivity extends Cocos2dxActivity {
         _activity.finish();
     }
 
-
     public static void staticSetFullScreen() {
         _activity.hideSystemUIOnUIThread();
 
@@ -148,7 +147,6 @@ public class AppActivity extends Cocos2dxActivity {
         super.onResume();
     }
 
-
     public Cocos2dxGLSurfaceView onCreateView() {
         if (null == _glSurfaceView) {
             _glSurfaceView = new Cocos2dxGLSurfaceView(this);
@@ -169,7 +167,6 @@ public class AppActivity extends Cocos2dxActivity {
             this.hideSystemUI();
         }
     }
-
 
     @Override
     protected void onNewIntent(Intent intent) {

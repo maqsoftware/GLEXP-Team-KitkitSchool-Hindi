@@ -442,21 +442,11 @@ void BookView::nextPage()
                                                             _currentPage);
                                                     CompletePopup::create()->show(0, [this]() {
                                                         _isReadAll = true;
-                                                        if (_checkCompleteCondition)
-                                                        {
-                                                           //Finish the activity, return back to the MainActivity and restart the story
-                                                            finishActivity();
-                                                            viewTitle(turnDuration*2);
-                                                            showPageButton();
-                                                        }
-                                                        else
-                                                        {
-                                                            //Finish the activity, return back to the MainActivity and restart the story
-                                                            finishActivity();
-                                                            viewTitle(turnDuration*2);
-                                                            showPageButton();
-                                                        }
 
+                                                       //Finish the activity, return back to the MainActivity and restart the story
+                                                        finishActivity();
+                                                        viewTitle(turnDuration*2);
+                                                        showPageButton();
                                                     });
                                                 } else {
                                                     showPageButton();
@@ -726,9 +716,7 @@ void BookView::finishActivity() {
         t.env->CallStaticVoidMethod(t.classID, t.methodID);
         t.env->DeleteLocalRef(t.classID);
     }
-
 }
-
 
 
 void BookView::setSoundSetting(bool enable) {
