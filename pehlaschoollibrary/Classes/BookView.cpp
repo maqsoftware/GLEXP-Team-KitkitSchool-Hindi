@@ -232,14 +232,8 @@ bool BookView::init(const Size &size, std::string &bookPath, bool checkCompleteC
         backBtn->addClickEventListener([this](Ref*){
             LogManager::getInstance()->logEvent(_book->bookTitle, "back_pressed", "", _currentPage);
             //GameSoundManager::getInstance()->playEffectSound("Common/Sounds/Effect/SFX_GUIBack.m4a");
-            JniMethodInfo t;
-
-            bool result = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "finishActivity", "()V");
-            if (result)
-            {
-                t.env->CallStaticVoidMethod(t.classID, t.methodID);
-                t.env->DeleteLocalRef(t.classID);
-            }
+            //Finish the activity and return back to the MainActivity
+            finishActivity();
         });
         
         backBtn->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
@@ -331,9 +325,6 @@ void BookView::onExit()
     Node::onExit();
     GameSoundManager::getInstance()->stopAllEffects();
     GameSoundManager::getInstance()->unloadAllEffect();
-    
-
-    
 }
 
 void BookView::setBook(TodoBook *book)
@@ -449,19 +440,23 @@ void BookView::nextPage()
                                                     LogManager::getInstance()->logEvent(
                                                             _book->bookTitle, "finish_read", "",
                                                             _currentPage);
-                                                    CompletePopup::create()->show(0.0, [this]() {
+                                                    CompletePopup::create()->show(0, [this]() {
                                                         _isReadAll = true;
-                                                        
                                                         if (_checkCompleteCondition)
                                                         {
-                                                            CCAppController::sharedAppController()->handleGameComplete(1);
+                                                           //Finish the activity, return back to the MainActivity and restart the story
+                                                            finishActivity();
+                                                            viewTitle(turnDuration*2);
+                                                            showPageButton();
                                                         }
                                                         else
                                                         {
-                                                            CCAppController::sharedAppController()->handleGameQuit();
+                                                            //Finish the activity, return back to the MainActivity and restart the story
+                                                            finishActivity();
+                                                            viewTitle(turnDuration*2);
+                                                            showPageButton();
                                                         }
-                                                        
-                                                        //TodoSchoolBackButton::popGameScene();
+
                                                     });
                                                 } else {
                                                     showPageButton();
@@ -475,9 +470,6 @@ void BookView::nextPage()
                                                 oldPage->removeFromParent();
                                             }),
                                             nullptr));
-        
-        
-        
 
     } else {
 
@@ -641,17 +633,24 @@ void BookView::popBookScene()
 
 
 #else
+
         Director::getInstance()->end();
 #endif
-        
+
     } else {
         if (_finishReading) {
             LogManager::getInstance()->logEvent(_book->bookTitle, "finish_read", "", _currentPage);
-            CCAppController::sharedAppController()->handleGameComplete(1);
+            //CCAppController::sharedAppController()->handleGameComplete(1);
+            //Finish the activity
+            finishActivity();
+
 
         } else {
             //(Director::getInstance())->popScene();
-            CCAppController::sharedAppController()->handleGameQuit();
+            //CCAppController::sharedAppController()->handleGameQuit();
+            //Finish the activity
+            finishActivity();
+
         }
     }
 
@@ -717,6 +716,20 @@ bool BookView::getSoundSetting() {
      */
     
 }
+
+void BookView::finishActivity() {
+    //function to wrap the JNI caller for the AppActivity.finishActivity
+    JniMethodInfo t;
+    bool result = JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "finishActivity", "()V");
+    if (result)
+    {
+        t.env->CallStaticVoidMethod(t.classID, t.methodID);
+        t.env->DeleteLocalRef(t.classID);
+    }
+
+}
+
+
 
 void BookView::setSoundSetting(bool enable) {
     _soundSetting = enable;

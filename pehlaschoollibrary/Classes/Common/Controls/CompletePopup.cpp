@@ -174,29 +174,29 @@ void CompletePopup::show(float delay, std::function<void(void)> callback) {
     
     scheduleOnce([](float) {
         SoundEffect::wowEffect().play();
-     
     }, delay+0.1, "wowSound");;
-    
-    
-    
-    
- 
+
+
+
+
+
     _callback = callback;
     
 }
 
 void CompletePopup::dismiss() {
     Size winSize = getContentSize();
+    //removed the delayed transition after tapping the Complete Popup
     auto seq = Sequence::create(
-                                EaseIn::create(MoveBy::create(0.1, Vec2(0, -30)), 2.0),
-                                EaseOut::create(MoveTo::create(0.2, Vec2(0, winSize.height)), 2.0),
+                                EaseIn::create(MoveBy::create(0.0, Vec2(0, -30)), 2.0),
+                                EaseOut::create(MoveTo::create(0.0, Vec2(0, winSize.height)), 2.0),
                                 CallFunc::create([this](){
         this->removeFromParent();
     }),
                                 nullptr);
     _mainView->runAction(seq);
     
-    _backView->runAction(Sequence::create(DelayTime::create(0.3), FadeOut::create(0.2), nullptr));
+    _backView->runAction(Sequence::create(DelayTime::create(0.0), FadeOut::create(0.0), nullptr));
     
     if (_callback) {
         _callback();

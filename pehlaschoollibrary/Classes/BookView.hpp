@@ -45,7 +45,7 @@ public:
 
     void showPageButton();
     void hidePageButton();
-    
+    void finishActivity();
     static bool getReadAll() { return _isReadAll; }
     static void setLibraryMode(bool libraryMode) { _libraryMode = libraryMode; }
     static void setBookLanguage(std::string lang) { _languageCode = lang; }

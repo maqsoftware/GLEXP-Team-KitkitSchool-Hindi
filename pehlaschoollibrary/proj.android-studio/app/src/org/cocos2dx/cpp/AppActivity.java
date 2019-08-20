@@ -66,7 +66,7 @@ public class AppActivity extends Cocos2dxActivity {
     }
 
     public static void sendToBack() {
-        Log.d("AppActivity", "sendToBack - booktest");
+        Log.d("AppActivityAppActivity", "sendToBack - booktest");
 
         _activity.runOnUiThread(new Runnable() {
             @Override
@@ -84,9 +84,11 @@ public class AppActivity extends Cocos2dxActivity {
     }
 
     public static void finishActivity() {
+        //function to finish the current activity and return back to the caller activity
         Log.d("AppActivity", "finish the activity");
         _activity.finish();
     }
+
 
     public static void staticSetFullScreen() {
         _activity.hideSystemUIOnUIThread();
@@ -146,6 +148,7 @@ public class AppActivity extends Cocos2dxActivity {
         super.onResume();
     }
 
+
     public Cocos2dxGLSurfaceView onCreateView() {
         if (null == _glSurfaceView) {
             _glSurfaceView = new Cocos2dxGLSurfaceView(this);
@@ -166,6 +169,7 @@ public class AppActivity extends Cocos2dxActivity {
             this.hideSystemUI();
         }
     }
+
 
     @Override
     protected void onNewIntent(Intent intent) {
