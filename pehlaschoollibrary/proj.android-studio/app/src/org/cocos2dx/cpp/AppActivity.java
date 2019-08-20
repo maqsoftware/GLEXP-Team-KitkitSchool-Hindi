@@ -66,7 +66,7 @@ public class AppActivity extends Cocos2dxActivity {
     }
 
     public static void sendToBack() {
-        Log.d("AppActivityAppActivity", "sendToBack - booktest");
+        Log.d("AppActivity", "sendToBack - booktest");
 
         _activity.runOnUiThread(new Runnable() {
             @Override
