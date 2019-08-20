@@ -713,7 +713,6 @@ void BookView::finishActivity() {
     }
 }
 
-
 void BookView::setSoundSetting(bool enable) {
     _soundSetting = enable;
     if (enable) {
