@@ -178,7 +178,6 @@ void CompletePopup::show(float delay, std::function<void(void)> callback) {
 
 
 
-
     _callback = callback;
     
 }
