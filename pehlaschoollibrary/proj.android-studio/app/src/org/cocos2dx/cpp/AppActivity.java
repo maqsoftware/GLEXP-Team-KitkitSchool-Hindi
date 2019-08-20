@@ -85,7 +85,6 @@ public class AppActivity extends Cocos2dxActivity {
 
     public static void finishActivity() {
         //function to finish the current activity and return back to the caller activity
-        Log.d("AppActivity", "finish the activity");
         _activity.finish();
     }
 

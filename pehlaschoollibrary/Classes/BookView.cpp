@@ -231,8 +231,7 @@ bool BookView::init(const Size &size, std::string &bookPath, bool checkCompleteC
         backBtn->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyListener, backBtn);
         backBtn->addClickEventListener([this](Ref*){
             LogManager::getInstance()->logEvent(_book->bookTitle, "back_pressed", "", _currentPage);
-            //GameSoundManager::getInstance()->playEffectSound("Common/Sounds/Effect/SFX_GUIBack.m4a");
-            //Finish the activity and return back to the MainActivity
+            // Finish the current activity and go back to Main screen.
             finishActivity();
         });
         
@@ -443,7 +442,7 @@ void BookView::nextPage()
                                                     CompletePopup::create()->show(0, [this]() {
                                                         _isReadAll = true;
 
-                                                       //Finish the activity, return back to the MainActivity and restart the story
+                                                        //Finish the current activity and go back to Main screen
                                                         finishActivity();
                                                         viewTitle(turnDuration*2);
                                                         showPageButton();
@@ -630,15 +629,11 @@ void BookView::popBookScene()
     } else {
         if (_finishReading) {
             LogManager::getInstance()->logEvent(_book->bookTitle, "finish_read", "", _currentPage);
-            //CCAppController::sharedAppController()->handleGameComplete(1);
-            //Finish the activity
+            //Finish the current activity and go back to Main screen
             finishActivity();
 
-
         } else {
-            //(Director::getInstance())->popScene();
-            //CCAppController::sharedAppController()->handleGameQuit();
-            //Finish the activity
+            //Finish the current activity and go back to Main screen
             finishActivity();
 
         }
