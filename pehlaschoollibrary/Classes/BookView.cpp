@@ -629,13 +629,9 @@ void BookView::popBookScene()
     } else {
         if (_finishReading) {
             LogManager::getInstance()->logEvent(_book->bookTitle, "finish_read", "", _currentPage);
+        }
             //Finish the current activity and go back to Main screen
             finishActivity();
-
-        } else {
-            //Finish the current activity and go back to Main screen
-            finishActivity();
-
         }
     }
 
