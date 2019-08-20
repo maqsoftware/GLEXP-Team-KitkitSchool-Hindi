@@ -175,9 +175,6 @@ void CompletePopup::show(float delay, std::function<void(void)> callback) {
     scheduleOnce([](float) {
         SoundEffect::wowEffect().play();
     }, delay+0.1, "wowSound");;
-
-
-
     _callback = callback;
     
 }
