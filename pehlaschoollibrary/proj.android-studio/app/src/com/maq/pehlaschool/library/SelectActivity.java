@@ -222,8 +222,19 @@ public class SelectActivity extends KitKitLoggerActivity {
         //get the current configuration
         android.content.res.Configuration currConfig = currRes.getConfiguration();
         //update the locale if there is value in locale
-        if (locale.length()>0)
-            currConfig.setLocale(new Locale(locale.toLowerCase()));
+        switch (locale) {
+            case "hindi":
+                currConfig.setLocale(new Locale("hi"));
+                break;
+            case "urdu":
+                currConfig.setLocale(new Locale("ur"));
+                break;
+            case "bengali":
+                currConfig.setLocale(new Locale("bn"));
+                break;
+            default: // Do nothing as English text is set by default
+                break;
+        }
         //set the locale with the updated configuration
         currRes.updateConfiguration(currConfig, currDispMetrics);
     }

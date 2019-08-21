@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">Library: পহেলা স্কুল - Pehla School</string>
-    <string name="tab_video" translatable="false">VIDEOS\nভিডিও</string>
-    <string name="tab_book" translatable="false">BOOKS\nবুক</string>
-    <string name="content_extraction" translatable="false">এই প্রক্রিয়া শুধুমাত্র একবার সম্পন্ন করা হবে| এটি 10 ​​মিনিট সময় নিতে পারে।</string>
+    <string name="app_name">Library: পহেলা স্কুল - Pehla School</string>
+    <string name="tab_video">VIDEOS\nভিডিও</string>
+    <string name="tab_book">BOOKS\nবুক</string>
+    <string name="content_extraction_locale">এই প্রক্রিয়া শুধুমাত্র একবার সম্পন্ন করা হবে| এটি 10 ​​মিনিট সময় নিতে পারে।</string>
 </resources>
