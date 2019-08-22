@@ -108,8 +108,8 @@ android {
         }
         bengali {
             applicationIdSuffix ".bengali"
-            versionCode 7
-            versionName '3.5.2'
+            versionCode 8
+            versionName '3.5.3'
         }
     }
     buildTypes {
