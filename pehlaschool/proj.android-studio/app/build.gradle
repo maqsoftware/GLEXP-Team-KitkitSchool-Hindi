@@ -7,6 +7,10 @@ android {
     compileSdkVersion PROP_COMPILE_SDK_VERSION.toInteger()
     buildToolsVersion "28.0.3"
 
+    dexOptions {
+        dexInProcess = true
+    }
+
     defaultConfig {
         applicationId "com.maq.pehlaschool"
         minSdkVersion PROP_MIN_SDK_VERSION
@@ -94,12 +98,12 @@ android {
     productFlavors {
         english {
             applicationIdSuffix ".english"
-            versionCode 8
-            versionName '3.5.3'
+            versionCode 9
+            versionName '3.5.4'
         }
         hindi {
-            versionCode 6
-            versionName '3.4.4'
+            versionCode 7
+            versionName '3.4.5'
         }
         urdu {
             applicationIdSuffix ".urdu"
