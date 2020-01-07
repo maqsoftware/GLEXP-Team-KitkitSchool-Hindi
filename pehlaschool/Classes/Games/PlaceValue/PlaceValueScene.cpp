@@ -314,7 +314,7 @@ void PlaceValueScene::createBoard(int index)
     auto tank100_title = Label::createWithSystemFont(tank100_title_text, arialFont, 30);
     tank100_title->setColor(Color3B(26, 26, 26));
     tank100_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
-    tank100_title->setPosition(Vec2(tank100->getPosition().x, gameSize.height - 491 + 30));
+    tank100_title->setPosition(Vec2(tank100->getPosition().x, gameSize.height - 491));
     tank100_title->setName("tank100Title");
     _gameNode->addChild(tank100_title, 100);
     
@@ -372,7 +372,7 @@ void PlaceValueScene::createBoard(int index)
     auto tank10_title = Label::createWithSystemFont(tank10_title_text, arialFont, 30);
     tank10_title->setColor(Color3B(26, 26, 26));
     tank10_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
-    tank10_title->setPosition(Vec2(tank10->getPosition().x, gameSize.height - 491 + 30));
+    tank10_title->setPosition(Vec2(tank10->getPosition().x, gameSize.height - 491));
     tank10_title->setName("tank10Title");
     _gameNode->addChild(tank10_title, 100);
     
@@ -422,7 +422,7 @@ void PlaceValueScene::createBoard(int index)
     auto tank1_title = Label::createWithSystemFont(tank1_title_text, arialFont, 30);
     tank1_title->setColor(Color3B(26, 26, 26));
     tank1_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
-    tank1_title->setPosition(Vec2(tank1->getPosition().x, gameSize.height - 491 + 30));
+    tank1_title->setPosition(Vec2(tank1->getPosition().x, gameSize.height - 491));
     tank1_title->setName("tank1Title");
     _gameNode->addChild(tank1_title, 100);
     
@@ -535,7 +535,7 @@ void PlaceValueScene::createBoard(int index)
     auto nextTank100_title = Label::createWithSystemFont(tank100_title_text, arialFont, 30);
     nextTank100_title->setColor(Color3B(26, 26, 26));
     nextTank100_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
-    nextTank100_title->setPosition(Vec2(nextTank100->getPosition().x, gameSize.height - 491 + 30));
+    nextTank100_title->setPosition(Vec2(nextTank100->getPosition().x, gameSize.height - 491));
     nextTank100_title->setName("nextTank100Title");
     _gameNode->addChild(nextTank100_title, 100);
 
@@ -555,7 +555,7 @@ void PlaceValueScene::createBoard(int index)
     auto nextTank10_title = Label::createWithSystemFont(tank10_title_text, arialFont, 30);
     nextTank10_title->setColor(Color3B(26, 26, 26));
     nextTank10_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
-    nextTank10_title->setPosition(Vec2(nextTank10->getPosition().x, gameSize.height - 491 + 30));
+    nextTank10_title->setPosition(Vec2(nextTank10->getPosition().x, gameSize.height - 491));
     nextTank10_title->setName("nextTank10Title");
     _gameNode->addChild(nextTank10_title, 100);
 
@@ -575,7 +575,7 @@ void PlaceValueScene::createBoard(int index)
     auto nextTank1_title = Label::createWithSystemFont(tank1_title_text, arialFont, 30);
     nextTank1_title->setColor(Color3B(26, 26, 26));
     nextTank1_title->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
-    nextTank1_title->setPosition(Vec2(nextTank1->getPosition().x, gameSize.height - 491 + 30));
+    nextTank1_title->setPosition(Vec2(nextTank1->getPosition().x, gameSize.height - 491));
     nextTank1_title->setName("nextTank1Title");
     _gameNode->addChild(nextTank1_title, 100);
 
